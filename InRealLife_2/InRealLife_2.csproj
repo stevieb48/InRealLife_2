@@ -125,6 +125,26 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="MediaFile\flat.tire.10.jpg" />
+    <Resource Include="MediaFile\exitButton.png" />
+    <Resource Include="MediaFile\blueExitBtn.png" />
+    <Resource Include="background1.jpg" />
+    <Resource Include="autumn_rain-wallpaper-1024x768.jpg" />
+    <Resource Include="roadmap.jpg" />
+    <Resource Include="loginSign.jpg" />
+    <Resource Include="loginSignNoBack.jpg.png" />
+    <Resource Include="myLogin.png" />
+    <Resource Include="myLogInNoBack.png" />
+    <Resource Include="roadmapMercury.jpg" />
+    <Resource Include="rainSunscreen.jpg" />
+    <Resource Include="ifficultroadsoftenlead tobeautifuldestinations.jpg" />
+    <Resource Include="ifficultroadsoftenlead tobeautifuldestinations%281%29.jpg" />
+    <Resource Include="road.jpg" />
+    <Resource Include="ifficultroadsoftenlead tobeautifuldestinations%282%29.jpg" />
+    <Resource Include="blueExitBtn.png" />
+    <Resource Include="2326.gif" />
+    <Resource Include="exitMerc.jpg" />
+    <Resource Include="enterMerc.jpg" />
+    <Resource Include="greenEnter.png" />
     <Content Include="ScenarioData.accdb">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

@@ -39,8 +39,12 @@ namespace InRealLife_2
             using (conn)
             using (OleDbDataAdapter adapter = new OleDbDataAdapter(query, conn))
             {
+                // reinitialize connection string
                 conn.ConnectionString = connectionString;
+
+                // open connection
                 conn.Open();
+
                 adapter.Fill(dt);
                 return dt;
             }
@@ -69,60 +73,6 @@ namespace InRealLife_2
                 // return number of rows deleted
                 return scenarioRowsDeleted;
             }
-        }
-
-        //
-        public String getScenarioName(int ScenarioId)
-        {
-            String query = @"SELECT ScenarioName FROM Scenario Where ScenarioId =" + ScenarioId;
-
-            using (conn)
-            using (OleDbCommand command = new OleDbCommand(query, conn))
-            {
-                // reinitialize connection string
-                conn.ConnectionString = connectionString;
-
-                conn.Open();
-
-                var result = command.ExecuteScalar();
-                return "" + result;
-            }
-        }
-
-        public String getAnswer(int AnswerId, int StageID)
-        {
-            String query = "SELECT AnswerDescription FROM Answer WHERE StageID = " + StageID + " AND AnswerID = " + AnswerId;
-            using (conn)
-            using (OleDbCommand command = new OleDbCommand(query, conn))
-            {
-                // reinitialize connection string
-                conn.ConnectionString = connectionString;
-
-                conn.Open();
-
-                var result = command.ExecuteScalar();
-                return "" + result;
-            }
-        }
-
-        public int getNextStageID(int AnswerId, int StageID)
-        {
-            String query = "SELECT nextStageID FROM Answer WHERE StageID = " + StageID + " AND AnswerID = " + AnswerId;
-            using (conn)
-            using (OleDbCommand command = new OleDbCommand(query, conn))
-            {
-                // reinitialize connection string
-                conn.ConnectionString = connectionString;
-
-                conn.Open();
-
-                var result = command.ExecuteScalar();
-                if (result != null)
-                {
-                    return (int)result;
-                }
-            }
-            return 0;
         }
     }
 }

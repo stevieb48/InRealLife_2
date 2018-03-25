@@ -1,6 +1,7 @@
 ﻿using Classes;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Data;
 using System.Linq;
 using System.Text;
@@ -50,6 +51,7 @@ namespace InRealLife_2
             // enable create button
             // ***** change btnCreateScenario, and btnEditScenario(below) control back to true when edit scenario is incorporated ***********
             btnCreateScenario.IsEnabled = false;
+
             btnDeleteScenario.IsEnabled = false;
             btnPerformScenario.IsEnabled = false;
 
@@ -64,6 +66,9 @@ namespace InRealLife_2
                     
                 // then add data to listbox
                 AddDataToListBox(returnedScenarioTable);
+
+                // sort
+
             }
             else
             {
@@ -72,20 +77,17 @@ namespace InRealLife_2
             }
         }
 
-        // exit builder button click event UNDER DEVELOPMENT
+        // exit builder button click event
         private void BtnExitBuilder_Click(object sender, RoutedEventArgs e)
         {
-            System.Windows.Application.Current.Shutdown();
+            TitleScreen titleScreen = new TitleScreen();
+            this.NavigationService.Navigate(titleScreen);
         }
 
         // create scenario button click event
         private void BtnCreateScenario_Click(object sender, RoutedEventArgs e)
         {
-            // hide current form
-            // this.Hide();
 
-            // load form to edit scenario
-            // .show();
         }
 
         // delete scenario button click event
@@ -124,12 +126,7 @@ namespace InRealLife_2
         // preview scenario button click event
         private void BtnPerformScenario_Click(object sender, RoutedEventArgs e)
         {
-            // show running form
-            //Running run = new Running();
-            //run.Show();
 
-            // hide main menu form form
-            //this.Hide();
         }
 
         // method for form behaviors if list is empty
@@ -154,10 +151,7 @@ namespace InRealLife_2
             for (int i = 0; i < returnedScenarioTable.Rows.Count; i++)
             {
                 // add data table results to list view
-               // lstvwScenarios.Items.Add(returnedScenarioTable.Rows[i][0].ToString());
-
-                //
-                this.lstvwScenarios.Items.Add(new Scenario { ScenarioID = Int32.Parse(returnedScenarioTable.Rows[i][0].ToString()), ScenarioName = returnedScenarioTable.Rows[i][1].ToString() });
+                lstvwScenarios.Items.Add(new Scenario { ScenarioID = Int32.Parse(returnedScenarioTable.Rows[i][0].ToString()), ScenarioName = returnedScenarioTable.Rows[i][1].ToString() });
             }
         }
 
@@ -168,7 +162,7 @@ namespace InRealLife_2
         }
 
         //
-private void EnableButtonsWhenScenarioSelected()
+        private void EnableButtonsWhenScenarioSelected()
         {
             // enable buttons
             ScenarioListHasValues();
@@ -176,6 +170,7 @@ private void EnableButtonsWhenScenarioSelected()
             // enable perform scenario button
             btnPerformScenario.IsEnabled = true;
 
+            // enable delete scenario button
             btnDeleteScenario.IsEnabled = true;
         }
     }
