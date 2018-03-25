@@ -25,5 +25,11 @@ namespace InRealLife_2
         {
             InitializeComponent();           
         }
+
+        private void btnExitPerform_Click(object sender, RoutedEventArgs e)
+        {
+            TitleScreen titleScreen = new TitleScreen();
+            this.NavigationService.Navigate(titleScreen);
+        }
     }
 }

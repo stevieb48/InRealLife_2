@@ -15,16 +15,13 @@
                 <GradientStop Color="White" Offset="1"/>
             </LinearGradientBrush>
         </Grid.Background>
-
-        <Button x:Name="btnExitBuilder" Content="Exit Builder" HorizontalAlignment="Left" Margin="16,58,0,0" VerticalAlignment="Top" Width="75" Click="BtnExitBuilder_Click" Height="20"/>
         <Label x:Name="lblIRLLogo" Content="In Real Life" HorizontalAlignment="Center" Margin="288,38,288,0" VerticalAlignment="Top" RenderTransformOrigin="-0.149,-0.143" FontSize="36" Width="214" Height="58" FontFamily="Viner Hand ITC" Foreground="#FF1018B2"/>
-        <Label x:Name="lblTitle" Content="Scenario Builder" HorizontalAlignment="Center" Margin="307,96,293,0" VerticalAlignment="Top" RenderTransformOrigin="-0.149,-0.143" FontSize="24" Width="190" Height="42"/>
-        <Label x:Name="lblCurrentList" Content="Current List" HorizontalAlignment="Center" Margin="335,127,327,0" VerticalAlignment="Top" RenderTransformOrigin="1.429,2.005" Height="38" Width="128" FontSize="22"/>
+        <Label x:Name="lblTitle" Content="Scenario Builder" HorizontalAlignment="Center" Margin="292,96,308,0" VerticalAlignment="Top" RenderTransformOrigin="-0.149,-0.143" FontSize="24" Width="190" Height="42"/>
         <Button x:Name="btnCreateScenario" Content="+ create" HorizontalAlignment="Center" Margin="307,342,407,78" VerticalAlignment="Center" Width="76" Click="BtnCreateScenario_Click" Height="20"/>
         <Button x:Name="btnEditScenario" Content="edit" HorizontalAlignment="Center" Margin="388,342,327,78" VerticalAlignment="Center" Width="75" RenderTransformOrigin="-0.344,0.307" Height="20"/>
         <Button x:Name="btnDeleteScenario" Content="- delete" HorizontalAlignment="Center" Margin="468,342,246,78" VerticalAlignment="Center" Width="76" Click="BtnDeleteScenario_Click" RenderTransformOrigin="1.745,0.058" Height="20"/>
         <Button x:Name="btnPerformScenario" Content="Perform" HorizontalAlignment="Center" Margin="227,342,488,78" VerticalAlignment="Center" Width="75" RenderTransformOrigin="-0.213,0.712" Click="BtnPerformScenario_Click" Height="20"/>
-        <ListView x:Name="lstvwScenarios" HorizontalAlignment="Center" Height="152" Margin="292,170,310,118" VerticalAlignment="Center" Width="188" SelectionChanged="LstvwScenarios_SelectionChanged" BorderThickness="1">
+        <ListView x:Name="lstvwScenarios" HorizontalAlignment="Center" Height="163" Margin="292,159,310,118" VerticalAlignment="Center" Width="188" SelectionChanged="LstvwScenarios_SelectionChanged" BorderThickness="1">
             <ListView.View>
                 <GridView>
                     <GridViewColumn Width="Auto" Header="Scenario Number" DisplayMemberBinding="{Binding ScenarioID}" />
@@ -32,5 +29,13 @@
                 </GridView>
             </ListView.View>
         </ListView>
+        <Button x:Name="btnExitBuilder" Content="Exit Builder" HorizontalAlignment="Center" Margin="10,62,677,341" VerticalAlignment="Center" Width="103" Foreground="#FF1018B2" Height="37" FontSize="16" RenderTransformOrigin="0.731,7.033" Click="BtnExitBuilder_Click">
+            <Button.Background>
+                <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
+                    <GradientStop Color="Black"/>
+                    <GradientStop Color="White" Offset="1"/>
+                </LinearGradientBrush>
+            </Button.Background>
+        </Button>
     </Grid>
 </Page>

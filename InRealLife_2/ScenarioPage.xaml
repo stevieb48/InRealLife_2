@@ -22,6 +22,14 @@
             <Button x:Name="btnAnswer2" Content="Button" HorizontalAlignment="Left" Margin="461,296,0,0" VerticalAlignment="Top" Width="88" Height="37"/>
             <Button x:Name="btnAnswer3" Content="Button" HorizontalAlignment="Left" Margin="252,358,0,0" VerticalAlignment="Top" Width="88" Height="37" RenderTransformOrigin="-0.097,0.527"/>
             <Button x:Name="btnAnswer4" Content="Button" HorizontalAlignment="Left" Margin="461,358,0,0" VerticalAlignment="Top" Width="88" Height="37"/>
+            <Button x:Name="btnExitPerform" Content="Exit Scenario" HorizontalAlignment="Center" Margin="10.2,62,676.8,341" VerticalAlignment="Center" Width="103" Foreground="#FF1018B2" Height="37" FontSize="16" RenderTransformOrigin="0.731,7.033" Click="btnExitPerform_Click">
+                <Button.Background>
+                    <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
+                        <GradientStop Color="Black"/>
+                        <GradientStop Color="White" Offset="1"/>
+                    </LinearGradientBrush>
+                </Button.Background>
+            </Button>
         </Grid>
     </Grid>
 </Page>
