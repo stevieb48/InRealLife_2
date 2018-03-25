@@ -17,7 +17,7 @@
                 </RadialGradientBrush>
             </Grid.Background>
             <Label Content="In Real Life" Margin="177,75,185,0" VerticalAlignment="Top" Width="428" Height="111" Foreground="#FF1018B2" FontSize="72" FontWeight="Bold" FontFamily="Viner Hand ITC" HorizontalAlignment="Center"/>
-            <Button x:Name="playScenarioBtn" Content="Play Scenario" HorizontalAlignment="Center" Margin="0" VerticalAlignment="Center" Width="103" Foreground="#FF1018B2" Height="37" FontSize="16">
+            <Button x:Name="playScenarioBtn" Content="Play Scenario" HorizontalAlignment="Center" Margin="0" VerticalAlignment="Center" Width="103" Foreground="#FF1018B2" Height="37" FontSize="16" Click="playScenarioBtn_Click">
                 <Button.Background>
                     <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
                         <GradientStop Color="Black"/>

@@ -23,7 +23,7 @@
         <Button x:Name="btnCreateScenario" Content="+ create" HorizontalAlignment="Center" Margin="307,342,407,78" VerticalAlignment="Center" Width="76" Click="BtnCreateScenario_Click" Height="20"/>
         <Button x:Name="btnEditScenario" Content="edit" HorizontalAlignment="Center" Margin="388,342,327,78" VerticalAlignment="Center" Width="75" RenderTransformOrigin="-0.344,0.307" Height="20"/>
         <Button x:Name="btnDeleteScenario" Content="- delete" HorizontalAlignment="Center" Margin="468,342,246,78" VerticalAlignment="Center" Width="76" Click="BtnDeleteScenario_Click" RenderTransformOrigin="1.745,0.058" Height="20"/>
-        <Button x:Name="btnPreviewScenario" Content="Preview" HorizontalAlignment="Center" Margin="227,342,488,78" VerticalAlignment="Center" Width="75" RenderTransformOrigin="-0.213,0.712" Click="BtnPreviewScenario_Click" Height="20"/>
+        <Button x:Name="btnPerformScenario" Content="Perform" HorizontalAlignment="Center" Margin="227,342,488,78" VerticalAlignment="Center" Width="75" RenderTransformOrigin="-0.213,0.712" Click="BtnPerformScenario_Click" Height="20"/>
         <ListView x:Name="lstvwScenarios" HorizontalAlignment="Center" Height="152" Margin="292,170,288,118" VerticalAlignment="Center" Width="210" SelectionChanged="LstvwScenarios_SelectionChanged" BorderThickness="1">
             <ListView.View>
                 <GridView>

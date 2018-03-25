@@ -25,15 +25,16 @@ namespace InRealLife_2
             InitializeComponent();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
         private void editScenarioBtnClick(object sender, RoutedEventArgs e)
         {
             ScenarioBuilderMain scenarioBuilder = new ScenarioBuilderMain();
             this.NavigationService.Navigate(scenarioBuilder);
+        }
+
+        private void playScenarioBtn_Click(object sender, RoutedEventArgs e)
+        {
+            ScenarioPage newScenarioPage = new ScenarioPage();
+            this.NavigationService.Navigate(newScenarioPage);
         }
     }
 }

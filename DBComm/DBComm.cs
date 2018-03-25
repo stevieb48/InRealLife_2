@@ -39,12 +39,8 @@ namespace InRealLife_2
             using (conn)
             using (OleDbDataAdapter adapter = new OleDbDataAdapter(query, conn))
             {
-                // reinitialize connection string
                 conn.ConnectionString = connectionString;
-
-                // open connection
                 conn.Open();
-
                 adapter.Fill(dt);
                 return dt;
             }
@@ -86,7 +82,6 @@ namespace InRealLife_2
                 // reinitialize connection string
                 conn.ConnectionString = connectionString;
 
-                // open connection
                 conn.Open();
 
                 var result = command.ExecuteScalar();
@@ -103,7 +98,6 @@ namespace InRealLife_2
                 // reinitialize connection string
                 conn.ConnectionString = connectionString;
 
-                // open connection
                 conn.Open();
 
                 var result = command.ExecuteScalar();
@@ -120,7 +114,6 @@ namespace InRealLife_2
                 // reinitialize connection string
                 conn.ConnectionString = connectionString;
 
-                // open connection
                 conn.Open();
 
                 var result = command.ExecuteScalar();
