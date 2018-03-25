@@ -154,10 +154,7 @@ namespace InRealLife_2
             for (int i = 0; i < returnedScenarioTable.Rows.Count; i++)
             {
                 // add data table results to list view
-                lstvwScenarios.Items.Add(returnedScenarioTable.Rows[i][0].ToString());
-
-                //
-                this.lstvwScenarios.Items.Add(new Scenario { ScenarioID = Int32.Parse(returnedScenarioTable.Rows[i][0].ToString()), ScenarioName = returnedScenarioTable.Rows[i][1].ToString() });
+                lstvwScenarios.Items.Add(new Scenario { ScenarioID = Int32.Parse(returnedScenarioTable.Rows[i][0].ToString()), ScenarioName = returnedScenarioTable.Rows[i][1].ToString() });
             }
         }
 
@@ -168,7 +165,7 @@ namespace InRealLife_2
         }
 
         //
-private void EnableButtonsWhenScenarioSelected()
+        private void EnableButtonsWhenScenarioSelected()
         {
             // enable buttons
             ScenarioListHasValues();
