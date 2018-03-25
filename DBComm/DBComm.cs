@@ -57,7 +57,7 @@ namespace InRealLife_2
         public DataTable displayAllScenariosByTitle()
         {
             DataTable dt = new DataTable();
-            String query = "SELECT ScenarioName FROM Scenario";
+            String query = "SELECT * FROM Scenario";
             using (conn)
             using (OleDbDataAdapter adapter = new OleDbDataAdapter(query, conn))
             {
@@ -76,7 +76,10 @@ namespace InRealLife_2
         public DataTable displayRunningScenario()
         {
             DataTable dt = new DataTable();
-            String query = "SELECT ScenarioName, StageDescription, AnswerDescription, nextStageID * FROM(Scenario INNER JOIN Stage ON Scenario.[ScenarioID] = Stage.[ScenarioID]) INNER JOIN Answer ON Stage.[StageID] = Answer.[StageID]";
+            String query = "SELECT Scenario.ScenarioName, Scenario.ScenarioDesc, Answer.AnswerDescription, Answer.AnswerID, Stage.ImageFilePath " +
+                            "FROM(Scenario INNER JOIN Stage ON Scenario.[ScenarioID] = Stage.[ScenarioID]) INNER JOIN Answer ON Stage.[ScenarioID] = Answer.[ScenarioID]" +
+                            "WHERE Scenario.[ScenarioID] = 1";
+
             using (conn)
             using (OleDbDataAdapter adapter = new OleDbDataAdapter(query, conn))
             {
