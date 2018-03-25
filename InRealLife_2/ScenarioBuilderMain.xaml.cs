@@ -126,7 +126,8 @@ namespace InRealLife_2
         // preview scenario button click event
         private void BtnPerformScenario_Click(object sender, RoutedEventArgs e)
         {
-
+            ScenarioPage newScenarioPage = new ScenarioPage();
+            this.NavigationService.Navigate(newScenarioPage);
         }
 
         // method for form behaviors if list is empty
