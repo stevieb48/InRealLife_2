@@ -16,12 +16,12 @@
                     <GradientStop Color="White"/>
                 </RadialGradientBrush>
             </Grid.Background>
-            <Image x:Name="imgbxScenarioImage" HorizontalAlignment="Center" Height="169" Margin="177,10,390,0" VerticalAlignment="Top" Width="223" RenderTransformOrigin="-0.012,1.039"/>
-            <TextBox x:Name="txtbxDescription" HorizontalAlignment="Left" Height="117" Margin="252,184,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="297"/>
-            <Button x:Name="btnAnswer1" Content="Button" HorizontalAlignment="Left" Margin="252,331,0,0" VerticalAlignment="Top" Width="88" Height="37"/>
-            <Button x:Name="btnAnswer2" Content="Button" HorizontalAlignment="Left" Margin="461,331,0,0" VerticalAlignment="Top" Width="88" Height="37"/>
-            <Button x:Name="btnAnswer3" Content="Button" HorizontalAlignment="Left" Margin="252,393,0,0" VerticalAlignment="Top" Width="88" Height="37" RenderTransformOrigin="-0.097,0.527"/>
-            <Button x:Name="btnAnswer4" Content="Button" HorizontalAlignment="Left" Margin="461,393,0,0" VerticalAlignment="Top" Width="88" Height="37"/>
+            <Image x:Name="imgbxScenarioImage" HorizontalAlignment="Center" Height="155" Margin="177,6,390,0" VerticalAlignment="Top" Width="223" RenderTransformOrigin="-0.012,1.039"/>
+            <TextBox x:Name="txtbxDescription" HorizontalAlignment="Left" Height="117" Margin="252,166,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="297"/>
+            <Button x:Name="btnAnswer1" Content="Button" HorizontalAlignment="Left" Margin="252,296,0,0" VerticalAlignment="Top" Width="88" Height="37"/>
+            <Button x:Name="btnAnswer2" Content="Button" HorizontalAlignment="Left" Margin="461,296,0,0" VerticalAlignment="Top" Width="88" Height="37"/>
+            <Button x:Name="btnAnswer3" Content="Button" HorizontalAlignment="Left" Margin="252,358,0,0" VerticalAlignment="Top" Width="88" Height="37" RenderTransformOrigin="-0.097,0.527"/>
+            <Button x:Name="btnAnswer4" Content="Button" HorizontalAlignment="Left" Margin="461,358,0,0" VerticalAlignment="Top" Width="88" Height="37"/>
         </Grid>
     </Grid>
 </Page>

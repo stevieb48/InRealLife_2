@@ -16,7 +16,7 @@
             </LinearGradientBrush>
         </Grid.Background>
 
-        <Button x:Name="btnExitBuilder" Content="Exit Builder" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="75" Click="BtnExitBuilder_Click" Height="20"/>
+        <Button x:Name="btnExitBuilder" Content="Exit Builder" HorizontalAlignment="Left" Margin="16,58,0,0" VerticalAlignment="Top" Width="75" Click="BtnExitBuilder_Click" Height="20"/>
         <Label x:Name="lblIRLLogo" Content="In Real Life" HorizontalAlignment="Center" Margin="288,38,288,0" VerticalAlignment="Top" RenderTransformOrigin="-0.149,-0.143" FontSize="36" Width="214" Height="58" FontFamily="Viner Hand ITC" Foreground="#FF1018B2"/>
         <Label x:Name="lblTitle" Content="Scenario Builder" HorizontalAlignment="Center" Margin="307,96,293,0" VerticalAlignment="Top" RenderTransformOrigin="-0.149,-0.143" FontSize="24" Width="190" Height="42"/>
         <Label x:Name="lblCurrentList" Content="Current List" HorizontalAlignment="Center" Margin="335,127,327,0" VerticalAlignment="Top" RenderTransformOrigin="1.429,2.005" Height="38" Width="128" FontSize="22"/>
