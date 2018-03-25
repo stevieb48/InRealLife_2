@@ -23,9 +23,7 @@ namespace InRealLife_2
         DBComm newDBComm = new DBComm();
         public ScenarioPage()
         {
-            InitializeComponent();
-
-           
+            InitializeComponent();           
         }
     }
 }

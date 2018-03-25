@@ -50,6 +50,7 @@ namespace InRealLife_2
             // enable create button
             // ***** change btnCreateScenario, and btnEditScenario(below) control back to true when edit scenario is incorporated ***********
             btnCreateScenario.IsEnabled = false;
+
             btnDeleteScenario.IsEnabled = false;
             btnPerformScenario.IsEnabled = false;
 
@@ -173,6 +174,7 @@ namespace InRealLife_2
             // enable perform scenario button
             btnPerformScenario.IsEnabled = true;
 
+            // enable delete scenario button
             btnDeleteScenario.IsEnabled = true;
         }
     }

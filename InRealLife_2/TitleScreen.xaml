@@ -25,10 +25,18 @@
                     </LinearGradientBrush>
                 </Button.Background>
             </Button>
-            <Button x:Name="editScenarioBtn" Content="Edit Scenario" HorizontalAlignment="Center" Margin="0,243,0,0" VerticalAlignment="Top" Width="103" Height="37" Foreground="#FF1018B2" FontSize="16" Click="editScenarioBtnClick">
+            <Button x:Name="editScenarioBtn" Content="Edit Scenario" HorizontalAlignment="Center" Margin="344,257,343,0" VerticalAlignment="Top" Width="103" Height="37" Foreground="#FF1018B2" FontSize="16" Click="editScenarioBtnClick" RenderTransformOrigin="0.624,5.192">
                 <Button.Background>
                     <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                         <GradientStop Color="Black" Offset="0"/>
+                        <GradientStop Color="White" Offset="1"/>
+                    </LinearGradientBrush>
+                </Button.Background>
+            </Button>
+            <Button x:Name="btnExit" Content="Exit" HorizontalAlignment="Center" Margin="10,10,677,393" VerticalAlignment="Center" Width="103" Foreground="#FF1018B2" Height="37" FontSize="16" Click="btnExit_Click">
+                <Button.Background>
+                    <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
+                        <GradientStop Color="Black"/>
                         <GradientStop Color="White" Offset="1"/>
                     </LinearGradientBrush>
                 </Button.Background>

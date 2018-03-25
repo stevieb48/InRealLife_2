@@ -36,5 +36,10 @@ namespace InRealLife_2
             ScenarioPage newScenarioPage = new ScenarioPage();
             this.NavigationService.Navigate(newScenarioPage);
         }
+
+        private void btnExit_Click(object sender, RoutedEventArgs e)
+        {
+            System.Windows.Application.Current.Shutdown();
+        }
     }
 }
