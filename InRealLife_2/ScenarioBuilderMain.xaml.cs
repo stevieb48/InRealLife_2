@@ -73,20 +73,17 @@ namespace InRealLife_2
             }
         }
 
-        // exit builder button click event UNDER DEVELOPMENT
+        // exit builder button click event
         private void BtnExitBuilder_Click(object sender, RoutedEventArgs e)
         {
-            System.Windows.Application.Current.Shutdown();
+            TitleScreen titleScreen = new TitleScreen();
+            this.NavigationService.Navigate(titleScreen);
         }
 
         // create scenario button click event
         private void BtnCreateScenario_Click(object sender, RoutedEventArgs e)
         {
-            // hide current form
-            // this.Hide();
 
-            // load form to edit scenario
-            // .show();
         }
 
         // delete scenario button click event
@@ -125,12 +122,7 @@ namespace InRealLife_2
         // preview scenario button click event
         private void BtnPerformScenario_Click(object sender, RoutedEventArgs e)
         {
-            // show running form
-            //Running run = new Running();
-            //run.Show();
 
-            // hide main menu form form
-            //this.Hide();
         }
 
         // method for form behaviors if list is empty

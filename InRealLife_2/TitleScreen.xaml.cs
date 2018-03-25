@@ -37,6 +37,7 @@ namespace InRealLife_2
             this.NavigationService.Navigate(newScenarioPage);
         }
 
+        // exit application click event
         private void btnExit_Click(object sender, RoutedEventArgs e)
         {
             System.Windows.Application.Current.Shutdown();
