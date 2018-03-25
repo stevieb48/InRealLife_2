@@ -25,7 +25,7 @@ namespace InRealLife_2
         {
             InitializeComponent();
 
-            newDBComm = 
+           
         }
     }
 }
