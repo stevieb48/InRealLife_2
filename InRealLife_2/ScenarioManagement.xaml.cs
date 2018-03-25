@@ -1,8 +1,9 @@
 ﻿using Classes;
 using System;
+using System.Collections;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
+using System.Data.OleDb;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -24,19 +25,20 @@ using System.Windows.Shapes;
  * course: SEII
  * assignment: InRealLife (Group Project Spring 2018)
  * date: 03/20/2018
- * file name: MainWindow.xaml.cs
+ * file name: Running.xaml.cs
  * version: 1.0
  */
 namespace InRealLife_2
 {
     /// <summary>
-    /// Interaction logic for ScenarioBuilderMain.xaml
+    /// Interaction logic for Running.xaml
     /// </summary>
-    public partial class ScenarioBuilderMain : Page
-    {// create new database object
+    public partial class MainWindow : Window
+    {
+        // create new database object
         DBComm newDBComm = new DBComm();
 
-        public ScenarioBuilderMain()
+        public MainWindow()
         {
             InitializeComponent();
             InitializeForm();
@@ -51,7 +53,6 @@ namespace InRealLife_2
             // enable create button
             // ***** change btnCreateScenario, and btnEditScenario(below) control back to true when edit scenario is incorporated ***********
             btnCreateScenario.IsEnabled = false;
-
             btnDeleteScenario.IsEnabled = false;
             btnPerformScenario.IsEnabled = false;
 
@@ -66,9 +67,6 @@ namespace InRealLife_2
                     
                 // then add data to listbox
                 AddDataToListBox(returnedScenarioTable);
-
-                // sort
-
             }
             else
             {
@@ -77,17 +75,20 @@ namespace InRealLife_2
             }
         }
 
-        // exit builder button click event
+        // exit builder button click event UNDER DEVELOPMENT
         private void BtnExitBuilder_Click(object sender, RoutedEventArgs e)
         {
-            TitleScreen titleScreen = new TitleScreen();
-            this.NavigationService.Navigate(titleScreen);
+            System.Windows.Application.Current.Shutdown();
         }
 
         // create scenario button click event
         private void BtnCreateScenario_Click(object sender, RoutedEventArgs e)
         {
+            // hide current form
+            // this.Hide();
 
+            // load form to edit scenario
+            // .show();
         }
 
         // delete scenario button click event
@@ -126,8 +127,11 @@ namespace InRealLife_2
         // preview scenario button click event
         private void BtnPerformScenario_Click(object sender, RoutedEventArgs e)
         {
-            ScenarioPage newScenarioPage = new ScenarioPage();
-            this.NavigationService.Navigate(newScenarioPage);
+            Running run = new Running(1);
+            run.Show();
+
+            // hide main menu form form
+            this.Hide();
         }
 
         // method for form behaviors if list is empty
@@ -159,11 +163,10 @@ namespace InRealLife_2
         // has scenarios listbox selection changed
         private void LstvwScenarios_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            EnableButtonsWhenScenarioSelected();
+            enableButtonsWhenScenarioSelected();
         }
 
-        //
-        private void EnableButtonsWhenScenarioSelected()
+        private void enableButtonsWhenScenarioSelected()
         {
             // enable buttons
             ScenarioListHasValues();
@@ -171,7 +174,6 @@ namespace InRealLife_2
             // enable perform scenario button
             btnPerformScenario.IsEnabled = true;
 
-            // enable delete scenario button
             btnDeleteScenario.IsEnabled = true;
         }
     }
