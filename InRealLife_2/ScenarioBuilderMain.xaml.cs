@@ -1,6 +1,7 @@
 ﻿using Classes;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Data;
 using System.Linq;
 using System.Text;
@@ -65,6 +66,9 @@ namespace InRealLife_2
                     
                 // then add data to listbox
                 AddDataToListBox(returnedScenarioTable);
+
+                // sort
+
             }
             else
             {
