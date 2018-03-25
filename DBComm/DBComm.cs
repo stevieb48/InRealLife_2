@@ -7,8 +7,6 @@ using System.Data.SqlClient;
 using System.Configuration;
 using System.Data;
 using System.Data.OleDb;
-using Classes;
-using System.Collections;
 
 /*
  * This class creates a database connection to an Access database and has various methods 
@@ -25,13 +23,10 @@ namespace InRealLife_2
 {
     public class DBComm
     {
-        // CONSTANT storing the connection string
-        public const string connectionString = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=|DataDirectory|\\ScenarioData.accdb";
+        // connection string
+        OleDbConnection conn = new OleDbConnection("Provider=Microsoft.ACE.OLEDB.12.0;Data Source=|DataDirectory|\\ScenarioData.accdb");
 
-        // create new connection
-        OleDbConnection conn = new OleDbConnection(connectionString);
-
-        // method to grab the scenario title
+        //
         public String displayScenarioTitle(String scTitle)
         {
             DataSet ds = new DataSet();
@@ -39,14 +34,12 @@ namespace InRealLife_2
             using (conn)
             using (OleDbDataAdapter adapter = new OleDbDataAdapter(query, conn))
             {
-                conn.ConnectionString = connectionString;
-                conn.Open();
                 adapter.Fill(ds);
                 return ds.ToString();
             }
         }
 
-        // method to grab scenario description
+        //
         public String displayScenarioDescription(String scTitle)
         {
             DataSet ds = new DataSet();
@@ -54,136 +47,62 @@ namespace InRealLife_2
             using (conn)
             using (OleDbDataAdapter adapter = new OleDbDataAdapter(query, conn))
             {
-                conn.ConnectionString = connectionString;
-                conn.Open();
                 adapter.Fill(ds);
                 return ds.ToString();
             }
+
         }
 
-        // method to grab all data from scenario table on the database
-        public DataTable displayAllScenarios()
+        //
+        public DataTable displayAllScenariosByTitle()
         {
             DataTable dt = new DataTable();
             String query = "SELECT * FROM Scenario";
             using (conn)
             using (OleDbDataAdapter adapter = new OleDbDataAdapter(query, conn))
             {
-                conn.ConnectionString = connectionString;
-                conn.Open();
                 adapter.Fill(dt);
                 return dt;
             }
         }
 
         /*
-         * method to grab data from scenario table
-         * joined to grab relevant data from stage table 
-         * joined to grab relevant data from answer table
-        */    
+         * 
+         * SELECT Scenario.ScenarioName, Stage.StageDescription, Answer.AnswerDescription, Answer.nextStageID
+         * FROM (Scenario INNER JOIN Stage ON Scenario.[ScenarioID] = Stage.[ScenarioID]) INNER JOIN Answer ON Stage.[StageID] = Answer.[StageID]
+         * 
+         * 
+         */
         public DataTable displayRunningScenario()
         {
             DataTable dt = new DataTable();
-
-            // set query string
-            String query = "SELECT ScenarioName, StageDescription, AnswerDescription, nextStageID * FROM(Scenario INNER JOIN Stage ON Scenario.[ScenarioID] = Stage.[ScenarioID]) INNER JOIN Answer ON Stage.[StageID] = Answer.[StageID]";
+            String query = "SELECT Scenario.ScenarioName, Scenario.ScenarioDesc, Answer.AnswerDescription, Answer.AnswerID, Stage.ImageFilePath " +
+                            "FROM(Scenario INNER JOIN Stage ON Scenario.[ScenarioID] = Stage.[ScenarioID]) INNER JOIN Answer ON Stage.[ScenarioID] = Answer.[ScenarioID]" +
+                            "WHERE Scenario.[ScenarioID] = 1";
 
             using (conn)
             using (OleDbDataAdapter adapter = new OleDbDataAdapter(query, conn))
             {
-                // reinitialize connection string
-                conn.ConnectionString = connectionString;
-
-                // open connection
-                conn.Open();
-
-                // use adapter to fill data table
                 adapter.Fill(dt);
-
-                // return data table
                 return dt;
             }
         }
 
-        // method to delete a scenario from scenario table on the database
-        public int DeleteSelectedScenario(int scenarioID)
+        // method to get scenarios
+        public int DeleteSelectedScenario(int lstScenariosSelectedIndex)
         {
+            // create return variable for number of rows set to zero
             int scenarioRowsDeleted = 0;
 
-            // set query string
-            String deleteQuery = "DELETE * FROM Scenario WHERE ScenarioID =" + scenarioID;
-            
+            String query = "DELETE * FROM Scenario WHERE ScenarioID = " + lstScenariosSelectedIndex;
             using (conn)
-            using (OleDbCommand DeleteCmd = new OleDbCommand(deleteQuery, conn))
+            using (OleDbCommand Cmd = new OleDbCommand(query, conn))
             {
-                // reinitialize connection string
-                conn.ConnectionString = connectionString;
-
-                // open connection
-                conn.Open();
-
-                // execute deletion
-                scenarioRowsDeleted = DeleteCmd.ExecuteNonQuery();
-
-                // return number of rows deleted
-                return scenarioRowsDeleted;
+                scenarioRowsDeleted = Cmd.ExecuteNonQuery();
             }
-        }
 
-
-        public String getScenarioName(int ScenarioId)
-        {
-            String query = @"SELECT ScenarioName FROM Scenario Where ScenarioId =" + ScenarioId;
-
-            using (conn)
-            using (OleDbCommand command = new OleDbCommand(query, conn))
-            {
-                    // reinitialize connection string
-                    conn.ConnectionString = connectionString;
-
-                    conn.Open();
-
-                    var result = command.ExecuteScalar();
-                    return "" + result;
-            }
-            
-
-        }
-
-        public String getAnswer(int AnswerId, int StageID)
-        {
-            String query = "SELECT AnswerDescription FROM Answer WHERE StageID = " + StageID + " AND AnswerID = " + AnswerId;
-            using (conn)
-                using (OleDbCommand command = new OleDbCommand(query, conn))
-                {
-                    // reinitialize connection string
-                    conn.ConnectionString = connectionString;
-
-                    conn.Open();
-
-                    var result = command.ExecuteScalar();
-                    return "" + result;
-                }
-        }
-
-        public int getNextStageID(int AnswerId, int StageID)
-        {
-            String query = "SELECT nextStageID FROM Answer WHERE StageID = " + StageID + " AND AnswerID = " + AnswerId;
-            using (conn)
-                using (OleDbCommand command = new OleDbCommand(query, conn))
-                {
-                    // reinitialize connection string
-                    conn.ConnectionString = connectionString;
-
-                    conn.Open();
-
-                    var result = command.ExecuteScalar();
-                    if (result != null)
-                    {
-                        return (int)result;
-                    }
-                }
-            return 0;
+            // return number of rows deleted
+            return scenarioRowsDeleted;
         }
     }
 }
