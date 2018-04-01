@@ -33,12 +33,12 @@ namespace InRealLife_2
     /// <summary>
     /// Interaction logic for Running.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class ScenarioMenuPage : Page
     {
         // create new database object
         DBComm newDBComm = new DBComm();
 
-        public MainWindow()
+        public ScenarioMenuPage()
         {
             InitializeComponent();
             InitializeForm();
