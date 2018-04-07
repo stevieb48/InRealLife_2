@@ -25,13 +25,13 @@ namespace InRealLife_2
     public class DBComm
     {
         // CONSTANT storing the connection string
-        public const string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\IRL_SQL_Database.mdf;Integrated Security=True";
+        public const string connectionString = @"Server=tcp:irl-data-server.database.windows.net,1433;Initial Catalog=Azure_SQL_IRL_ScenarioData;Persist Security Info=False;User ID=IRL_admin;Password=1RLdatA2;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
 
         // create new connection
         SqlConnection conn = new SqlConnection(connectionString);
 
         // method to grab all data from scenario table on the database
-        public DataTable displayAllScenarios()
+        public DataTable DisplayAllScenarios()
         {
             // create new data table
             DataTable scenarioDataTable = new DataTable();
@@ -62,7 +62,7 @@ namespace InRealLife_2
             int scenarioRowsDeleted = 0;
 
             // set DELETE query string
-            String deleteQuery = "DELETE * FROM Scenario WHERE ScenarioID =" + scenarioID;
+            String deleteQuery = "DELETE * FROM Scenario WHERE ID =" + scenarioID;
             
             using (conn)
             using (SqlCommand DeleteCmd = new SqlCommand(deleteQuery, conn))

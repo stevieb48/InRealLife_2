@@ -19,27 +19,30 @@ namespace Classes
     public class Answer
     {
         // Auto Implemented Properties Answer
-        public int AnswerID { get; set; }
+        public int ID { get; set; }
+        public string Name { get; set; }
+        public string Description { get; set; }
         public int StageID { get; set; }
-        public String AnswerDescription { get; set; }
         public int NextStageID { get; set; }
 
         // default constructor Answer
         public Answer()
         {
-            this.AnswerID = 0;
+            this.ID = 0;
+            this.Name = "";
+            this.Description = "";
             this.StageID = 0;
-            this.AnswerDescription = "";
             this.NextStageID = 0;
         }
 
         // parameter constructor Answer
-        public Answer(int answerID, int stageID, string answerDescription, int nextStageID)
+        public Answer(int ID, int StageID, string Name, string Description, int NextStageID)
         {
-            this.AnswerID = answerID;
-            this.StageID = stageID;
-            this.AnswerDescription = answerDescription;
-            this.NextStageID = nextStageID;
+            this.ID = ID;
+            this.Name = Name;
+            this.Description = Description;
+            this.StageID = StageID;
+            this.NextStageID = NextStageID;
         }
     }
 }

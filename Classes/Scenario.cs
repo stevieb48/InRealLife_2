@@ -19,21 +19,24 @@ namespace Classes
     public class Scenario
     {
         // Auto Implemented Properties Scenario
-        public int ScenarioID { get; set; }
-        public string ScenarioName { get; set; }
+        public int ID { get; set; }
+        public string Name { get; set; }
+        public string Description { get; set; }
 
         // default constructor Scenario
         public Scenario()
         {
-            this.ScenarioID = 0;
-            this.ScenarioName = "";
+            this.ID = 0;
+            this.Name = "";
+            this.Description = "";
         }
 
         // parameter constructor Scenario
-        public Scenario(int scenarioID, string scenarioName)
+        public Scenario(int ID, string Name, string Description)
         {
-            this.ScenarioID = scenarioID;
-            this.ScenarioName = scenarioName;
+            this.ID = ID;
+            this.Name = Name;
+            this.Description = Description;
         }
     }
 }

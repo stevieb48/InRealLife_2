@@ -19,30 +19,33 @@ namespace Classes
     public class Stage
     {
         // Auto Implemented Properties Stage
-        public int StageID { get; set; }
+        public int ID { get; set; }
+        public string Name { get; set; }
+        public string Description { get; set; }
         public int ScenarioID { get; set; }
-        public String StageDescription { get; set; }
-        public String AudioFilePath { get; set; }
-        public String ImageFilePath { get; set; }
+        public string AudioFilePath { get; set; }
+        public string ImageFilePath { get; set; }
 
         // default constructor Stage
         public Stage()
         {
-            this.StageID = 0;
+            this.ID = 0;
+            this.Name = "";
+            this.Description = "";
             this.ScenarioID = 0;
-            this.StageDescription = "";
             this.AudioFilePath = "";
             this.ImageFilePath = "";
         }
 
         // parameter constructor Stage
-        public Stage(int stageID, int scenarioID, string stageDescription, string audioFilePath, string imageFilePath)
+        public Stage(int ID, int ScenarioID, string Name, string Description, string AudioFilePath, string ImageFilePath)
         {
-            this.StageID = stageID;
-            this.ScenarioID = scenarioID;
-            this.StageDescription = stageDescription;
-            this.AudioFilePath = audioFilePath;
-            this.ImageFilePath = imageFilePath;
+            this.ID = ID;
+            this.Name = Name;
+            this.Description = Description;
+            this.ScenarioID = ScenarioID;
+            this.AudioFilePath = AudioFilePath;
+            this.ImageFilePath = ImageFilePath;
         }
     }
 }
