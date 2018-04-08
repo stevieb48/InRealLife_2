@@ -2,10 +2,10 @@
 /*
 
 CREATE TABLE [dbo].[Scenario] (
-    [ScenarioID]          int           NOT NULL IDENTITY(1,1),
-    [ScenarioName]        VARCHAR (30)  NOT NULL,
-    [ScenarioDescription] VARCHAR (MAX) NULL,
-    CONSTRAINT [PK_Scenario] PRIMARY KEY CLUSTERED ([ScenarioID] ASC));
+    [ID]          int           NOT NULL IDENTITY(1,1),
+    [Name]        VARCHAR (50)  NOT NULL,
+    [Description] VARCHAR (MAX) NULL,
+    CONSTRAINT [PK_Scenario] PRIMARY KEY CLUSTERED ([ID] ASC));
 
 */
 
@@ -14,14 +14,14 @@ CREATE TABLE [dbo].[Scenario] (
 /*
 
 CREATE TABLE [dbo].[Stage] (
-    [StageID]          int           NOT NULL IDENTITY(1,1),
-    [ScenarioID]       int           NULL,
-    [StageName]        VARCHAR (30)  NOT NULL,
+    [ID]          int           NOT NULL IDENTITY(1,1),
+    [Name]   	VARCHAR (50)  NOT NULL,
+	[Description]	VARCHAR (MAX) NULL,
+	[ScenarioID]       int           NULL,    
     [AudioFilePath]    VARCHAR (50)  NULL,
     [ImageFilePath]    VARCHAR (50)  NULL,
-    [StageDescription] VARCHAR (MAX) NULL,
-    CONSTRAINT [PK_Stage] PRIMARY KEY CLUSTERED ([StageID] ASC),
-    CONSTRAINT [FK_Stage_Scenario] FOREIGN KEY ([ScenarioID]) REFERENCES [dbo].[Scenario] ([ScenarioID]) ON DELETE CASCADE);
+    CONSTRAINT [PK_Stage] PRIMARY KEY CLUSTERED ([ID] ASC),
+    CONSTRAINT [FK_Stage_Scenario] FOREIGN KEY ([ScenarioID]) REFERENCES [dbo].[Scenario] ([ID]) ON DELETE CASCADE);
 
 */
 
@@ -30,12 +30,12 @@ CREATE TABLE [dbo].[Stage] (
 /*
 
 CREATE TABLE [dbo].[Answer] (
-    [AnswerID]          int           NOT NULL IDENTITY(1,1),
-    [StageID]           int           NULL,
-    [AnswerName]        VARCHAR (30)  NOT NULL,
-    [AnswerDescription] VARCHAR (MAX) NULL,
+    [ID]          int           NOT NULL IDENTITY(1,1),
+    [Name]        VARCHAR (50)  NOT NULL,
+	[Description] VARCHAR (MAX) NULL,
+	[StageID]           int           NULL,
     [NextStageID]       int           NULL,
-    CONSTRAINT [PK_Answer] PRIMARY KEY CLUSTERED ([AnswerID] ASC),
-    CONSTRAINT [FK_Answer_Stage] FOREIGN KEY ([StageID]) REFERENCES [dbo].[Stage] ([StageID]) ON DELETE CASCADE);
+    CONSTRAINT [PK_Answer] PRIMARY KEY CLUSTERED ([ID] ASC),
+    CONSTRAINT [FK_Answer_Stage] FOREIGN KEY ([StageID]) REFERENCES [dbo].[Stage] ([ID]) ON DELETE CASCADE);
 
 */

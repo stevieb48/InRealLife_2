@@ -1,19 +1,19 @@
 ﻿-- QUERIES FOR THE APPLICATION C# NEED TESTING
 
 	-- QUERY FOR SCENARIO BUILDER MAIN MENU LISTVIEW
-	-- "SELECT ScenarioID, ScenarioName FROM Scenario WHERE ScenarioID = "
+	-- "SELECT ID, Name FROM Scenario WHERE ID = "
 
 		-- QUERY FOR SCENARIO BUILDER MAIN MENU IF PERFORMS SELECTED SCENARIO FROM LISTVIEW
-		-- "SELECT ScenarioID, ScenarioName FROM Scenario WHERE ScenarioID = "
+		-- "SELECT ID, Name FROM Scenario WHERE ID = "
 
 		-- QUERY FOR SCENARIO BUILDER MAIN MENU IF CREATES A NEW SCENARIO FROM LISTVIEW
 		-- SEE "BELOW"
 
 		-- QUERY FOR SCENARIO BUILDER MAIN MENU IF EDITS SELECTED SCENARIO FROM LISTVIEW
-		-- "SELECT * FROM Scenario WHERE ScenarioID = "
+		-- "SELECT * FROM Scenario WHERE ID = "
 
 		-- QUERY FOR SCENARIO BUILDER MAIN MENU IF DELETES SELECTED SCENARIO FROM LISTVIEW
-		-- "DELETE * FROM Scenario WHERE ScenarioID = "
+		-- "DELETE * FROM Scenario WHERE ID = "
 		
 		-- QUERY FOR SCENARIO BUILDER MAIN MENU IF RELATE SELECTED SCENARIO FROM LISTVIEW
 		-- SEE "BELOW2"
@@ -21,16 +21,16 @@
 		
 	-- QUERY FOR STAGE BUILDER MAIN MENU LISTVIEW		
 		-- QUERY FOR STAGE BUILDER MAIN MENU IF PERFORMS SELECTED STAGE FROM LISTVIEW
-		-- "SELECT StageID, StageName FROM Stage WHERE StageID = "
+		-- "SELECT ID, Name FROM Stage WHERE ID = "
 
 		-- QUERY FOR STAGE BUILDER MAIN MENU IF CREATES A NEW STAGE FROM LISTVIEW
 		-- SEE "BELOW"
 
 		-- QUERY FOR STAGE BUILDER MAIN MENU IF EDITS SELECTED STAGE FROM LISTVIEW
-		-- "SELECT * FROM Stage WHERE StageID = "
+		-- "SELECT * FROM Stage WHERE ID = "
 
 		-- QUERY FOR STAGE BUILDER MAIN MENU IF DELETES SELECTED STAGE FROM LISTVIEW
-		-- "DELETE * FROM Stage WHERE StageID = "
+		-- "DELETE * FROM Stage WHERE ID = "
 		
 		-- QUERY FOR STAGE BUILDER MAIN MENU IF RELATE SELECTED SCENARIO FROM LISTVIEW
 		-- SEE "BELOW2"
@@ -38,16 +38,16 @@
 		
 	-- QUERY FOR ANSWER BUILDER MAIN MENU LISTVIEW		
 		-- QUERY FOR ANSWER BUILDER MAIN MENU IF PERFORMS SELECTED ANSWER FROM LISTVIEW
-		-- "SELECT AnswerID, AnswerName FROM Answer WHERE AnswerID = "
+		-- "SELECT ID, Name FROM Answer WHERE ID = "
 
 		-- QUERY FOR ANSWER BUILDER MAIN MENU IF CREATES A NEW ANSWER FROM LISTVIEW
 		-- SEE "BELOW"
 
 		-- QUERY FOR ANSWER BUILDER MAIN MENU IF EDITS SELECTED ANSWER FROM LISTVIEW
-		-- "SELECT * FROM Answer WHERE AnswerID = "
+		-- "SELECT * FROM Answer WHERE ID = "
 
 		-- QUERY FOR ANSWER BUILDER MAIN MENU IF DELETES SELECTED ANSWER FROM LISTVIEW
-		-- "DELETE * FROM Answer WHERE AnswerID = "
+		-- "DELETE * FROM Answer WHERE ID = "
 		
 		
 		
@@ -57,7 +57,7 @@
 			-- if user chooses update button to create new scenario form INSERT new scenario
 			/*
 
-			INSERT INTO Scenario (ScenarioName, ScenarioDescription)
+			INSERT INTO Scenario (Name, Description)
 			VALUES (value1, value2);
 
 			*/
@@ -66,7 +66,7 @@
 			-- if user chooses update button to create new stage form INSERT new stage
 			/*
 
-			INSERT INTO Stage (StageName, AudioFilePath, ImageFilePath, StageDescription)
+			INSERT INTO Stage (Name, Description, AudioFilePath, ImageFilePath)
 			VALUES (value1, value2, value3, value4);
 
 			*/
@@ -75,7 +75,7 @@
 			-- if user chooses update button to create new answer form INSERT new answer
 			/*
 
-			INSERT INTO Answer (AnswerName, AnswerDescription)
+			INSERT INTO Answer (Name, Description)
 			VALUES (value1, value2);
 			
 			*/		
@@ -86,8 +86,8 @@
 			/*
 
 			UPDATE Scenario
-			SET ScenarioName = value1, ScenarioDescription = value2
-			WHERE ScenarioID = Value3; 
+			SET Name = value1, Description = value2
+			WHERE ID = Value3; 
 
 			/*			
 
@@ -96,8 +96,8 @@
 			/*
 
 			UPDATE Stage
-			SET StageName = value1, AudioFilePath = value2, ImageFilePath = value3, StageDescription = value4
-			WHERE StageID = Value5;
+			SET Name = value1, Description = value4, AudioFilePath = value2, ImageFilePath = value3
+			WHERE ID = Value5;
 
 			/*
 			
@@ -106,8 +106,8 @@
 			/*
 
 			UPDATE Answer
-			SET AnswerName = value1, AnswerDescription = value2
-			WHERE StageID = Value3;
+			SET Name = value1, Description = value2
+			WHERE ID = Value3;
 
 			/*
 		
@@ -118,9 +118,9 @@
 
 			SELECT *
 			FROM Scenario
-			INNER JOIN Stage ON Scenario.ScenarioID = Stage.ScenarioID
-			INNER JOIN Answer ON Stage.StageID = Answer.StageID
-			WHERE Scenario.ScenarioID = value1;
+			INNER JOIN Stage ON Scenario.ID = Stage.ID
+			INNER JOIN Answer ON Stage.ID = Answer.ID
+			WHERE Scenario.ID = value1;
 
 			/*
 			
@@ -130,7 +130,7 @@
 		-- tie together list boxes for relating stages to scenarios populate dropdown with all scenarios
 			/*
 
-		SELECT StageID, StageName
+		SELECT ID, Name
 		FROM Stage	
 	
 			/*		
@@ -139,16 +139,16 @@
 		-- tie together list boxes for relating answers to stages populate dropdown with all stages
 			/*
 
-		SELECT StageID, StageName
+		SELECT ID, Name
 		FROM Stage
 
 			/*		
 
 
-		-- tie together list boxes for relating answers to next stage populate dropdown with all stages
+		-- tie together list boxes for relating answers to next stage populate dropdown with all answers
 			/*
 
-		SELECT StageID, StageName
-		FROM Stage
+		SELECT ID, Name
+		FROM Answer
 
 			/*
