@@ -25,7 +25,7 @@ using System.Windows.Shapes;
  * course: SEII
  * assignment: InRealLife (Group Project Spring 2018)
  * date: 03/20/2018
- * file name: Running.xaml.cs
+ * file name: MainWindow.xaml.cs
  * version: 1.0
  */
 namespace InRealLife_2
