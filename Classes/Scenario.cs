@@ -1,11 +1,13 @@
-﻿using System;
+﻿using IRLInterfaces;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 /*
- * This class Scenario has 2 constructors and 2 properties for handling instance variables.
+ * This class Scenario implements an interface IScenarioPiece. It has 2 constructors for object creation 
+ * and 3 properties for handling instance variables.
  *
  * author: Group 7 (Stephen Bailey, Omar Garcia, Craig Wyse, Matthew Harris)
  * course: SEII
@@ -16,7 +18,7 @@ using System.Threading.Tasks;
  */
 namespace Classes
 {
-    public class Scenario
+    public class Scenario : IScenarioPiece
     {
         // Auto Implemented Properties Scenario
         public int ID { get; set; }
@@ -27,8 +29,8 @@ namespace Classes
         public Scenario()
         {
             this.ID = 0;
-            this.Name = "";
-            this.Description = "";
+            this.Name = string.Empty;
+            this.Description = string.Empty;
         }
 
         // parameter constructor Scenario
