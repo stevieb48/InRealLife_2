@@ -1,11 +1,13 @@
-﻿using System;
+﻿using IRLInterfaces;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 /*
- * This class Answer has 2 constructors and 4 properties for handling instance variables.
+ * This class Stage implements an interface IScenarioPiece. It has 2 constructors for object creation 
+ * and 5 properties for handling instance variables.
  *
  * author: Group 7 (Stephen Bailey, Omar Garcia, Craig Wyse, Matthew Harris)
  * course: SEII
@@ -16,30 +18,33 @@ using System.Threading.Tasks;
  */
 namespace Classes
 {
-    public class Answer
+    public class Answer : IScenarioPiece
     {
         // Auto Implemented Properties Answer
-        public int AnswerID { get; set; }
+        public int ID { get; set; }
+        public string Name { get; set; }
+        public string Description { get; set; }
         public int StageID { get; set; }
-        public String AnswerDescription { get; set; }
         public int NextStageID { get; set; }
 
         // default constructor Answer
         public Answer()
         {
-            this.AnswerID = 0;
+            this.ID = 0;
+            this.Name = string.Empty;
+            this.Description = string.Empty;
             this.StageID = 0;
-            this.AnswerDescription = "";
             this.NextStageID = 0;
         }
 
         // parameter constructor Answer
-        public Answer(int answerID, int stageID, string answerDescription, int nextStageID)
+        public Answer(int ID, int StageID, string Name, string Description, int NextStageID)
         {
-            this.AnswerID = answerID;
-            this.StageID = stageID;
-            this.AnswerDescription = answerDescription;
-            this.NextStageID = nextStageID;
+            this.ID = ID;
+            this.Name = Name;
+            this.Description = Description;
+            this.StageID = StageID;
+            this.NextStageID = NextStageID;
         }
     }
 }

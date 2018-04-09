@@ -48,11 +48,11 @@ namespace InRealLife_2
         public void Start(int ScenarioId)
         {
             data.Intetialize(ScenarioId);
-            ScenarioName.Text = data.scenario.ScenarioName;
+            ScenarioName.Text = data.scenario.Name;
 
-            Text1.Text = data.answer1.AnswerDescription;
-            Text2.Text = data.answer2.AnswerDescription;
-            StageDescription.Text = data.stage.StageDescription;
+            Text1.Text = data.answer1.Description;
+            Text2.Text = data.answer2.Description;
+            StageDescription.Text = data.stage.Description;
 
         }
 
@@ -72,9 +72,9 @@ namespace InRealLife_2
                 {
                     data.Update(AnswerNumber);
 
-                    Text1.Text = data.answer1.AnswerDescription;
-                    Text2.Text = data.answer2.AnswerDescription;
-                    StageDescription.Text = data.stage.StageDescription;
+                    Text1.Text = data.answer1.Description;
+                    Text2.Text = data.answer2.Description;
+                    StageDescription.Text = data.stage.Description;
                 }
             }
             else if (AnswerNumber == 2)
@@ -89,9 +89,9 @@ namespace InRealLife_2
                 {
                     data.Update(AnswerNumber);
 
-                    Text1.Text = data.answer1.AnswerDescription;
-                    Text2.Text = data.answer2.AnswerDescription;
-                    StageDescription.Text = data.stage.StageDescription;
+                    Text1.Text = data.answer1.Description;
+                    Text2.Text = data.answer2.Description;
+                    StageDescription.Text = data.stage.Description;
                 }
             }
         }

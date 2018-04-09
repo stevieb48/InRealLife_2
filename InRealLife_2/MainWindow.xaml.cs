@@ -25,7 +25,7 @@ using System.Windows.Shapes;
  * course: SEII
  * assignment: InRealLife (Group Project Spring 2018)
  * date: 03/20/2018
- * file name: Running.xaml.cs
+ * file name: MainWindow.xaml.cs
  * version: 1.0
  */
 namespace InRealLife_2
@@ -57,7 +57,7 @@ namespace InRealLife_2
             btnPerformScenario.IsEnabled = false;
 
             // data table containing  data from scenario table
-            DataTable returnedScenarioTable = newDBComm.displayAllScenarios();
+            DataTable returnedScenarioTable = newDBComm.DisplayAllScenarios();
 
             // if data table has rows
             if (returnedScenarioTable.Rows.Count > 0)
@@ -103,13 +103,13 @@ namespace InRealLife_2
             Scenario selectedScenario = (Scenario)lstvwScenarios.SelectedItem;
 
             // run query to delete selected scenario from DB
-            scenarioRowsDeleted = newDBComm.DeleteSelectedScenario(selectedScenario.ScenarioID);
+            scenarioRowsDeleted = newDBComm.DeleteSelectedScenario(selectedScenario.ID);
 
             // if scenario was deleted
             if (scenarioRowsDeleted > EMPTY_DB_RESULT)
             {
                 // Show user which scenario was deleted
-                MessageBox.Show("The scenario called " + selectedScenario.ScenarioName + " was deleted");
+                MessageBox.Show("The scenario called " + selectedScenario.Name + " was deleted");
 
                 // reset form
                 InitializeForm();
@@ -156,17 +156,17 @@ namespace InRealLife_2
             for (int i = 0; i < returnedScenarioTable.Rows.Count; i++)
             {
                 // add data table results to list view
-                lstvwScenarios.Items.Add(new Scenario { ScenarioID = Int32.Parse(returnedScenarioTable.Rows[i][0].ToString()), ScenarioName = returnedScenarioTable.Rows[i][1].ToString() });
+                lstvwScenarios.Items.Add(new Scenario { ID = Int32.Parse(returnedScenarioTable.Rows[i][0].ToString()), Name = returnedScenarioTable.Rows[i][1].ToString() });
             }
         }
 
         // has scenarios listbox selection changed
         private void LstvwScenarios_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            enableButtonsWhenScenarioSelected();
+            EnableButtonsWhenScenarioSelected();
         }
 
-        private void enableButtonsWhenScenarioSelected()
+        private void EnableButtonsWhenScenarioSelected()
         {
             // enable buttons
             ScenarioListHasValues();

@@ -72,9 +72,22 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="AnswerMainMenu.xaml.cs">
+      <DependentUpon>AnswerMainMenu.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Running.xaml.cs">
       <DependentUpon>Running.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ManagmentOptions.xaml.cs">
+      <DependentUpon>ManagmentOptions.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="StageMainMenu.xaml.cs">
+      <DependentUpon>StageMainMenu.xaml</DependentUpon>
+    </Compile>
+    <Page Include="AnswerMainMenu.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -88,6 +101,14 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="Running.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ManagmentOptions.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="StageMainMenu.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -113,10 +134,8 @@
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
     </None>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Classes\Classes.csproj">
@@ -127,15 +146,16 @@
       <Project>{f04e1a8e-8876-4f24-9430-8b2ec46e222d}</Project>
       <Name>DBComm</Name>
     </ProjectReference>
+    <ProjectReference Include="..\IRLInterfaces\IRLInterfaces.csproj">
+      <Project>{B22962DF-6DDE-45F6-A80A-F317A35ACCA0}</Project>
+      <Name>IRLInterfaces</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Resource Include="mediaFiles\flat.tire.10.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
     <Resource Include="IRL.ico" />
-    <Content Include="ScenarioData.accdb">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.6.1">

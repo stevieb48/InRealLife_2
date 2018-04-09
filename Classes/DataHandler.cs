@@ -17,25 +17,25 @@ namespace Classes
         public void Intetialize(int scenarioNum)
         {
             DataBaseHandler Dbase = new DataBaseHandler();
-            scenario.ScenarioID = scenarioNum;
-            scenario.ScenarioName = Dbase.getScenarioName(scenario.ScenarioID);
+            scenario.ID = scenarioNum;
+            scenario.Name = Dbase.getScenarioName(scenario.ID);
 
-            stage.ScenarioID = scenario.ScenarioID;
-            stage.StageID = Dbase.getStageID(stage.ScenarioID, 1);
-            stage.AudioFilePath = Dbase.getAudioFilePath(stage.StageID);
-            stage.StageDescription = Dbase.getStageDescription(stage.StageID);
-            stage.ImageFilePath = Dbase.getImageFilePath(stage.StageID);
+            stage.ScenarioID = scenario.ID;
+            stage.ID = Dbase.getStageID(stage.ScenarioID, 1);
+            stage.AudioFilePath = Dbase.getAudioFilePath(stage.ID);
+            stage.Description = Dbase.getStageDescription(stage.ID);
+            stage.ImageFilePath = Dbase.getImageFilePath(stage.ID);
 
 
-            answer1.StageID = stage.StageID;
-            answer1.AnswerID = Dbase.getAnswerID(answer1.StageID, 1);
-            answer1.AnswerDescription = Dbase.getAnswerDescription(answer1.AnswerID);
-            answer1.NextStageID = Dbase.getNextStageID(answer1.AnswerID);
+            answer1.StageID = stage.ID;
+            answer1.ID = Dbase.getAnswerID(answer1.StageID, 1);
+            answer1.Description = Dbase.getAnswerDescription(answer1.ID);
+            answer1.NextStageID = Dbase.getNextStageID(answer1.ID);
 
-            answer2.StageID = stage.StageID;
-            answer2.AnswerID = Dbase.getAnswerID(answer2.StageID, 2);
-            answer2.AnswerDescription = Dbase.getAnswerDescription(answer2.AnswerID);
-            answer2.NextStageID = Dbase.getNextStageID(answer2.AnswerID);
+            answer2.StageID = stage.ID;
+            answer2.ID = Dbase.getAnswerID(answer2.StageID, 2);
+            answer2.Description = Dbase.getAnswerDescription(answer2.ID);
+            answer2.NextStageID = Dbase.getNextStageID(answer2.ID);
         }
 
         public void Update(int AnswerNumber)
@@ -43,41 +43,41 @@ namespace Classes
             DataBaseHandler Dbase = new DataBaseHandler();
             if (AnswerNumber == 1)
             {
-                    stage.StageID = Dbase.getStageID(scenario.ScenarioID, answer1.NextStageID);
-                    stage.AudioFilePath = Dbase.getAudioFilePath(stage.StageID);
-                    stage.StageDescription = Dbase.getStageDescription(stage.StageID);
-                    stage.ImageFilePath = Dbase.getImageFilePath(stage.StageID);
+                stage.ID = Dbase.getStageID(scenario.ID, answer1.NextStageID);
+                stage.AudioFilePath = Dbase.getAudioFilePath(stage.ID);
+                stage.Description = Dbase.getStageDescription(stage.ID);
+                stage.ImageFilePath = Dbase.getImageFilePath(stage.ID);
 
 
-                    answer1.StageID = stage.StageID;
-                    answer1.AnswerID = Dbase.getAnswerID(answer1.StageID, 1);
-                    answer1.AnswerDescription = Dbase.getAnswerDescription(answer1.AnswerID);
-                    answer1.NextStageID = Dbase.getNextStageID(answer1.AnswerID);
+                answer1.StageID = stage.ID;
+                answer1.ID = Dbase.getAnswerID(answer1.StageID, 1);
+                answer1.Description = Dbase.getAnswerDescription(answer1.ID);
+                answer1.NextStageID = Dbase.getNextStageID(answer1.ID);
 
-                    answer2.StageID = stage.StageID;
-                    answer2.AnswerID = Dbase.getAnswerID(answer2.StageID, 2);
-                    answer2.AnswerDescription = Dbase.getAnswerDescription(answer2.AnswerID);
-                    answer2.NextStageID = Dbase.getNextStageID(answer2.AnswerID);
+                answer2.StageID = stage.ID;
+                answer2.ID = Dbase.getAnswerID(answer2.StageID, 2);
+                answer2.Description = Dbase.getAnswerDescription(answer2.ID);
+                answer2.NextStageID = Dbase.getNextStageID(answer2.ID);
 
             }
             else if (AnswerNumber == 2)
             {
 
-                    stage.StageID = Dbase.getStageID(stage.ScenarioID, answer2.NextStageID);
-                    stage.AudioFilePath = Dbase.getAudioFilePath(stage.StageID);
-                    stage.StageDescription = Dbase.getStageDescription(stage.StageID);
-                    stage.ImageFilePath = Dbase.getImageFilePath(stage.StageID);
+                stage.ID = Dbase.getStageID(stage.ScenarioID, answer2.NextStageID);
+                stage.AudioFilePath = Dbase.getAudioFilePath(stage.ID);
+                stage.Description = Dbase.getStageDescription(stage.ID);
+                stage.ImageFilePath = Dbase.getImageFilePath(stage.ID);
 
 
-                    answer1.StageID = stage.StageID;
-                    answer1.AnswerID = Dbase.getAnswerID(answer1.StageID, 1);
-                    answer1.AnswerDescription = Dbase.getAnswerDescription(answer1.AnswerID);
-                    answer1.NextStageID = Dbase.getNextStageID(answer1.AnswerID);
+                answer1.StageID = stage.ID;
+                answer1.ID = Dbase.getAnswerID(answer1.StageID, 1);
+                answer1.Description = Dbase.getAnswerDescription(answer1.ID);
+                answer1.NextStageID = Dbase.getNextStageID(answer1.ID);
 
-                    answer2.StageID = stage.StageID;
-                    answer2.AnswerID = Dbase.getAnswerID(answer2.StageID, 2);
-                    answer2.AnswerDescription = Dbase.getAnswerDescription(answer2.AnswerID);
-                    answer2.NextStageID = Dbase.getNextStageID(answer2.AnswerID);
+                answer2.StageID = stage.ID;
+                answer2.ID = Dbase.getAnswerID(answer2.StageID, 2);
+                answer2.Description = Dbase.getAnswerDescription(answer2.ID);
+                answer2.NextStageID = Dbase.getNextStageID(answer2.ID);
             }
         }
     }
