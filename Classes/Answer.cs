@@ -20,6 +20,13 @@ namespace Classes
 {
     public class Answer : IScenarioPiece
     {
+        // instance variables
+        private int iD;
+        private string name;
+        private string description;
+        private int stageID;
+        private int nextStageID;
+        
         // Auto Implemented Properties Answer
         public int ID { get; set; }
         public string Name { get; set; }
@@ -30,21 +37,21 @@ namespace Classes
         // default constructor Answer
         public Answer()
         {
-            this.ID = 0;
+            this.iD = 0;
             this.Name = string.Empty;
-            this.Description = string.Empty;
-            this.StageID = 0;
-            this.NextStageID = 0;
+            this.description = string.Empty;
+            this.stageID = 0;
+            this.nextStageID = 0;
         }
 
         // parameter constructor Answer
-        public Answer(int ID, int StageID, string Name, string Description, int NextStageID)
+        public Answer(int iD, string name, string description, int stageID, int nextStageID)
         {
-            this.ID = ID;
-            this.Name = Name;
-            this.Description = Description;
-            this.StageID = StageID;
-            this.NextStageID = NextStageID;
+            this.iD = iD;
+            this.name = name;
+            this.description = description;
+            this.stageID = stageID;
+            this.nextStageID = nextStageID;
         }
     }
 }

@@ -28,8 +28,8 @@ namespace InRealLife_2
         private const string CONNECTION_STRING = @"Server=tcp:irl-data-server.database.windows.net,1433;Initial Catalog=Azure_SQL_IRL_ScenarioData;Persist Security Info=False;User ID=IRL_admin;Password=1RLdatA2;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
 
         // instance variables
-        public SqlConnection conn = new SqlConnection(CONNECTION_STRING);
-        public SqlCommand cmd = null;
+        private SqlConnection conn = new SqlConnection(CONNECTION_STRING);
+        private SqlCommand cmd = null;
 
         // Auto Implemented Property
         public SqlConnection Conn { get; set; }
