@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{6B5AB8F3-091E-462C-B044-73862B9AC48F}</ProjectGuid>
+    <ProjectGuid>{35767B83-2141-4BAD-A1CB-1CAF2EEB6DCA}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>LogicLayer</RootNamespace>
-    <AssemblyName>LogicLayer</AssemblyName>
+    <RootNamespace>ClassInterfaces</RootNamespace>
+    <AssemblyName>ClassInterfaces</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -40,14 +40,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="IScenarioPiece.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Repository.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\IRLInterfaces\LogicLayerInterfaces.csproj">
-      <Project>{B22962DF-6DDE-45F6-A80A-F317A35ACCA0}</Project>
-      <Name>LogicLayerInterfaces</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

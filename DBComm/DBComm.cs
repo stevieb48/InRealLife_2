@@ -7,9 +7,10 @@ using System.Data.SqlClient;
 using System.Configuration;
 using System.Data;
 using System.Collections;
+using DBComm;
 
 /*
- * This class creates a database connection to a SQL database hosted on Azure. It has various methods 
+ * This class implements an interface and creates a database connection to a SQL database hosted on Azure. It has various methods 
  * to retrieve information or manipulate the database.
  *
  * author: Group 7 (Stephen Bailey, Omar Garcia, Craig Wyse, Matthew Harris)
@@ -21,27 +22,26 @@ using System.Collections;
  */
 namespace InRealLife_2
 {
-    public class DBComm
+    public class DBComm : IDatabase
     {
         // CONSTANT storing the connection string
-        public const string CONNECTION_STRING = @"Server=tcp:irl-data-server.database.windows.net,1433;Initial Catalog=Azure_SQL_IRL_ScenarioData;Persist Security Info=False;User ID=IRL_admin;Password=1RLdatA2;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
+        private const string CONNECTION_STRING = @"Server=tcp:irl-data-server.database.windows.net,1433;Initial Catalog=Azure_SQL_IRL_ScenarioData;Persist Security Info=False;User ID=IRL_admin;Password=1RLdatA2;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
+
+        // instance variables
+        public SqlConnection conn = new SqlConnection(CONNECTION_STRING);
+        public SqlCommand cmd = null;
 
         // Auto Implemented Property
         public SqlConnection Conn { get; set; }
-
-        //
-        public DBComm()
-        {
-            this.Conn = new SqlConnection(CONNECTION_STRING);
-        }
+        public SqlConnection Cmd { get; set; }
 
         public SqlConnection OpenConnection()
         {
-            if (Conn.State == ConnectionState.Closed || Conn.State == ConnectionState.Broken)
+            if (conn.State == ConnectionState.Closed || conn.State == ConnectionState.Broken)
             {
-                Conn.Open();
+                conn.Open();
             }
-            return Conn;
+            return conn;
         }
 
         // method to grab all data from scenario table on the database
@@ -54,17 +54,17 @@ namespace InRealLife_2
             String displayScenariosQuery = "SELECT * " 
                                            + "FROM Scenario";
 
-            using (Conn)
-            using (SqlCommand sqlCommand = new SqlCommand(displayScenariosQuery, Conn))
+            using (conn)
+            using (cmd = new SqlCommand(displayScenariosQuery, conn))
             {
                 // reinitialize connection string
-                Conn.ConnectionString = CONNECTION_STRING;
+                conn.ConnectionString = CONNECTION_STRING;
 
                 // open connection
-                Conn.Open();
+                conn = OpenConnection();
 
                 // load data table
-                scenarioDataTable.Load(sqlCommand.ExecuteReader());
+                scenarioDataTable.Load(cmd.ExecuteReader());
 
                 return scenarioDataTable;
             }
@@ -81,17 +81,17 @@ namespace InRealLife_2
                                         + "FROM Scenario " 
                                         + "WHERE ID =" + ID;
 
-            using (Conn)
-            using (SqlCommand DeleteCmd = new SqlCommand(deleteScenarioQuery, Conn))
+            using (conn)
+            using (cmd = new SqlCommand(deleteScenarioQuery, conn))
             {
                 // reinitialize connection string
-                Conn.ConnectionString = CONNECTION_STRING;
+                conn.ConnectionString = CONNECTION_STRING;
 
                 // open connection
-                Conn.Open();
+                conn = OpenConnection();
 
                 // execute deletion
-                scenarioRowsDeleted = DeleteCmd.ExecuteNonQuery();
+                scenarioRowsDeleted = cmd.ExecuteNonQuery();
 
                 // return number of rows deleted
                 return scenarioRowsDeleted;
@@ -108,17 +108,17 @@ namespace InRealLife_2
             String displayStageQuery = "SELECT * " 
                                        + "FROM Stage";
 
-            using (Conn)
-            using (SqlCommand sqlCommand = new SqlCommand(displayStageQuery, Conn))
+            using (conn)
+            using (cmd = new SqlCommand(displayStageQuery, conn))
             {
                 // reinitialize connection string
-                Conn.ConnectionString = CONNECTION_STRING;
+                conn.ConnectionString = CONNECTION_STRING;
 
                 // open connection
-                Conn.Open();
+                conn = OpenConnection();
 
                 // load data table
-                stageDataTable.Load(sqlCommand.ExecuteReader());
+                stageDataTable.Load(cmd.ExecuteReader());
 
                 return stageDataTable;
             }
@@ -135,17 +135,17 @@ namespace InRealLife_2
                                     + "FROM Stage " 
                                     + "WHERE ID =" + ID;
 
-            using (Conn)
-            using (SqlCommand DeleteCmd = new SqlCommand(deleteStageQuery, Conn))
+            using (conn)
+            using (cmd = new SqlCommand(deleteStageQuery, conn))
             {
                 // reinitialize connection string
-                Conn.ConnectionString = CONNECTION_STRING;
+                conn.ConnectionString = CONNECTION_STRING;
 
                 // open connection
-                Conn.Open();
+                conn = OpenConnection();
 
                 // execute deletion
-                stageRowsDeleted = DeleteCmd.ExecuteNonQuery();
+                stageRowsDeleted = cmd.ExecuteNonQuery();
 
                 // return number of rows deleted
                 return stageRowsDeleted;
@@ -163,17 +163,17 @@ namespace InRealLife_2
                                     + "SET ScenarioID = " + newScenarioID 
                                     + "WHERE ID = " + ID;
 
-            using (Conn)
-            using (SqlCommand UpdateCmd = new SqlCommand(updateStageQuery, Conn))
+            using (conn)
+            using (cmd = new SqlCommand(updateStageQuery, conn))
             {
                 // reinitialize connection string
-                Conn.ConnectionString = CONNECTION_STRING;
+                conn.ConnectionString = CONNECTION_STRING;
 
                 // open connection
-                Conn.Open();
+                conn = OpenConnection();
 
                 // execute UPDATE
-                stageRowsUpdated = UpdateCmd.ExecuteNonQuery();
+                stageRowsUpdated = cmd.ExecuteNonQuery();
 
                 // return number of rows updated
                 return stageRowsUpdated;
@@ -190,17 +190,17 @@ namespace InRealLife_2
             String displayAnswerQuery = "SELECT * " 
                                         + "FROM Answer";
 
-            using (Conn)
-            using (SqlCommand sqlCommand = new SqlCommand(displayAnswerQuery, Conn))
+            using (conn)
+            using (cmd = new SqlCommand(displayAnswerQuery, conn))
             {
                 // reinitialize connection string
-                Conn.ConnectionString = CONNECTION_STRING;
+                conn.ConnectionString = CONNECTION_STRING;
 
                 // open connection
-                Conn.Open();
+                conn = OpenConnection();
 
                 // load data table
-                answerDataTable.Load(sqlCommand.ExecuteReader());
+                answerDataTable.Load(cmd.ExecuteReader());
 
                 return answerDataTable;
             }
@@ -217,17 +217,17 @@ namespace InRealLife_2
                                         + "FROM Answer " 
                                         + "WHERE ID =" + ID;
 
-            using (Conn)
-            using (SqlCommand DeleteCmd = new SqlCommand(deleteAnswerQuery, Conn))
+            using (conn)
+            using (cmd = new SqlCommand(deleteAnswerQuery, conn))
             {
                 // reinitialize connection string
-                Conn.ConnectionString = CONNECTION_STRING;
+                conn.ConnectionString = CONNECTION_STRING;
 
                 // open connection
-                Conn.Open();
+                conn = OpenConnection();
 
                 // execute deletion
-                answerRowsDeleted = DeleteCmd.ExecuteNonQuery();
+                answerRowsDeleted = cmd.ExecuteNonQuery();
 
                 // return number of rows deleted
                 return answerRowsDeleted;
@@ -245,17 +245,17 @@ namespace InRealLife_2
                                     + "SET StageID = " + newStageID
                                     + "WHERE ID = " + ID;
 
-            using (Conn)
-            using (SqlCommand UpdateCmd = new SqlCommand(updateAnswerQuery, Conn))
+            using (conn)
+            using (cmd = new SqlCommand(updateAnswerQuery, conn))
             {
                 // reinitialize connection string
-                Conn.ConnectionString = CONNECTION_STRING;
+                conn.ConnectionString = CONNECTION_STRING;
 
                 // open connection
-                Conn.Open();
+                conn = OpenConnection();
 
                 // execute UPDATE
-                answersRowsUpdated = UpdateCmd.ExecuteNonQuery();
+                answersRowsUpdated = cmd.ExecuteNonQuery();
 
                 // return number of rows updated
                 return answersRowsUpdated;
@@ -309,17 +309,17 @@ namespace InRealLife_2
             // create new data table
             DataTable resultDataTable = new DataTable();
 
-            using (Conn)
-            using (SqlCommand executeReaderCommand = new SqlCommand(selectQuery, Conn))
+            using (conn)
+            using (cmd = new SqlCommand(selectQuery, conn))
             {
                 // reinitialize connection string
-                Conn.ConnectionString = CONNECTION_STRING;
+                conn.ConnectionString = CONNECTION_STRING;
 
                 // open connection
-                Conn.Open();
+                conn = OpenConnection();
 
                 // load data table
-                resultDataTable.Load(executeReaderCommand.ExecuteReader());
+                resultDataTable.Load(cmd.ExecuteReader());
 
                 // return resultsDataTable
                 return resultDataTable;
@@ -332,17 +332,17 @@ namespace InRealLife_2
             // create return variable
             int rowsAffected = 0;
 
-            using (Conn)
-            using (SqlCommand ExecuteNonQueryCmd = new SqlCommand(nonQuery, Conn))
+            using (conn)
+            using (cmd = new SqlCommand(nonQuery, conn))
             {
                 // reinitialize connection string
-                Conn.ConnectionString = CONNECTION_STRING;
+                conn.ConnectionString = CONNECTION_STRING;
 
                 // open connection
-                Conn.Open();
+                conn = OpenConnection();
 
                 // ExecuteNonQuery
-                rowsAffected = ExecuteNonQueryCmd.ExecuteNonQuery();
+                rowsAffected = cmd.ExecuteNonQuery();
 
                 // return number of rows affected
                 return rowsAffected;

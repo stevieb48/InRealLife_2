@@ -48,9 +48,9 @@
     <Compile Include="Stage.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\IRLInterfaces\IRLInterfaces.csproj">
-      <Project>{B22962DF-6DDE-45F6-A80A-F317A35ACCA0}</Project>
-      <Name>IRLInterfaces</Name>
+    <ProjectReference Include="..\ClassInterfaces\ClassInterfaces.csproj">
+      <Project>{35767B83-2141-4BAD-A1CB-1CAF2EEB6DCA}</Project>
+      <Name>ClassInterfaces</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

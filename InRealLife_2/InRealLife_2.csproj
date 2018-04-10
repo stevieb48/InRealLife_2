@@ -146,9 +146,9 @@
       <Project>{f04e1a8e-8876-4f24-9430-8b2ec46e222d}</Project>
       <Name>DBComm</Name>
     </ProjectReference>
-    <ProjectReference Include="..\IRLInterfaces\IRLInterfaces.csproj">
+    <ProjectReference Include="..\IRLInterfaces\LogicLayerInterfaces.csproj">
       <Project>{B22962DF-6DDE-45F6-A80A-F317A35ACCA0}</Project>
-      <Name>IRLInterfaces</Name>
+      <Name>LogicLayerInterfaces</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

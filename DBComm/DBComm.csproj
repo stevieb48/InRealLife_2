@@ -83,6 +83,10 @@
       <Project>{bf73ecef-cbf1-4404-9e5e-c1e7dabfc204}</Project>
       <Name>Classes</Name>
     </ProjectReference>
+    <ProjectReference Include="..\DBCommInterfaces\DBCommInterfaces.csproj">
+      <Project>{69659C1C-6FD6-4297-9D95-F975B33ACFB2}</Project>
+      <Name>DBCommInterfaces</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

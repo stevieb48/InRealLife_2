@@ -1,5 +1,5 @@
 ﻿using Classes;
-using IRLInterfaces;
+using LogicLayerInterfaces;
 using System.Windows;
 using System.Windows.Controls;
 
