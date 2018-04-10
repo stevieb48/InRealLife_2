@@ -7,7 +7,7 @@ using System.Data.SqlClient;
 using System.Configuration;
 using System.Data;
 using System.Collections;
-using DBComm;
+using DataLayerInterfaces;
 
 /*
  * This class implements an interface and creates a database connection to a SQL database hosted on Azure. It has various methods 
@@ -20,9 +20,9 @@ using DBComm;
  * file name: DBComm.cs
  * version: 1.0
  */
-namespace InRealLife_2
+namespace DataLayer
 {
-    public class DBComm : IDatabase
+    public class DataBaseCommunication : IDatabase
     {
         // CONSTANT storing the connection string
         private const string CONNECTION_STRING = @"Server=tcp:irl-data-server.database.windows.net,1433;Initial Catalog=Azure_SQL_IRL_ScenarioData;Persist Security Info=False;User ID=IRL_admin;Password=1RLdatA2;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
@@ -263,8 +263,9 @@ namespace InRealLife_2
         }
 
 
-//************************ UNDER CONSTRUCTION ****************************
+        //************************ UNDER CONSTRUCTION ****************************
 
+        // interface methods
         public DataTable Select(string selectQuery)
         {
             DataTable resultsDT = null;
@@ -303,7 +304,7 @@ namespace InRealLife_2
 
         }
 
-        // private method to ExecuteReaderOnDB on the database
+        // private method to ExecuteReaderOnDB on the database used by the interface methods above
         private DataTable ExecuteReaderOnDB(String selectQuery)
         {
             // create new data table
@@ -326,7 +327,7 @@ namespace InRealLife_2
             }
         }
 
-        // private method to ExecuteNonQueryOnDB on the database
+        // private method to ExecuteNonQueryOnDB on the database used by the interface methods above
         private int ExecuteNonQueryOnDB(String nonQuery)
         {
             // create return variable

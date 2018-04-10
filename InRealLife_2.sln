@@ -5,7 +5,7 @@ VisualStudioVersion = 15.0.27428.2015
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InRealLife_2", "InRealLife_2\InRealLife_2.csproj", "{C210D834-BC19-4BF1-B0D1-5D5922A2DE43}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DBComm", "DBComm\DBComm.csproj", "{F04E1A8E-8876-4F24-9430-8B2EC46E222D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataLayer", "DBComm\DataLayer.csproj", "{F04E1A8E-8876-4F24-9430-8B2EC46E222D}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Classes", "Classes\Classes.csproj", "{BF73ECEF-CBF1-4404-9E5E-C1E7DABFC204}"
 EndProject
@@ -13,7 +13,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LogicLayerInterfaces", "IRL
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LogicLayer", "LogicLayer\LogicLayer.csproj", "{6B5AB8F3-091E-462C-B044-73862B9AC48F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DBCommInterfaces", "DBCommInterfaces\DBCommInterfaces.csproj", "{69659C1C-6FD6-4297-9D95-F975B33ACFB2}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataLayerInterfaces", "DBCommInterfaces\DataLayerInterfaces.csproj", "{69659C1C-6FD6-4297-9D95-F975B33ACFB2}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClassInterfaces", "ClassInterfaces\ClassInterfaces.csproj", "{35767B83-2141-4BAD-A1CB-1CAF2EEB6DCA}"
 EndProject

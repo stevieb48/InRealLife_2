@@ -1,4 +1,5 @@
 ﻿using Classes;
+using DataLayer;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -35,7 +36,7 @@ namespace InRealLife_2
     public partial class AnswerMainMenu : Page
     {
         // create new database object
-        DBComm newDBComm = new DBComm();
+        DataBaseCommunication newDBComm = new DataBaseCommunication();
 
         public AnswerMainMenu()
         {

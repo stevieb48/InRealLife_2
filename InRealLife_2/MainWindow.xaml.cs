@@ -3,7 +3,6 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Data;
-using System.Data.OleDb;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -16,6 +15,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using DataLayer;
 
 /*
  * This GUI is the main menu for the scenario builder which allows the user to create a scenario form, edit a scenario form, 
@@ -36,7 +36,7 @@ namespace InRealLife_2
     public partial class MainWindow : Window
     {
         // create new database object
-        DBComm newDBComm = new DBComm();
+        DataBaseCommunication newDBComm = new DataBaseCommunication();
 
         public MainWindow()
         {

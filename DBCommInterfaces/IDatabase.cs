@@ -15,7 +15,7 @@ using System.Threading.Tasks;
  * file name: IDatabase.cs
  * version: 1.0
  */
-namespace DBComm
+namespace DataLayerInterfaces
 {
     public interface IDatabase
     {

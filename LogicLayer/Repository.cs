@@ -1,4 +1,5 @@
-﻿using LogicLayerInterfaces;
+﻿using DataLayer;
+using LogicLayerInterfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,6 +10,6 @@ namespace LogicLayer
 {
     public class Repository : IRepository
     {
-
+        DataBaseCommunication newDBComm = new DataBaseCommunication();
     }
 }
