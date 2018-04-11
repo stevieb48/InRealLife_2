@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-/*
+﻿/*
  * This Interface ...
  *
  * author: Group 7 (Stephen Bailey, Omar Garcia, Craig Wyse, Matthew Harris)
@@ -19,5 +13,7 @@ namespace ClassInterfaces
     public interface IScenarioPiece
     {
         int ID { get; }
+        string Name { get; }
+        string Description { get; }
     }
 }

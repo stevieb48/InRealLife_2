@@ -1,18 +1,23 @@
 ﻿using ClassInterfaces;
-using System;
-using System.Collections.Generic;
 using System.Data;
-using System.Linq;
-using System.Linq.Expressions;
-using System.Text;
-using System.Threading.Tasks;
 
+/*
+ * This interface ...
+ *
+ * author: Group 7 (Stephen Bailey, Omar Garcia, Craig Wyse, Matthew Harris)
+ * course: SEII
+ * assignment: InRealLife (Group Project Spring 2018)
+ * date: 4/08/2018
+ * file name: IRepository.cs
+ * version: 1.0
+ */
 namespace LogicLayerInterfaces
 {
     public interface IRepository
     {
-        DataTable GetAll(IScenarioPiece piece);
-
-        int DeletePiece(IScenarioPiece piece);
+        DataTable GetAllPiecesByType(IScenarioPiece piece);
+        int DeleteExistingPiece(IScenarioPiece piece);
+        int UpdateExisingPiece(IScenarioPiece piece);
+        int InsertNewPiece(IScenarioPiece piece);
     }
 }

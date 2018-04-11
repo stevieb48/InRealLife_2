@@ -64,7 +64,7 @@ namespace InRealLife_2
             {
                 if (data.answer2.NextStageID == 0)
                 {
-                    MainWindow main = new MainWindow();
+                    MainMenu main = new MainMenu();
                     main.Show();
                     Close();
                 }
@@ -81,7 +81,7 @@ namespace InRealLife_2
             {
                 if (data.answer2.NextStageID == 0)
                 {
-                    MainWindow main = new MainWindow();
+                    MainMenu main = new MainMenu();
                     main.Show();
                     Close();
                 }
@@ -110,7 +110,7 @@ namespace InRealLife_2
 
         private void Button_Click_2(object sender, RoutedEventArgs e)
         {
-            MainWindow main = new MainWindow();
+            MainMenu main = new MainMenu();
             main.Show();
             Close();
         }

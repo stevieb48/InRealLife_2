@@ -13,7 +13,6 @@ namespace Classes
         public Answer answer1 = new Answer();
         public Answer answer2 = new Answer();
 
-
         public void Intetialize(int scenarioNum)
         {
             DataBaseHandler Dbase = new DataBaseHandler();

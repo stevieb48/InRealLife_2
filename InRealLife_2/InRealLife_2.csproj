@@ -72,23 +72,13 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="AnswerMainMenu.xaml.cs">
-      <DependentUpon>AnswerMainMenu.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Running.xaml.cs">
       <DependentUpon>Running.xaml</DependentUpon>
     </Compile>
     <Compile Include="ManagmentOptions.xaml.cs">
       <DependentUpon>ManagmentOptions.xaml</DependentUpon>
     </Compile>
-    <Compile Include="StageMainMenu.xaml.cs">
-      <DependentUpon>StageMainMenu.xaml</DependentUpon>
-    </Compile>
-    <Page Include="AnswerMainMenu.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="MainWindow.xaml">
+    <Page Include="MainMenu.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -96,8 +86,8 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="MainWindow.xaml.cs">
-      <DependentUpon>MainWindow.xaml</DependentUpon>
+    <Compile Include="MainMenu.xaml.cs">
+      <DependentUpon>MainMenu.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
     <Page Include="Running.xaml">
@@ -105,10 +95,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="ManagmentOptions.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="StageMainMenu.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -142,6 +128,10 @@
       <Project>{BF73ECEF-CBF1-4404-9E5E-C1E7DABFC204}</Project>
       <Name>Classes</Name>
     </ProjectReference>
+    <ProjectReference Include="..\ClassInterfaces\ClassInterfaces.csproj">
+      <Project>{35767B83-2141-4BAD-A1CB-1CAF2EEB6DCA}</Project>
+      <Name>ClassInterfaces</Name>
+    </ProjectReference>
     <ProjectReference Include="..\DBComm\DataLayer.csproj">
       <Project>{f04e1a8e-8876-4f24-9430-8b2ec46e222d}</Project>
       <Name>DataLayer</Name>
@@ -149,6 +139,10 @@
     <ProjectReference Include="..\IRLInterfaces\LogicLayerInterfaces.csproj">
       <Project>{B22962DF-6DDE-45F6-A80A-F317A35ACCA0}</Project>
       <Name>LogicLayerInterfaces</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\LogicLayer\LogicLayer.csproj">
+      <Project>{6B5AB8F3-091E-462C-B044-73862B9AC48F}</Project>
+      <Name>LogicLayer</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
