@@ -104,6 +104,7 @@ namespace Classes_Tests
             Assert.AreEqual("Flat tire", sut.Name, "Scenario public Name Accessor method is working properly.");
             Assert.AreEqual("The tire on your vehicle goes flat ...", sut.Description, "Scenario public Description Accessor method is working properly.");
         }
+
         [TestMethod]
         public void Scenario_DefaultConstructor_MutatorMethods_Test()
         {
@@ -147,6 +148,5 @@ namespace Classes_Tests
             Assert.AreEqual("Engine noise", sut.Name, "Scenario public Name Accessor method is working properly.");
             Assert.AreEqual("You are driving down the road and you here a funny sound coming from your vehicle", sut.Description, "Scenario public Description Accessor method is working properly.");
         }
-
     }
 }

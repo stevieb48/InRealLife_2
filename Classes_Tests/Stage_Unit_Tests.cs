@@ -34,7 +34,7 @@ namespace Classes_Tests
         }
 
         [TestMethod]
-        public void STage_ParameterConstructor_IsNotNull_Instance_Test()
+        public void Stage_ParameterConstructor_IsNotNull_Instance_Test()
         {
             // Arrange
             int iD = 0;
@@ -122,6 +122,7 @@ namespace Classes_Tests
             Assert.AreEqual("C:\\Users\\parent\\audio\\audiofile1", sut.AudioFilePath, "Stage public AudioFilePath Accessor method is working properly.");
             Assert.AreEqual("C:\\Users\\parent\\image\\imagefile1", sut.ImageFilePath, "Stage public ImageFilePath Accessor method is working properly.");
         }
+
         [TestMethod]
         public void Stage_DefaultConstructor_MutatorMethods_Test()
         {
@@ -143,7 +144,6 @@ namespace Classes_Tests
             sut.ScenarioID = scenarioID;
             sut.AudioFilePath = audioFilePath;
             sut.ImageFilePath = imageFilePath;
-
 
             //Assert
             Assert.AreEqual(5, sut.ID, "Stage public ID Accessor method is working properly.");
@@ -184,6 +184,5 @@ namespace Classes_Tests
             Assert.AreEqual("C:\\Users\\parent\\audio\\audiofile2", sut.AudioFilePath, "Stage public AudioFilePath Accessor method is working properly.");
             Assert.AreEqual("C:\\Users\\parent\\image\\imagefile3", sut.ImageFilePath, "Stage public ImageFilePath Accessor method is working properly.");
         }
-
     }
 }

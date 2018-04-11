@@ -38,7 +38,7 @@ namespace Classes
         public Answer()
         {
             this.iD = 0;
-            this.Name = string.Empty;
+            this.name = string.Empty;
             this.description = string.Empty;
             this.stageID = 0;
             this.nextStageID = 0;
