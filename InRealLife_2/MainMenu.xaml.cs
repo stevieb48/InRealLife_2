@@ -1,7 +1,6 @@
 ﻿using System.Data;
 using System.Windows;
 using System.Windows.Controls;
-using DataLayer;
 using LogicLayer;
 using ClassInterfaces;
 using Classes;
@@ -20,7 +19,7 @@ using Classes;
 namespace InRealLife_2
 {
     /// <summary>
-    /// Interaction logic for Running.xaml
+    /// Interaction logic for MainMenu.xaml
     /// </summary>
     public partial class MainMenu : Window
     {
@@ -28,21 +27,18 @@ namespace InRealLife_2
         private Repository pieceRepository = new Repository();
         
         //
-        private IScenarioPiece currentPiece;
-
-        // database
-        DataBaseCommunication newDBComm = new DataBaseCommunication();        
+        private IScenarioPiece currentPiece = new Scenario();     
 
         //
         public IScenarioPiece CurrentPiece { get; set; }
         public Repository NewRepository { get; set; }
 
 
-        public MainMenu(ClassInterfaces.IScenarioPiece piece)
+        public MainMenu()
         {
             InitializeComponent();
             InitializeForm();
-            this.currentPiece = piece;
+            //this.currentPiece = new Answer(); 
         }
 
         // initialize the form
@@ -72,8 +68,13 @@ namespace InRealLife_2
             else
             {
                 // else list is empty
-                ScenarioListIsEmpty();
+                ScenarioPieceListIsEmpty();
             }
+
+            // set label content to specific piece type
+            lblCurrentList.Content = ("Current " + currentPiece.GetType().ToString().Split('.')[1] + " List");
+            lblTitle.Content = (currentPiece.GetType().ToString().Split('.')[1] + " Management");
+            btnExitMenu.Content = ("Exit " + currentPiece.GetType().ToString().Split('.')[1] + " Management");
         }
 
         // exit builder button click event
@@ -115,7 +116,7 @@ namespace InRealLife_2
             }
             else
             {
-                // Show user error while piece was deleted
+                // Show user the error if piece was not deleted
                 MessageBox.Show("Error deleting " + selectedPiece.Name);
 
                 // reset form
@@ -126,15 +127,15 @@ namespace InRealLife_2
         // perform selected piece button click event
         private void BtnPerformSelected_Click(object sender, RoutedEventArgs e)
         {
-            Running run = new Running(1);
-            run.Show();
+            //Running run = new Running(1);
+            //run.Show();
 
             // hide main menu form form
             this.Hide();
         }
 
         // method for form behaviors if list is empty
-        private void ScenarioListIsEmpty()
+        private void ScenarioPieceListIsEmpty()
         {
             btnEditSelected.IsEnabled = false;
             btnDeleteSelected.IsEnabled = false;

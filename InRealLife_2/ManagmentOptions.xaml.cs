@@ -16,7 +16,7 @@ using System.Windows.Controls;
 namespace InRealLife_2
 {
     /// <summary>
-    /// Interaction logic for TitleScreen.xaml
+    /// Interaction logic for MainMenu.xaml
     /// </summary>
     public partial class ManagmentOptions : Page
     {
@@ -36,7 +36,7 @@ namespace InRealLife_2
             piece = new Scenario();
 
             // pass in the new piece to the main menu
-            MainMenu mainMenu = new MainMenu(piece);
+            MainMenu mainMenu = new MainMenu();
 
             // switch navigation to main menu
             this.NavigationService.Navigate(mainMenu);
@@ -49,7 +49,7 @@ namespace InRealLife_2
             piece = new Stage();
 
             // pass in the new piece to the main menu
-            MainMenu mainMenu = new MainMenu(piece);
+            MainMenu mainMenu = new MainMenu();
 
             // switch navigation to main menu
             this.NavigationService.Navigate(mainMenu);
@@ -62,7 +62,7 @@ namespace InRealLife_2
             piece = new Answer();
 
             // pass in the new piece to the main menu
-            MainMenu mainMenu = new MainMenu(piece);
+            MainMenu mainMenu = new MainMenu();
 
             // switch navigation to main menu
             this.NavigationService.Navigate(mainMenu);
