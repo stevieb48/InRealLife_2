@@ -6,8 +6,8 @@ using System.Text;
 using System.Threading.Tasks;
 
 /*
- * This class Stage implements an interface IScenarioPiece. It has 2 constructors for object creation 
- * and 5 properties for handling instance variables.
+ * This class Answer implements an interface IScenarioPiece. It has 2 constructors for object creation, 
+ * 5 instance variables and 5 properties for handling instance variables.
  *
  * author: Group 7 (Stephen Bailey, Omar Garcia, Craig Wyse, Matthew Harris)
  * course: SEII
@@ -18,15 +18,8 @@ using System.Threading.Tasks;
  */
 namespace Classes
 {
-    public class Answer : IScenarioPiece
+    public class Answer : ClassInterfaces.IScenarioPiece
     {
-        // instance variables
-        private int iD;
-        private string name;
-        private string description;
-        private int stageID;
-        private int nextStageID;
-        
         // Auto Implemented Properties Answer
         public int ID { get; set; }
         public string Name { get; set; }
@@ -37,21 +30,21 @@ namespace Classes
         // default constructor Answer
         public Answer()
         {
-            this.iD = 0;
+            this.ID = 0;
             this.Name = string.Empty;
-            this.description = string.Empty;
-            this.stageID = 0;
-            this.nextStageID = 0;
+            this.Description = string.Empty;
+            this.StageID = 0;
+            this.NextStageID = 0;
         }
 
         // parameter constructor Answer
         public Answer(int iD, string name, string description, int stageID, int nextStageID)
         {
-            this.iD = iD;
-            this.name = name;
-            this.description = description;
-            this.stageID = stageID;
-            this.nextStageID = nextStageID;
+            this.ID = iD;
+            this.Name = name;
+            this.Description = description;
+            this.StageID = stageID;
+            this.NextStageID = nextStageID;
         }
     }
 }

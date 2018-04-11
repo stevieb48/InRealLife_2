@@ -1,49 +1,74 @@
 ﻿using Classes;
-using LogicLayerInterfaces;
+using ClassInterfaces;
 using System.Windows;
 using System.Windows.Controls;
 
+/*
+ * This GUI ....
+ *
+ * author: Group 7 (Stephen Bailey, Omar Garcia, Craig Wyse, Matthew Harris)
+ * course: SEII
+ * assignment: InRealLife (Group Project Spring 2018)
+ * date: 04/05/2018
+ * file name: ManagmentOptions.xaml.cs
+ * version: 1.0
+ */
 namespace InRealLife_2
 {
     /// <summary>
-    /// Interaction logic for TitleScreen.xaml
+    /// Interaction logic for MainMenu.xaml
     /// </summary>
     public partial class ManagmentOptions : Page
     {
+        //
+        IScenarioPiece piece;
+
+        //
         public ManagmentOptions()
         {
             InitializeComponent();
         }
 
+        //
         private void ManageScenariosBtn_Click(object sender, RoutedEventArgs e)
         {
-            // make scenario piece of type scenario
-            //IScenarioPiece scenario = new Scenario();
+            // make piece of type scenario
+            piece = new Scenario();
 
-            //ScenarioMainMenu scenarioMainMenu = new ScenarioMainMenu(scenario);
-            //this.NavigationService.Navigate(scenarioMainMenu);
+            // pass in the new piece to the main menu
+            MainMenu mainMenu = new MainMenu();
+
+            // switch navigation to main menu
+            this.NavigationService.Navigate(mainMenu);
         }
 
         //
         private void ManageStagesBtn_Click(object sender, RoutedEventArgs e)
         {
-            // make scenario piece of type stage
-            //IScenarioPiece stage = new Stage();
+            // make piece of type stage
+            piece = new Stage();
 
-            //StageMainMenu stageMainMenu = new StageMainMenu(stage);
-            //this.NavigationService.Navigate(stageMainMenu);
+            // pass in the new piece to the main menu
+            MainMenu mainMenu = new MainMenu();
+
+            // switch navigation to main menu
+            this.NavigationService.Navigate(mainMenu);
         }
 
         //
         private void ManageAnswersBtn_Click(object sender, RoutedEventArgs e)
         {
-            // make scenario piece of type answer
-            //IScenarioPiece answer = new Answer();
+            // make piece of type answer
+            piece = new Answer();
 
-            //AnswerMainMenu answerMainMenu = new AnswerMainMenu(answer);
-            //this.NavigationService.Navigate(answerMainMenu);
+            // pass in the new piece to the main menu
+            MainMenu mainMenu = new MainMenu();
+
+            // switch navigation to main menu
+            this.NavigationService.Navigate(mainMenu);
         }
 
+        //
         private void BtnExitManagement_Click(object sender, RoutedEventArgs e)
         {
             //TitleScreen titleScreen = new TitleScreen();

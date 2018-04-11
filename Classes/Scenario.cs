@@ -6,8 +6,8 @@ using System.Text;
 using System.Threading.Tasks;
 
 /*
- * This class Scenario implements an interface IScenarioPiece. It has 2 constructors for object creation 
- * and 3 properties for handling instance variables.
+ * This class Scenario implements an interface IScenarioPiece. It has 2 constructors for object creation, 
+ * 3 instance variables and 3 properties for handling instance variables.
  *
  * author: Group 7 (Stephen Bailey, Omar Garcia, Craig Wyse, Matthew Harris)
  * course: SEII
@@ -20,11 +20,6 @@ namespace Classes
 {
     public class Scenario : IScenarioPiece
     {
-        // instance variables
-        private int iD;
-        private string name;
-        private string description;
-
         // Auto Implemented Properties Scenario
         public int ID { get; set; }
         public string Name { get; set; }
@@ -33,17 +28,17 @@ namespace Classes
         // default constructor Scenario
         public Scenario()
         {
-            this.iD = 0;
-            this.name = string.Empty;
-            this.description = string.Empty;
+            this.ID = 0;
+            this.Name = string.Empty;
+            this.Description = string.Empty;
         }
 
         // parameter constructor Scenario
         public Scenario(int iD, string name, string description)
         {
-            this.iD = iD;
-            this.name = name;
-            this.description = description;
+            this.ID = iD;
+            this.Name = name;
+            this.Description = description;
         }
     }
 }
