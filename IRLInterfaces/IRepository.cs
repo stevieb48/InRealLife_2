@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ClassInterfaces;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
@@ -10,6 +11,8 @@ namespace LogicLayerInterfaces
 {
     public interface IRepository
     {
+        DataTable GetAll(IScenarioPiece piece);
 
+        int DeletePiece(IScenarioPiece piece);
     }
 }

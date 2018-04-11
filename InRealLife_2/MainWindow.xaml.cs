@@ -35,7 +35,7 @@ namespace InRealLife_2
     /// </summary>
     public partial class MainWindow : Window
     {
-        // create new database object
+        // create new repository
         DataBaseCommunication newDBComm = new DataBaseCommunication();
 
         public MainWindow()

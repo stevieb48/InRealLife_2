@@ -43,5 +43,11 @@
     <Compile Include="IRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ClassInterfaces\ClassInterfaces.csproj">
+      <Project>{35767B83-2141-4BAD-A1CB-1CAF2EEB6DCA}</Project>
+      <Name>ClassInterfaces</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
