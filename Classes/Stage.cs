@@ -20,14 +20,6 @@ namespace Classes
 {
     public class Stage : ClassInterfaces.IScenarioPiece
     {
-        // instance variables
-        private int iD;
-        private string name;
-        private string description;
-        private int scenarioID;
-        private string audioFilePath;
-        private string imageFilePath;
-
         // Auto Implemented Properties Stage
         public int ID { get; set; }
         public string Name { get; set; }
@@ -39,23 +31,23 @@ namespace Classes
         // default constructor Stage
         public Stage()
         {
-            this.iD = 0;
-            this.name = string.Empty;
-            this.description = string.Empty;
-            this.scenarioID = 0;
-            this.audioFilePath = string.Empty;
-            this.imageFilePath = string.Empty;
+            this.ID = 0;
+            this.Name = string.Empty;
+            this.Description = string.Empty;
+            this.ScenarioID = 0;
+            this.AudioFilePath = string.Empty;
+            this.ImageFilePath = string.Empty;
         }
 
         // parameter constructor Stage
         public Stage(int iD, string name, string description, int scenarioID, string audioFilePath, string imageFilePath)
         {
-            this.iD = iD;
-            this.name = name;
-            this.description = description;
-            this.scenarioID = scenarioID;
-            this.audioFilePath = audioFilePath;
-            this.imageFilePath = imageFilePath;
+            this.ID = iD;
+            this.Name = name;
+            this.Description = description;
+            this.ScenarioID = scenarioID;
+            this.AudioFilePath = audioFilePath;
+            this.ImageFilePath = imageFilePath;
         }
     }
 }

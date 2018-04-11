@@ -20,11 +20,6 @@ namespace Classes
 {
     public class Scenario : IScenarioPiece
     {
-        // instance variables
-        private int iD;
-        private string name;
-        private string description;
-
         // Auto Implemented Properties Scenario
         public int ID { get; set; }
         public string Name { get; set; }
@@ -33,17 +28,17 @@ namespace Classes
         // default constructor Scenario
         public Scenario()
         {
-            this.iD = 0;
-            this.name = string.Empty;
-            this.description = string.Empty;
+            this.ID = 0;
+            this.Name = string.Empty;
+            this.Description = string.Empty;
         }
 
         // parameter constructor Scenario
         public Scenario(int iD, string name, string description)
         {
-            this.iD = iD;
-            this.name = name;
-            this.description = description;
+            this.ID = iD;
+            this.Name = name;
+            this.Description = description;
         }
     }
 }
