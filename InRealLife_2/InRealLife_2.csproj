@@ -54,27 +54,25 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="MainWindow.xaml.cs">
-      <DependentUpon>MainWindow.xaml</DependentUpon>
+    <Compile Include="Running.xaml.cs">
+      <DependentUpon>Running.xaml</DependentUpon>
     </Compile>
-    <Compile Include="ScenarioBuilderMain.xaml.cs">
-      <DependentUpon>ScenarioBuilderMain.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="ScenarioDataDataSet.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>ScenarioDataDataSet.xsd</DependentUpon>
-    </Compile>
+    <Page Include="ScenarioManagement.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="ScenarioPage.xaml.cs">
-      <DependentUpon>ScenarioPage.xaml</DependentUpon>
+    <Compile Include="ScenarioManagement.xaml.cs">
+      <DependentUpon>ScenarioManagement.xaml</DependentUpon>
+      <SubType>Code</SubType>
     </Compile>
-    <Compile Include="TitleScreen.xaml.cs">
-      <DependentUpon>TitleScreen.xaml</DependentUpon>
-    </Compile>
+    <Page Include="Running.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -98,24 +96,13 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
-    <None Include="ScenarioDataDataSet.xsc">
-      <DependentUpon>ScenarioDataDataSet.xsd</DependentUpon>
-    </None>
-    <None Include="ScenarioDataDataSet.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>ScenarioDataDataSet.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="ScenarioDataDataSet.xss">
-      <DependentUpon>ScenarioDataDataSet.xsd</DependentUpon>
-    </None>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Classes\Classes.csproj">
-      <Project>{bf73ecef-cbf1-4404-9e5e-c1e7dabfc204}</Project>
+      <Project>{BF73ECEF-CBF1-4404-9E5E-C1E7DABFC204}</Project>
       <Name>Classes</Name>
     </ProjectReference>
     <ProjectReference Include="..\DBComm\DBComm.csproj">
@@ -124,49 +111,9 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="MediaFile\flat.tire.10.jpg" />
-    <Resource Include="MediaFile\exitButton.png" />
-    <Resource Include="MediaFile\blueExitBtn.png" />
-    <Resource Include="background1.jpg" />
-    <Resource Include="autumn_rain-wallpaper-1024x768.jpg" />
-    <Resource Include="roadmap.jpg" />
-    <Resource Include="loginSign.jpg" />
-    <Resource Include="loginSignNoBack.jpg.png" />
-    <Resource Include="myLogin.png" />
-    <Resource Include="myLogInNoBack.png" />
-    <Resource Include="roadmapMercury.jpg" />
-    <Resource Include="rainSunscreen.jpg" />
-    <Resource Include="ifficultroadsoftenlead tobeautifuldestinations.jpg" />
-    <Resource Include="ifficultroadsoftenlead tobeautifuldestinations%281%29.jpg" />
-    <Resource Include="road.jpg" />
-    <Resource Include="ifficultroadsoftenlead tobeautifuldestinations%282%29.jpg" />
-    <Resource Include="blueExitBtn.png" />
-    <Resource Include="2326.gif" />
-    <Resource Include="exitMerc.jpg" />
-    <Resource Include="enterMerc.jpg" />
-    <Resource Include="greenEnter.png" />
-    <Content Include="ScenarioData.accdb">
+    <Resource Include="mediaFiles\flat.tire.10.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
+    </Resource>
   </ItemGroup>
-  <ItemGroup>
-    <Page Include="MainWindow.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="ScenarioBuilderMain.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="ScenarioPage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="TitleScreen.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-  </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
