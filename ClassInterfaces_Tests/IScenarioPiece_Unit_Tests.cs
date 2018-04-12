@@ -8,9 +8,8 @@ namespace ClassInterfaces_Tests
     [TestClass]
     public class IScenarioPiece_Unit_Tests
     {
-        /*
         [TestMethod]
-        public void IScenarioPiece_SetToScenario_IsItInstanceOfType_Scenario_Test()
+        public void IScenarioPieceInterface_SetToScenarioObject_DefaultConstructor_IsNotNull_Instance_Test()
         {
             // Arrange
             IScenarioPiece sut;
@@ -19,9 +18,34 @@ namespace ClassInterfaces_Tests
             sut = new Scenario();
 
             //Assert
-            Assert.IsInstanceOfType(sut, Scenario, "IScenarioPiece set to a Scenario is an instance of a Scenario.");
+            Assert.IsNotNull(sut, "The IScenarioPiece Set To Scenario Default Constructor is NOT null");
         }
-        */
+
+        [TestMethod]
+        public void IScenarioPieceInterface_SetToStageObject_DefaultConstructor_IsNotNull_Instance_Test()
+        {
+            // Arrange
+            IScenarioPiece sut;
+
+            // Act
+            sut = new Stage();
+
+            //Assert
+            Assert.IsNotNull(sut, "The IScenarioPiece Set To Stage Default Constructor is NOT null");
+        }
+
+        [TestMethod]
+        public void IScenarioPieceInterface_SetToAnswerObject_DefaultConstructor_IsNotNull_Instance_Test()
+        {
+            // Arrange
+            IScenarioPiece sut;
+
+            // Act
+            sut = new Answer();
+
+            //Assert
+            Assert.IsNotNull(sut, "The IScenarioPiece Set To Answer Default Constructor is NOT null");
+        }
 
         /*
         [TestMethod]
