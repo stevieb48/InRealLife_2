@@ -1,0 +1,104 @@
+﻿using System;
+using Classes;
+using ClassInterfaces;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+
+namespace ClassInterfaces_Tests
+{
+    [TestClass]
+    public class IScenarioPiece_Unit_Tests
+    {
+        /*
+        [TestMethod]
+        public void IScenarioPiece_SetToScenario_IsItInstanceOfType_Scenario_Test()
+        {
+            // Arrange
+            IScenarioPiece sut;
+
+            // Act
+            sut = new Scenario();
+
+            //Assert
+            Assert.IsInstanceOfType(sut, Scenario, "IScenarioPiece set to a Scenario is an instance of a Scenario.");
+        }
+        */
+
+        /*
+        [TestMethod]
+        public void IStagePiece_SetToStage_IsItInstanceOfType_Stage_Test()
+        {
+            // Arrange
+            IStagePiece sut;
+
+            // Act
+            sut = new Stage();
+
+            //Assert
+            Assert.IsInstanceOfType(sut, Stage, "IScenarioPiece set to a Stage is an instance of a Stage.");
+        }
+        */
+
+        /*
+        [TestMethod]
+        public void IAnswerPiece_SetToAnswer_IsItInstanceOfType_Answer_Test()
+        {
+            // Arrange
+            IAnswerPiece sut;
+
+            // Act
+            sut = new Answer();
+
+            //Assert
+            Assert.IsInstanceOfType(sut, Answer, "IScenarioPiece set to a Answer is an instance of a Answer.");
+        }
+        */
+
+        [TestMethod]
+        public void IScenarioPiece_SetToScenarioObject_AccessorMethods_Test()
+        {
+            // Arrange
+            IScenarioPiece sut;
+            Scenario scenario = new Scenario(3, "name", "description");
+
+            // Act
+            sut = scenario;
+
+            //Assert
+            Assert.AreEqual(sut.ID, scenario.ID, "IScenarioPiece public ID Accessor method is working properly.");
+            Assert.AreEqual(sut.Name, scenario.Name, "IScenarioPiece public Name Accessor method is working properly.");
+            Assert.AreEqual(sut.Description, scenario.Description, "IScenarioPiece public Description Accessor method is working properly.");
+        }
+
+        [TestMethod]
+        public void IScenarioPiece_SetToStageObject_AccessorMethods_Test()
+        {
+            // Arrange
+            IScenarioPiece sut;
+            Stage stage = new Stage(3, "name", "description", 1, "C:\\Users\\parent\\audio\\audiofile1", "C:\\Users\\parent\\image\\imagefile1");
+
+            // Act
+            sut = stage;
+
+            //Assert
+            Assert.AreEqual(sut.ID, stage.ID, "IScenarioPiece public ID Accessor method is working properly.");
+            Assert.AreEqual(sut.Name, stage.Name, "IScenarioPiece public Name Accessor method is working properly.");
+            Assert.AreEqual(sut.Description, stage.Description, "IScenarioPiece public Description Accessor method is working properly.");
+        }
+
+        [TestMethod]
+        public void IScenarioPiece_SetToAnswerObject_AccessorMethods_Test()
+        {
+            // Arrange
+            IScenarioPiece sut;
+            Answer answer = new Answer(3, "name", "description", 1, 2);
+
+            // Act
+            sut = answer;
+
+            //Assert
+            Assert.AreEqual(sut.ID, answer.ID, "IScenarioPiece public ID Accessor method is working properly.");
+            Assert.AreEqual(sut.Name, answer.Name, "IScenarioPiece public Name Accessor method is working properly.");
+            Assert.AreEqual(sut.Description, answer.Description, "IScenarioPiece public Description Accessor method is working properly.");
+        }
+    }
+}
