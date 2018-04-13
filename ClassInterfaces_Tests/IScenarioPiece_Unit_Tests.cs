@@ -47,35 +47,44 @@ namespace ClassInterfaces_Tests
             Assert.IsNotNull(sut, "The IScenarioPiece Set To Answer Default Constructor is NOT null");
         }
 
-        /*
         [TestMethod]
-        public void IStagePiece_SetToStage_IsItInstanceOfType_Stage_Test()
+        public void IScenarioPiece_SetToScenario_IsItInstanceOfType_Scenario_Test()
         {
             // Arrange
-            IStagePiece sut;
+            IScenarioPiece sut;
+
+            // Act
+            sut = new Scenario();
+
+            //Assert
+            Assert.IsInstanceOfType(sut, typeof(Scenario), "IScenarioPiece set to a Scenario is an instance of a Scenario.");
+        }
+
+        [TestMethod]
+        public void IScenarioPiece_SetToStage_IsItInstanceOfType_Stage_Test()
+        {
+            // Arrange
+            IScenarioPiece sut;
 
             // Act
             sut = new Stage();
 
             //Assert
-            Assert.IsInstanceOfType(sut, Stage, "IScenarioPiece set to a Stage is an instance of a Stage.");
+            Assert.IsInstanceOfType(sut, typeof(Stage), "IScenarioPiece set to a Stage is an instance of a Stage.");
         }
-        */
 
-        /*
         [TestMethod]
-        public void IAnswerPiece_SetToAnswer_IsItInstanceOfType_Answer_Test()
+        public void IScenarioPiece_SetToAnswer_IsItInstanceOfType_Answer_Test()
         {
             // Arrange
-            IAnswerPiece sut;
+            IScenarioPiece sut;
 
             // Act
             sut = new Answer();
 
             //Assert
-            Assert.IsInstanceOfType(sut, Answer, "IScenarioPiece set to a Answer is an instance of a Answer.");
+            Assert.IsInstanceOfType(sut, typeof(Answer), "IScenarioPiece set to a Answer is an instance of a Answer.");
         }
-        */
 
         [TestMethod]
         public void IScenarioPiece_SetToScenarioObject_AccessorMethods_Test()

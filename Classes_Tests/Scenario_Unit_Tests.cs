@@ -20,7 +20,6 @@ namespace Classes_Tests
             Assert.IsNotNull(sut, "The Scenario Default Constructor is NOT null");
         }
 
-        /*
         [TestMethod]
         public void Scenario_DefaultConstructor_IsInstanceOfType_Scenario_Test()
         {
@@ -31,9 +30,8 @@ namespace Classes_Tests
             sut = new Scenario();
 
             //Assert
-            Assert.IsInstanceOfType(sut, Scenario, "Scenario default constructor is a Scenario.");
+            Assert.IsInstanceOfType(sut, typeof(Scenario), "Scenario default constructor is a Scenario.");
         }
-        */
 
         [TestMethod]
         public void Scenario_ParameterConstructor_IsNotNull_Instance_Test()
@@ -52,7 +50,6 @@ namespace Classes_Tests
             Assert.IsNotNull(sut, "The Scenario Parameter Constructor is NOT null");
         }
 
-        /*
         [TestMethod]
         public void Scenario_ParameterConstructor_IsInstanceOfType_Scenario_Test()
         {
@@ -67,9 +64,8 @@ namespace Classes_Tests
             sut = new Scenario(iD, name, description);
 
             //Assert
-            Assert.IsInstanceOfType(sut, Scenario, "Scenario Parameter constructor is a Scenario.");
+            Assert.IsInstanceOfType(sut, typeof(Scenario), "Scenario Parameter constructor is a Scenario.");
         }
-        */
 
         [TestMethod]
         public void Scenario_DefaultConstructor_AccessorMethods_Test()
