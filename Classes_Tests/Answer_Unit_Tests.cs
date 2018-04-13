@@ -2,6 +2,16 @@
 using Classes;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
+/*
+ * This test class ...
+ *
+ * author: Group 7 (Stephen Bailey, Omar Garcia, Craig Wyse, Matthew Harris)
+ * course: SEII
+ * assignment: InRealLife (Group Project Spring 2018)
+ * date: 04/10/2018
+ * file name: Answer_Unit_Tests.cs
+ * version: 1.0
+ */
 namespace Classes_Tests
 {
     [TestClass]

@@ -27,6 +27,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClassInterfaces_Tests", "Cl
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataLayerInterfaces_Tests", "DataLayerInterfaces_Tests\DataLayerInterfaces_Tests.csproj", "{91FBFF73-43E3-4252-9CDB-776922000BCA}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LogicLayerInterfaces_Tests", "LogicLayerInterfaces_Tests\LogicLayerInterfaces_Tests.csproj", "{8C0B092D-72CF-4BA0-B672-867604ACCD8B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -81,6 +83,10 @@ Global
 		{91FBFF73-43E3-4252-9CDB-776922000BCA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{91FBFF73-43E3-4252-9CDB-776922000BCA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{91FBFF73-43E3-4252-9CDB-776922000BCA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8C0B092D-72CF-4BA0-B672-867604ACCD8B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8C0B092D-72CF-4BA0-B672-867604ACCD8B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8C0B092D-72CF-4BA0-B672-867604ACCD8B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8C0B092D-72CF-4BA0-B672-867604ACCD8B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
