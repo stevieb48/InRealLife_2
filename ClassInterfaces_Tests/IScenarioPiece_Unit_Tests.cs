@@ -3,6 +3,16 @@ using Classes;
 using ClassInterfaces;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
+/*
+ * This test class ...
+ *
+ * author: Group 7 (Stephen Bailey, Omar Garcia, Craig Wyse, Matthew Harris)
+ * course: SEII
+ * assignment: InRealLife (Group Project Spring 2018)
+ * date: 04/10/2018
+ * file name: IScenarioPiece_Unit_Tests.cs
+ * version: 1.0
+ */
 namespace ClassInterfaces_Tests
 {
     [TestClass]
