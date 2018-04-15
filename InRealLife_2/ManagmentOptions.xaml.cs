@@ -39,7 +39,8 @@ namespace InRealLife_2
             MainMenu mainMenu = new MainMenu(Piece);
 
             // switch navigation to main menu
-            this.NavigationService.Navigate(mainMenu);
+            mainMenu.Show();
+
         }
 
         //
@@ -52,7 +53,7 @@ namespace InRealLife_2
             MainMenu mainMenu = new MainMenu(Piece);
 
             // switch navigation to main menu
-            this.NavigationService.Navigate(mainMenu);
+            mainMenu.Show();
         }
 
         //
@@ -65,7 +66,7 @@ namespace InRealLife_2
             MainMenu mainMenu = new MainMenu(Piece);
 
             // switch navigation to main menu
-            this.NavigationService.Navigate(mainMenu);
+            mainMenu.Show();
         }
 
         //

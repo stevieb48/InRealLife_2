@@ -27,7 +27,7 @@ namespace InRealLife_2
         private Repository pieceRepository = new Repository();
         
         //
-        private IScenarioPiece currentPiece = new Scenario();     
+        private IScenarioPiece currentPiece = new Answer();     
 
         //
         public IScenarioPiece CurrentPiece { get; set; }
