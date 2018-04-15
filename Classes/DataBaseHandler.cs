@@ -18,7 +18,7 @@ namespace Classes
 
         public String getScenarioName(int ScenarioId)
         {
-            String query = @"SELECT ScenarioName FROM Scenario Where ScenarioId =" + ScenarioId;
+            String query = @"SELECT Name FROM Scenario Where ID =" + ScenarioId;
 
             using (conn)
             using (SqlCommand command = new SqlCommand(query, conn))
@@ -35,7 +35,7 @@ namespace Classes
 
         public String getAnswer(int AnswerId, int StageID)
         {
-            String query = "SELECT AnswerDescription FROM Answer WHERE StageID = " + StageID + " AND AnswerID = " + AnswerId;
+            String query = "SELECT Description FROM Answer WHERE StageID = " + StageID + " AND ID = " + AnswerId;
             using (conn)
             using (SqlCommand command = new SqlCommand(query, conn))
             {
@@ -51,7 +51,7 @@ namespace Classes
 
         public int getNextStageID(int AnswerId, int StageID)
         {
-            String query = "SELECT nextStageID FROM Answer WHERE StageID = " + StageID + " AND AnswerID = " + AnswerId;
+            String query = "SELECT nextStageID FROM Answer WHERE StageID = " + StageID + " AND ID = " + AnswerId;
             using (conn)
             using (SqlCommand command = new SqlCommand(query, conn))
             {
@@ -71,7 +71,7 @@ namespace Classes
 
         public int getStageID(int ScenarioID, int stage)
         {
-            String query = "SELECT StageID FROM Stage WHERE ScenarioID = " + ScenarioID + " and stage = " + stage;
+            String query = "SELECT ID FROM Stage WHERE ScenarioID = " + ScenarioID + " and ID = " + stage;
             using (conn)
             using (SqlCommand command = new SqlCommand(query, conn))
             {
@@ -91,7 +91,7 @@ namespace Classes
 
         public String getAudioFilePath(int StageID)
         {
-            String query = "SELECT AudioFilePath FROM Stage WHERE StageID = " + StageID;
+            String query = "SELECT AudioFilePath FROM Stage WHERE ID = " + StageID;
             using (conn)
             using (SqlCommand command = new SqlCommand(query, conn))
             {
@@ -111,7 +111,7 @@ namespace Classes
 
         public String getStageDescription(int StageID)
         {
-            String query = "SELECT StageDescription FROM Stage WHERE StageID = " + StageID;
+            String query = "SELECT Description FROM Stage WHERE ID = " + StageID;
             using (conn)
             using (SqlCommand command = new SqlCommand(query, conn))
             {
@@ -131,7 +131,7 @@ namespace Classes
 
         public String getImageFilePath(int StageID)
         {
-            String query = "SELECT ImageFilePath FROM Stage WHERE StageID = " + StageID;
+            String query = "SELECT ImageFilePath FROM Stage WHERE ID = " + StageID;
             using (conn)
             using (SqlCommand command = new SqlCommand(query, conn))
             {
@@ -151,7 +151,7 @@ namespace Classes
 
         public int getAnswerID(int StageID, int answerNum)
         {
-            String query = "SELECT AnswerID FROM Answer WHERE StageID = " + StageID + " AND Answer = " + answerNum;
+            String query = "SELECT ID FROM Answer WHERE StageID = " + StageID + " AND ID = " + answerNum;
             using (conn)
             using (SqlCommand command = new SqlCommand(query, conn))
             {
@@ -171,7 +171,7 @@ namespace Classes
 
         public String getAnswerDescription(int AnswerID)
         {
-            String query = "SELECT AnswerDescription FROM answer WHERE AnswerID = " + AnswerID;
+            String query = "SELECT Description FROM Answer WHERE ID = " + AnswerID;
             using (conn)
             using (SqlCommand command = new SqlCommand(query, conn))
             {
@@ -191,7 +191,7 @@ namespace Classes
 
         public int getNextStageID(int AnswerID)
         {
-            String query = "SELECT nextStageID FROM Answer WHERE AnswerID = " + AnswerID;
+            String query = "SELECT nextStageID FROM Answer WHERE ID = " + AnswerID;
             using (conn)
             using (SqlCommand command = new SqlCommand(query, conn))
             {

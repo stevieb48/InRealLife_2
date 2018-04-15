@@ -75,6 +75,9 @@
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="AnswerMainMenu.xaml.cs">
+      <DependentUpon>AnswerMainMenu.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ManagmentOptions.xaml.cs">
       <DependentUpon>ManagmentOptions.xaml</DependentUpon>
     </Compile>
@@ -85,6 +88,14 @@
       <DependentUpon>TitlePage.xaml</DependentUpon>
     </Compile>
     <Page Include="MainMenu.xaml">
+    <Compile Include="StageMainMenu.xaml.cs">
+      <DependentUpon>StageMainMenu.xaml</DependentUpon>
+    </Compile>
+    <Page Include="AnswerMainMenu.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ScenarioMainMenu.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -92,8 +103,8 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="MainMenu.xaml.cs">
-      <DependentUpon>MainMenu.xaml</DependentUpon>
+    <Compile Include="ScenarioMainMenu.xaml.cs">
+      <DependentUpon>ScenarioMainMenu.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
     <Page Include="MainWindow.xaml">
@@ -109,6 +120,10 @@
       <Generator>XamlIntelliSenseFileGenerator</Generator>
     </Page>
     <Page Include="TitlePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="StageMainMenu.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
