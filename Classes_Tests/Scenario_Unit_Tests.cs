@@ -2,6 +2,16 @@
 using Classes;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
+/*
+ * This test class ...
+ *
+ * author: Group 7 (Stephen Bailey, Omar Garcia, Craig Wyse, Matthew Harris)
+ * course: SEII
+ * assignment: InRealLife (Group Project Spring 2018)
+ * date: 04/10/2018
+ * file name: Scenario_Unit_Tests.cs
+ * version: 1.0
+ */
 namespace Classes_Tests
 {
     [TestClass]
@@ -20,7 +30,6 @@ namespace Classes_Tests
             Assert.IsNotNull(sut, "The Scenario Default Constructor is NOT null");
         }
 
-        /*
         [TestMethod]
         public void Scenario_DefaultConstructor_IsInstanceOfType_Scenario_Test()
         {
@@ -31,9 +40,8 @@ namespace Classes_Tests
             sut = new Scenario();
 
             //Assert
-            Assert.IsInstanceOfType(sut, Scenario, "Scenario default constructor is a Scenario.");
+            Assert.IsInstanceOfType(sut, typeof(Scenario), "Scenario default constructor is a Scenario.");
         }
-        */
 
         [TestMethod]
         public void Scenario_ParameterConstructor_IsNotNull_Instance_Test()
@@ -52,7 +60,6 @@ namespace Classes_Tests
             Assert.IsNotNull(sut, "The Scenario Parameter Constructor is NOT null");
         }
 
-        /*
         [TestMethod]
         public void Scenario_ParameterConstructor_IsInstanceOfType_Scenario_Test()
         {
@@ -67,9 +74,8 @@ namespace Classes_Tests
             sut = new Scenario(iD, name, description);
 
             //Assert
-            Assert.IsInstanceOfType(sut, Scenario, "Scenario Parameter constructor is a Scenario.");
+            Assert.IsInstanceOfType(sut, typeof(Scenario), "Scenario Parameter constructor is a Scenario.");
         }
-        */
 
         [TestMethod]
         public void Scenario_DefaultConstructor_AccessorMethods_Test()
