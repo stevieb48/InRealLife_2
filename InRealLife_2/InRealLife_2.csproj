@@ -81,6 +81,9 @@
     <Compile Include="Running.xaml.cs">
       <DependentUpon>Running.xaml</DependentUpon>
     </Compile>
+    <Compile Include="TitlePage.xaml.cs">
+      <DependentUpon>TitlePage.xaml</DependentUpon>
+    </Compile>
     <Page Include="MainMenu.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -104,6 +107,10 @@
     <Page Include="Running.xaml">
       <SubType>Designer</SubType>
       <Generator>XamlIntelliSenseFileGenerator</Generator>
+    </Page>
+    <Page Include="TitlePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
   <ItemGroup>
@@ -179,6 +186,9 @@
     <Resource Include="mediaFiles\exitDoorBlack.jpg" />
     <Resource Include="mediaFiles\exitDoorBrown.png" />
     <Resource Include="mediaFiles\exitMerc.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="mediaFiles\fork-in-road-636x310.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

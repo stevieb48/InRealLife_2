@@ -4,6 +4,7 @@ using System.Windows.Controls;
 using LogicLayer;
 using ClassInterfaces;
 using Classes;
+using System;
 
 /*
  * This GUI is the main menu for each scenario piece which allows the user to create a new piece,
@@ -21,7 +22,7 @@ namespace InRealLife_2
     /// <summary>
     /// Interaction logic for MainMenu.xaml
     /// </summary>
-    public partial class MainMenu : Window
+    public partial class MainMenu : Page
     {
         // create new repository
         private Repository pieceRepository = new Repository();
@@ -80,7 +81,7 @@ namespace InRealLife_2
         // exit builder button click event
         private void BtnExitMenu_Click(object sender, RoutedEventArgs e)
         {
-            System.Windows.Application.Current.Shutdown();
+            Application.Current.Shutdown();
         }
 
         // create new piece button click event
@@ -127,11 +128,12 @@ namespace InRealLife_2
         // perform selected piece button click event
         private void BtnPerformSelected_Click(object sender, RoutedEventArgs e)
         {
-            //Running run = new Running(1);
+            Running run = new Running(1);
+            this.NavigationService.Navigate(run);
             //run.Show();
 
             // hide main menu form form
-            this.Hide();
+            //this.Hide();
         }
 
         // method for form behaviors if list is empty
