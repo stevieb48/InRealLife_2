@@ -2,6 +2,16 @@
 using Classes;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
+/*
+ * This test class ...
+ *
+ * author: Group 7 (Stephen Bailey, Omar Garcia, Craig Wyse, Matthew Harris)
+ * course: SEII
+ * assignment: InRealLife (Group Project Spring 2018)
+ * date: 04/10/2018
+ * file name: Answer_Unit_Tests.cs
+ * version: 1.0
+ */
 namespace Classes_Tests
 {
     [TestClass]
@@ -20,7 +30,6 @@ namespace Classes_Tests
             Assert.IsNotNull(sut, "The Answer Default Constructor is NOT null");
         }
 
-        /*
         [TestMethod]
         public void Answer_DefaultConstructor_IsInstanceOfType_Answer_Test()
         {
@@ -31,9 +40,8 @@ namespace Classes_Tests
             sut = new Answer();
 
             //Assert
-            Assert.IsInstanceOfType(sut, Answer, "Answer default constructor is a valid Answer.");
+            Assert.IsInstanceOfType(sut, typeof(Answer), "Answer default constructor is a valid Answer.");
         }
-        */
 
         [TestMethod]
         public void Answer_ParameterConstructor_IsNotNull_Instance_Test()
@@ -54,7 +62,6 @@ namespace Classes_Tests
             Assert.IsNotNull(sut, "The Answer Parameter Constructor is NOT null");
         }
 
-        /*
         [TestMethod]
         public void Answer_ParameterConstructor_IsInstanceOfType_Answer_Test()
         {
@@ -71,9 +78,8 @@ namespace Classes_Tests
             sut = new Answer(iD, name, description, stageID, nextStageID);
 
             //Assert
-            Assert.IsInstanceOfType(sut, Answer, "Answer Parameter constructor is a Answer.");
+            Assert.IsInstanceOfType(sut, typeof(Answer), "Answer Parameter constructor is a Answer.");
         }
-        */
 
         [TestMethod]
         public void Answer_DefaultConstructor_AccessorMethods_Test()

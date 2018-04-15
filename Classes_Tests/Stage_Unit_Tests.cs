@@ -2,6 +2,16 @@
 using Classes;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
+/*
+ * This test class ...
+ *
+ * author: Group 7 (Stephen Bailey, Omar Garcia, Craig Wyse, Matthew Harris)
+ * course: SEII
+ * assignment: InRealLife (Group Project Spring 2018)
+ * date: 04/10/2018
+ * file name: Stage_Unit_Tests.cs
+ * version: 1.0
+ */
 namespace Classes_Tests
 {
     [TestClass]
@@ -20,7 +30,6 @@ namespace Classes_Tests
             Assert.IsNotNull(sut, "The Stage Default Constructor is NOT null");
         }
 
-        /*
         [TestMethod]
         public void Stage_DefaultConstructor_IsInstanceOfType_Stage_Test()
         {
@@ -31,9 +40,8 @@ namespace Classes_Tests
             sut = new Stage();
 
             //Assert
-            Assert.IsInstanceOfType(sut, Stage, "Stage default constructor is a valid Stage.");
+            Assert.IsInstanceOfType(sut, typeof(Stage), "Stage default constructor is a valid Stage.");
         }
-        */
 
         [TestMethod]
         public void Stage_ParameterConstructor_IsNotNull_Instance_Test()
@@ -55,7 +63,6 @@ namespace Classes_Tests
             Assert.IsNotNull(sut, "The Stage Parameter Constructor is NOT null");
         }
 
-        /*
         [TestMethod]
         public void Stage_ParameterConstructor_IsInstanceOfType_Stage_Test()
         {
@@ -73,9 +80,8 @@ namespace Classes_Tests
             sut = new Stage(iD, name, description, scenarioID, audioFilePath, imageFilePath);
 
             //Assert
-            Assert.IsInstanceOfType(sut, Stage, "Stage Parameter constructor is a Stage.");
+            Assert.IsInstanceOfType(sut, typeof(Stage), "Stage Parameter constructor is a Stage.");
         }
-        */
 
         [TestMethod]
         public void Stage_DefaultConstructor_AccessorMethods_Test()

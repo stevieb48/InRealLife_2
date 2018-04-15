@@ -1,7 +1,7 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace ClassInterfaces_Tests
+namespace DataLayerInterfaces_Tests
 {
     [TestClass]
     public class UnitTest1
