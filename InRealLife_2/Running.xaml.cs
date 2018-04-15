@@ -34,8 +34,6 @@ namespace InRealLife_2
     /// </summary>
     public partial class Running : Window
     {
-        private IScenarioPiece piece = new Scenario();
-
         DataHandler data = new DataHandler();
         public Running(int Scenario)
         {
@@ -66,7 +64,7 @@ namespace InRealLife_2
             {
                 if (data.answer2.NextStageID == 0)
                 {
-                    MainMenu main = new MainMenu(piece);
+                    ScenarioMainMenu main = new ScenarioMainMenu();
                     main.Show();
                     Close();
                 }
@@ -83,7 +81,7 @@ namespace InRealLife_2
             {
                 if (data.answer2.NextStageID == 0)
                 {
-                    MainMenu main = new MainMenu(piece);
+                    ScenarioMainMenu main = new ScenarioMainMenu();
                     main.Show();
                     Close();
                 }
@@ -112,7 +110,7 @@ namespace InRealLife_2
 
         private void Button_Click_2(object sender, RoutedEventArgs e)
         {
-            MainMenu main = new MainMenu(piece);
+            ScenarioMainMenu main = new ScenarioMainMenu();
             main.Show();
             Close();
         }

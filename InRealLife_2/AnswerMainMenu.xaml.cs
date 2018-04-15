@@ -21,24 +21,18 @@ namespace InRealLife_2
     /// <summary>
     /// Interaction logic for MainMenu.xaml
     /// </summary>
-    public partial class MainMenu : Window
+    public partial class AnswerMainMenu : Window
     {
         // create new repository
         private Repository pieceRepository = new Repository();
-        
-        //
-        private IScenarioPiece currentPiece = new Answer();     
 
         //
-        public IScenarioPiece CurrentPiece { get; set; }
-        public Repository NewRepository { get; set; }
+        private IScenarioPiece currentPiece = new Answer();
 
-
-        public MainMenu(IScenarioPiece piece)
+        public AnswerMainMenu()
         {
             InitializeComponent();
             InitializeForm();
-            //this.currentPiece = new Answer(); 
         }
 
         // initialize the form
@@ -61,7 +55,7 @@ namespace InRealLife_2
             {
                 // enable proper buttons
                 ScenarioListHasValues();
-                    
+
                 // then add data to listbox
                 AddDataToListBox(resultingDT);
             }
@@ -127,8 +121,8 @@ namespace InRealLife_2
         // perform selected piece button click event
         private void BtnPerformSelected_Click(object sender, RoutedEventArgs e)
         {
-            //Running run = new Running(1);
-            //run.Show();
+            Running run = new Running(1);
+            run.Show();
 
             // hide main menu form form
             this.Hide();
@@ -152,36 +146,12 @@ namespace InRealLife_2
         // method to add piece data to list box
         private void AddDataToListBox(DataTable results)
         {
-            //
-            if (currentPiece.GetType().ToString() == "Classes.Scenario")
+            // loop to put pieces from data table into listbox items
+            for (int i = 0; i < results.Rows.Count; i++)
             {
-                // loop to put pieces from data table into listbox items
-                for (int i = 0; i < results.Rows.Count; i++)
-                {
-                    // add data table results to list view
-                    lstvwScenarioPieces.Items.Add(new Scenario { ID = int.Parse(results.Rows[i][0].ToString()), Name = results.Rows[i][1].ToString() });
-                }
+                // add data table results to list view
+                lstvwScenarioPieces.Items.Add(new Answer { ID = int.Parse(results.Rows[i][0].ToString()), Name = results.Rows[i][1].ToString() });
             }
-            else if (currentPiece.GetType().ToString() == "Classes.Stage")
-            {
-                // loop to put pieces from data table into listbox items
-                for (int i = 0; i < results.Rows.Count; i++)
-                {
-                    // add data table results to list view
-                    lstvwScenarioPieces.Items.Add(new Stage { ID = int.Parse(results.Rows[i][0].ToString()), Name = results.Rows[i][1].ToString() });
-                }
-            }
-            else if (currentPiece.GetType().ToString() == "Classes.Answer")
-            {
-                // loop to put pieces from data table into listbox items
-                for (int i = 0; i < results.Rows.Count; i++)
-                {
-                    // add data table results to list view
-                    lstvwScenarioPieces.Items.Add(new Answer { ID = int.Parse(results.Rows[i][0].ToString()), Name = results.Rows[i][1].ToString() });
-                }
-            }
-
-
         }
 
         // has listbox selection changed

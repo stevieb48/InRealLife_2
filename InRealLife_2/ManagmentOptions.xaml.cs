@@ -18,11 +18,8 @@ namespace InRealLife_2
     /// <summary>
     /// Interaction logic for MainMenu.xaml
     /// </summary>
-    public partial class ManagmentOptions : Window
+    public partial class ManagmentOptions : Page
     {
-
-        public IScenarioPiece Piece { get; set; }
-
         //
         public ManagmentOptions()
         {
@@ -32,41 +29,31 @@ namespace InRealLife_2
         //
         private void ManageScenariosBtn_Click(object sender, RoutedEventArgs e)
         {
-            // make piece of type scenario
-            Piece = new Scenario();
-
-            // pass in the new piece to the main menu
-            MainMenu mainMenu = new MainMenu(Piece);
+            // call appropriate menu
+            ScenarioMainMenu scenarioMainMenu = new ScenarioMainMenu();
 
             // switch navigation to main menu
-            mainMenu.Show();
-
+            scenarioMainMenu.Show();
         }
 
         //
         private void ManageStagesBtn_Click(object sender, RoutedEventArgs e)
         {
-            // make piece of type stage
-            Piece = new Stage();
-
-            // pass in the new piece to the main menu
-            MainMenu mainMenu = new MainMenu(Piece);
+            // call appropriate menu
+            StageMainMenu StageMainMenu = new StageMainMenu();
 
             // switch navigation to main menu
-            mainMenu.Show();
+            StageMainMenu.Show();
         }
 
         //
         private void ManageAnswersBtn_Click(object sender, RoutedEventArgs e)
         {
-            // make piece of type answer
-            Piece = new Answer();
-
-            // pass in the new piece to the main menu
-            MainMenu mainMenu = new MainMenu(Piece);
+            // call appropriate menu
+            AnswerMainMenu answerMainMenu = new AnswerMainMenu();
 
             // switch navigation to main menu
-            mainMenu.Show();
+            answerMainMenu.Show();
         }
 
         //
