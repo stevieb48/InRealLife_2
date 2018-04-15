@@ -16,13 +16,26 @@ using System.Windows.Shapes;
 namespace InRealLife_2
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for TitlePage.xaml
     /// </summary>
-    public partial class MainWindow : NavigationWindow
+    public partial class TitlePage : Page
     {
-        public MainWindow()
+        public TitlePage()
         {
             InitializeComponent();
+        }
+
+
+        private void enterButton_Click(object sender, RoutedEventArgs e)
+        {
+            this.NavigationService.Navigate(new Uri("MainMenu.xaml", UriKind.Relative));
+        }
+
+      
+
+        private void exitButton_Click(object sender, RoutedEventArgs e)
+        {
+            Application.Current.Shutdown();
         }
     }
 }
