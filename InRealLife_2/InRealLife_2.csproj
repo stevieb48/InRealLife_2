@@ -72,6 +72,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="CreateNewAnswer.xaml.cs">
+      <DependentUpon>CreateNewAnswer.xaml</DependentUpon>
+    </Compile>
     <Compile Include="CreateStage.xaml.cs">
       <DependentUpon>CreateStage.xaml</DependentUpon>
     </Compile>
@@ -94,6 +97,10 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="CreateNewAnswer.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="CreateStage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
