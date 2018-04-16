@@ -26,14 +26,9 @@ namespace InRealLife_2
     {
         // create new repository
         private Repository pieceRepository = new Repository();
-        
-        //
-        private IScenarioPiece currentPiece = new Scenario();     
 
         //
-        public IScenarioPiece CurrentPiece { get; set; }
-        public Repository NewRepository { get; set; }
-
+        private IScenarioPiece currentPiece = new Scenario();
 
         public MainMenu()
         {
@@ -62,7 +57,7 @@ namespace InRealLife_2
             {
                 // enable proper buttons
                 ScenarioListHasValues();
-                    
+
                 // then add data to listbox
                 AddDataToListBox(resultingDT);
             }
@@ -154,36 +149,12 @@ namespace InRealLife_2
         // method to add piece data to list box
         private void AddDataToListBox(DataTable results)
         {
-            //
-            if (currentPiece.GetType().ToString() == "Classes.Scenario")
+            // loop to put pieces from data table into listbox items
+            for (int i = 0; i < results.Rows.Count; i++)
             {
-                // loop to put pieces from data table into listbox items
-                for (int i = 0; i < results.Rows.Count; i++)
-                {
-                    // add data table results to list view
-                    lstvwScenarioPieces.Items.Add(new Scenario { ID = int.Parse(results.Rows[i][0].ToString()), Name = results.Rows[i][1].ToString() });
-                }
+                // add data table results to list view
+                lstvwScenarioPieces.Items.Add(new Scenario { ID = int.Parse(results.Rows[i][0].ToString()), Name = results.Rows[i][1].ToString() });
             }
-            else if (currentPiece.GetType().ToString() == "Classes.Stage")
-            {
-                // loop to put pieces from data table into listbox items
-                for (int i = 0; i < results.Rows.Count; i++)
-                {
-                    // add data table results to list view
-                    lstvwScenarioPieces.Items.Add(new Stage { ID = int.Parse(results.Rows[i][0].ToString()), Name = results.Rows[i][1].ToString() });
-                }
-            }
-            else if (currentPiece.GetType().ToString() == "Classes.Answer")
-            {
-                // loop to put pieces from data table into listbox items
-                for (int i = 0; i < results.Rows.Count; i++)
-                {
-                    // add data table results to list view
-                    lstvwScenarioPieces.Items.Add(new Answer { ID = int.Parse(results.Rows[i][0].ToString()), Name = results.Rows[i][1].ToString() });
-                }
-            }
-
-
         }
 
         // has listbox selection changed

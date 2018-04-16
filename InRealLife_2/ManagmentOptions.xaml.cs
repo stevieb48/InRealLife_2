@@ -21,9 +21,6 @@ namespace InRealLife_2
     public partial class ManagmentOptions : Page
     {
         //
-        IScenarioPiece piece;
-
-        //
         public ManagmentOptions()
         {
             InitializeComponent();
@@ -32,40 +29,31 @@ namespace InRealLife_2
         //
         private void ManageScenariosBtn_Click(object sender, RoutedEventArgs e)
         {
-            // make piece of type scenario
-            piece = new Scenario();
-
-            // pass in the new piece to the main menu
-            MainMenu mainMenu = new MainMenu();
+            // call appropriate menu
+            //ScenarioMainMenu scenarioMainMenu = new ScenarioMainMenu();
 
             // switch navigation to main menu
-            this.NavigationService.Navigate(mainMenu);
+            //scenarioMainMenu.Show();
         }
 
         //
         private void ManageStagesBtn_Click(object sender, RoutedEventArgs e)
         {
-            // make piece of type stage
-            piece = new Stage();
-
-            // pass in the new piece to the main menu
-            MainMenu mainMenu = new MainMenu();
+            // call appropriate menu
+            //StageMainMenu StageMainMenu = new StageMainMenu();
 
             // switch navigation to main menu
-            this.NavigationService.Navigate(mainMenu);
+            //StageMainMenu.Show();
         }
 
         //
         private void ManageAnswersBtn_Click(object sender, RoutedEventArgs e)
         {
-            // make piece of type answer
-            piece = new Answer();
-
-            // pass in the new piece to the main menu
-            MainMenu mainMenu = new MainMenu();
+            // call appropriate menu
+            //AnswerMainMenu answerMainMenu = new AnswerMainMenu();
 
             // switch navigation to main menu
-            this.NavigationService.Navigate(mainMenu);
+            //answerMainMenu.Show();
         }
 
         //

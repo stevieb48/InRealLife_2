@@ -171,7 +171,7 @@ namespace Classes
 
         public String getAnswerDescription(int AnswerID)
         {
-            String query = "SELECT Description FROM answer WHERE ID = " + AnswerID;
+            String query = "SELECT Description FROM Answer WHERE ID = " + AnswerID;
             using (conn)
             using (SqlCommand command = new SqlCommand(query, conn))
             {

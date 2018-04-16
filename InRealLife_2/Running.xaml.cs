@@ -34,8 +34,6 @@ namespace InRealLife_2
     /// </summary>
     public partial class Running : Page
     {
-        private IScenarioPiece piece = new Scenario();
-
         DataHandler data = new DataHandler();
         public Running(int Scenario)
         {
