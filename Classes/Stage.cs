@@ -18,7 +18,7 @@ using System.Threading.Tasks;
  */
 namespace Classes
 {
-    public class Stage : ClassInterfaces.IScenarioPiece
+    public class Stage : IScenarioPiece
     {
         // Auto Implemented Properties Stage
         public int ID { get; set; }
