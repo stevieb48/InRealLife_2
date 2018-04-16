@@ -31,20 +31,17 @@
         </Style>
     </Page.Resources>
 
-    <Grid>
+    <Grid >
         <!--Row and Column -->
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*" />
             <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="*"/>
+
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
             <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
+
         </Grid.RowDefinitions>
 
         <!--Page Back Ground Image-->
@@ -53,8 +50,8 @@
         </Grid.Background>
 
         <!--Buttons-->
-        <Button x:Name="Button1" Content="Choose" Margin="4,30,81,58"  Click="Button_Click" Grid.Column="1" Grid.Row="3" MinHeight="25" MinWidth="75"/>
-        <Button x:Name="Button2" Content="Choose" Margin="91,30,154,58"  Click="Button_Click_1" TextOptions.TextFormattingMode="Display" MinHeight="25" MinWidth="75" Grid.ColumnSpan="2" Grid.Column="2" Grid.Row="3"/>
+        <Button x:Name="Button1" Content="Choose" Margin="188,177,137,24"  Click="Button_Click" Grid.Row="1" MinHeight="25" MinWidth="75" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        <Button x:Name="Button2" Content="Choose" Margin="137,177,188,24"  Click="Button_Click_1" TextOptions.TextFormattingMode="Display" MinHeight="25" MinWidth="75" Grid.Column="1" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center"/>
         <Button x:Name="ExitButton" Content="" HorizontalAlignment="Left" Margin="10,13,0,0" VerticalAlignment="Top" Width="90" Click="Button_Click_2" Height="80" BorderBrush="{x:Null}" Style="{StaticResource MyButton}" >
             <Button.Background>
                 <ImageBrush ImageSource="mediaFiles/exitDoorBrown.png"/>
@@ -62,13 +59,13 @@
         </Button>
 
         <!--Text Blocks-->
-        <TextBlock x:Name="ScenarioName" Margin="101,36,40,45" TextWrapping="Wrap" Text="Scenario Title" FontSize="27" Grid.Column="1" Grid.ColumnSpan="2"/>
-        <TextBlock x:Name="Text1" HorizontalAlignment="Left" Margin="4,87,0,0" TextWrapping="Wrap" Text="Answer 1" Background="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}" Grid.Column="1" Grid.Row="2" MinHeight="25" MinWidth="75"/>
-        <TextBlock x:Name="StageDescription" Margin="4,20,125,45" TextWrapping="Wrap" Text="Scenario description goes here" Background="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}" Grid.ColumnSpan="3" Grid.Column="1" Grid.Row="2"/>
-        <TextBlock x:Name="Text2" Margin="91,87,0,1" TextWrapping="Wrap" Text="Answer 2" Background="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}" Grid.Column="2" Grid.Row="2" MinHeight="25" MinWidth="75" HorizontalAlignment="Left" Height="25" Grid.ColumnSpan="2"/>
+        <TextBlock x:Name="ScenarioName" Margin="319,13,321,176" TextWrapping="Wrap" Text="Scenario Title" FontSize="27" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.ColumnSpan="2"/>
+        <TextBlock x:Name="Text1" HorizontalAlignment="Center" Margin="188,131,138,69" TextWrapping="Wrap" Text="Answer 1" Background="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}" Grid.Row="1" MinHeight="25" MinWidth="75" VerticalAlignment="Center"/>
+        <TextBlock x:Name="StageDescription" Margin="188,29,188,131" TextWrapping="Wrap" Background="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}" Grid.ColumnSpan="2" Grid.Row="1" MinHeight="65" MinWidth="425" VerticalAlignment="Center" HorizontalAlignment="Center" Padding="0,5,0,0"/>
+        <TextBlock x:Name="Text2" Margin="138,131,188,69" TextWrapping="Wrap" Text="Answer 2" Background="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}" Grid.Column="1" Grid.Row="1" MinHeight="25" MinWidth="75" HorizontalAlignment="Center" Height="25"/>
 
         <!--Image Views-->
-        <Image x:Name="ImageBlock" Margin="0,3,60,10" Source="mediaFiles/flat.tire.10.jpg" Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="2"/>
+        <Image x:Name="ImageBlock" Margin="319,78,301,201" Source="mediaFiles/flat.tire.10.jpg" Grid.ColumnSpan="2" MinHeight="150" MinWidth="150" VerticalAlignment="Center" HorizontalAlignment="Center" Stretch="Fill" StretchDirection="DownOnly" Grid.RowSpan="2"/>
 
     </Grid>
 </Page>

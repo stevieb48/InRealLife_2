@@ -4,6 +4,7 @@ using System.Windows.Controls;
 using LogicLayer;
 using ClassInterfaces;
 using Classes;
+using System;
 
 /*
  * This GUI is the main menu for each scenario piece which allows the user to create a new piece,
@@ -21,18 +22,19 @@ namespace InRealLife_2
     /// <summary>
     /// Interaction logic for MainMenu.xaml
     /// </summary>
-    public partial class AnswerMainMenu : Window
+    public partial class MainMenu : Page
     {
         // create new repository
         private Repository pieceRepository = new Repository();
 
         //
-        private IScenarioPiece currentPiece = new Answer();
+        private IScenarioPiece currentPiece = new Scenario();
 
-        public AnswerMainMenu()
+        public MainMenu()
         {
             InitializeComponent();
             InitializeForm();
+            //this.currentPiece = new Answer(); 
         }
 
         // initialize the form
@@ -74,7 +76,7 @@ namespace InRealLife_2
         // exit builder button click event
         private void BtnExitMenu_Click(object sender, RoutedEventArgs e)
         {
-            System.Windows.Application.Current.Shutdown();
+            Application.Current.Shutdown();
         }
 
         // create new piece button click event
@@ -122,10 +124,11 @@ namespace InRealLife_2
         private void BtnPerformSelected_Click(object sender, RoutedEventArgs e)
         {
             Running run = new Running(1);
-            run.Show();
+            this.NavigationService.Navigate(run);
+            //run.Show();
 
             // hide main menu form form
-            this.Hide();
+            //this.Hide();
         }
 
         // method for form behaviors if list is empty
@@ -150,7 +153,7 @@ namespace InRealLife_2
             for (int i = 0; i < results.Rows.Count; i++)
             {
                 // add data table results to list view
-                lstvwScenarioPieces.Items.Add(new Answer { ID = int.Parse(results.Rows[i][0].ToString()), Name = results.Rows[i][1].ToString() });
+                lstvwScenarioPieces.Items.Add(new Scenario { ID = int.Parse(results.Rows[i][0].ToString()), Name = results.Rows[i][1].ToString() });
             }
         }
 
