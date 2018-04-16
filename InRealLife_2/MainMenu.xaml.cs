@@ -45,7 +45,7 @@ namespace InRealLife_2
 
             // enable create button
             // ***** change btnCreateNew, and btnEditExisting(below) control back to true when edit piece is incorporated ***********
-            btnCreateNew.IsEnabled = false;
+           
             btnDeleteSelected.IsEnabled = false;
             btnPerformSelected.IsEnabled = false;
 
@@ -87,6 +87,8 @@ namespace InRealLife_2
 
             // load form to edit piece
             // .show();
+            this.NavigationService.Navigate(new Uri("CreateStage.xaml", UriKind.Relative));
+
         }
 
         // delete selected button click event
