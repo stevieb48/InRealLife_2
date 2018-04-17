@@ -15,7 +15,8 @@ namespace LogicLayerInterfaces
 {
     public interface IRepository
     {
-        DataTable GetAllPiecesByType(IScenarioPiece piece);
+        IScenarioPiece[] GetAllPiecesByType(IScenarioPiece piece);
+        IScenarioPiece GetPieceByID(IScenarioPiece piece);
         int DeleteExistingPiece(IScenarioPiece piece);
         int UpdateExisingPiece(IScenarioPiece piece);
         int InsertNewPiece(IScenarioPiece piece);

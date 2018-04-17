@@ -52,6 +52,10 @@
       <Project>{35767B83-2141-4BAD-A1CB-1CAF2EEB6DCA}</Project>
       <Name>ClassInterfaces</Name>
     </ProjectReference>
+    <ProjectReference Include="..\IRLInterfaces\LogicLayerInterfaces.csproj">
+      <Project>{B22962DF-6DDE-45F6-A80A-F317A35ACCA0}</Project>
+      <Name>LogicLayerInterfaces</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

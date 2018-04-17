@@ -20,6 +20,9 @@ namespace Classes
 {
     public class Scenario : IScenarioPiece
     {
+        //
+        public const string PIECE_TYPE = "Scenario";
+        
         // Auto Implemented Properties Scenario
         public int ID { get; set; }
         public string Name { get; set; }
@@ -29,6 +32,13 @@ namespace Classes
         public Scenario()
         {
             this.ID = 0;
+            this.Name = string.Empty;
+            this.Description = string.Empty;
+        }
+
+        public Scenario(int ID)
+        {
+            this.ID = ID;
             this.Name = string.Empty;
             this.Description = string.Empty;
         }

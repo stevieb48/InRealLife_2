@@ -8,6 +8,9 @@ namespace Classes
 {
     public class DataHandler
     {
+        // create new repository
+        //private Repository pieceRepository = new Repository();
+
         public Scenario scenario = new Scenario();
         public Stage stage = new Stage();
         public Answer answer1 = new Answer();
@@ -17,7 +20,7 @@ namespace Classes
         {
             DataBaseHandler Dbase = new DataBaseHandler();
             scenario.ID = scenarioNum;
-            scenario.Name = Dbase.getScenarioName(scenario.ID);
+            //scenario = pieceRepository.GetPieceByID(scenarioNum);
 
             stage.ScenarioID = scenario.ID;
             stage.ID = Dbase.getStageID(stage.ScenarioID, 1);
