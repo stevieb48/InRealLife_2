@@ -33,6 +33,13 @@ namespace Classes
             this.Description = string.Empty;
         }
 
+        public Scenario(int ID)
+        {
+            this.ID = ID;
+            this.Name = string.Empty;
+            this.Description = string.Empty;
+        }
+
         // parameter constructor Scenario
         public Scenario(int iD, string name, string description)
         {

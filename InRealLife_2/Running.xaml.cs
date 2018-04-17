@@ -16,6 +16,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using Classes;
 using ClassInterfaces;
+using LogicLayer;
 
 /*
  * This GUI ...
@@ -34,29 +35,46 @@ namespace InRealLife_2
     /// </summary>
     public partial class Running : Page
     {
+        // create new repository
+        private Repository pieceRepository = new Repository();
+
+        //
+        private IScenarioPiece currentScenario;
+        private IScenarioPiece currentStage;
+        private IScenarioPiece currentAnswer;
+        private int nextStage = 0;
+        
+
+
+
         DataHandler data = new DataHandler();
+
         public Running(int Scenario)
-        {
-           
+        {           
             InitializeComponent();
             Start(Scenario);
             ImageBlock.Source = new BitmapImage(new Uri(Directory.GetCurrentDirectory() + "\\MediaFiles\\flat.tire.10.jpg", UriKind.Absolute));
         }
 
-
-
         public void Start(int ScenarioId)
         {
+            string[] relationsList = pieceRepository.GetRelationIDsByScenarioID(ScenarioId);
+
+            // loop through array and make objects
+
+            currentScenario = new Scenario(ScenarioId);
+            currentStage = new Stage();
+            currentAnswer = new Answer();
+
+            currentScenario = pieceRepository.GetPieceByID(currentScenario);
+
             data.Intetialize(ScenarioId);
             ScenarioName.Text = data.scenario.Name;
 
             Text1.Text = data.answer1.Description;
             Text2.Text = data.answer2.Description;
             StageDescription.Text = data.stage.Description;
-
         }
-
-
 
         public void Update(int AnswerNumber)
         {
@@ -96,8 +114,6 @@ namespace InRealLife_2
                 }
             }
         }
-
-
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {

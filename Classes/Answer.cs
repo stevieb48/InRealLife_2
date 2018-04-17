@@ -24,8 +24,6 @@ namespace Classes
         public int ID { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
-        public int StageID { get; set; }
-        public int NextStageID { get; set; }
 
         // default constructor Answer
         public Answer()
@@ -33,8 +31,13 @@ namespace Classes
             this.ID = 0;
             this.Name = string.Empty;
             this.Description = string.Empty;
-            this.StageID = 0;
-            this.NextStageID = 0;
+        }
+
+        public Answer(int ID)
+        {
+            this.ID = ID;
+            this.Name = string.Empty;
+            this.Description = string.Empty;
         }
 
         // parameter constructor Answer
@@ -43,8 +46,6 @@ namespace Classes
             this.ID = iD;
             this.Name = name;
             this.Description = description;
-            this.StageID = stageID;
-            this.NextStageID = nextStageID;
         }
     }
 }

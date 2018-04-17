@@ -24,9 +24,15 @@ namespace Classes
         public int ID { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
+        public bool Start { get; set; }
         public int ScenarioID { get; set; }
         public string AudioFilePath { get; set; }
         public string ImageFilePath { get; set; }
+        public int Answer1ID { get; set; }
+        public int Ans1NextStagID { get; set; }
+        public int Answer2ID { get; set; }
+        public int Ans2NextStagID { get; set; }
+
 
         // default constructor Stage
         public Stage()
@@ -34,10 +40,30 @@ namespace Classes
             this.ID = 0;
             this.Name = string.Empty;
             this.Description = string.Empty;
+            //
             this.ScenarioID = 0;
             this.AudioFilePath = string.Empty;
             this.ImageFilePath = string.Empty;
+            //
+            //
+            //
+            //
         }
+        public Stage(int ID)
+        {
+            this.ID = ID;
+            this.Name = string.Empty;
+            this.Description = string.Empty;
+            //
+            this.ScenarioID = 0;
+            this.AudioFilePath = string.Empty;
+            this.ImageFilePath = string.Empty;
+            //
+            //
+            //
+            //
+        }
+
 
         // parameter constructor Stage
         public Stage(int iD, string name, string description, int scenarioID, string audioFilePath, string imageFilePath)
@@ -45,9 +71,14 @@ namespace Classes
             this.ID = iD;
             this.Name = name;
             this.Description = description;
+            //
             this.ScenarioID = scenarioID;
             this.AudioFilePath = audioFilePath;
             this.ImageFilePath = imageFilePath;
+            //
+            //
+            //
+            //
         }
     }
 }
