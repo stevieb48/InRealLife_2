@@ -19,10 +19,7 @@ using System.Threading.Tasks;
 namespace Classes
 {
     public class Scenario : IScenarioPiece
-    {
-        //
-        public const string PIECE_TYPE = "Scenario";
-        
+    {        
         // Auto Implemented Properties Scenario
         public int ID { get; set; }
         public string Name { get; set; }

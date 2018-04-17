@@ -20,9 +20,6 @@ namespace Classes
 {
     public class Answer : IScenarioPiece
     {
-        //
-        public const string PIECE_TYPE = "Answer";
-
         // Auto Implemented Properties Answer
         public int ID { get; set; }
         public string Name { get; set; }
