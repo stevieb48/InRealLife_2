@@ -41,9 +41,9 @@ namespace InRealLife_2
         //
         private IScenarioPiece currentScenario;
         private IScenarioPiece currentStage;
-        private IScenarioPiece currentAnswer;
-        private int nextStage = 0;
-        
+        private IScenarioPiece currentAnswer1;
+        private IScenarioPiece currentAnswer2;
+
 
 
 

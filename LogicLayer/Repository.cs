@@ -115,7 +115,7 @@ namespace LogicLayer
                 // loop to put pieces from data table put into array
                 for (int i = 0; i < dataTable.Rows.Count; i++)
                 {
-                    Stage tempStage = new Stage(int.Parse(dataTable.Rows[i][0].ToString()), dataTable.Rows[i][1].ToString(), dataTable.Rows[i][2].ToString(), int.Parse(dataTable.Rows[i][3].ToString()), dataTable.Rows[i][4].ToString(), dataTable.Rows[i][5].ToString());
+                    Stage tempStage = new Stage(int.Parse(dataTable.Rows[i][0].ToString()), dataTable.Rows[i][1].ToString(), dataTable.Rows[i][2].ToString(), int.Parse(dataTable.Rows[i][3].ToString()), dataTable.Rows[i][4].ToString(), dataTable.Rows[i][5].ToString(), int.Parse(dataTable.Rows[i][0].ToString()), int.Parse(dataTable.Rows[i][0].ToString()), int.Parse(dataTable.Rows[i][0].ToString()), int.Parse(dataTable.Rows[i][0].ToString()));
 
                     pieceList[i] = tempStage;
                 }
@@ -131,7 +131,7 @@ namespace LogicLayer
                 // loop to put pieces from data table put into array
                 for (int i = 0; i < dataTable.Rows.Count; i++)
                 {
-                    Answer tempAnswer = new Answer(int.Parse(dataTable.Rows[i][0].ToString()), dataTable.Rows[i][1].ToString(), dataTable.Rows[i][2].ToString(), int.Parse(dataTable.Rows[i][3].ToString()), int.Parse(dataTable.Rows[i][4].ToString()));
+                    Answer tempAnswer = new Answer(int.Parse(dataTable.Rows[i][0].ToString()), dataTable.Rows[i][1].ToString(), dataTable.Rows[i][2].ToString());
 
                     pieceList[i] = tempAnswer;
                 }
@@ -200,36 +200,6 @@ namespace LogicLayer
 
             // return type of piece
             return pieceType;
-        }
-
-        public string[] GetRelationIDsByScenarioID(int ScenID)
-        {
-            string[] results;
-
-            string query = "SELECT StagRelID, AnsRelID, NextStagRelID FROM PieceRelations WHERE ScenRelID = " + ScenID;
-
-            DataTable dataTable = this.newDBComm.Select(query);
-
-            results = PutDataTableIntoPieceList(dataTable);
-
-            return results;
-        }
-
-        private string[] PutDataTableIntoPieceList(DataTable dataTable)
-        {
-            string[] tempList = new string[dataTable.Rows.Count];
-
-            string tempRow;
-
-            // loop to put pieces from data table put into array
-            for (int i = 0; i < dataTable.Rows.Count; i++)
-            {
-                tempRow = (dataTable.Rows[i][0].ToString() + "," + dataTable.Rows[i][1].ToString() + "," + dataTable.Rows[i][2].ToString() + "," + dataTable.Rows[i][3].ToString());
-
-                tempList[i] = tempRow;
-            }
-
-            return tempList;
         }
     }
 }
