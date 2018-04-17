@@ -41,7 +41,7 @@ namespace Classes
         }
 
         // parameter constructor Answer
-        public Answer(int iD, string name, string description, int stageID, int nextStageID)
+        public Answer(int iD, string name, string description)
         {
             this.ID = iD;
             this.Name = name;

@@ -31,7 +31,6 @@ namespace Classes
         public int Ans1NextStagID { get; set; }
         public int Answer2ID { get; set; }
         public int Ans2NextStagID { get; set; }
-        public bool Start { get; set; }
 
         // default constructor Stage
         public Stage()
@@ -46,7 +45,6 @@ namespace Classes
             this.Ans1NextStagID = 0;
             this.Answer2ID = 0;
             this.Ans2NextStagID = 0;
-            this.Start = false;
         }
 
         //
@@ -62,12 +60,11 @@ namespace Classes
             this.Ans1NextStagID = 0;
             this.Answer2ID = 0;
             this.Ans2NextStagID = 0;
-            this.Start = false;
         }
 
 
         // parameter constructor Stage
-        public Stage(int iD, string name, string description, int scenarioID, string audioFilePath, string imageFilePath, int answer1ID, int ans1NextStagID, int answer2ID, int ans2NextStagID, bool start)
+        public Stage(int iD, string name, string description, int scenarioID, string audioFilePath, string imageFilePath, int answer1ID, int ans1NextStagID, int answer2ID, int ans2NextStagID)
         {
             this.ID = iD;
             this.Name = name;
@@ -79,7 +76,6 @@ namespace Classes
             this.Ans1NextStagID = 0;
             this.Answer2ID = 0;
             this.Ans2NextStagID = 0;
-            this.Start = false;
         }
     }
 }
