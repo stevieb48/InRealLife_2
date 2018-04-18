@@ -26,28 +26,41 @@ namespace InRealLife_2
         //
         //private IScenarioPiece currentPiece = new Scenario();
 
-        public CreateNewOverall()
+        //
+        private const string CREATE_MODE = "create";
+        private const string EDIT_MODE = "edit";
+
+        //
+        private string mode;
+
+        public CreateNewOverall(int ID)
         {
             InitializeComponent();
-            InitializeForm();
+            InitializeForm(ID);
         }
 
         // initialize the form
-        private void InitializeForm()
+        private void InitializeForm(int ID)
         {
-            // load textboxes with information
-            //DataTable resultingDT = pieceRepository.GetAllPiecesByType(this.currentPiece);
+            // is ID null
+            // load create mode
+
+            // is ID not null
+            //load edit mode
 
             // enable buttons
-
         }
 
         //
         private void SaveBtn_Click(object sender, RoutedEventArgs e)
         {
+            // if mode is edit
             // update scenario table with new textbox data
             //pieceRepository
 
+            // if mode is create
+            // insert new
+            // pieceRepository
         }
 
         //
@@ -66,6 +79,23 @@ namespace InRealLife_2
         private void EnableButtons()
         {
 
+        }
+
+        private void CreateMode()
+        {
+            // mode = Create
+            mode = CREATE_MODE;
+
+            // do stuff
+        }
+
+        private void EditMode()
+        {
+            // mode = Edit
+            mode = EDIT_MODE;
+
+            // load textboxes with information
+            //DataTable resultingDT = pieceRepository.GetAllPiecesByType(this.currentPiece);
         }
     }
 }
