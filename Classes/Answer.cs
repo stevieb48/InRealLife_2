@@ -1,9 +1,4 @@
 ﻿using ClassInterfaces;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 /*
  * This class Answer implements an interface IScenarioPiece. It has 2 constructors for object creation, 

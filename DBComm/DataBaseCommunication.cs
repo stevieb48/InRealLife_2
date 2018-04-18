@@ -28,8 +28,8 @@ namespace DataLayer
         private SqlCommand cmd = null;
 
         // Auto Implemented Property
-        public SqlConnection Conn { get; set; }
-        public SqlConnection Cmd { get; set; }
+        //public SqlConnection Conn { get; set; }
+        //public SqlConnection Cmd { get; set; }
 
         // method to open the connection
         private SqlConnection OpenConnection()

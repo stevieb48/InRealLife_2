@@ -2,12 +2,7 @@
 using ClassInterfaces;
 using DataLayer;
 using LogicLayerInterfaces;
-using System;
-using System.Collections.Generic;
 using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 /*
  * This class ...
@@ -23,6 +18,10 @@ namespace LogicLayer
 {
     public class Repository : IRepository
     {
+        private const string SCENARIO = "Scenario";
+        private const string STAGE = "Stage";
+        private const string ANSWER = "Answer";
+
         // database instance
         private DataBaseCommunication newDBComm = new DataBaseCommunication();
 
@@ -35,15 +34,15 @@ namespace LogicLayer
         public IScenarioPiece GetPieceByID(IScenarioPiece piece)
         {
             // determine the piece
-            string pieceType = WhatTypeOfPiece(piece);
+            //string pieceType = WhatTypeOfPiece(piece);
 
             // create query based on the piece type
-            string query = "SELECT * FROM " + pieceType + " WHERE ID = " + piece.ID;
+            string query = "SELECT * FROM " + piece.GetType().ToString().Split('.')[1] + " WHERE ID = " + piece.ID;
 
             // new datatable and store results from call to the database
             DataTable dataTable = this.newDBComm.Select(query);
 
-            IScenarioPiece resultingPiece = PutDataTableIntoPiece(pieceType, dataTable);
+            IScenarioPiece resultingPiece = PutDataTableIntoPiece(piece.GetType().ToString().Split('.')[1], dataTable);
 
             // return the results
             return resultingPiece;
@@ -52,13 +51,13 @@ namespace LogicLayer
         //
         private IScenarioPiece PutDataTableIntoPiece(string pieceType, DataTable dataTable)
         {
-            if (pieceType == "Scenario")
+            if (pieceType == SCENARIO)
             {
                 IScenarioPiece scenario = new Scenario(int.Parse(dataTable.Rows[0][0].ToString()), dataTable.Rows[0][1].ToString(), dataTable.Rows[0][2].ToString());
 
                 return scenario;
             }
-            else if (pieceType == "Stage")
+            else if (pieceType == STAGE)
             {
                 IScenarioPiece stage = new Stage(int.Parse(dataTable.Rows[0][0].ToString()), dataTable.Rows[0][1].ToString(), dataTable.Rows[0][2].ToString(), int.Parse(dataTable.Rows[0][3].ToString()), dataTable.Rows[0][4].ToString(), dataTable.Rows[0][5].ToString(), int.Parse(dataTable.Rows[0][6].ToString()), int.Parse(dataTable.Rows[0][7].ToString()), int.Parse(dataTable.Rows[0][8].ToString()), int.Parse(dataTable.Rows[0][9].ToString()));
 
@@ -76,15 +75,15 @@ namespace LogicLayer
         public IScenarioPiece[] GetAllPiecesByType(IScenarioPiece piece)
         {
             // determine the piece
-            string pieceType = WhatTypeOfPiece(piece);
+            //string pieceType = WhatTypeOfPiece(piece);
 
             // create query based on the piece type
-            string query = "SELECT * FROM " + pieceType;
+            string query = "SELECT * FROM " + piece.GetType().ToString().Split('.')[1];
 
             // new datatable and store results from call to the database
             DataTable dataTable = this.newDBComm.Select(query);
 
-            IScenarioPiece[] pieceList = PutDataTableIntoPieceList(pieceType, dataTable);
+            IScenarioPiece[] pieceList = PutDataTableIntoPieceList(piece.GetType().ToString().Split('.')[1], dataTable);
 
             // return the results
             return pieceList;
@@ -92,7 +91,7 @@ namespace LogicLayer
 
         private IScenarioPiece[] PutDataTableIntoPieceList(string pieceType, DataTable dataTable)
         {
-            if (pieceType == "Scenario")
+            if (pieceType == SCENARIO)
             {
                 Scenario[] pieceList = new Scenario[dataTable.Rows.Count];                
 
@@ -108,7 +107,7 @@ namespace LogicLayer
 
                 return tempArray;
             }
-            else if (pieceType == "Stage")
+            else if (pieceType == STAGE)
             {
                 Stage[] pieceList = new Stage[dataTable.Rows.Count];
 
@@ -178,6 +177,7 @@ namespace LogicLayer
             return rowsAffected;
         }
 
+        /*
         // private method to determine what piece type is passed in
         private string WhatTypeOfPiece(IScenarioPiece piece)
         {
@@ -185,15 +185,15 @@ namespace LogicLayer
             string pieceType = string.Empty;
 
             //
-            if (piece.GetType().ToString() == "Classes.Scenario")
+            if (piece.GetType().ToString().Split('.')[1] == SCENARIO)
             {
                 pieceType = "Scenario";
             }
-            else if (piece.GetType().ToString() == "Classes.Stage")
+            else if (piece.GetType().ToString().Split('.')[1] == STAGE)
             {
                 pieceType = "Stage";
             }
-            else if (piece.GetType().ToString() == "Classes.Answer")
+            else if (piece.GetType().ToString().Split('.')[1] == ANSWER)
             {
                 pieceType = "Answer";
             }
@@ -201,6 +201,7 @@ namespace LogicLayer
             // return type of piece
             return pieceType;
         }
+        */
 
         public Stage GetFirstStage(int scenarioID)
         {
