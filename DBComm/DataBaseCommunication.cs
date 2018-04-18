@@ -82,7 +82,7 @@ namespace DataLayer
             using (cmd = new SqlCommand(selectQuery, conn))
             {
                 // reinitialize connection string
-                conn.ConnectionString = CONNECTION_STRING;
+                //conn.ConnectionString = CONNECTION_STRING;
 
                 // open connection
                 conn = OpenConnection();
@@ -104,7 +104,7 @@ namespace DataLayer
             using (cmd = new SqlCommand(nonQuery, conn))
             {
                 // reinitialize connection string
-                conn.ConnectionString = CONNECTION_STRING;
+                //conn.ConnectionString = CONNECTION_STRING;
 
                 // open connection
                 conn = OpenConnection();

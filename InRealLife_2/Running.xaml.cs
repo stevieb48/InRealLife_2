@@ -36,18 +36,17 @@ namespace InRealLife_2
     public partial class Running : Page
     {
         // create new repository
-        private Repository pieceRepository = new Repository();
+        private Repository repository = new Repository();
 
         //
         private IScenarioPiece currentScenario;
-        private IScenarioPiece currentStage;
+        private Stage currentStage = new Stage();
         private IScenarioPiece currentAnswer1;
         private IScenarioPiece currentAnswer2;
 
+        public static bool FirstRunFlag = true;
 
-
-
-        DataHandler data = new DataHandler();
+        //DataHandler data = new DataHandler();
 
         public Running(int Scenario)
         {           
@@ -58,24 +57,39 @@ namespace InRealLife_2
 
         public void Start(int ScenarioId)
         {
-            string[] relationsList = pieceRepository.GetRelationIDsByScenarioID(ScenarioId);
+            if (!FirstRunFlag)
+            {
+                currentStage = repository.GetNextStage(ScenarioId);
+                // scenarioID must be a stage id from an answer
+                currentScenario = new Scenario(currentStage.ScenarioID);
+                currentScenario = repository.GetPieceByID(currentScenario);
 
-            // loop through array and make objects
+                currentAnswer1 = new Answer(currentStage.Answer1ID);
+                currentAnswer1 = repository.GetPieceByID(currentAnswer1);
+                currentAnswer2 = new Answer(currentStage.Answer2ID);
+                currentAnswer2 = repository.GetPieceByID(currentAnswer2);
+            }
+            else
+            {
+                FirstRunFlag = false;
 
-            currentScenario = new Scenario(ScenarioId);
-            currentStage = new Stage();
-            currentAnswer = new Answer();
+                currentScenario = new Scenario(ScenarioId);
+                currentScenario = repository.GetPieceByID(currentScenario);
+                currentStage = repository.GetFirstStage(currentScenario.ID);
+                currentAnswer1 = new Answer(currentStage.Answer1ID);
+                currentAnswer1 = repository.GetPieceByID(currentAnswer1);
+                currentAnswer2 = new Answer(currentStage.Answer2ID);
+                currentAnswer2 = repository.GetPieceByID(currentAnswer2);
+            }
 
-            currentScenario = pieceRepository.GetPieceByID(currentScenario);
-
-            data.Intetialize(ScenarioId);
-            ScenarioName.Text = data.scenario.Name;
-
-            Text1.Text = data.answer1.Description;
-            Text2.Text = data.answer2.Description;
-            StageDescription.Text = data.stage.Description;
+            //data.Intetialize(ScenarioId);
+            ScenarioName.Text = currentScenario.Name;
+            StageDescription.Text = currentStage.Description;
+            Text1.Text = currentAnswer1.Description;
+            Text2.Text = currentAnswer2.Description;           
         }
 
+        /*
         public void Update(int AnswerNumber)
         {
             if (AnswerNumber == 1)
@@ -91,9 +105,9 @@ namespace InRealLife_2
                 {
                     data.Update(AnswerNumber);
 
-                    Text1.Text = data.answer1.Description;
-                    Text2.Text = data.answer2.Description;
-                    StageDescription.Text = data.stage.Description;
+                    Text1.Text = currentAnswer1.Description;
+                    Text2.Text = currentAnswer2.Description;
+                    StageDescription.Text = currentStage.Description;
                 }
             }
             else if (AnswerNumber == 2)
@@ -108,21 +122,26 @@ namespace InRealLife_2
                 {
                     data.Update(AnswerNumber);
 
-                    Text1.Text = data.answer1.Description;
-                    Text2.Text = data.answer2.Description;
-                    StageDescription.Text = data.stage.Description;
+                    Text1.Text = currentAnswer1.Description;
+                    Text2.Text = currentAnswer2.Description;
+                    StageDescription.Text = currentStage.Description;
                 }
             }
         }
+        */
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            Update(1);
+            //Update(1);
+            Running run = new Running(currentStage.Ans1NextStagID);
+            this.NavigationService.Navigate(run);
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            Update(2);
+            //Update(2);
+            Running run = new Running(currentStage.Ans1NextStagID);
+            this.NavigationService.Navigate(run);
         }
 
         private void Button_Click_2(object sender, RoutedEventArgs e)

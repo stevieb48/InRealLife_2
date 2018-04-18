@@ -72,10 +72,10 @@ namespace Classes
             this.ScenarioID = scenarioID;
             this.AudioFilePath = audioFilePath;
             this.ImageFilePath = imageFilePath;
-            this.Answer1ID = 0;
-            this.Ans1NextStagID = 0;
-            this.Answer2ID = 0;
-            this.Ans2NextStagID = 0;
+            this.Answer1ID = answer1ID;
+            this.Ans1NextStagID = ans1NextStagID;
+            this.Answer2ID = answer2ID;
+            this.Ans2NextStagID = ans2NextStagID;
         }
     }
 }

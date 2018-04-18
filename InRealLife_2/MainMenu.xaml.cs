@@ -125,7 +125,10 @@ namespace InRealLife_2
         // perform selected piece button click event
         private void BtnPerformSelected_Click(object sender, RoutedEventArgs e)
         {
-            Running run = new Running(1);
+            // grab selected piece and put into variable
+            IScenarioPiece selectedPiece = (IScenarioPiece)lstvwScenarioPieces.SelectedItem;
+
+            Running run = new Running(selectedPiece.ID);
             this.NavigationService.Navigate(run);
             //run.Show();
 

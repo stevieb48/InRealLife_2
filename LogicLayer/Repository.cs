@@ -115,7 +115,7 @@ namespace LogicLayer
                 // loop to put pieces from data table put into array
                 for (int i = 0; i < dataTable.Rows.Count; i++)
                 {
-                    Stage tempStage = new Stage(int.Parse(dataTable.Rows[i][0].ToString()), dataTable.Rows[i][1].ToString(), dataTable.Rows[i][2].ToString(), int.Parse(dataTable.Rows[i][3].ToString()), dataTable.Rows[i][4].ToString(), dataTable.Rows[i][5].ToString(), int.Parse(dataTable.Rows[i][0].ToString()), int.Parse(dataTable.Rows[i][0].ToString()), int.Parse(dataTable.Rows[i][0].ToString()), int.Parse(dataTable.Rows[i][0].ToString()));
+                    Stage tempStage = new Stage(int.Parse(dataTable.Rows[i][0].ToString()), dataTable.Rows[i][1].ToString(), dataTable.Rows[i][2].ToString(), int.Parse(dataTable.Rows[i][3].ToString()), dataTable.Rows[i][4].ToString(), dataTable.Rows[i][5].ToString(), int.Parse(dataTable.Rows[i][6].ToString()), int.Parse(dataTable.Rows[i][7].ToString()), int.Parse(dataTable.Rows[i][8].ToString()), int.Parse(dataTable.Rows[i][9].ToString()));
 
                     pieceList[i] = tempStage;
                 }
@@ -200,6 +200,39 @@ namespace LogicLayer
 
             // return type of piece
             return pieceType;
+        }
+
+        public Stage GetFirstStage(int scenarioID)
+        {
+            // create query based on the piece type
+            string query = "SELECT * FROM Stage WHERE ScenarioID = " + scenarioID + " AND Start = 1";
+
+            // new datatable and store results from call to the database
+            DataTable dataTable = this.newDBComm.Select(query);
+
+            Stage stage = PutDataTableIntoStage("Stage", dataTable);
+
+            return stage;
+        }
+
+        private Stage PutDataTableIntoStage(string stage, DataTable dataTable)
+        {
+            Stage tempStage = new Stage(int.Parse(dataTable.Rows[0][0].ToString()), dataTable.Rows[0][1].ToString(), dataTable.Rows[0][2].ToString(), int.Parse(dataTable.Rows[0][3].ToString()), dataTable.Rows[0][4].ToString(), dataTable.Rows[0][5].ToString(), int.Parse(dataTable.Rows[0][6].ToString()), int.Parse(dataTable.Rows[0][7].ToString()), int.Parse(dataTable.Rows[0][8].ToString()), int.Parse(dataTable.Rows[0][9].ToString()));
+
+            return tempStage;
+        }
+
+        public Stage GetNextStage(int NextStageID)
+        {
+            // create query based on the piece type
+            string query = "SELECT * FROM Stage WHERE ID = " + NextStageID;
+
+            // new datatable and store results from call to the database
+            DataTable dataTable = this.newDBComm.Select(query);
+
+            Stage stage = PutDataTableIntoStage("Stage", dataTable);
+
+            return stage;
         }
     }
 }

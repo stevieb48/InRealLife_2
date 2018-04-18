@@ -117,7 +117,7 @@ namespace ClassInterfaces_Tests
         {
             // Arrange
             IScenarioPiece sut;
-            Stage stage = new Stage(3, "name", "description", 1, "C:\\Users\\parent\\audio\\audiofile1", "C:\\Users\\parent\\image\\imagefile1");
+            Stage stage = new Stage(3, "name", "description", 1, "C:\\Users\\parent\\audio\\audiofile1", "C:\\Users\\parent\\image\\imagefile1",4,5,6,7);
 
             // Act
             sut = stage;
@@ -133,7 +133,7 @@ namespace ClassInterfaces_Tests
         {
             // Arrange
             IScenarioPiece sut;
-            Answer answer = new Answer(3, "name", "description", 1, 2);
+            Answer answer = new Answer(3, "name", "description");
 
             // Act
             sut = answer;
