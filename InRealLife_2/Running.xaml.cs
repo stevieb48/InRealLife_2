@@ -60,7 +60,7 @@ namespace InRealLife_2
             if (!FirstRunFlag)
             {
                 currentStage = repository.GetNextStage(ScenarioId);
-                // scenarioID must be a stage id from an answer
+                // scenarioID must be a stage id from an answer choice(stage.nextID)
                 currentScenario = new Scenario(currentStage.ScenarioID);
                 currentScenario = repository.GetPieceByID(currentScenario);
 
@@ -130,17 +130,17 @@ namespace InRealLife_2
         }
         */
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void BtnChoiceA_Click(object sender, RoutedEventArgs e)
         {
             //Update(1);
             Running run = new Running(currentStage.Ans1NextStagID);
             this.NavigationService.Navigate(run);
         }
 
-        private void Button_Click_1(object sender, RoutedEventArgs e)
+        private void BtnChoiceB_Click(object sender, RoutedEventArgs e)
         {
             //Update(2);
-            Running run = new Running(currentStage.Ans1NextStagID);
+            Running run = new Running(currentStage.Ans2NextStagID);
             this.NavigationService.Navigate(run);
         }
 

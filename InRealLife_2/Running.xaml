@@ -50,8 +50,8 @@
         </Grid.Background>
 
         <!--Buttons-->
-        <Button x:Name="Button1" Content="Choose" Margin="188,177,137,24"  Click="Button_Click" Grid.Row="1" MinHeight="25" MinWidth="75" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-        <Button x:Name="Button2" Content="Choose" Margin="137,177,188,24"  Click="Button_Click_1" TextOptions.TextFormattingMode="Display" MinHeight="25" MinWidth="75" Grid.Column="1" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+        <Button x:Name="btnChoiceA" Content="A" Margin="188,177,137,24"  Click="BtnChoiceA_Click" Grid.Row="1" MinHeight="25" MinWidth="75" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        <Button x:Name="btnChoiceB" Content="B" Margin="137,177,188,24"  Click="BtnChoiceB_Click" TextOptions.TextFormattingMode="Display" MinHeight="25" MinWidth="75" Grid.Column="1" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center"/>
         <Button x:Name="ExitButton" Content="" HorizontalAlignment="Left" Margin="10,13,0,0" VerticalAlignment="Top" Width="90" Click="Button_Click_2" Height="80" BorderBrush="{x:Null}" Style="{StaticResource MyButton}" >
             <Button.Background>
                 <ImageBrush ImageSource="mediaFiles/exitDoorBrown.png"/>

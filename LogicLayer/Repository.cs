@@ -210,12 +210,12 @@ namespace LogicLayer
             // new datatable and store results from call to the database
             DataTable dataTable = this.newDBComm.Select(query);
 
-            Stage stage = PutDataTableIntoStage("Stage", dataTable);
+            Stage stage = PutDataTableIntoStage(dataTable);
 
             return stage;
         }
 
-        private Stage PutDataTableIntoStage(string stage, DataTable dataTable)
+        private Stage PutDataTableIntoStage(DataTable dataTable)
         {
             Stage tempStage = new Stage(int.Parse(dataTable.Rows[0][0].ToString()), dataTable.Rows[0][1].ToString(), dataTable.Rows[0][2].ToString(), int.Parse(dataTable.Rows[0][3].ToString()), dataTable.Rows[0][4].ToString(), dataTable.Rows[0][5].ToString(), int.Parse(dataTable.Rows[0][6].ToString()), int.Parse(dataTable.Rows[0][7].ToString()), int.Parse(dataTable.Rows[0][8].ToString()), int.Parse(dataTable.Rows[0][9].ToString()));
 
@@ -230,7 +230,7 @@ namespace LogicLayer
             // new datatable and store results from call to the database
             DataTable dataTable = this.newDBComm.Select(query);
 
-            Stage stage = PutDataTableIntoStage("Stage", dataTable);
+            Stage stage = PutDataTableIntoStage(dataTable);
 
             return stage;
         }
