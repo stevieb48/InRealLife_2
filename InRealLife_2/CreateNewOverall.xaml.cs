@@ -48,6 +48,8 @@ namespace InRealLife_2
             // is ID not null
             //load edit mode
 
+            // get piece info
+
             // enable buttons
         }
 
