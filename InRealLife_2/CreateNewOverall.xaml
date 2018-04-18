@@ -50,7 +50,7 @@
             VerticalAlignment="Top"
             MinHeight="25"
             MinWidth="75"
-            Click="saveBtn_Click" />
+            Click="SaveBtn_Click" />
         <Button x:Name="cancelBtn"
             Content="Cancel"
             HorizontalAlignment="Center"
@@ -60,8 +60,8 @@
             MinHeight="25"
             MinWidth="75"
             Grid.Column="1"
-            Click="cancelBtn_Click" />
-        <TextBox x:Name="titleBox"
+            Click="CancelBtn_Click" />
+        <TextBox x:Name="txtbxScenarioTitle"
             Grid.ColumnSpan="2"
             HorizontalAlignment="Center"
             Margin="250,76,250,108.8"
@@ -70,7 +70,7 @@
             VerticalAlignment="Center"
             MinHeight="40"
             MinWidth="300" />
-        <TextBox x:Name="descriptionBox"
+        <TextBox x:Name="txtbxScenarioDescription"
             Grid.ColumnSpan="2"
             HorizontalAlignment="Center"
             Height="102"
@@ -79,12 +79,12 @@
             Text="Click to edit Scenario description"
             VerticalAlignment="Top"
             Width="435" Grid.RowSpan="2" />
-        <Button x:Name="btnExitMenu"
+        <Button x:Name="btnExit"
             HorizontalAlignment="Left"
             Margin="10,10,0,0"
             VerticalAlignment="Top"
             Width="80"
-            Click="btnExitMenu_Click"
+            Click="BtnExit_Click"
             Height="89"
             BorderBrush="{x:Null}"
             Foreground="{x:Null}"

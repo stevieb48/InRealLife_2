@@ -20,38 +20,52 @@ namespace InRealLife_2
     /// </summary>
     public partial class CreateNewOverall : Page
     {
+        // create new repository
+        //private Repository pieceRepository = new Repository();
+
+        //
+        //private IScenarioPiece currentPiece = new Scenario();
+
         public CreateNewOverall()
         {
             InitializeComponent();
+            InitializeForm();
         }
 
         // initialize the form
         private void InitializeForm()
         {
             // load textboxes with information
+            //DataTable resultingDT = pieceRepository.GetAllPiecesByType(this.currentPiece);
 
             // enable buttons
 
         }
 
         //
-        private void saveBtn_Click(object sender, RoutedEventArgs e)
+        private void SaveBtn_Click(object sender, RoutedEventArgs e)
         {
-            // update scenario table with textbox data
+            // update scenario table with new textbox data
+            //pieceRepository
 
         }
 
         //
-        private void cancelBtn_Click(object sender, RoutedEventArgs e)
+        private void CancelBtn_Click(object sender, RoutedEventArgs e)
         {
             // call button exit click
 
         }
 
         //
-        private void btnExitMenu_Click(object sender, RoutedEventArgs e)
+        private void BtnExit_Click(object sender, RoutedEventArgs e)
         {
             // exit to main menu
+        }
+
+        private void EnableButtons()
+        {
+
         }
     }
 }
