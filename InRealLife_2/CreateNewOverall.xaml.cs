@@ -1,4 +1,6 @@
-﻿using System;
+﻿using ClassInterfaces;
+using LogicLayer;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,49 +22,51 @@ namespace InRealLife_2
     /// </summary>
     public partial class CreateNewOverall : Page
     {
-        // create new repository
-        //private Repository pieceRepository = new Repository();
-
-        //
-        //private IScenarioPiece currentPiece = new Scenario();
-
         //
         private const string CREATE_MODE = "create";
         private const string EDIT_MODE = "edit";
 
         //
-        private string mode;
+        private string mode = CREATE_MODE;
 
-        public CreateNewOverall(int ID)
+        // create new repository
+        private Repository pieceRepository = new Repository();
+
+        //
+        private IScenarioPiece currentPiece;        
+
+        public CreateNewOverall(IScenarioPiece piece)
         {
             InitializeComponent();
-            InitializeForm(ID);
+            this.currentPiece = piece;
+            SetMode();
+            InitializeForm();
         }
 
         // initialize the form
-        private void InitializeForm(int ID)
+        private void InitializeForm()
         {
-            // is ID null
-            // load create mode
+            txtbxScenarioTitle.Text = currentPiece.Name;
+            txtbxScenarioDescription.Text = currentPiece.Description;
 
-            // is ID not null
-            //load edit mode
-
-            // get piece info
-
-            // enable buttons
+            //
+            EnableButtons();
         }
 
         //
         private void SaveBtn_Click(object sender, RoutedEventArgs e)
         {
             // if mode is edit
-            // update scenario table with new textbox data
-            //pieceRepository
-
-            // if mode is create
-            // insert new
-            // pieceRepository
+            if (mode == EDIT_MODE)
+            {
+                // update scenario table with new textbox data
+                pieceRepository.UpdateExisingPiece(currentPiece);
+            }
+            else
+            {
+                // insert new
+                pieceRepository.InsertNewPiece(currentPiece);
+            }
         }
 
         //
@@ -78,26 +82,30 @@ namespace InRealLife_2
             // exit to main menu
         }
 
+        //
+        private void SetMode()
+        {
+            // pieceID is not empty which means create a piece
+            if (currentPiece.ID != 0)
+            {
+                mode = EDIT_MODE;
+            }
+        }
+
+        //
         private void EnableButtons()
         {
-
-        }
-
-        private void CreateMode()
-        {
-            // mode = Create
-            mode = CREATE_MODE;
-
-            // do stuff
-        }
-
-        private void EditMode()
-        {
-            // mode = Edit
-            mode = EDIT_MODE;
-
-            // load textboxes with information
-            //DataTable resultingDT = pieceRepository.GetAllPiecesByType(this.currentPiece);
+            // if mode is edit
+            if (mode == EDIT_MODE)
+            {
+                // update scenario table with new textbox data
+                pieceRepository.UpdateExisingPiece(currentPiece);
+            }
+            else
+            {
+                // insert new
+                pieceRepository.InsertNewPiece(currentPiece);
+            }
         }
     }
 }

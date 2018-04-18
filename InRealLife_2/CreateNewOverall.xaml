@@ -64,7 +64,7 @@
         <TextBox x:Name="txtbxScenarioTitle"
             Grid.ColumnSpan="2"
             HorizontalAlignment="Center"
-            Margin="250,76,250,108.8"
+            Margin="250,129,250,55.8"
             TextWrapping="Wrap"
             Text="Click to edit Scenario title."
             VerticalAlignment="Center"
@@ -74,11 +74,11 @@
             Grid.ColumnSpan="2"
             HorizontalAlignment="Center"
             Height="102"
-            Margin="183,211,182,0"
+            Margin="182,0.2,183,0"
             TextWrapping="Wrap"
             Text="Click to edit Scenario description"
             VerticalAlignment="Top"
-            Width="435" Grid.RowSpan="2" />
+            Width="435" Grid.Row="1"/>
         <Button x:Name="btnExit"
             HorizontalAlignment="Left"
             Margin="10,10,0,0"
