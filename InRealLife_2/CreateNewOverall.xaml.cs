@@ -15,6 +15,16 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
+/*
+ * This GUI ...
+ *
+ * author: Group 7 (Stephen Bailey, Omar Garcia, Craig Wyse, Matthew Harris)
+ * course: SEII
+ * assignment: InRealLife (Group Project Spring 2018)
+ * date: 04/18/2018
+ * file name: CreateNewOverall.xaml.cs
+ * version: 1.0
+ */
 namespace InRealLife_2
 {
     /// <summary>
@@ -23,8 +33,9 @@ namespace InRealLife_2
     public partial class CreateNewOverall : Page
     {
         //
-        private const string CREATE_MODE = "create";
-        private const string EDIT_MODE = "edit";
+        private const string CREATE_MODE = "Create";
+        private const string EDIT_MODE = "Edit";
+        private const int EMPTY_INT = 0;
 
         //
         private string mode = CREATE_MODE;
@@ -33,7 +44,7 @@ namespace InRealLife_2
         private Repository pieceRepository = new Repository();
 
         //
-        private IScenarioPiece currentPiece;        
+        private IScenarioPiece currentPiece;
 
         public CreateNewOverall(IScenarioPiece piece)
         {
@@ -48,9 +59,6 @@ namespace InRealLife_2
         {
             txtbxScenarioTitle.Text = currentPiece.Name;
             txtbxScenarioDescription.Text = currentPiece.Description;
-
-            //
-            EnableButtons();
         }
 
         //
@@ -62,17 +70,20 @@ namespace InRealLife_2
                 // update scenario table with new textbox data
                 pieceRepository.UpdateExisingPiece(currentPiece);
             }
-            else
+            else if (mode == CREATE_MODE)
             {
                 // insert new
                 pieceRepository.InsertNewPiece(currentPiece);
+
+                // change mode
+                mode = EDIT_MODE;
             }
         }
 
         //
         private void CancelBtn_Click(object sender, RoutedEventArgs e)
         {
-            // call button exit click
+            // call button to go back
 
         }
 
@@ -85,27 +96,30 @@ namespace InRealLife_2
         //
         private void SetMode()
         {
-            // pieceID is not empty which means create a piece
-            if (currentPiece.ID != 0)
+            // pieceID is not empty which means edit a piece
+            if (currentPiece.ID != EMPTY_INT)
             {
                 mode = EDIT_MODE;
+                EnableEditModeButtons();
+            }
+            else
+            {
+                mode = CREATE_MODE;
+                EnableCreateModeButtons();
             }
         }
 
         //
-        private void EnableButtons()
+        private void EnableEditModeButtons()
         {
-            // if mode is edit
-            if (mode == EDIT_MODE)
-            {
-                // update scenario table with new textbox data
-                pieceRepository.UpdateExisingPiece(currentPiece);
-            }
-            else
-            {
-                // insert new
-                pieceRepository.InsertNewPiece(currentPiece);
-            }
+            lblTitle.Content = (EDIT_MODE + " " + currentPiece.GetType().ToString().Split('.')[1]);
+
+        }
+
+        //
+        private void EnableCreateModeButtons()
+        {
+            lblTitle.Content = (CREATE_MODE + " " + currentPiece.GetType().ToString().Split('.')[1]);
         }
     }
 }

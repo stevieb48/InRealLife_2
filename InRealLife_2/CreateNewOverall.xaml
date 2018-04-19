@@ -64,7 +64,7 @@
         <TextBox x:Name="txtbxScenarioTitle"
             Grid.ColumnSpan="2"
             HorizontalAlignment="Center"
-            Margin="250,129,250,55.8"
+            Margin="250,135,250,49.8"
             TextWrapping="Wrap"
             Text="Click to edit Scenario title."
             VerticalAlignment="Center"
@@ -93,6 +93,7 @@
                 <ImageBrush ImageSource="mediaFiles/exitDoorBrown.png" />
             </Button.Background>
         </Button>
+        <Label x:Name="lblTitle" Content="IN REAL LIFE" Margin="155,0,183,125.8" Grid.Row ="0" Grid.Column="0" FontFamily="Modern No. 20" FontSize="67" Foreground="#FF16168B" VerticalAlignment="Bottom" HorizontalAlignment="Center" Grid.ColumnSpan="2"/>
 
 
     </Grid>
