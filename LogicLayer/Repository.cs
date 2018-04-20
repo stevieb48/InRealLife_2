@@ -145,9 +145,9 @@ namespace LogicLayer
         public int DeleteExistingPiece(IScenarioPiece piece)
         {
             // create rows affected by call to DELETE from the database
-            int rowsAffected = newDBComm.Delete("DELETE * "
-                                        + "FROM " + piece.GetType()
-                                        + "WHERE ID =" + piece.ID);
+            int rowsAffected = newDBComm.Delete("DELETE "
+                                        + "FROM " + piece.GetType().ToString().Split('.')[1]
+                                        + " WHERE ID = " + piece.ID);
 
             // return rows affected by nonquery
             return rowsAffected;
