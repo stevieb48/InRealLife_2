@@ -53,17 +53,23 @@ namespace InRealLife_2
 
         private void previewBtn_Click(object sender, RoutedEventArgs e)
         {
-
+            Console.WriteLine("Stage name: " + titleBox.Text);
+            Console.WriteLine("Stage description: " + descriptionBox.Text);
+            Console.WriteLine("Answer 1: " + answer1box.Text);
+            Console.WriteLine("Answer 2: " + answer2box.Text);
+            Console.WriteLine("Image source: " + imageBox.Source.ToString());
         }
 
         private void saveBtn_Click(object sender, RoutedEventArgs e)
         {
-
+            String insertString = "INSERT INTO Stage VALUE (" + titleBox.Text + "," + descriptionBox.Text + "," + "ScenarioID" + "," + "NULL" + "," + imageBox.Source.ToString() + ")";
+            String insertanswer1 = "INSERT INTO Answer VALUE (Name" + "," + answer1box.Text + "," + " StageID" + ", " + "NextStageID" + ")";
+            String insertanswer2 = "INSERT INTO Answer VALUE (Name" + "," + answer2box.Text + "," + " StageID" + ", " + "NextStageID" + ")";
         }
 
         private void cancelBtn_Click(object sender, RoutedEventArgs e)
         {
-
+            this.NavigationService.GoBack();
         }
 
         private void btnExitMenu_Click(object sender, RoutedEventArgs e)
