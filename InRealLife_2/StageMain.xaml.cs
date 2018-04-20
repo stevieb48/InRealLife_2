@@ -20,7 +20,7 @@ using System;
 namespace InRealLife_2
 {
     /// <summary>
-    /// Interaction logic for MainMenu.xaml
+    /// Interaction logic for StageMain.xaml
     /// </summary>
     public partial class StageMain : Page
     {
@@ -96,8 +96,8 @@ namespace InRealLife_2
 
             // load form to edit piece
             // .show();
+            CreateStage newCreateStage = new CreateStage();
             this.NavigationService.Navigate(new Uri("CreateStage.xaml", UriKind.Relative));
-
         }
 
         // delete selected button click event
@@ -181,14 +181,18 @@ namespace InRealLife_2
 
             // enable perform button
             btnPerformSelected.IsEnabled = true;
-
+            btnEditSelected.IsEnabled = true;
             btnDeleteSelected.IsEnabled = true;
         }
 
         // method to edit the selected item in the list
         private void BtnEditSelected_Click(object sender, RoutedEventArgs e)
         {
+            // grab selected piece and put into variable
+            IScenarioPiece selectedPiece = (IScenarioPiece)lstvwScenarioPieces.SelectedItem;
 
+            CreateStage newCreateStage = new CreateStage();
+            this.NavigationService.Navigate(newCreateStage);
         }
 
         private void SetMode()
@@ -208,9 +212,9 @@ namespace InRealLife_2
 
         private void BtnSwitchMode_Click(object sender, RoutedEventArgs e)
         {
-                //IScenarioPiece scenario = new Scenario();
-                MainMenu newMainMenu = new MainMenu();
-                this.NavigationService.Navigate(new Uri("MainMenu.xaml", UriKind.Relative));
+            //IScenarioPiece scenario = new Scenario();
+            MainMenu newMainMenu = new MainMenu();
+            this.NavigationService.Navigate(newMainMenu);
         }
     }
 }

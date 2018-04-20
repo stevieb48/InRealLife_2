@@ -1,4 +1,5 @@
-﻿using ClassInterfaces;
+﻿using Classes;
+using ClassInterfaces;
 using LogicLayer;
 using System;
 using System.Collections.Generic;
@@ -46,10 +47,10 @@ namespace InRealLife_2
         //
         private IScenarioPiece currentPiece;
 
-        public CreateNewOverall(IScenarioPiece piece)
+        public CreateNewOverall(int ID)
         {
             InitializeComponent();
-            this.currentPiece = piece;
+            this.currentPiece = new Scenario(ID);
             SetMode();
             InitializeForm();
         }
@@ -57,8 +58,17 @@ namespace InRealLife_2
         // initialize the form
         private void InitializeForm()
         {
-            txtbxScenarioTitle.Text = currentPiece.Name;
-            txtbxScenarioDescription.Text = currentPiece.Description;
+            if (currentPiece.ID == 0)
+            {
+                txtbxScenarioTitle.Text = currentPiece.Name;
+                txtbxScenarioDescription.Text = currentPiece.Description;
+            }
+            else
+            {
+                currentPiece = pieceRepository.GetPieceByID(currentPiece);
+                txtbxScenarioTitle.Text = currentPiece.Name;
+                txtbxScenarioDescription.Text = currentPiece.Description;
+            }
         }
 
         //

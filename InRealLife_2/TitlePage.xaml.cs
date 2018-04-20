@@ -27,15 +27,12 @@ namespace InRealLife_2
             InitializeComponent();
         }
 
-
         private void enterButton_Click(object sender, RoutedEventArgs e)
         {
             //IScenarioPiece scenario = new Scenario();
             MainMenu newMainMenu = new MainMenu();
             this.NavigationService.Navigate(new Uri("MainMenu.xaml", UriKind.Relative));
-        }
-
-      
+        }      
 
         private void exitButton_Click(object sender, RoutedEventArgs e)
         {

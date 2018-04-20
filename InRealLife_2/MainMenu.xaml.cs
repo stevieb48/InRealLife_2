@@ -91,13 +91,9 @@ namespace InRealLife_2
         // create new piece button click event
         private void BtnCreateNew_Click(object sender, RoutedEventArgs e)
         {
-            // hide current form
-            // this.Hide();
-
-            // load form to edit piece
-            // .show();
-            this.NavigationService.Navigate(new Uri("CreateStage.xaml", UriKind.Relative));
-
+            IScenarioPiece scenario = new Scenario();
+            CreateNewOverall newCreateNewOverall = new CreateNewOverall(scenario.ID);
+            this.NavigationService.Navigate(newCreateNewOverall);
         }
 
         // delete selected button click event
@@ -183,12 +179,16 @@ namespace InRealLife_2
             btnPerformSelected.IsEnabled = true;
 
             btnDeleteSelected.IsEnabled = true;
+            btnEditSelected.IsEnabled = true;
         }
 
         // method to edit the selected item in the list
         private void BtnEditSelected_Click(object sender, RoutedEventArgs e)
         {
-
+            // grab selected piece and put into variable
+            IScenarioPiece selectedPiece = (IScenarioPiece)lstvwScenarioPieces.SelectedItem;
+            CreateNewOverall newCreateNewOverall = new CreateNewOverall(selectedPiece.ID);
+            this.NavigationService.Navigate(newCreateNewOverall);
         }
 
         private void SetMode()

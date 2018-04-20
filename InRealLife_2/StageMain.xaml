@@ -79,14 +79,13 @@
         </Button>
         <Button x:Name="btnCreateNew"
                 Content="+ create"
-                Margin="149,8,96,0"
-                VerticalAlignment="Top"
+                Margin="149,0,96,79.6"
                 Click="BtnCreateNew_Click"
                 MinWidth="75"
                 MinHeight="25"
                 Grid.ColumnSpan="2"
                 Grid.Row="3"
-                HorizontalAlignment="Center" />
+                HorizontalAlignment="Center" Height="26" VerticalAlignment="Bottom" />
         <Button x:Name="btnEditSelected"
                 Content="edit"
                 Margin="126,8,119,0"
@@ -175,7 +174,7 @@
             </ListView.View>
         </ListView>
         <Button x:Name="btnSwitchMode"
-            Content="Switch to Stage mode"
+            Content="Switch to Scenario mode"
             Margin="131,0,114,0"
             VerticalAlignment="Top"
             Click="BtnSwitchMode_Click"

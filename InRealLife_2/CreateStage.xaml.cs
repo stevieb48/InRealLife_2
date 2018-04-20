@@ -17,11 +17,11 @@ using System.Windows.Shapes;
 namespace InRealLife_2
 {
     /// <summary>
-    /// Interaction logic for CreateScenario.xaml
+    /// Interaction logic for CreateStage.xaml
     /// </summary>
-    public partial class CreateScenario : Page
+    public partial class CreateStage : Page
     {
-        public CreateScenario()
+        public CreateStage()
         {
             InitializeComponent();
         }
