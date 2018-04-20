@@ -114,7 +114,7 @@ namespace LogicLayer
                 // loop to put pieces from data table put into array
                 for (int i = 0; i < dataTable.Rows.Count; i++)
                 {
-                    Stage tempStage = new Stage(int.Parse(dataTable.Rows[i][0].ToString()), dataTable.Rows[i][1].ToString(), dataTable.Rows[i][2].ToString(), int.Parse(dataTable.Rows[i][3].ToString()), dataTable.Rows[i][4].ToString(), dataTable.Rows[i][5].ToString(), int.Parse(dataTable.Rows[i][6].ToString()), int.Parse(dataTable.Rows[i][7].ToString()), int.Parse(dataTable.Rows[i][8].ToString()), int.Parse(dataTable.Rows[i][9].ToString()));
+                    Stage tempStage = new Stage(int.Parse(dataTable.Rows[i][0].ToString()), dataTable.Rows[i][1].ToString(), dataTable.Rows[i][2].ToString());
 
                     pieceList[i] = tempStage;
                 }

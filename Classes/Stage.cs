@@ -57,6 +57,20 @@ namespace Classes
             this.Ans2NextStagID = 0;
         }
 
+        //
+        public Stage(int ID, string Name, string Description)
+        {
+            this.ID = ID;
+            this.Name = Name;
+            this.Description = Description;
+            this.ScenarioID = 0;
+            this.AudioFilePath = string.Empty;
+            this.ImageFilePath = string.Empty;
+            this.Answer1ID = 0;
+            this.Ans1NextStagID = 0;
+            this.Answer2ID = 0;
+            this.Ans2NextStagID = 0;
+        }
 
         // parameter constructor Stage
         public Stage(int iD, string name, string description, int scenarioID, string audioFilePath, string imageFilePath, int answer1ID, int ans1NextStagID, int answer2ID, int ans2NextStagID)

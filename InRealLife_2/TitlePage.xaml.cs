@@ -30,8 +30,8 @@ namespace InRealLife_2
 
         private void enterButton_Click(object sender, RoutedEventArgs e)
         {
-            IScenarioPiece scenario = new Scenario();
-            MainMenu newMainMenu = new MainMenu(scenario);
+            //IScenarioPiece scenario = new Scenario();
+            MainMenu newMainMenu = new MainMenu();
             this.NavigationService.Navigate(new Uri("MainMenu.xaml", UriKind.Relative));
         }
 

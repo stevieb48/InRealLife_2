@@ -87,6 +87,9 @@
     <Compile Include="Running.xaml.cs">
       <DependentUpon>Running.xaml</DependentUpon>
     </Compile>
+    <Compile Include="StageMain.xaml.cs">
+      <DependentUpon>StageMain.xaml</DependentUpon>
+    </Compile>
     <Compile Include="TitlePage.xaml.cs">
       <DependentUpon>TitlePage.xaml</DependentUpon>
     </Compile>
@@ -116,6 +119,10 @@
     <Page Include="Running.xaml">
       <SubType>Designer</SubType>
       <Generator>XamlIntelliSenseFileGenerator</Generator>
+    </Page>
+    <Page Include="StageMain.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="TitlePage.xaml">
       <SubType>Designer</SubType>

@@ -22,7 +22,7 @@ namespace InRealLife_2
     /// <summary>
     /// Interaction logic for MainMenu.xaml
     /// </summary>
-    public partial class MainMenu : Page
+    public partial class StageMain : Page
     {
         //
         private const string SCENARIO_MODE = "Scenario";
@@ -30,15 +30,15 @@ namespace InRealLife_2
         private const int EMPTY_INT = 0;
 
         //
-        private string mode = SCENARIO_MODE;
+        private string mode = STAGE_MODE;
 
         // create new repository
         private Repository pieceRepository = new Repository();
 
         //
-        private IScenarioPiece currentPiece = new Scenario();
+        private IScenarioPiece currentPiece =  new Stage();
 
-        public MainMenu()
+        public StageMain()
         {
             InitializeComponent();
             //this.currentPiece = piece;
@@ -54,7 +54,7 @@ namespace InRealLife_2
 
             // enable create button
             // ***** change btnCreateNew, and btnEditExisting(below) control back to true when edit piece is incorporated ***********
-           
+
             btnDeleteSelected.IsEnabled = false;
             btnPerformSelected.IsEnabled = false;
 
@@ -163,8 +163,8 @@ namespace InRealLife_2
             for (int i = 0; i < resultingList.Length; i++)
             {
                 // add data table results to list view
-                lstvwScenarioPieces.Items.Add(new Scenario { ID = resultingList[i].ID, Name = resultingList[i].Name, Description = resultingList[i].Description });
-            }              
+                lstvwScenarioPieces.Items.Add(new Stage { ID = resultingList[i].ID, Name = resultingList[i].Name, Description = resultingList[i].Description });
+            }
         }
 
         // has listbox selection changed
@@ -208,9 +208,9 @@ namespace InRealLife_2
 
         private void BtnSwitchMode_Click(object sender, RoutedEventArgs e)
         {
-                //IScenarioPiece stage = new Stage();
-            StageMain newStageMain = new StageMain();
-            this.NavigationService.Navigate(new Uri("StageMain.xaml", UriKind.Relative));
+                //IScenarioPiece scenario = new Scenario();
+                MainMenu newMainMenu = new MainMenu();
+                this.NavigationService.Navigate(new Uri("MainMenu.xaml", UriKind.Relative));
         }
     }
 }
