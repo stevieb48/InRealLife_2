@@ -52,7 +52,7 @@ namespace InRealLife_2
         {           
             InitializeComponent();
             Start(Scenario);
-            ImageBlock.Source = new BitmapImage(new Uri(Directory.GetCurrentDirectory() + "\\MediaFiles\\flat.tire.10.jpg", UriKind.Absolute));
+            ImageBlock.Source = new BitmapImage(new Uri("\\MediaFiles\\flat.tire.10.jpg", UriKind.RelativeOrAbsolute));
         }
 
         public void Start(int ScenarioId)
