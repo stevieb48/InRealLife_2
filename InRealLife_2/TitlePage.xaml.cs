@@ -31,7 +31,7 @@ namespace InRealLife_2
         {
             //IScenarioPiece scenario = new Scenario();
             MainMenu newMainMenu = new MainMenu();
-            this.NavigationService.Navigate(new Uri("MainMenu.xaml", UriKind.Relative));
+            this.NavigationService.Navigate(newMainMenu);
         }      
 
         private void exitButton_Click(object sender, RoutedEventArgs e)
