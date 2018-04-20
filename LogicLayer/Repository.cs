@@ -18,6 +18,7 @@ namespace LogicLayer
 {
     public class Repository : IRepository
     {
+        //
         private const string SCENARIO = "Scenario";
         private const string STAGE = "Stage";
         private const string ANSWER = "Answer";
@@ -31,6 +32,7 @@ namespace LogicLayer
 
         }
 
+        //
         public IScenarioPiece GetPieceByID(IScenarioPiece piece)
         {
             // determine the piece
@@ -89,6 +91,7 @@ namespace LogicLayer
             return pieceList;
         }
 
+        //
         private IScenarioPiece[] PutDataTableIntoPieceList(string pieceType, DataTable dataTable)
         {
             if (pieceType == SCENARIO)
@@ -157,8 +160,8 @@ namespace LogicLayer
         public int UpdateExisingPiece(IScenarioPiece piece)
         {
             // create rows affected by call to UPDATE from the database
-            int rowsAffected = newDBComm.Delete("DELETE * "
-                                        + "FROM " + piece.GetType()
+            int rowsAffected = newDBComm.Delete("UPDATE " + piece.GetType().ToString().Split('.')[1]
+                                        + "SET Name = " + piece.Name + " Description = " + piece.Description
                                         + "WHERE ID =" + piece.ID);
 
             // return rows affected by nonquery
@@ -169,9 +172,8 @@ namespace LogicLayer
         public int InsertNewPiece(IScenarioPiece piece)
         {
             // create rows affected by call to INSERT into the database
-            int rowsAffected = newDBComm.Delete("DELETE * "
-                                        + "FROM " + piece.GetType()
-                                        + "WHERE ID =" + piece.ID);
+            int rowsAffected = newDBComm.Delete("INSERT INTO " + piece.GetType().ToString().Split('.')[1]
+                                        + " (Name, Description) VALUES (" + piece.Name + ", " + piece.Description);
 
             // return rows affected by nonquery
             return rowsAffected;
@@ -203,6 +205,7 @@ namespace LogicLayer
         }
         */
 
+        //
         public Stage GetFirstStage(int scenarioID)
         {
             // create query based on the piece type
@@ -216,6 +219,7 @@ namespace LogicLayer
             return stage;
         }
 
+        //
         private Stage PutDataTableIntoStage(DataTable dataTable)
         {
             Stage tempStage = new Stage(int.Parse(dataTable.Rows[0][0].ToString()), dataTable.Rows[0][1].ToString(), dataTable.Rows[0][2].ToString(), int.Parse(dataTable.Rows[0][3].ToString()), dataTable.Rows[0][4].ToString(), dataTable.Rows[0][5].ToString(), int.Parse(dataTable.Rows[0][6].ToString()), int.Parse(dataTable.Rows[0][7].ToString()), int.Parse(dataTable.Rows[0][8].ToString()), int.Parse(dataTable.Rows[0][9].ToString()));
@@ -223,6 +227,7 @@ namespace LogicLayer
             return tempStage;
         }
 
+        //
         public Stage GetNextStage(int NextStageID)
         {
             // create query based on the piece type
