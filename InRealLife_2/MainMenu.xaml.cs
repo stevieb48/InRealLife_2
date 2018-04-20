@@ -158,7 +158,7 @@ namespace InRealLife_2
             for (int i = 0; i < resultingList.Length; i++)
             {
                 // add data table results to list view
-                lstvwScenarioPieces.Items.Add(new Scenario { ID = resultingList[i].ID, Name = resultingList[i].Name });
+                lstvwScenarioPieces.Items.Add(new Scenario { ID = resultingList[i].ID, Name = resultingList[i].Name, Description = resultingList[i].Description });
             }
         }
 

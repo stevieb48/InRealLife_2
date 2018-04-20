@@ -61,7 +61,7 @@
         <Grid.Background>
             <ImageBrush ImageSource="mediaFiles/fork-in-road-636x310.jpg"/>
         </Grid.Background>
-       
+
         <!--Buttons-->
         <Button x:Name="btnExitMenu"
                 HorizontalAlignment="Left"
@@ -73,7 +73,7 @@
                 BorderBrush="{x:Null}"
                 Foreground="{x:Null}"
                 Style="{StaticResource MyButton}">
-        <Button.Background>
+            <Button.Background>
                 <ImageBrush ImageSource="mediaFiles/exitDoorBrown.png" />
             </Button.Background>
         </Button>
@@ -124,16 +124,16 @@
         <Label x:Name="lblIRLLogo"
                Content="IN REAL LIFE"
                HorizontalAlignment="Center"
-               Margin="73,13,101,41"
+               Margin="73,13,83,41"
                FontSize="36"
-               Width="306"
+               Width="324"
                HorizontalContentAlignment="Center"
                Grid.ColumnSpan="3"
                Grid.Column="1" />
         <Label x:Name="lblTitle"
                Content="Scenario Overview"
                HorizontalAlignment="Center"
-               Margin="95,76,122,0"
+               Margin="106,76,111,0"
                VerticalAlignment="Top"
                FontSize="24"
                Width="263"
@@ -143,23 +143,22 @@
                Grid.RowSpan="2" />
         <Label x:Name="lblCurrentList"
                Content="Current List"
-               Margin="10,11,75,76"
+               Margin="32,10,53,76.8"
                Grid.Column="2"
                Grid.Row="1"
                MinHeight="26"
                MinWidth="75"
-               HorizontalAlignment="Center" />
+               HorizontalAlignment="Center" RenderTransformOrigin="1.351,0.496" />
 
 
         <!--ListView-->
         <ListView x:Name="lstvwScenarioPieces"
-                  Margin="135,42,156,31"
+                  Margin="73,42,83,30.8"
                   SelectionChanged="LstvwScenarioPieces_SelectionChanged"
                   Grid.ColumnSpan="3"
                   Grid.RowSpan="2"
                   Grid.Column="1"
-                  Grid.Row="1"
-                  Width="189">
+                  Grid.Row="1">
             <ListView.View>
                 <GridView>
                     <GridViewColumn Width="Auto"
@@ -168,6 +167,9 @@
                     <GridViewColumn Width="Auto"
                                     Header="Name"
                                     DisplayMemberBinding="{Binding Name}" />
+                    <GridViewColumn Width="Auto"
+                                    Header="Description"
+                                    DisplayMemberBinding="{Binding Description}" />
                 </GridView>
             </ListView.View>
         </ListView>
