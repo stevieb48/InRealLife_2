@@ -50,13 +50,11 @@ namespace Classes_Tests
             int iD = 0;
             string name = string.Empty;
             string description = string.Empty;
-            int stageID = 0;
-            int nextStageID = 0;
 
             Answer sut;
 
             // Act
-            sut = new Answer(iD, name, description, stageID, nextStageID);
+            sut = new Answer(iD, name, description);
 
             //Assert
             Assert.IsNotNull(sut, "The Answer Parameter Constructor is NOT null");
@@ -69,13 +67,11 @@ namespace Classes_Tests
             int iD = 0;
             string name = string.Empty;
             string description = string.Empty;
-            int stageID = 0;
-            int nextStageID = 0;
 
             Answer sut;
 
             // Act
-            sut = new Answer(iD, name, description, stageID, nextStageID);
+            sut = new Answer(iD, name, description);
 
             //Assert
             Assert.IsInstanceOfType(sut, typeof(Answer), "Answer Parameter constructor is a Answer.");
@@ -88,8 +84,6 @@ namespace Classes_Tests
             int iD = 0;
             string name = string.Empty;
             string description = string.Empty;
-            int stageID = 0;
-            int nextStageID = 0;
 
             Answer sut;
 
@@ -100,8 +94,6 @@ namespace Classes_Tests
             Assert.AreEqual(iD, sut.ID, "Answer public ID Accessor method is working properly.");
             Assert.AreEqual(name, sut.Name, "Answer public Name Accessor method is working properly.");
             Assert.AreEqual(description, sut.Description, "Answer public Description Accessor method is working properly.");
-            Assert.AreEqual(stageID, sut.StageID, "Answer public ScenarioID Accessor method is working properly.");
-            Assert.AreEqual(nextStageID, sut.NextStageID, "Answer public AudioFilePath Accessor method is working properly.");
         }
 
         [TestMethod]
@@ -111,20 +103,16 @@ namespace Classes_Tests
             int iD = 8;
             string name = "Keep Driving";
             string description = "Keep driving and ignore the issue";
-            int stageID = 4;
-            int nextStageID = 9;
 
             Answer sut;
 
             // Act
-            sut = new Answer(iD, name, description, stageID, nextStageID);
+            sut = new Answer(iD, name, description);
 
             //Assert
             Assert.AreEqual(8, sut.ID, "Answer public ID Accessor method is working properly.");
             Assert.AreEqual("Keep Driving", sut.Name, "Answer public Name Accessor method is working properly.");
             Assert.AreEqual("Keep driving and ignore the issue", sut.Description, "Answer public Description Accessor method is working properly.");
-            Assert.AreEqual(4, sut.StageID, "Answer public ScenarioID Accessor method is working properly.");
-            Assert.AreEqual(9, sut.NextStageID, "Answer public AudioFilePath Accessor method is working properly.");
         }
 
 
@@ -137,8 +125,6 @@ namespace Classes_Tests
             int iD = 8;
             string name = "Keep Driving";
             string description = "Keep driving and ignore the issue";
-            int stageID = 4;
-            int nextStageID = 9;
 
             Answer sut;
 
@@ -147,15 +133,11 @@ namespace Classes_Tests
             sut.ID = iD;
             sut.Name = name;
             sut.Description = description;
-            sut.StageID = stageID;
-            sut.NextStageID = nextStageID;
 
             //Assert
             Assert.AreEqual(8, sut.ID, "Answer public ID Accessor method is working properly.");
             Assert.AreEqual("Keep Driving", sut.Name, "Answer public Name Accessor method is working properly.");
             Assert.AreEqual("Keep driving and ignore the issue", sut.Description, "Answer public Description Accessor method is working properly.");
-            Assert.AreEqual(4, sut.StageID, "Answer public ScenarioID Accessor method is working properly.");
-            Assert.AreEqual(9, sut.NextStageID, "Answer public AudioFilePath Accessor method is working properly.");
         }
 
         [TestMethod]
@@ -165,25 +147,19 @@ namespace Classes_Tests
             int iD = 8;
             string name = "Keep Driving";
             string description = "Keep driving and ignore the issue";
-            int stageID = 4;
-            int nextStageID = 9;
 
             Answer sut;
 
             // Act
-            sut = new Answer(iD, name, description, stageID, nextStageID);
+            sut = new Answer(iD, name, description);
             sut.ID = 9;
             sut.Name = "Slow Down";
             sut.Description = "Slow down and listen for sounds from vehicle";
-            sut.StageID = 5;
-            sut.NextStageID = 12;
 
             //Assert
             Assert.AreEqual(9, sut.ID, "Answer public ID Accessor method is working properly.");
             Assert.AreEqual("Slow Down", sut.Name, "Answer public Name Accessor method is working properly.");
             Assert.AreEqual("Slow down and listen for sounds from vehicle", sut.Description, "Answer public Description Accessor method is working properly.");
-            Assert.AreEqual(5, sut.StageID, "Answer public ScenarioID Accessor method is working properly.");
-            Assert.AreEqual(12, sut.NextStageID, "Answer public AudioFilePath Accessor method is working properly.");
         }
     }
 }

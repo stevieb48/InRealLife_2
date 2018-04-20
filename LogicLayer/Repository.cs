@@ -1,12 +1,8 @@
-﻿using ClassInterfaces;
+﻿using Classes;
+using ClassInterfaces;
 using DataLayer;
 using LogicLayerInterfaces;
-using System;
-using System.Collections.Generic;
 using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 /*
  * This class ...
@@ -22,6 +18,10 @@ namespace LogicLayer
 {
     public class Repository : IRepository
     {
+        private const string SCENARIO = "Scenario";
+        private const string STAGE = "Stage";
+        private const string ANSWER = "Answer";
+
         // database instance
         private DataBaseCommunication newDBComm = new DataBaseCommunication();
 
@@ -31,20 +31,114 @@ namespace LogicLayer
 
         }
 
-        // public method to get all pieces by type
-        public DataTable GetAllPiecesByType(IScenarioPiece piece)
+        public IScenarioPiece GetPieceByID(IScenarioPiece piece)
         {
             // determine the piece
-            string pieceType = WhatTypeOfPiece(piece);
+            //string pieceType = WhatTypeOfPiece(piece);
 
             // create query based on the piece type
-            string query = "SELECT * FROM " + pieceType;
+            string query = "SELECT * FROM " + piece.GetType().ToString().Split('.')[1] + " WHERE ID = " + piece.ID;
 
             // new datatable and store results from call to the database
             DataTable dataTable = this.newDBComm.Select(query);
 
+            IScenarioPiece resultingPiece = PutDataTableIntoPiece(piece.GetType().ToString().Split('.')[1], dataTable);
+
             // return the results
-            return dataTable;
+            return resultingPiece;
+        }
+
+        //
+        private IScenarioPiece PutDataTableIntoPiece(string pieceType, DataTable dataTable)
+        {
+            if (pieceType == SCENARIO)
+            {
+                IScenarioPiece scenario = new Scenario(int.Parse(dataTable.Rows[0][0].ToString()), dataTable.Rows[0][1].ToString(), dataTable.Rows[0][2].ToString());
+
+                return scenario;
+            }
+            else if (pieceType == STAGE)
+            {
+                IScenarioPiece stage = new Stage(int.Parse(dataTable.Rows[0][0].ToString()), dataTable.Rows[0][1].ToString(), dataTable.Rows[0][2].ToString(), int.Parse(dataTable.Rows[0][3].ToString()), dataTable.Rows[0][4].ToString(), dataTable.Rows[0][5].ToString(), int.Parse(dataTable.Rows[0][6].ToString()), int.Parse(dataTable.Rows[0][7].ToString()), int.Parse(dataTable.Rows[0][8].ToString()), int.Parse(dataTable.Rows[0][9].ToString()));
+
+                return stage;
+            }
+            else
+            {
+                IScenarioPiece answer = new Answer(int.Parse(dataTable.Rows[0][0].ToString()), dataTable.Rows[0][1].ToString(), dataTable.Rows[0][2].ToString());
+
+                return answer;
+            }
+        }
+
+        // public method to get all pieces by type
+        public IScenarioPiece[] GetAllPiecesByType(IScenarioPiece piece)
+        {
+            // determine the piece
+            //string pieceType = WhatTypeOfPiece(piece);
+
+            // create query based on the piece type
+            string query = "SELECT * FROM " + piece.GetType().ToString().Split('.')[1];
+
+            // new datatable and store results from call to the database
+            DataTable dataTable = this.newDBComm.Select(query);
+
+            IScenarioPiece[] pieceList = PutDataTableIntoPieceList(piece.GetType().ToString().Split('.')[1], dataTable);
+
+            // return the results
+            return pieceList;
+        }
+
+        private IScenarioPiece[] PutDataTableIntoPieceList(string pieceType, DataTable dataTable)
+        {
+            if (pieceType == SCENARIO)
+            {
+                Scenario[] pieceList = new Scenario[dataTable.Rows.Count];                
+
+                // loop to put pieces from data table put into array
+                for (int i = 0; i < dataTable.Rows.Count; i++)
+                {
+                    Scenario tempScenario = new Scenario(int.Parse(dataTable.Rows[i][0].ToString()), dataTable.Rows[i][1].ToString(), dataTable.Rows[i][2].ToString());
+
+                    pieceList[i] = tempScenario;
+                }
+
+                IScenarioPiece[] tempArray = pieceList;
+
+                return tempArray;
+            }
+            else if (pieceType == STAGE)
+            {
+                Stage[] pieceList = new Stage[dataTable.Rows.Count];
+
+                // loop to put pieces from data table put into array
+                for (int i = 0; i < dataTable.Rows.Count; i++)
+                {
+                    Stage tempStage = new Stage(int.Parse(dataTable.Rows[i][0].ToString()), dataTable.Rows[i][1].ToString(), dataTable.Rows[i][2].ToString(), int.Parse(dataTable.Rows[i][3].ToString()), dataTable.Rows[i][4].ToString(), dataTable.Rows[i][5].ToString(), int.Parse(dataTable.Rows[i][6].ToString()), int.Parse(dataTable.Rows[i][7].ToString()), int.Parse(dataTable.Rows[i][8].ToString()), int.Parse(dataTable.Rows[i][9].ToString()));
+
+                    pieceList[i] = tempStage;
+                }
+
+                IScenarioPiece[] tempArray = pieceList;
+
+                return tempArray;
+            }
+            else
+            {
+                Answer[] pieceList = new Answer[dataTable.Rows.Count];
+
+                // loop to put pieces from data table put into array
+                for (int i = 0; i < dataTable.Rows.Count; i++)
+                {
+                    Answer tempAnswer = new Answer(int.Parse(dataTable.Rows[i][0].ToString()), dataTable.Rows[i][1].ToString(), dataTable.Rows[i][2].ToString());
+
+                    pieceList[i] = tempAnswer;
+                }
+
+                IScenarioPiece[] tempArray = pieceList;
+
+                return tempArray;
+            }
         }
 
         // public method to DELETE existing piece by type
@@ -83,6 +177,7 @@ namespace LogicLayer
             return rowsAffected;
         }
 
+        /*
         // private method to determine what piece type is passed in
         private string WhatTypeOfPiece(IScenarioPiece piece)
         {
@@ -90,21 +185,55 @@ namespace LogicLayer
             string pieceType = string.Empty;
 
             //
-            if (piece.GetType().ToString() == "Classes.Scenario")
+            if (piece.GetType().ToString().Split('.')[1] == SCENARIO)
             {
                 pieceType = "Scenario";
             }
-            else if (piece.GetType().ToString() == "Classes.Stage")
+            else if (piece.GetType().ToString().Split('.')[1] == STAGE)
             {
                 pieceType = "Stage";
             }
-            else if (piece.GetType().ToString() == "Classes.Answer")
+            else if (piece.GetType().ToString().Split('.')[1] == ANSWER)
             {
                 pieceType = "Answer";
             }
 
             // return type of piece
             return pieceType;
+        }
+        */
+
+        public Stage GetFirstStage(int scenarioID)
+        {
+            // create query based on the piece type
+            string query = "SELECT * FROM Stage WHERE ScenarioID = " + scenarioID + " AND Start = 1";
+
+            // new datatable and store results from call to the database
+            DataTable dataTable = this.newDBComm.Select(query);
+
+            Stage stage = PutDataTableIntoStage(dataTable);
+
+            return stage;
+        }
+
+        private Stage PutDataTableIntoStage(DataTable dataTable)
+        {
+            Stage tempStage = new Stage(int.Parse(dataTable.Rows[0][0].ToString()), dataTable.Rows[0][1].ToString(), dataTable.Rows[0][2].ToString(), int.Parse(dataTable.Rows[0][3].ToString()), dataTable.Rows[0][4].ToString(), dataTable.Rows[0][5].ToString(), int.Parse(dataTable.Rows[0][6].ToString()), int.Parse(dataTable.Rows[0][7].ToString()), int.Parse(dataTable.Rows[0][8].ToString()), int.Parse(dataTable.Rows[0][9].ToString()));
+
+            return tempStage;
+        }
+
+        public Stage GetNextStage(int NextStageID)
+        {
+            // create query based on the piece type
+            string query = "SELECT * FROM Stage WHERE ID = " + NextStageID;
+
+            // new datatable and store results from call to the database
+            DataTable dataTable = this.newDBComm.Select(query);
+
+            Stage stage = PutDataTableIntoStage(dataTable);
+
+            return stage;
         }
     }
 }
