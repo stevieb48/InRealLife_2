@@ -61,7 +61,6 @@
         <Grid.Background>
             <ImageBrush ImageSource="mediaFiles/fork-in-road-636x310.jpg"/>
         </Grid.Background>
-
         <!--Buttons-->
         <Button x:Name="btnExitMenu"
                 HorizontalAlignment="Left"
@@ -73,7 +72,8 @@
                 BorderBrush="{x:Null}"
                 Foreground="{x:Null}"
                 Style="{StaticResource MyButton}">
-            <Button.Background>
+        <Button.Background>
+
                 <ImageBrush ImageSource="mediaFiles/exitDoorBrown.png" />
             </Button.Background>
         </Button>
@@ -134,7 +134,6 @@
                Content="Scenario Overview"
                HorizontalAlignment="Center"
                Margin="106,76,111,0"
-
                VerticalAlignment="Top"
                FontSize="24"
                Width="263"
@@ -149,6 +148,7 @@
                Grid.Row="1"
                MinHeight="26"
                MinWidth="75"
+
                HorizontalAlignment="Center" RenderTransformOrigin="1.351,0.496" />
 
 
@@ -160,7 +160,6 @@
                   Grid.RowSpan="2"
                   Grid.Column="1"
                   Grid.Row="1">
-
             <ListView.View>
                 <GridView>
                     <GridViewColumn Width="Auto"
@@ -172,7 +171,6 @@
                     <GridViewColumn Width="Auto"
                                     Header="Description"
                                     DisplayMemberBinding="{Binding Description}" />
-
                 </GridView>
             </ListView.View>
         </ListView>
