@@ -16,6 +16,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using Classes;
 using ClassInterfaces;
+using LogicLayer;
 
 /*
  * This GUI ...
@@ -34,30 +35,61 @@ namespace InRealLife_2
     /// </summary>
     public partial class Running : Page
     {
-        DataHandler data = new DataHandler();
+        // create new repository
+        private Repository repository = new Repository();
+
+        //
+        private IScenarioPiece currentScenario;
+        private Stage currentStage = new Stage();
+        private IScenarioPiece currentAnswer1;
+        private IScenarioPiece currentAnswer2;
+
+        public static bool FirstRunFlag = true;
+
+        //DataHandler data = new DataHandler();
+
         public Running(int Scenario)
-        {
-           
+        {           
             InitializeComponent();
             Start(Scenario);
             ImageBlock.Source = new BitmapImage(new Uri(Directory.GetCurrentDirectory() + "\\MediaFiles\\flat.tire.10.jpg", UriKind.Absolute));
         }
 
-
-
         public void Start(int ScenarioId)
         {
-            data.Intetialize(ScenarioId);
-            ScenarioName.Text = data.scenario.Name;
+            if (!FirstRunFlag)
+            {
+                currentStage = repository.GetNextStage(ScenarioId);
+                // scenarioID must be a stage id from an answer choice(stage.nextID)
+                currentScenario = new Scenario(currentStage.ScenarioID);
+                currentScenario = repository.GetPieceByID(currentScenario);
 
-            Text1.Text = data.answer1.Description;
-            Text2.Text = data.answer2.Description;
-            StageDescription.Text = data.stage.Description;
+                currentAnswer1 = new Answer(currentStage.Answer1ID);
+                currentAnswer1 = repository.GetPieceByID(currentAnswer1);
+                currentAnswer2 = new Answer(currentStage.Answer2ID);
+                currentAnswer2 = repository.GetPieceByID(currentAnswer2);
+            }
+            else
+            {
+                FirstRunFlag = false;
 
+                currentScenario = new Scenario(ScenarioId);
+                currentScenario = repository.GetPieceByID(currentScenario);
+                currentStage = repository.GetFirstStage(currentScenario.ID);
+                currentAnswer1 = new Answer(currentStage.Answer1ID);
+                currentAnswer1 = repository.GetPieceByID(currentAnswer1);
+                currentAnswer2 = new Answer(currentStage.Answer2ID);
+                currentAnswer2 = repository.GetPieceByID(currentAnswer2);
+            }
+
+            //data.Intetialize(ScenarioId);
+            ScenarioName.Text = currentScenario.Name;
+            StageDescription.Text = currentStage.Description;
+            Text1.Text = currentAnswer1.Description;
+            Text2.Text = currentAnswer2.Description;           
         }
 
-
-
+        /*
         public void Update(int AnswerNumber)
         {
             if (AnswerNumber == 1)
@@ -73,9 +105,9 @@ namespace InRealLife_2
                 {
                     data.Update(AnswerNumber);
 
-                    Text1.Text = data.answer1.Description;
-                    Text2.Text = data.answer2.Description;
-                    StageDescription.Text = data.stage.Description;
+                    Text1.Text = currentAnswer1.Description;
+                    Text2.Text = currentAnswer2.Description;
+                    StageDescription.Text = currentStage.Description;
                 }
             }
             else if (AnswerNumber == 2)
@@ -90,23 +122,26 @@ namespace InRealLife_2
                 {
                     data.Update(AnswerNumber);
 
-                    Text1.Text = data.answer1.Description;
-                    Text2.Text = data.answer2.Description;
-                    StageDescription.Text = data.stage.Description;
+                    Text1.Text = currentAnswer1.Description;
+                    Text2.Text = currentAnswer2.Description;
+                    StageDescription.Text = currentStage.Description;
                 }
             }
         }
+        */
 
-
-
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void BtnChoiceA_Click(object sender, RoutedEventArgs e)
         {
-            Update(1);
+            //Update(1);
+            Running run = new Running(currentStage.Ans1NextStagID);
+            this.NavigationService.Navigate(run);
         }
 
-        private void Button_Click_1(object sender, RoutedEventArgs e)
+        private void BtnChoiceB_Click(object sender, RoutedEventArgs e)
         {
-            Update(2);
+            //Update(2);
+            Running run = new Running(currentStage.Ans2NextStagID);
+            this.NavigationService.Navigate(run);
         }
 
         private void Button_Click_2(object sender, RoutedEventArgs e)

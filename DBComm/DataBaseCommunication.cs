@@ -28,8 +28,8 @@ namespace DataLayer
         private SqlCommand cmd = null;
 
         // Auto Implemented Property
-        public SqlConnection Conn { get; set; }
-        public SqlConnection Cmd { get; set; }
+        //public SqlConnection Conn { get; set; }
+        //public SqlConnection Cmd { get; set; }
 
         // method to open the connection
         private SqlConnection OpenConnection()
@@ -82,7 +82,7 @@ namespace DataLayer
             using (cmd = new SqlCommand(selectQuery, conn))
             {
                 // reinitialize connection string
-                conn.ConnectionString = CONNECTION_STRING;
+                //conn.ConnectionString = CONNECTION_STRING;
 
                 // open connection
                 conn = OpenConnection();
@@ -104,7 +104,7 @@ namespace DataLayer
             using (cmd = new SqlCommand(nonQuery, conn))
             {
                 // reinitialize connection string
-                conn.ConnectionString = CONNECTION_STRING;
+                //conn.ConnectionString = CONNECTION_STRING;
 
                 // open connection
                 conn = OpenConnection();

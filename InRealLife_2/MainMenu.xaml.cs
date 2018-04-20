@@ -50,16 +50,16 @@ namespace InRealLife_2
             btnPerformSelected.IsEnabled = false;
 
             // data table containing data from results table
-            DataTable resultingDT = pieceRepository.GetAllPiecesByType(this.currentPiece);
+            IScenarioPiece[] resultingList = pieceRepository.GetAllPiecesByType(this.currentPiece);
 
             // if data table has rows
-            if (resultingDT.Rows.Count > 0)
+            if (resultingList.Length > 0)
             {
                 // enable proper buttons
                 ScenarioListHasValues();
 
                 // then add data to listbox
-                AddDataToListBox(resultingDT);
+                AddDataToListBox(resultingList);
             }
             else
             {
@@ -125,7 +125,11 @@ namespace InRealLife_2
         // perform selected piece button click event
         private void BtnPerformSelected_Click(object sender, RoutedEventArgs e)
         {
-            Running run = new Running(1);
+            // grab selected piece and put into variable
+            IScenarioPiece selectedPiece = (IScenarioPiece)lstvwScenarioPieces.SelectedItem;
+
+            Running run = new Running(selectedPiece.ID);
+
             this.NavigationService.Navigate(run);
             //run.Show();
 
@@ -149,13 +153,13 @@ namespace InRealLife_2
         }
 
         // method to add piece data to list box
-        private void AddDataToListBox(DataTable results)
+        private void AddDataToListBox(IScenarioPiece[] resultingList)
         {
             // loop to put pieces from data table into listbox items
-            for (int i = 0; i < results.Rows.Count; i++)
+            for (int i = 0; i < resultingList.Length; i++)
             {
                 // add data table results to list view
-                lstvwScenarioPieces.Items.Add(new Scenario { ID = int.Parse(results.Rows[i][0].ToString()), Name = results.Rows[i][1].ToString() });
+                lstvwScenarioPieces.Items.Add(new Scenario { ID = resultingList[i].ID, Name = resultingList[i].Name, Description = resultingList[i].Description });
             }
         }
 

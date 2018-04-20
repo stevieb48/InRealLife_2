@@ -1,9 +1,4 @@
 ﻿using ClassInterfaces;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 /*
  * This class Scenario implements an interface IScenarioPiece. It has 2 constructors for object creation, 
@@ -19,7 +14,7 @@ using System.Threading.Tasks;
 namespace Classes
 {
     public class Scenario : IScenarioPiece
-    {
+    {        
         // Auto Implemented Properties Scenario
         public int ID { get; set; }
         public string Name { get; set; }
@@ -29,6 +24,13 @@ namespace Classes
         public Scenario()
         {
             this.ID = 0;
+            this.Name = string.Empty;
+            this.Description = string.Empty;
+        }
+
+        public Scenario(int ID)
+        {
+            this.ID = ID;
             this.Name = string.Empty;
             this.Description = string.Empty;
         }
