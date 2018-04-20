@@ -113,7 +113,6 @@ namespace InRealLife_2
         private void EnableEditModeButtons()
         {
             lblTitle.Content = (EDIT_MODE + " " + currentPiece.GetType().ToString().Split('.')[1]);
-
         }
 
         //
