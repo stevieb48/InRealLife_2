@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Classes;
+using ClassInterfaces;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -28,6 +30,8 @@ namespace InRealLife_2
 
         private void enterButton_Click(object sender, RoutedEventArgs e)
         {
+            IScenarioPiece scenario = new Scenario();
+            MainMenu newMainMenu = new MainMenu(scenario);
             this.NavigationService.Navigate(new Uri("MainMenu.xaml", UriKind.Relative));
         }
 

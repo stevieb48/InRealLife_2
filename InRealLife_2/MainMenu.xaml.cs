@@ -24,17 +24,26 @@ namespace InRealLife_2
     /// </summary>
     public partial class MainMenu : Page
     {
+        //
+        private const string SCENARIO_MODE = "Scenario";
+        private const string STAGE_MODE = "Stage";
+        private const int EMPTY_INT = 0;
+
+        //
+        private string mode = SCENARIO_MODE;
+
         // create new repository
         private Repository pieceRepository = new Repository();
 
         //
-        private IScenarioPiece currentPiece = new Scenario();
+        private IScenarioPiece currentPiece;
 
-        public MainMenu()
+        public MainMenu(IScenarioPiece piece)
         {
             InitializeComponent();
+            this.currentPiece = piece;
+            SetMode();
             InitializeForm();
-            //this.currentPiece = new Answer(); 
         }
 
         // initialize the form
@@ -68,9 +77,9 @@ namespace InRealLife_2
             }
 
             // set label content to specific piece type
-            lblCurrentList.Content = ("Current " + currentPiece.GetType().ToString().Split('.')[1] + " List");
-            lblTitle.Content = (currentPiece.GetType().ToString().Split('.')[1] + " Management");
-            btnExitMenu.Content = ("Exit " + currentPiece.GetType().ToString().Split('.')[1] + " Management");
+            lblCurrentList.Content = ("Current " + mode + " List");
+            lblTitle.Content = (mode + " Management");
+            btnExitMenu.Content = ("Exit " + mode + " Management");
         }
 
         // exit builder button click event
@@ -94,9 +103,6 @@ namespace InRealLife_2
         // delete selected button click event
         private void BtnDeleteSelected_Click(object sender, RoutedEventArgs e)
         {
-            // CONSTANT used when comparing to the number 
-            const int EMPTY_DB_RESULT = 0;
-
             // grab selected piece and put into variable
             IScenarioPiece selectedPiece = (IScenarioPiece)lstvwScenarioPieces.SelectedItem;
 
@@ -104,7 +110,7 @@ namespace InRealLife_2
             int rowsaffected = pieceRepository.DeleteExistingPiece(selectedPiece);
 
             // if piece was deleted
-            if (rowsaffected > EMPTY_DB_RESULT)
+            if (rowsaffected > EMPTY_INT)
             {
                 // Show user which piece was deleted
                 MessageBox.Show("The piece called " + selectedPiece.Name + " was deleted");
@@ -154,12 +160,22 @@ namespace InRealLife_2
         // method to add piece data to list box
         private void AddDataToListBox(IScenarioPiece[] resultingList)
         {
-            // loop to put pieces from data table into listbox items
-            for (int i = 0; i < resultingList.Length; i++)
+            if (mode != SCENARIO_MODE)
             {
-                // add data table results to list view
-                lstvwScenarioPieces.Items.Add(new Scenario { ID = resultingList[i].ID, Name = resultingList[i].Name, Description = resultingList[i].Description });
+                for (int i = 0; i < resultingList.Length; i++)
+                {
+                    // add data table results to list view
+                    lstvwScenarioPieces.Items.Add(new Stage { ID = resultingList[i].ID, Name = resultingList[i].Name, Description = resultingList[i].Description });
+                }
             }
+            else
+            {
+                for (int i = 0; i < resultingList.Length; i++)
+                {
+                    // add data table results to list view
+                    lstvwScenarioPieces.Items.Add(new Scenario { ID = resultingList[i].ID, Name = resultingList[i].Name, Description = resultingList[i].Description });
+                }
+            }               
         }
 
         // has listbox selection changed
@@ -184,6 +200,37 @@ namespace InRealLife_2
         private void BtnEditSelected_Click(object sender, RoutedEventArgs e)
         {
 
+        }
+
+        private void SetMode()
+        {
+            // pieceID is not empty which means edit a piece
+            if (currentPiece.GetType().ToString().Split('.')[1] != SCENARIO_MODE)
+            {
+                mode = STAGE_MODE;
+                //EnableEditModeButtons();
+            }
+            else
+            {
+                mode = SCENARIO_MODE;
+                //EnableCreateModeButtons();
+            }
+        }
+
+        private void BtnSwitchMode_Click(object sender, RoutedEventArgs e)
+        {
+            if (mode != SCENARIO_MODE)
+            {
+                IScenarioPiece stage = new Stage();
+                MainMenu newMainMenu = new MainMenu(stage);
+                this.NavigationService.Navigate(new Uri("MainMenu.xaml", UriKind.Relative));
+            }
+            else
+            {
+                IScenarioPiece scenario = new Scenario();
+                MainMenu newMainMenu = new MainMenu(scenario);
+                this.NavigationService.Navigate(new Uri("MainMenu.xaml", UriKind.Relative));
+            }
         }
     }
 }
