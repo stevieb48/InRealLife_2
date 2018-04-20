@@ -15,6 +15,7 @@ namespace Classes
 {
     public class Stage : IScenarioPiece
     {        
+
         // Auto Implemented Properties Stage
         public int ID { get; set; }
         public string Name { get; set; }

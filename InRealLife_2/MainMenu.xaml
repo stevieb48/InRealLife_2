@@ -134,6 +134,7 @@
                Content="Scenario Overview"
                HorizontalAlignment="Center"
                Margin="106,76,111,0"
+
                VerticalAlignment="Top"
                FontSize="24"
                Width="263"
@@ -159,6 +160,7 @@
                   Grid.RowSpan="2"
                   Grid.Column="1"
                   Grid.Row="1">
+
             <ListView.View>
                 <GridView>
                     <GridViewColumn Width="Auto"
@@ -170,6 +172,7 @@
                     <GridViewColumn Width="Auto"
                                     Header="Description"
                                     DisplayMemberBinding="{Binding Description}" />
+
                 </GridView>
             </ListView.View>
         </ListView>

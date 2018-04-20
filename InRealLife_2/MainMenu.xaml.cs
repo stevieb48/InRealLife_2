@@ -129,6 +129,7 @@ namespace InRealLife_2
             IScenarioPiece selectedPiece = (IScenarioPiece)lstvwScenarioPieces.SelectedItem;
 
             Running run = new Running(selectedPiece.ID);
+
             this.NavigationService.Navigate(run);
             //run.Show();
 

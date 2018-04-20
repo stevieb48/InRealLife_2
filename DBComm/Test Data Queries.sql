@@ -25,15 +25,17 @@ VALUES
 ('Fixing a flat', 'Pull out the jack and lift vehicle or turn off vehicle and inspect the spare ...',  NULL, 'C:\user\test\docs\audiofiles\audioFile6', 'C:\user\test\docs\imageFiles\imageFile6', NULL, NULL, NULL, NULL, 0);
 
 
+
 UPDATE Stage
 SET Answer1ID = 5, Ans1NextStagID = 6, Answer2ID = 6
 WHERE ID = 4;
 
 select * from stage where ID = 4;
 
+
 */
 
-
+change
 -- populate answers	table
 /*
 
