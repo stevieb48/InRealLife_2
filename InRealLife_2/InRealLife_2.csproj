@@ -72,8 +72,11 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="AnswerMainMenu.xaml.cs">
-      <DependentUpon>AnswerMainMenu.xaml</DependentUpon>
+    <Compile Include="CreateStage.xaml.cs">
+      <DependentUpon>CreateStage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="ManagmentOptions.xaml.cs">
       <DependentUpon>ManagmentOptions.xaml</DependentUpon>
@@ -81,25 +84,24 @@
     <Compile Include="Running.xaml.cs">
       <DependentUpon>Running.xaml</DependentUpon>
     </Compile>
-    <Compile Include="StageMainMenu.xaml.cs">
-      <DependentUpon>StageMainMenu.xaml</DependentUpon>
+    <Compile Include="TitlePage.xaml.cs">
+      <DependentUpon>TitlePage.xaml</DependentUpon>
     </Compile>
-    <Page Include="AnswerMainMenu.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="ScenarioMainMenu.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
+    <Compile Include="MainMenu.xaml.cs">
+      <DependentUpon>MainMenu.xaml</DependentUpon>
+    </Compile>
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="ScenarioMainMenu.xaml.cs">
-      <DependentUpon>ScenarioMainMenu.xaml</DependentUpon>
-      <SubType>Code</SubType>
-    </Compile>
+    <Page Include="CreateStage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MainWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="ManagmentOptions.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -108,7 +110,11 @@
       <SubType>Designer</SubType>
       <Generator>XamlIntelliSenseFileGenerator</Generator>
     </Page>
-    <Page Include="StageMainMenu.xaml">
+    <Page Include="TitlePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MainMenu.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -177,6 +183,21 @@
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="mediaFiles\mainBackground.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="mediaFiles\enterMerc.jpg" />
+    <Resource Include="mediaFiles\exitDoorBlack.jpg" />
+    <Resource Include="mediaFiles\exitDoorBrown.png" />
+    <Resource Include="mediaFiles\exitMerc.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="mediaFiles\fork-in-road-636x310.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="mediaFiles\upload.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

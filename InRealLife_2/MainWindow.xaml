@@ -1,0 +1,11 @@
+﻿<NavigationWindow x:Name="MainWindow1" x:Class="InRealLife_2.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:InRealLife_2"
+        mc:Ignorable="d"
+        Title="In Real Life" Width="800" d:DesignHeight="450">
+    </NavigationWindow>
+                  
+              

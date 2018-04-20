@@ -18,7 +18,7 @@ using System.Threading.Tasks;
  */
 namespace Classes
 {
-    public class Answer : ClassInterfaces.IScenarioPiece
+    public class Answer : IScenarioPiece
     {
         // Auto Implemented Properties Answer
         public int ID { get; set; }

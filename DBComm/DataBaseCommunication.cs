@@ -63,7 +63,6 @@ namespace DataLayer
             int rowsAffected = ExecuteNonQueryOnDB(insertQuery);
 
             return rowsAffected;
-
         }
 
         // inherited interface method to DELETE from a table in the database
@@ -72,7 +71,6 @@ namespace DataLayer
             int rowsAffected = ExecuteNonQueryOnDB(deleteQuery);
 
             return rowsAffected;
-
         }
 
         // private method to ExecuteReaderOnDB on the database used by the interface methods above
@@ -81,7 +79,6 @@ namespace DataLayer
             // create new data table
             DataTable resultDataTable = new DataTable();
 
-            using (conn)
             using (cmd = new SqlCommand(selectQuery, conn))
             {
                 // reinitialize connection string
@@ -104,7 +101,6 @@ namespace DataLayer
             // create return variable
             int rowsAffected = 0;
 
-            using (conn)
             using (cmd = new SqlCommand(nonQuery, conn))
             {
                 // reinitialize connection string

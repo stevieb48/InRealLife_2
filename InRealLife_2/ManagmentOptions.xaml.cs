@@ -30,30 +30,30 @@ namespace InRealLife_2
         private void ManageScenariosBtn_Click(object sender, RoutedEventArgs e)
         {
             // call appropriate menu
-            ScenarioMainMenu scenarioMainMenu = new ScenarioMainMenu();
+            //ScenarioMainMenu scenarioMainMenu = new ScenarioMainMenu();
 
             // switch navigation to main menu
-            scenarioMainMenu.Show();
+            //scenarioMainMenu.Show();
         }
 
         //
         private void ManageStagesBtn_Click(object sender, RoutedEventArgs e)
         {
             // call appropriate menu
-            StageMainMenu StageMainMenu = new StageMainMenu();
+            //StageMainMenu StageMainMenu = new StageMainMenu();
 
             // switch navigation to main menu
-            StageMainMenu.Show();
+            //StageMainMenu.Show();
         }
 
         //
         private void ManageAnswersBtn_Click(object sender, RoutedEventArgs e)
         {
             // call appropriate menu
-            AnswerMainMenu answerMainMenu = new AnswerMainMenu();
+            //AnswerMainMenu answerMainMenu = new AnswerMainMenu();
 
             // switch navigation to main menu
-            answerMainMenu.Show();
+            //answerMainMenu.Show();
         }
 
         //

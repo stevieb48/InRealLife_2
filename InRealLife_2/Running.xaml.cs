@@ -32,7 +32,7 @@ namespace InRealLife_2
     /// <summary>
     /// Interaction logic for Running.xaml
     /// </summary>
-    public partial class Running : Window
+    public partial class Running : Page
     {
         DataHandler data = new DataHandler();
         public Running(int Scenario)
@@ -64,9 +64,10 @@ namespace InRealLife_2
             {
                 if (data.answer2.NextStageID == 0)
                 {
-                    ScenarioMainMenu main = new ScenarioMainMenu();
-                    main.Show();
-                    Close();
+                   // MainMenu main = new MainMenu();
+                    //main.Show();
+                    //Close();
+                    this.NavigationService.Navigate(new Uri("MainMenu.xaml", UriKind.Relative));
                 }
                 else
                 {
@@ -81,9 +82,9 @@ namespace InRealLife_2
             {
                 if (data.answer2.NextStageID == 0)
                 {
-                    ScenarioMainMenu main = new ScenarioMainMenu();
-                    main.Show();
-                    Close();
+                   // MainMenu main = new MainMenu();
+                    this.NavigationService.Navigate(new Uri("MainMenu.xaml", UriKind.Relative));
+                    //Close();
                 }
                 else
                 {
@@ -110,9 +111,10 @@ namespace InRealLife_2
 
         private void Button_Click_2(object sender, RoutedEventArgs e)
         {
-            ScenarioMainMenu main = new ScenarioMainMenu();
-            main.Show();
-            Close();
+           // MainMenu main = new MainMenu();
+            //main.Show();
+            //Close();
+            this.NavigationService.Navigate(new Uri("MainMenu.xaml", UriKind.Relative));
         }
     }
 }

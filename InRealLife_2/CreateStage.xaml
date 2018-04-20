@@ -1,0 +1,203 @@
+﻿<Page x:Class="InRealLife_2.CreateScenario"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:local="clr-namespace:InRealLife_2"
+      mc:Ignorable="d"
+      d:DesignHeight="450"
+      d:DesignWidth="800"
+      Title="CreateScenario">
+
+    <!--Reusable resources for the page-->
+    <Page.Resources>
+        <!--Creates a new button named MyButton that changes the mouse hover effect-->
+        <Style x:Key="MyButton"
+               TargetType="Button">
+            <Setter Property="OverridesDefaultStyle"
+                    Value="True" />
+            <Setter Property="Cursor"
+                    Value="Hand" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Name="border"
+                                BorderThickness="0"
+                                BorderBrush="Black"
+                                Background="{TemplateBinding Background}">
+                            <ContentPresenter HorizontalAlignment="Center"
+                                              VerticalAlignment="Center" />
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver"
+                                     Value="True">
+                                <Setter Property="Opacity"
+                                        Value="0.8" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Page.Resources>
+
+    <Grid>
+        <!--Row and Column -->
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <Grid.Background>
+            <ImageBrush ImageSource="mediaFiles/fork-in-road-636x310.jpg" />
+        </Grid.Background>
+
+        <!--Buttons-->
+        <Button x:Name="btnExitMenu"
+                HorizontalAlignment="Left"
+                Margin="10,10,0,0"
+                VerticalAlignment="Top"
+                Width="80"
+                Click="btnExitMenu_Click"
+                Height="89"
+                BorderBrush="{x:Null}"
+                Foreground="{x:Null}"
+                Style="{StaticResource MyButton}">
+            <Button.Background>
+                <ImageBrush ImageSource="mediaFiles/exitDoorBrown.png" />
+            </Button.Background>
+        </Button>
+        <Button x:Name="uploadAudioBtn"
+                Content="Upload Audio File"
+                Grid.Column="1"
+                HorizontalAlignment="Center"
+                Height="25"
+                Margin="122,108,168,92"
+                VerticalAlignment="Center"
+                Width="110"
+                Click="uploadAudioBtn_Click" />
+        <Button x:Name="previewBtn"
+                Content="Preview"
+                HorizontalAlignment="Center"
+                Margin="252,156,73,0"
+                Grid.Row="1"
+                VerticalAlignment="Top"
+                MinHeight="25"
+                MinWidth="75"
+                Click="previewBtn_Click" />
+        <Button x:Name="saveBtn"
+                Content="Save"
+                HorizontalAlignment="Center"
+                Margin="364,156,362,0"
+                Grid.Row="1"
+                VerticalAlignment="Top"
+                MinHeight="25"
+                MinWidth="75"
+                Grid.ColumnSpan="2"
+                Click="saveBtn_Click" />
+        <Button x:Name="cancelBtn"
+                Content="Cancel"
+                HorizontalAlignment="Center"
+                Margin="75,156,250,0"
+                Grid.Row="1"
+                VerticalAlignment="Top"
+                MinHeight="25"
+                MinWidth="75"
+                Grid.Column="1"
+                Click="cancelBtn_Click" />
+
+        <!--TextBoxes-->
+        <TextBox x:Name="titleBox"
+                 Grid.ColumnSpan="2"
+                 HorizontalAlignment="Center"
+                 Margin="228,10,228,176"
+                 TextWrapping="Wrap"
+                 Text="Click to edit stage title."
+                 VerticalAlignment="Center"
+                 MinHeight="40"
+                 MinWidth="300" />
+        <TextBox x:Name="descriptionBox"
+                 Grid.ColumnSpan="2"
+                 HorizontalAlignment="Center"
+                 Height="46"
+                 Margin="183,0,182,0"
+                 Grid.Row="1"
+                 TextWrapping="Wrap"
+                 Text="Click to edit stage description"
+                 VerticalAlignment="Top"
+                 Width="435" />
+        <TextBox x:Name="answer1box"
+                 HorizontalAlignment="Center"
+                 Height="41"
+                 Margin="107,56,0,0"
+                 Grid.Row="1"
+                 TextWrapping="Wrap"
+                 Text="Click to edit answer number 1"
+                 VerticalAlignment="Top"
+                 Width="227" />
+        <TextBox x:Name="answer2box"
+                 HorizontalAlignment="Center"
+                 Height="41"
+                 Margin="58,51,114,0"
+                 Grid.Row="1"
+                 TextWrapping="Wrap"
+                 Text="Click to edit answer number 2"
+                 VerticalAlignment="Top"
+                 Width="228"
+                 Grid.Column="1" />
+
+        <!--Image-->
+        <Image x:Name="imageBox"
+               HorizontalAlignment="Center"
+               Margin="324,65,326,10"
+               VerticalAlignment="Center"
+               MinHeight="150"
+               MinWidth="150"
+               Height="150"
+               Width="150"
+               Source="mediaFiles/upload.png"
+               Stretch="Fill"
+               Grid.ColumnSpan="2"
+               MouseLeftButtonDown="Image_MouseLeftButtonDown"
+               ToolTip="Click to Upload Image" />
+
+        <!--ComboBox-->
+        <ComboBox x:Name="scenarioSelect"
+                  Grid.Column="1"
+                  HorizontalAlignment="Center"
+                  Height="21"
+                  Margin="122,65,131,0"
+                  VerticalAlignment="Top"
+                  Width="147"
+                  Text="Scenario Selection"
+                  IsEditable="True"
+                  ToolTip="Make this stage part of a scenario" />
+        <ComboBox x:Name="answer1path"
+                  HorizontalAlignment="Center"
+                  Height="21"
+                  Margin="107,102,0,0"
+                  VerticalAlignment="Top"
+                  Width="147"
+                  Text="Next Stage"
+                  IsEditable="True"
+                  ToolTip="Select where this answer leads"
+                  Grid.Row="1" />
+        <ComboBox x:Name="answer2path"
+                  Grid.Column="1"
+                  HorizontalAlignment="Center"
+                  Height="21"
+                  Margin="98,102,156,0"
+                  VerticalAlignment="Top"
+                  Width="146"
+                  Text="Next Stage"
+                  IsEditable="True"
+                  ToolTip="Select where this answer leads"
+                  Grid.Row="1" />
+
+
+    </Grid>
+</Page>
