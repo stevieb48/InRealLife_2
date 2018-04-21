@@ -32,7 +32,7 @@ namespace InRealLife_2
             //IScenarioPiece scenario = new Scenario();
             MainMenu newMainMenu = new MainMenu();
             this.NavigationService.Navigate(newMainMenu);
-        }      
+        }
 
         private void exitButton_Click(object sender, RoutedEventArgs e)
         {

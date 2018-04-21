@@ -24,24 +24,25 @@ namespace InRealLife_2
     /// </summary>
     public partial class MainMenu : Page
     {
-        //
+        // CONSTANTS
         private const string SCENARIO_MODE = "Scenario";
         private const string STAGE_MODE = "Stage";
         private const int EMPTY_INT = 0;
 
-        //
+        // Flag variable for current mode by default it is set to Scenario Mode
         private string mode = SCENARIO_MODE;
 
         // create new repository
         private Repository pieceRepository = new Repository();
 
-        //
-        private IScenarioPiece currentPiece = new Scenario();
+        // new piece
+        private IScenarioPiece currentPiece;
 
-        public MainMenu()
+        // constructor
+        public MainMenu(IScenarioPiece piece)
         {
             InitializeComponent();
-            //this.currentPiece = piece;
+            this.currentPiece = piece;
             SetMode();
             InitializeForm();
         }
@@ -54,7 +55,7 @@ namespace InRealLife_2
 
             // enable create button
             // ***** change btnCreateNew, and btnEditExisting(below) control back to true when edit piece is incorporated ***********
-           
+
             btnDeleteSelected.IsEnabled = false;
             btnPerformSelected.IsEnabled = false;
 
@@ -92,7 +93,7 @@ namespace InRealLife_2
         private void BtnCreateNew_Click(object sender, RoutedEventArgs e)
         {
             IScenarioPiece scenario = new Scenario();
-            CreateNewOverall newCreateNewOverall = new CreateNewOverall(scenario.ID);
+            CreateNewOverall newCreateNewOverall = new CreateNewOverall(scenario);
             this.NavigationService.Navigate(newCreateNewOverall);
         }
 
@@ -160,7 +161,7 @@ namespace InRealLife_2
             {
                 // add data table results to list view
                 lstvwScenarioPieces.Items.Add(new Scenario { ID = resultingList[i].ID, Name = resultingList[i].Name, Description = resultingList[i].Description });
-            }              
+            }
         }
 
         // has listbox selection changed
@@ -208,9 +209,10 @@ namespace InRealLife_2
 
         private void BtnSwitchMode_Click(object sender, RoutedEventArgs e)
         {
-                //IScenarioPiece stage = new Stage();
+            //IScenarioPiece stage = new Stage();
             StageMain newStageMain = new StageMain();
-            this.NavigationService.Navigate(new Uri("StageMain.xaml", UriKind.Relative));
+            this.NavigationService.Navigate(newStageMain);
+            //this.NavigationService.Navigate(new Uri("StageMain.xaml", UriKind.Relative));
         }
     }
 }
