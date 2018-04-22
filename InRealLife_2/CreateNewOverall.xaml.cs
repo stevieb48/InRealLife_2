@@ -78,23 +78,26 @@ namespace InRealLife_2
             if (mode == EDIT_MODE)
             {
                 // update scenario table with new textbox data
-                pieceRepository.UpdateExisingPiece(currentPiece);
+                //UpdateExisingPiece(currentPiece);
             }
             else if (mode == CREATE_MODE)
             {
                 // insert new
-                pieceRepository.InsertNewPiece(currentPiece);
+                //pieceRepository.InsertNewPiece(currentPiece);
 
                 // change mode
                 mode = EDIT_MODE;
             }
+
+            Console.WriteLine("Name : " + txtbxScenarioTitle.Text);
+            Console.WriteLine("Description : " + txtbxScenarioDescription.Text);
         }
 
         //
         private void CancelBtn_Click(object sender, RoutedEventArgs e)
         {
             // call button to go back
-
+            this.NavigationService.GoBack();
         }
 
         //

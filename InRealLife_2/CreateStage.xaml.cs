@@ -46,7 +46,7 @@ namespace InRealLife_2
             openFileDialog.Filter = "MP3 files (*.mp3)|*.mp3|All files (*.*)|*.*";
             if (openFileDialog.ShowDialog() == true)
             {
-               
+
             }
 
         }
@@ -75,6 +75,12 @@ namespace InRealLife_2
         private void btnExitMenu_Click(object sender, RoutedEventArgs e)
         {
             Application.Current.Shutdown();
+        }
+
+        public ComboBox ScenarioSelect
+        {
+            get => scenarioSelect;
+            set => scenarioSelect = value;
         }
     }
 }
