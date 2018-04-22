@@ -255,9 +255,9 @@ namespace LogicLayer
                                 + "ScenarioID = " + stage.ScenarioID + ", "
                                 + "AudioFilePath = '" + stage.AudioFilePath + "', "
                                 + "ImageFilePath = '" + stage.ImageFilePath + "', "
-                                + "Answer1ID = " + stage.Answer1 + ", "
+                                + "Answer1 = '" + stage.Answer1 + "', "
                                 + "Ans1NextStagID = " + stage.Ans1NextStagID + ", "
-                                + "Answer2ID = " + stage.Answer2 + ", "
+                                + "Answer2 = '" + stage.Answer2 + "', "
                                 + "Ans2NextStagID = " + stage.Ans2NextStagID + ", "
                                 + "Start = " + starterFlag
                                 + " WHERE ID = " + stage.ID;
@@ -273,10 +273,10 @@ namespace LogicLayer
                                 + "'" + stage.Description + "', "
                                 + stage.ScenarioID + ", "
                                 + "'" + stage.AudioFilePath + "', "
-                                + "'" + stage.ImageFilePath + "', "
-                                + stage.Answer1 + ", "
-                                + stage.Ans1NextStagID + ", "
-                                + stage.Answer2 + ", "
+                                + "'" + stage.ImageFilePath + "', '"
+                                + stage.Answer1 + "', "
+                                + stage.Ans1NextStagID + ", '"
+                                + stage.Answer2 + "', "
                                 + stage.Ans2NextStagID + ", "
                                 + starterFlag
                                 + " WHERE ID = " + stage.ID;
