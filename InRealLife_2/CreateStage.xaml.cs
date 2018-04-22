@@ -13,6 +13,9 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Classes;
+using ClassInterfaces;
+using LogicLayer;
 
 namespace InRealLife_2
 {
@@ -24,6 +27,23 @@ namespace InRealLife_2
         public CreateStage()
         {
             InitializeComponent();
+        Repository pieceRepository = new Repository();
+        IScenarioPiece currentPiece = new Scenario();
+
+        IScenarioPiece[] resultingList = pieceRepository.GetAllPiecesByType(currentPiece);
+            if (resultingList.Length > 0)
+            {
+                for (int i = 0; i < resultingList.Length; i++)
+                {
+                    scenarioSelect.Items.Add(new Scenario{ID = resultingList[i].ID, Name =resultingList[i].Name, Description = resultingList[i].Description});
+                }
+
+                scenarioSelect.DisplayMemberPath = "Name";
+            }
+            else
+            {
+               
+            }
         }
 
         private void Image_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
@@ -58,13 +78,17 @@ namespace InRealLife_2
             Console.WriteLine("Answer 1: " + answer1box.Text);
             Console.WriteLine("Answer 2: " + answer2box.Text);
             Console.WriteLine("Image source: " + imageBox.Source.ToString());
+            Scenario newScenario = (Scenario)scenarioSelect.SelectedValue;
+            Console.WriteLine("ID = : " + newScenario.ID);
         }
 
         private void saveBtn_Click(object sender, RoutedEventArgs e)
         {
-            String insertString = "INSERT INTO Stage VALUE (" + titleBox.Text + "," + descriptionBox.Text + "," + "ScenarioID" + "," + "NULL" + "," + imageBox.Source.ToString() + ")";
+            String insertString = "INSERT INTO Stage VALUE ('" + titleBox.Text + "','" + descriptionBox.Text + "'," + "ScenarioID" + "," + "'NULL'" + ",'" + imageBox.Source.ToString() + "')";
             String insertanswer1 = "INSERT INTO Answer VALUE (Name" + "," + answer1box.Text + "," + " StageID" + ", " + "NextStageID" + ")";
             String insertanswer2 = "INSERT INTO Answer VALUE (Name" + "," + answer2box.Text + "," + " StageID" + ", " + "NextStageID" + ")";
+
+
         }
 
         private void cancelBtn_Click(object sender, RoutedEventArgs e)
