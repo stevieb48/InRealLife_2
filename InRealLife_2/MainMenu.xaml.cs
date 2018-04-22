@@ -36,13 +36,13 @@ namespace InRealLife_2
         private Repository pieceRepository = new Repository();
 
         // new piece
-        private IScenarioPiece currentPiece;
+        private IScenarioPiece currentPiece = new Scenario();
 
         // constructor
-        public MainMenu(IScenarioPiece piece)
+        public MainMenu()
         {
             InitializeComponent();
-            this.currentPiece = piece;
+            //this.currentPiece = piece;
             SetMode();
             InitializeForm();
         }
@@ -93,7 +93,7 @@ namespace InRealLife_2
         private void BtnCreateNew_Click(object sender, RoutedEventArgs e)
         {
             IScenarioPiece scenario = new Scenario();
-            CreateNewOverall newCreateNewOverall = new CreateNewOverall(scenario);
+            CreateNewOverall newCreateNewOverall = new CreateNewOverall(scenario.ID);
             this.NavigationService.Navigate(newCreateNewOverall);
         }
 
