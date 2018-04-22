@@ -241,5 +241,51 @@ namespace LogicLayer
 
             return stage;
         }
+
+        public int SaveStageData(Stage stage, bool starterFlag)
+        {
+            int rowsAffected = 0;
+                
+            if (stage.ID != 0)
+            {
+                // update existing
+                string query = "UPDATE Stage SET "
+                                + "Name = '" + stage.Name + "', "
+                                + "Description = '" + stage.Description + "', "
+                                + "ScenarioID = " + stage.ScenarioID + ", "
+                                + "AudioFilePath = '" + stage.AudioFilePath + "', "
+                                + "ImageFilePath = '" + stage.ImageFilePath + "', "
+                                + "Answer1ID = " + stage.Answer1ID + ", "
+                                + "Ans1NextStagID = " + stage.Ans1NextStagID + ", "
+                                + "Answer2ID = " + stage.Answer2ID + ", "
+                                + "Ans2NextStagID = " + stage.Ans2NextStagID + ", "
+                                + "Start = " + starterFlag
+                                + " WHERE ID = " + stage.ID;
+
+                rowsAffected = newDBComm.Update(query);
+            }
+            else
+            {
+                // insert new
+                string query = "INSERT INTO Stage (Name, Description, ScenarioID, AudioFilePath, ImageFilePath, Answer1ID, Ans1NextStagID, Answer2ID, Ans2NextStagID, Start)" 
+                                + " VALUES "
+                                + "('" + stage.Name + "', "
+                                + "'" + stage.Description + "', "
+                                + stage.ScenarioID + ", "
+                                + "'" + stage.AudioFilePath + "', "
+                                + "'" + stage.ImageFilePath + "', "
+                                + stage.Answer1ID + ", "
+                                + stage.Ans1NextStagID + ", "
+                                + stage.Answer2ID + ", "
+                                + stage.Ans2NextStagID + ", "
+                                + starterFlag
+                                + " WHERE ID = " + stage.ID;
+
+                rowsAffected = newDBComm.Insert(query);
+            }
+
+            // 
+            return rowsAffected;
+        }
     }
 }
