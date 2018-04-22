@@ -172,8 +172,8 @@ namespace LogicLayer
         public int InsertNewPiece(IScenarioPiece piece)
         {
             // create rows affected by call to INSERT into the database
-            int rowsAffected = newDBComm.Delete("INSERT INTO " + piece.GetType().ToString().Split('.')[1]
-                                        + " (Name, Description) VALUES (" + piece.Name + ", " + piece.Description);
+            int rowsAffected = newDBComm.Insert("INSERT INTO " + piece.GetType().ToString().Split('.')[1]
+                                        + " (Name, Description) VALUES ('" + piece.Name + "', '" + piece.Description + "')");
 
             // return rows affected by nonquery
             return rowsAffected;

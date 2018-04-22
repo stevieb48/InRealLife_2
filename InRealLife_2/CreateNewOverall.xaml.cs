@@ -79,18 +79,32 @@ namespace InRealLife_2
             {
                 // update scenario table with new textbox data
                 //UpdateExisingPiece(currentPiece);
+                Console.WriteLine("Name : " + txtbxScenarioTitle.Text);
+                Console.WriteLine("Description : " + txtbxScenarioDescription.Text);
+
+                Scenario updatedScenario = new Scenario();
+                updatedScenario.Name = txtbxScenarioTitle.Text;
+                updatedScenario.Description = txtbxScenarioDescription.Text;
+
+                Repository repo = new Repository();
+                repo.UpdateExisingPiece(updatedScenario);
             }
             else if (mode == CREATE_MODE)
             {
                 // insert new
                 //pieceRepository.InsertNewPiece(currentPiece);
+                Console.WriteLine("Name : " + txtbxScenarioTitle.Text);
+                Console.WriteLine("Description : " + txtbxScenarioDescription.Text);
+                Scenario newScenario = new Scenario();
+                newScenario.Name = txtbxScenarioTitle.Text;
+                newScenario.Description = txtbxScenarioDescription.Text;
+
+               Repository repo = new Repository();
+                repo.InsertNewPiece(newScenario);
 
                 // change mode
                 mode = EDIT_MODE;
             }
-
-            Console.WriteLine("Name : " + txtbxScenarioTitle.Text);
-            Console.WriteLine("Description : " + txtbxScenarioDescription.Text);
         }
 
         //
