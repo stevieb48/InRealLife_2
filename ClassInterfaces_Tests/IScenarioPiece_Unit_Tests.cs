@@ -117,7 +117,7 @@ namespace ClassInterfaces_Tests
         {
             // Arrange
             IScenarioPiece sut;
-            Stage stage = new Stage(3, "name", "description", 1, "C:\\Users\\parent\\audio\\audiofile1", "C:\\Users\\parent\\image\\imagefile1",4,5,6,7);
+            Stage stage = new Stage(3, "name", "description", 1, "C:\\Users\\parent\\audio\\audiofile1", "C:\\Users\\parent\\image\\imagefile1", "test answe1",5, "test answe2",7);
 
             // Act
             sut = stage;

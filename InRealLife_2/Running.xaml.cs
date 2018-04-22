@@ -41,8 +41,8 @@ namespace InRealLife_2
         //
         private IScenarioPiece currentScenario;
         private Stage currentStage = new Stage();
-        private IScenarioPiece currentAnswer1;
-        private IScenarioPiece currentAnswer2;
+        private string currentAnswer1;
+        private string currentAnswer2;
 
         public static bool FirstRunFlag = true;
 
@@ -64,10 +64,10 @@ namespace InRealLife_2
                 currentScenario = new Scenario(currentStage.ScenarioID);
                 currentScenario = repository.GetPieceByID(currentScenario);
 
-                currentAnswer1 = new Answer(currentStage.Answer1ID);
-                currentAnswer1 = repository.GetPieceByID(currentAnswer1);
-                currentAnswer2 = new Answer(currentStage.Answer2ID);
-                currentAnswer2 = repository.GetPieceByID(currentAnswer2);
+                currentAnswer1 = currentStage.Answer1;
+                //currentAnswer1 = repository.GetPieceByID(currentAnswer1);
+                currentAnswer2 = currentStage.Answer2;
+                //currentAnswer2 = repository.GetPieceByID(currentAnswer2);
             }
             else
             {
@@ -76,17 +76,17 @@ namespace InRealLife_2
                 currentScenario = new Scenario(ScenarioId);
                 currentScenario = repository.GetPieceByID(currentScenario);
                 currentStage = repository.GetFirstStage(currentScenario.ID);
-                currentAnswer1 = new Answer(currentStage.Answer1ID);
-                currentAnswer1 = repository.GetPieceByID(currentAnswer1);
-                currentAnswer2 = new Answer(currentStage.Answer2ID);
-                currentAnswer2 = repository.GetPieceByID(currentAnswer2);
+                currentAnswer1 = currentStage.Answer1;
+                //currentAnswer1 = repository.GetPieceByID(currentAnswer1);
+                currentAnswer2 = currentStage.Answer2;
+                //currentAnswer2 = repository.GetPieceByID(currentAnswer2);
             }
 
             //data.Intetialize(ScenarioId);
             ScenarioName.Text = currentScenario.Name;
             StageDescription.Text = currentStage.Description;
-            Text1.Text = currentAnswer1.Description;
-            Text2.Text = currentAnswer2.Description;           
+            Text1.Text = currentStage.Answer1;
+            Text2.Text = currentStage.Answer2;
         }
 
         /*

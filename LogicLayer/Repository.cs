@@ -62,7 +62,7 @@ namespace LogicLayer
             }
             else if (pieceType == STAGE)
             {
-                IScenarioPiece stage = new Stage(int.Parse(dataTable.Rows[0][0].ToString()), dataTable.Rows[0][1].ToString(), dataTable.Rows[0][2].ToString(), int.Parse(dataTable.Rows[0][3].ToString()), dataTable.Rows[0][4].ToString(), dataTable.Rows[0][5].ToString(), int.Parse(dataTable.Rows[0][6].ToString()), int.Parse(dataTable.Rows[0][7].ToString()), int.Parse(dataTable.Rows[0][8].ToString()), int.Parse(dataTable.Rows[0][9].ToString()));
+                IScenarioPiece stage = new Stage(int.Parse(dataTable.Rows[0][0].ToString()), dataTable.Rows[0][1].ToString(), dataTable.Rows[0][2].ToString(), int.Parse(dataTable.Rows[0][3].ToString()), dataTable.Rows[0][4].ToString(), dataTable.Rows[0][5].ToString(), dataTable.Rows[0][6].ToString(), int.Parse(dataTable.Rows[0][7].ToString()), dataTable.Rows[0][8].ToString(), int.Parse(dataTable.Rows[0][9].ToString()));
 
                 return stage;
             }
@@ -223,7 +223,7 @@ namespace LogicLayer
         //
         private Stage PutDataTableIntoStage(DataTable dataTable)
         {
-            Stage tempStage = new Stage(int.Parse(dataTable.Rows[0][0].ToString()), dataTable.Rows[0][1].ToString(), dataTable.Rows[0][2].ToString(), int.Parse(dataTable.Rows[0][3].ToString()), dataTable.Rows[0][4].ToString(), dataTable.Rows[0][5].ToString(), int.Parse(dataTable.Rows[0][6].ToString()), int.Parse(dataTable.Rows[0][7].ToString()), int.Parse(dataTable.Rows[0][8].ToString()), int.Parse(dataTable.Rows[0][9].ToString()));
+            Stage tempStage = new Stage(int.Parse(dataTable.Rows[0][0].ToString()), dataTable.Rows[0][1].ToString(), dataTable.Rows[0][2].ToString(), int.Parse(dataTable.Rows[0][3].ToString()), dataTable.Rows[0][4].ToString(), dataTable.Rows[0][5].ToString(), dataTable.Rows[0][6].ToString(), int.Parse(dataTable.Rows[0][7].ToString()), dataTable.Rows[0][8].ToString(), int.Parse(dataTable.Rows[0][9].ToString()));
 
             return tempStage;
         }
@@ -255,9 +255,9 @@ namespace LogicLayer
                                 + "ScenarioID = " + stage.ScenarioID + ", "
                                 + "AudioFilePath = '" + stage.AudioFilePath + "', "
                                 + "ImageFilePath = '" + stage.ImageFilePath + "', "
-                                + "Answer1ID = " + stage.Answer1ID + ", "
+                                + "Answer1ID = " + stage.Answer1 + ", "
                                 + "Ans1NextStagID = " + stage.Ans1NextStagID + ", "
-                                + "Answer2ID = " + stage.Answer2ID + ", "
+                                + "Answer2ID = " + stage.Answer2 + ", "
                                 + "Ans2NextStagID = " + stage.Ans2NextStagID + ", "
                                 + "Start = " + starterFlag
                                 + " WHERE ID = " + stage.ID;
@@ -274,9 +274,9 @@ namespace LogicLayer
                                 + stage.ScenarioID + ", "
                                 + "'" + stage.AudioFilePath + "', "
                                 + "'" + stage.ImageFilePath + "', "
-                                + stage.Answer1ID + ", "
+                                + stage.Answer1 + ", "
                                 + stage.Ans1NextStagID + ", "
-                                + stage.Answer2ID + ", "
+                                + stage.Answer2 + ", "
                                 + stage.Ans2NextStagID + ", "
                                 + starterFlag
                                 + " WHERE ID = " + stage.ID;
