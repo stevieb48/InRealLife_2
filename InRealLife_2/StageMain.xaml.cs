@@ -36,7 +36,7 @@ namespace InRealLife_2
         private Repository pieceRepository = new Repository();
 
         //
-        private IScenarioPiece currentPiece =  new Stage();
+        private IScenarioPiece currentPiece = new Stage();
 
         public StageMain()
         {

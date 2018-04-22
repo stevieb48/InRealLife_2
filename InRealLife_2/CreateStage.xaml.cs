@@ -27,22 +27,22 @@ namespace InRealLife_2
         public CreateStage()
         {
             InitializeComponent();
-        Repository pieceRepository = new Repository();
-        IScenarioPiece currentPiece = new Scenario();
+            Repository pieceRepository = new Repository();
+            IScenarioPiece currentPiece = new Scenario();
 
-        IScenarioPiece[] resultingList = pieceRepository.GetAllPiecesByType(currentPiece);
+            IScenarioPiece[] resultingList = pieceRepository.GetAllPiecesByType(currentPiece);
             if (resultingList.Length > 0)
             {
                 for (int i = 0; i < resultingList.Length; i++)
                 {
-                    scenarioSelect.Items.Add(new Scenario{ID = resultingList[i].ID, Name =resultingList[i].Name, Description = resultingList[i].Description});
+                    scenarioSelect.Items.Add(new Scenario { ID = resultingList[i].ID, Name = resultingList[i].Name, Description = resultingList[i].Description });
                 }
 
                 scenarioSelect.DisplayMemberPath = "Name";
             }
             else
             {
-               
+
             }
         }
 

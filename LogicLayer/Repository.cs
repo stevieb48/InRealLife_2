@@ -97,7 +97,7 @@ namespace LogicLayer
         {
             if (pieceType == SCENARIO)
             {
-                Scenario[] pieceList = new Scenario[dataTable.Rows.Count];                
+                Scenario[] pieceList = new Scenario[dataTable.Rows.Count];
 
                 // loop to put pieces from data table put into array
                 for (int i = 0; i < dataTable.Rows.Count; i++)
@@ -245,7 +245,7 @@ namespace LogicLayer
         public int SaveStageData(Stage stage, bool starterFlag)
         {
             int rowsAffected = 0;
-                
+
             if (stage.ID != 0)
             {
                 // update existing
@@ -267,7 +267,7 @@ namespace LogicLayer
             else
             {
                 // insert new
-                string query = "INSERT INTO Stage (Name, Description, ScenarioID, AudioFilePath, ImageFilePath, Answer1ID, Ans1NextStagID, Answer2ID, Ans2NextStagID, Start)" 
+                string query = "INSERT INTO Stage (Name, Description, ScenarioID, AudioFilePath, ImageFilePath, Answer1ID, Ans1NextStagID, Answer2ID, Ans2NextStagID, Start)"
                                 + " VALUES "
                                 + "('" + stage.Name + "', "
                                 + "'" + stage.Description + "', "
