@@ -33,6 +33,11 @@ namespace LogicLayer
 
         }
 
+        public void CloseConnection()
+        {
+            newDBComm.Dispose();
+        }
+
         //
         public IScenarioPiece GetPieceByID(IScenarioPiece piece)
         {
@@ -40,7 +45,9 @@ namespace LogicLayer
             //string pieceType = WhatTypeOfPiece(piece);
 
             // create query based on the piece type
-            string query = "SELECT * FROM " + piece.GetType().ToString().Split('.')[1] + " WHERE ID = " + piece.ID;
+            string query = "SELECT * " 
+                        + "FROM " + piece.GetType().ToString().Split('.')[1] 
+                        + " WHERE ID = " + piece.ID;
 
             // new datatable and store results from call to the database
             DataTable dataTable = this.newDBComm.Select(query);
@@ -81,7 +88,8 @@ namespace LogicLayer
             //string pieceType = WhatTypeOfPiece(piece);
 
             // create query based on the piece type
-            string query = "SELECT * FROM " + piece.GetType().ToString().Split('.')[1];
+            string query = "SELECT * " 
+                        + "FROM " + piece.GetType().ToString().Split('.')[1];
 
             // new datatable and store results from call to the database
             DataTable dataTable = this.newDBComm.Select(query);
@@ -162,8 +170,8 @@ namespace LogicLayer
         {
             // create rows affected by call to UPDATE from the database
             int rowsAffected = newDBComm.Delete("UPDATE " + piece.GetType().ToString().Split('.')[1]
-                                        + "SET Name = " + piece.Name + " Description = " + piece.Description
-                                        + "WHERE ID =" + piece.ID);
+                                        + " SET Name = '" + piece.Name + "', Description = '" + piece.Description
+                                        + "' WHERE ID = " + piece.ID);
 
             // return rows affected by nonquery
             return rowsAffected;
@@ -174,7 +182,8 @@ namespace LogicLayer
         {
             // create rows affected by call to INSERT into the database
             int rowsAffected = newDBComm.Insert("INSERT INTO " + piece.GetType().ToString().Split('.')[1]
-                                        + " (Name, Description) VALUES ('" + piece.Name + "', '" + piece.Description + "')");
+                                        + " (Name, Description) " 
+                                        + "VALUES ('" + piece.Name + "', '" + piece.Description + "')");
 
             // return rows affected by nonquery
             return rowsAffected;
@@ -210,7 +219,10 @@ namespace LogicLayer
         public Stage GetFirstStage(int scenarioID)
         {
             // create query based on the piece type
-            string query = "SELECT * FROM Stage WHERE ScenarioID = " + scenarioID + " AND Start = 1";
+            string query = "SELECT * " 
+                        + "FROM Stage " 
+                        + "WHERE ScenarioID = " + scenarioID 
+                        + " AND Start = 1";
 
             // new datatable and store results from call to the database
             DataTable dataTable = this.newDBComm.Select(query);
@@ -232,7 +244,9 @@ namespace LogicLayer
         public Stage GetNextStage(int NextStageID)
         {
             // create query based on the piece type
-            string query = "SELECT * FROM Stage WHERE ID = " + NextStageID;
+            string query = "SELECT * " 
+                        + "FROM Stage " 
+                        + "WHERE ID = " + NextStageID;
 
             // new datatable and store results from call to the database
             DataTable dataTable = this.newDBComm.Select(query);
