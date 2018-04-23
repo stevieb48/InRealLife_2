@@ -121,8 +121,10 @@ namespace DataLayer
             return rowsAffected;
         }
 
+        //
         public void Dispose()
         {
+            //
             conn.Close();
         }
     }

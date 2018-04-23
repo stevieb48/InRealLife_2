@@ -75,13 +75,6 @@ namespace InRealLife_2
 
                     //Repository repo = new Repository();
                     pieceRepository.UpdateExisingPiece(this.currentPiece);
-
-                    // update scenario table with new textbox data
-                    //UpdateExisingPiece(currentPiece);
-                    //Console.WriteLine("Name : " + txtbxScenarioTitle.Text);
-                    //Console.WriteLine("Description : " + txtbxScenarioDescription.Text);
-                    //updatedScenario.Name = txtbxScenarioTitle.Text;
-                    //updatedScenario.Description = txtbxScenarioDescription.Text;
                 }
                 else if (mode == CREATE_MODE)
                 {
@@ -93,13 +86,6 @@ namespace InRealLife_2
 
                     // change mode
                     mode = EDIT_MODE;
-
-                    // insert new
-                    //pieceRepository.InsertNewPiece(currentPiece);
-                    //Console.WriteLine("Name : " + txtbxScenarioTitle.Text);
-                    //Console.WriteLine("Description : " + txtbxScenarioDescription.Text);
-                    //newScenario.Name = txtbxScenarioTitle.Text;
-                    //newScenario.Description = txtbxScenarioDescription.Text;
                 }
             }
             catch (DbException ex)
@@ -171,6 +157,7 @@ namespace InRealLife_2
         // method to enable controls for create mode
         private void EnableCreateModeButtons()
         {
+            //
             lblTitle.Content = (CREATE_MODE + " " + currentPiece.GetType().ToString().Split('.')[1]);
             txtbxScenarioTitle.Text = currentPiece.Name;
             txtbxScenarioDescription.Text = currentPiece.Description;
