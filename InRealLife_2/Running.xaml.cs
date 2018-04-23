@@ -46,13 +46,25 @@ namespace InRealLife_2
 
         public static bool FirstRunFlag = true;
 
+        private string currentDirectory = Directory.GetCurrentDirectory();
+        private MediaPlayer soundFX = new MediaPlayer();
+       
+
         //DataHandler data = new DataHandler();
 
         public Running(int Scenario)
         {           
             InitializeComponent();
             Start(Scenario);
-            ImageBlock.Source = new BitmapImage(new Uri("\\MediaFiles\\flat.tire.10.jpg", UriKind.RelativeOrAbsolute));
+
+            string imageFileName = "flat.tire.10.jpg";
+            string imageFilePath = System.IO.Path.Combine(currentDirectory, "mediaFiles", imageFileName);
+            ImageBlock.Source = new BitmapImage(new Uri(imageFilePath, UriKind.RelativeOrAbsolute));
+
+            string soundFileName = "car_brake_crash.wav";
+            string soundFilePath = System.IO.Path.Combine(currentDirectory, "mediaFiles", soundFileName);
+            soundFX.Open(new Uri(soundFilePath, UriKind.RelativeOrAbsolute));
+            soundFX.Play();
         }
 
         public void Start(int ScenarioId)

@@ -16,6 +16,7 @@ using System.Windows.Shapes;
 using Classes;
 using ClassInterfaces;
 using LogicLayer;
+using System.IO;
 
 namespace InRealLife_2
 {
@@ -24,6 +25,8 @@ namespace InRealLife_2
     /// </summary>
     public partial class CreateStage : Page
     {
+        string currentDirectory = Directory.GetCurrentDirectory();
+
         public CreateStage()
         {
             InitializeComponent();
@@ -56,17 +59,22 @@ namespace InRealLife_2
             if (op.ShowDialog() == true)
             {
                 imageBox.Source = new BitmapImage(new Uri(op.FileName));
+                string justFileName = System.IO.Path.GetFileName(op.FileName);
+                string saveFilePath = System.IO.Path.Combine(currentDirectory, "mediaFiles", justFileName);
+                File.Copy(op.FileName, saveFilePath);
             }
 
         }
 
         private void uploadAudioBtn_Click(object sender, RoutedEventArgs e)
         {
-            OpenFileDialog openFileDialog = new OpenFileDialog();
-            openFileDialog.Filter = "MP3 files (*.mp3)|*.mp3|All files (*.*)|*.*";
-            if (openFileDialog.ShowDialog() == true)
+            OpenFileDialog op = new OpenFileDialog();
+            op.Filter = "MP3 files (*.mp3; *.wav)|*.mp3; *.wav|All files (*.*)|*.*";
+            if (op.ShowDialog() == true)
             {
-
+                string justFileName = System.IO.Path.GetFileName(op.FileName);
+                string saveFilePath = System.IO.Path.Combine(currentDirectory, "mediaFiles", justFileName);
+                File.Copy(op.FileName, saveFilePath);
             }
 
         }
