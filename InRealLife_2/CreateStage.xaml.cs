@@ -51,31 +51,76 @@ namespace InRealLife_2
 
         private void Image_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            OpenFileDialog op = new OpenFileDialog();
-            op.Title = "Select a picture";
-            op.Filter = "All supported graphics|*.jpg;*.jpeg;*.png|" +
-              "JPEG (*.jpg;*.jpeg)|*.jpg;*.jpeg|" +
-              "Portable Network Graphic (*.png)|*.png";
-            if (op.ShowDialog() == true)
+            bool done = true;
+            do
             {
-                imageBox.Source = new BitmapImage(new Uri(op.FileName));
-                string justFileName = System.IO.Path.GetFileName(op.FileName);
-                string saveFilePath = System.IO.Path.Combine(currentDirectory, "mediaFiles", justFileName);
-                File.Copy(op.FileName, saveFilePath);
-            }
-
+                OpenFileDialog op = new OpenFileDialog();
+                op.Title = "Select a picture";
+                op.Filter = "All supported graphics|*.jpg;*.jpeg;*.png|" +
+                  "JPEG (*.jpg;*.jpeg)|*.jpg;*.jpeg|" +
+                  "Portable Network Graphic (*.png)|*.png";
+                if (op.ShowDialog() == true)
+                {
+                    imageBox.Source = new BitmapImage(new Uri(op.FileName));
+                    string justFileName = System.IO.Path.GetFileName(op.FileName);
+                    string saveFilePath = System.IO.Path.Combine(currentDirectory, "mediaFiles", justFileName);
+                    if (File.Exists(saveFilePath))
+                    {
+                        MessageBoxResult result = MessageBox.Show(justFileName + " already exists.\n\n Would you like to use it inthis stage?", "IRL- Error Message", MessageBoxButton.YesNoCancel);
+                        switch (result)
+                        {
+                            case MessageBoxResult.Yes:
+                                justFileName = System.IO.Path.GetFileName(op.FileName);
+                                done = true;
+                                break;
+                            case MessageBoxResult.No:
+                                done = false;
+                                break;
+                            case MessageBoxResult.Cancel:
+                                justFileName = null;
+                                done = true;
+                                break;
+                        }
+                    }
+                    else
+                        File.Copy(op.FileName, saveFilePath);
+                }
+            } while (!done);
         }
 
         private void uploadAudioBtn_Click(object sender, RoutedEventArgs e)
         {
-            OpenFileDialog op = new OpenFileDialog();
-            op.Filter = "MP3 files (*.mp3; *.wav)|*.mp3; *.wav|All files (*.*)|*.*";
-            if (op.ShowDialog() == true)
+            bool done = true;
+            do
             {
-                string justFileName = System.IO.Path.GetFileName(op.FileName);
-                string saveFilePath = System.IO.Path.Combine(currentDirectory, "mediaFiles", justFileName);
-                File.Copy(op.FileName, saveFilePath);
-            }
+                OpenFileDialog op = new OpenFileDialog();
+                op.Filter = "MP3 files (*.mp3; *.wav)|*.mp3; *.wav|All files (*.*)|*.*";
+                if (op.ShowDialog() == true)
+                {
+                    string justFileName = System.IO.Path.GetFileName(op.FileName);
+                    string saveFilePath = System.IO.Path.Combine(currentDirectory, "mediaFiles", justFileName);
+                    if (File.Exists(saveFilePath))
+                    {
+                        MessageBoxResult result = MessageBox.Show(justFileName + " already exists.\n\n Would you like to use it in this scenario?", "IRL- Error Message", MessageBoxButton.YesNoCancel);
+                        switch (result)
+                        {
+                            case MessageBoxResult.Yes:
+                                justFileName = System.IO.Path.GetFileName(op.FileName);
+                                done = true;
+                                break;
+                            case MessageBoxResult.No:
+                                done = false;
+                                break;
+                            case MessageBoxResult.Cancel:
+                                justFileName = null;
+                                done = true;
+                                break;
+                        }
+                    }
+                    else
+                        File.Copy(op.FileName, saveFilePath);
+                }
+            } while (!done);
 
         }
 
