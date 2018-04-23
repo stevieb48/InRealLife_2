@@ -56,11 +56,13 @@ namespace InRealLife_2
         {
             InitializeComponent();
             Start(Scenario);
-
+            
+            //***********************imageFileName needs to be changed from hard coded value to database value i.e currentStage.fileName*************************** 
             string imageFileName = "flat.tire.10.jpg";
             string imageFilePath = System.IO.Path.Combine(currentDirectory, "mediaFiles", imageFileName);
             ImageBlock.Source = new BitmapImage(new Uri(imageFilePath, UriKind.RelativeOrAbsolute));
 
+            //****************soundFileName needs to be changed from hard coded value to database value i.e currentStage.fileName************************* 
             string soundFileName = "car_brake_crash.wav";
             string soundFilePath = System.IO.Path.Combine(currentDirectory, "mediaFiles", soundFileName);
             soundFX.Open(new Uri(soundFilePath, UriKind.RelativeOrAbsolute));
