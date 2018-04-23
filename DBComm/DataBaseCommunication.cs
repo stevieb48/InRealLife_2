@@ -18,7 +18,7 @@ using DataLayerInterfaces;
 namespace DataLayer
 {
     //
-    public class DataBaseCommunication : IDatabase, IDisposable
+    public sealed class DataBaseCommunication : IDatabase, IDisposable
     {
         // CONSTANT for storing the connection string
         private const string CONNECTION_STRING = @"Server=tcp:irl-data-server.database.windows.net,1433;Initial Catalog=Azure_SQL_IRL_ScenarioData;Persist Security Info=False;User ID=IRL_admin;Password=1RLdatA2;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";

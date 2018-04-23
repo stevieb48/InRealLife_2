@@ -34,17 +34,8 @@ namespace LogicLayer
         }
 
         //
-        public void CleanUp()
-        {
-            newDBComm.Dispose();
-        }
-
-        //
         public IScenarioPiece GetPieceByID(IScenarioPiece piece)
         {
-            // determine the piece
-            //string pieceType = WhatTypeOfPiece(piece);
-
             // create query based on the piece type
             string query = "SELECT * "
                         + "FROM " + piece.GetType().ToString().Split('.')[1]
@@ -269,6 +260,12 @@ namespace LogicLayer
 
             // 
             return rowsAffected;
+        }
+
+        //
+        public void CleanUp()
+        {
+            newDBComm.Dispose();
         }
     }
 }
