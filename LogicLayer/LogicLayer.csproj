@@ -56,9 +56,13 @@
       <Project>{f04e1a8e-8876-4f24-9430-8b2ec46e222d}</Project>
       <Name>DataLayer</Name>
     </ProjectReference>
-    <ProjectReference Include="..\IRLInterfaces\LogicLayerInterfaces.csproj">
+    <ProjectReference Include="..\IRLInterfaces\LogicLayerMenuInterfaces.csproj">
       <Project>{B22962DF-6DDE-45F6-A80A-F317A35ACCA0}</Project>
-      <Name>LogicLayerInterfaces</Name>
+      <Name>LogicLayerMenuInterfaces</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\LogicLayerStageRunEditCreateInterfaces\LogicLayerStageRunEditCreateInterfaces.csproj">
+      <Project>{89CFB377-12D8-441E-9C61-BA7C96641427}</Project>
+      <Name>LogicLayerStageRunEditCreateInterfaces</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

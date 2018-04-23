@@ -1,7 +1,8 @@
 ﻿using Classes;
 using ClassInterfaces;
 using DataLayer;
-using LogicLayerInterfaces;
+using LogicLayerMenuInterfaces;
+using LogicLayerStageRunEditCreateInterfaces;
 using System;
 using System.Data;
 
@@ -17,7 +18,7 @@ using System.Data;
  */
 namespace LogicLayer
 {
-    public class Repository : IRepository
+    public class Repository : IPieceMenuRepository, IStageCreateEditRunRepository
     {
         // CONSTANTS
         private const string SCENARIO = "Scenario";

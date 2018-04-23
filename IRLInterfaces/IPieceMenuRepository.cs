@@ -11,9 +11,9 @@ using System.Data;
  * file name: IRepository.cs
  * version: 1.0
  */
-namespace LogicLayerInterfaces
+namespace LogicLayerMenuInterfaces
 {
-    public interface IRepository
+    public interface IPieceMenuRepository
     {
         IScenarioPiece[] GetAllPiecesByType(IScenarioPiece piece);
         IScenarioPiece GetPieceByID(IScenarioPiece piece);

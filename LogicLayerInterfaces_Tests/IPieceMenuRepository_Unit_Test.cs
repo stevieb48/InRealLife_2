@@ -14,7 +14,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace LogicLayerInterfaces_Tests
 {
     //[TestClass]
-    public class IRepository_Unit_Test
+    public class IPieceMenuRepository_Unit_Test
     {
         //[TestMethod]
         public void TestMethod1()
