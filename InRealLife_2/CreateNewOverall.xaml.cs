@@ -95,8 +95,8 @@ namespace InRealLife_2
             }
             finally
             {
-                // close connection
-                pieceRepository.CloseConnection();
+                // cleanup
+                pieceRepository.CleanUp();
             }
         }
 
@@ -147,7 +147,7 @@ namespace InRealLife_2
             finally
             {
                 // close connection
-                pieceRepository.CloseConnection();
+                pieceRepository.CleanUp();
             }
 
             txtbxScenarioTitle.Text = currentPiece.Name;

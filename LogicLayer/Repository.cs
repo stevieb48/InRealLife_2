@@ -34,7 +34,7 @@ namespace LogicLayer
         }
 
         //
-        public void CloseConnection()
+        public void CleanUp()
         {
             newDBComm.Dispose();
         }
