@@ -39,7 +39,7 @@ namespace DataLayer
                 conn.Open();
             }
             return conn;
-        }       
+        }
 
         // inherited interface method to SELECT from the database
         public DataTable Select(string selectQuery)

@@ -65,7 +65,7 @@
         <TextBlock x:Name="Text2" Margin="138,131,188,69" TextWrapping="Wrap" Text="Answer 2" Background="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}" Grid.Column="1" Grid.Row="1" MinHeight="25" MinWidth="75" HorizontalAlignment="Center" Height="25"/>
 
         <!--Image Views-->
-        <Image x:Name="ImageBlock" Margin="319,78,301,201" Source="mediaFiles/flat.tire.10.jpg" Grid.ColumnSpan="2" MinHeight="150" MinWidth="150" VerticalAlignment="Center" HorizontalAlignment="Center" Stretch="Fill" StretchDirection="DownOnly" Grid.RowSpan="2"/>
+        <Image x:Name="ImageBlock" Margin="319,78,301,201" Grid.ColumnSpan="2" MinHeight="150" MinWidth="150" VerticalAlignment="Center" HorizontalAlignment="Center" Stretch="Fill" StretchDirection="DownOnly" Grid.RowSpan="2"/>
 
     </Grid>
 </Page>

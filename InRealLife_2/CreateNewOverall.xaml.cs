@@ -99,7 +99,7 @@ namespace InRealLife_2
                 newScenario.Name = txtbxScenarioTitle.Text;
                 newScenario.Description = txtbxScenarioDescription.Text;
 
-               Repository repo = new Repository();
+                Repository repo = new Repository();
                 repo.InsertNewPiece(newScenario);
 
                 // change mode

@@ -16,6 +16,7 @@ using System.Windows.Shapes;
 using Classes;
 using ClassInterfaces;
 using LogicLayer;
+using System.IO;
 
 namespace InRealLife_2
 {
@@ -24,50 +25,102 @@ namespace InRealLife_2
     /// </summary>
     public partial class CreateStage : Page
     {
+        string currentDirectory = Directory.GetCurrentDirectory();
+
         public CreateStage()
         {
             InitializeComponent();
-        Repository pieceRepository = new Repository();
-        IScenarioPiece currentPiece = new Scenario();
+            Repository pieceRepository = new Repository();
+            IScenarioPiece currentPiece = new Scenario();
 
-        IScenarioPiece[] resultingList = pieceRepository.GetAllPiecesByType(currentPiece);
+            IScenarioPiece[] resultingList = pieceRepository.GetAllPiecesByType(currentPiece);
             if (resultingList.Length > 0)
             {
                 for (int i = 0; i < resultingList.Length; i++)
                 {
-                    scenarioSelect.Items.Add(new Scenario{ID = resultingList[i].ID, Name =resultingList[i].Name, Description = resultingList[i].Description});
+                    scenarioSelect.Items.Add(new Scenario { ID = resultingList[i].ID, Name = resultingList[i].Name, Description = resultingList[i].Description });
                 }
 
                 scenarioSelect.DisplayMemberPath = "Name";
             }
             else
             {
-               
+
             }
         }
 
         private void Image_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            OpenFileDialog op = new OpenFileDialog();
-            op.Title = "Select a picture";
-            op.Filter = "All supported graphics|*.jpg;*.jpeg;*.png|" +
-              "JPEG (*.jpg;*.jpeg)|*.jpg;*.jpeg|" +
-              "Portable Network Graphic (*.png)|*.png";
-            if (op.ShowDialog() == true)
+            bool done = true;
+            do
             {
-                imageBox.Source = new BitmapImage(new Uri(op.FileName));
-            }
-
+                OpenFileDialog op = new OpenFileDialog();
+                op.Title = "Select a picture";
+                op.Filter = "All supported graphics|*.jpg;*.jpeg;*.png|" +
+                  "JPEG (*.jpg;*.jpeg)|*.jpg;*.jpeg|" +
+                  "Portable Network Graphic (*.png)|*.png";
+                if (op.ShowDialog() == true)
+                {
+                    imageBox.Source = new BitmapImage(new Uri(op.FileName));
+                    string justFileName = System.IO.Path.GetFileName(op.FileName);
+                    string saveFilePath = System.IO.Path.Combine(currentDirectory, "mediaFiles", justFileName);
+                    if (File.Exists(saveFilePath))
+                    {
+                        MessageBoxResult result = MessageBox.Show(justFileName + " already exists.\n\n Would you like to use it inthis stage?", "IRL- Error Message", MessageBoxButton.YesNoCancel);
+                        switch (result)
+                        {
+                            case MessageBoxResult.Yes:
+                                justFileName = System.IO.Path.GetFileName(op.FileName);
+                                done = true;
+                                break;
+                            case MessageBoxResult.No:
+                                done = false;
+                                break;
+                            case MessageBoxResult.Cancel:
+                                justFileName = null;
+                                done = true;
+                                break;
+                        }
+                    }
+                    else
+                        File.Copy(op.FileName, saveFilePath);
+                }
+            } while (!done);
         }
 
         private void uploadAudioBtn_Click(object sender, RoutedEventArgs e)
         {
-            OpenFileDialog openFileDialog = new OpenFileDialog();
-            openFileDialog.Filter = "MP3 files (*.mp3)|*.mp3|All files (*.*)|*.*";
-            if (openFileDialog.ShowDialog() == true)
+            bool done = true;
+            do
             {
-
-            }
+                OpenFileDialog op = new OpenFileDialog();
+                op.Filter = "MP3 files (*.mp3; *.wav)|*.mp3; *.wav|All files (*.*)|*.*";
+                if (op.ShowDialog() == true)
+                {
+                    string justFileName = System.IO.Path.GetFileName(op.FileName);
+                    string saveFilePath = System.IO.Path.Combine(currentDirectory, "mediaFiles", justFileName);
+                    if (File.Exists(saveFilePath))
+                    {
+                        MessageBoxResult result = MessageBox.Show(justFileName + " already exists.\n\n Would you like to use it in this scenario?", "IRL- Error Message", MessageBoxButton.YesNoCancel);
+                        switch (result)
+                        {
+                            case MessageBoxResult.Yes:
+                                justFileName = System.IO.Path.GetFileName(op.FileName);
+                                done = true;
+                                break;
+                            case MessageBoxResult.No:
+                                done = false;
+                                break;
+                            case MessageBoxResult.Cancel:
+                                justFileName = null;
+                                done = true;
+                                break;
+                        }
+                    }
+                    else
+                        File.Copy(op.FileName, saveFilePath);
+                }
+            } while (!done);
 
         }
 

@@ -46,13 +46,27 @@ namespace InRealLife_2
 
         public static bool FirstRunFlag = true;
 
+        private string currentDirectory = Directory.GetCurrentDirectory();
+        private MediaPlayer soundFX = new MediaPlayer();
+       
+
         //DataHandler data = new DataHandler();
 
         public Running(int Scenario)
-        {           
+        {
             InitializeComponent();
             Start(Scenario);
-            ImageBlock.Source = new BitmapImage(new Uri("\\MediaFiles\\flat.tire.10.jpg", UriKind.RelativeOrAbsolute));
+            
+            //***********************imageFileName needs to be changed from hard coded value to database value i.e currentStage.fileName*************************** 
+            string imageFileName = currentStage.ImageFilePath;
+            string imageFilePath = System.IO.Path.Combine(currentDirectory, "mediaFiles", imageFileName);
+            ImageBlock.Source = new BitmapImage(new Uri(imageFilePath, UriKind.RelativeOrAbsolute));
+
+            //****************soundFileName needs to be changed from hard coded value to database value i.e currentStage.fileName************************* 
+            string soundFileName = currentStage.AudioFilePath;
+            string soundFilePath = System.IO.Path.Combine(currentDirectory, "mediaFiles", soundFileName);
+            soundFX.Open(new Uri(soundFilePath, UriKind.RelativeOrAbsolute));
+            soundFX.Play();
         }
 
         public void Start(int ScenarioId)
@@ -146,7 +160,7 @@ namespace InRealLife_2
 
         private void Button_Click_2(object sender, RoutedEventArgs e)
         {
-           // MainMenu main = new MainMenu();
+            // MainMenu main = new MainMenu();
             //main.Show();
             //Close();
             this.NavigationService.Navigate(new Uri("MainMenu.xaml", UriKind.Relative));
