@@ -53,7 +53,7 @@ namespace InRealLife_2
         //DataHandler data = new DataHandler();
 
         public Running(int Scenario)
-        {           
+        {
             InitializeComponent();
             Start(Scenario);
 
@@ -158,7 +158,7 @@ namespace InRealLife_2
 
         private void Button_Click_2(object sender, RoutedEventArgs e)
         {
-           // MainMenu main = new MainMenu();
+            // MainMenu main = new MainMenu();
             //main.Show();
             //Close();
             this.NavigationService.Navigate(new Uri("MainMenu.xaml", UriKind.Relative));

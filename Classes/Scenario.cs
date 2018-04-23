@@ -14,7 +14,7 @@
 namespace Classes
 {
     public class Scenario : IScenarioPiece
-    {        
+    {
         // Auto Implemented Properties Scenario
         public int ID { get; set; }
         public string Name { get; set; }

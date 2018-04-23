@@ -81,9 +81,6 @@
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="ManagmentOptions.xaml.cs">
-      <DependentUpon>ManagmentOptions.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Running.xaml.cs">
       <DependentUpon>Running.xaml</DependentUpon>
     </Compile>
@@ -109,10 +106,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="MainWindow.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="ManagmentOptions.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
