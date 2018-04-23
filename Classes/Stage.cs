@@ -1,8 +1,8 @@
 ﻿using ClassInterfaces;
 
 /*
- * This class Stage implements an interface IScenarioPiece. It has 2 constructors for object creation, 
- * 10 instance variables and 6 properties for handling instance variables.
+ * This class Stage implements an interface IScenarioPiece. It has 4 constructors for object creation 
+ * and 10 properties for handling instance variables.
  * 
  * author: Group 7 (Stephen Bailey, Omar Garcia, Craig Wyse, Matthew Harris)
  * course: SEII

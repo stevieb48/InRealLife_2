@@ -4,7 +4,7 @@ using ClassInterfaces;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 /*
- * This test class ...
+ * This test class tests the IScenarioPiece interface and its properties.
  *
  * author: Group 7 (Stephen Bailey, Omar Garcia, Craig Wyse, Matthew Harris)
  * course: SEII

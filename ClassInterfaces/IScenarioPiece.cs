@@ -1,5 +1,5 @@
 ﻿/*
- * This Interface ...
+ * This Interface is implemented by the Scenario class and the Stage class.
  *
  * author: Group 7 (Stephen Bailey, Omar Garcia, Craig Wyse, Matthew Harris)
  * course: SEII
