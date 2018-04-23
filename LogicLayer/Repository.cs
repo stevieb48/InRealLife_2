@@ -22,6 +22,7 @@ namespace LogicLayer
         // CONSTANTS
         private const string SCENARIO = "Scenario";
         private const string STAGE = "Stage";
+        private const int EMPTY = 0;
 
         // database instance
         private DataBaseCommunication newDBComm = new DataBaseCommunication();
@@ -64,14 +65,18 @@ namespace LogicLayer
         {
             if (pieceType == SCENARIO)
             {
+                //
                 IScenarioPiece scenario = new Scenario(int.Parse(dataTable.Rows[0][0].ToString()), dataTable.Rows[0][1].ToString(), dataTable.Rows[0][2].ToString());
 
+                //
                 return scenario;
             }
             else
             {
+                //
                 IScenarioPiece stage = new Stage(int.Parse(dataTable.Rows[0][0].ToString()), dataTable.Rows[0][1].ToString(), dataTable.Rows[0][2].ToString(), int.Parse(dataTable.Rows[0][3].ToString()), dataTable.Rows[0][4].ToString(), dataTable.Rows[0][5].ToString(), dataTable.Rows[0][6].ToString(), int.Parse(dataTable.Rows[0][7].ToString()), dataTable.Rows[0][8].ToString(), int.Parse(dataTable.Rows[0][9].ToString()));
 
+                //
                 return stage;
             }
         }
@@ -79,9 +84,6 @@ namespace LogicLayer
         // public method to get all pieces by type
         public IScenarioPiece[] GetAllPiecesByType(IScenarioPiece piece)
         {
-            // determine the piece
-            //string pieceType = WhatTypeOfPiece(piece);
-
             // create query based on the piece type
             string query = "SELECT * "
                         + "FROM " + piece.GetType().ToString().Split('.')[1];
@@ -89,6 +91,7 @@ namespace LogicLayer
             // new datatable and store results from call to the database
             DataTable dataTable = this.newDBComm.Select(query);
 
+            //
             IScenarioPiece[] pieceList = PutDataTableIntoPieceList(piece.GetType().ToString().Split('.')[1], dataTable);
 
             // return the results
@@ -110,8 +113,10 @@ namespace LogicLayer
                     pieceList[i] = tempScenario;
                 }
 
+                //
                 IScenarioPiece[] tempArray = pieceList;
 
+                //
                 return tempArray;
             }
             else
@@ -126,8 +131,10 @@ namespace LogicLayer
                     pieceList[i] = tempStage;
                 }
 
+                //
                 IScenarioPiece[] tempArray = pieceList;
 
+                //
                 return tempArray;
             }
         }
@@ -180,16 +187,20 @@ namespace LogicLayer
             // new datatable and store results from call to the database
             DataTable dataTable = this.newDBComm.Select(query);
 
+            //
             Stage stage = PutDataTableIntoStage(dataTable);
 
+            //
             return stage;
         }
 
         //
         private Stage PutDataTableIntoStage(DataTable dataTable)
         {
+            //
             Stage tempStage = new Stage(int.Parse(dataTable.Rows[0][0].ToString()), dataTable.Rows[0][1].ToString(), dataTable.Rows[0][2].ToString(), int.Parse(dataTable.Rows[0][3].ToString()), dataTable.Rows[0][4].ToString(), dataTable.Rows[0][5].ToString(), dataTable.Rows[0][6].ToString(), int.Parse(dataTable.Rows[0][7].ToString()), dataTable.Rows[0][8].ToString(), int.Parse(dataTable.Rows[0][9].ToString()));
 
+            //
             return tempStage;
         }
 
@@ -204,16 +215,21 @@ namespace LogicLayer
             // new datatable and store results from call to the database
             DataTable dataTable = this.newDBComm.Select(query);
 
+            //
             Stage stage = PutDataTableIntoStage(dataTable);
 
+            //
             return stage;
         }
 
+        //
         public int SaveStageData(Stage stage, bool starterFlag)
         {
+            //
             int rowsAffected = 0;
 
-            if (stage.ID != 0)
+            //
+            if (stage.ID != EMPTY)
             {
                 // update existing
                 string query = "UPDATE Stage SET "

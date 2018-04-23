@@ -7,14 +7,14 @@ using Classes;
 using System;
 
 /*
- * This GUI is the main menu for each scenario piece which allows the user to create a new piece,
+ * This GUI is the main menu for each stage piece which allows the user to create a new piece,
  * edit selected piece, delete selected piece, perform selected.
  *
  * author: Group 7 (Stephen Bailey, Omar Garcia, Craig Wyse, Matthew Harris)
  * course: SEII
  * assignment: InRealLife (Group Project Spring 2018)
  * date: 03/20/2018
- * file name: MainMenu.xaml.cs
+ * file name: StageMain.xaml.cs
  * version: 1.0
  */
 namespace InRealLife_2
@@ -24,24 +24,24 @@ namespace InRealLife_2
     /// </summary>
     public partial class StageMain : Page
     {
-        //
+        // CONSTANTS
         private const string SCENARIO_MODE = "Scenario";
         private const string STAGE_MODE = "Stage";
         private const int EMPTY_INT = 0;
 
-        //
+        // default mode
         private string mode = STAGE_MODE;
 
         // create new repository
         private Repository pieceRepository = new Repository();
 
-        //
+        // new piece
         private IScenarioPiece currentPiece = new Stage();
 
+        //
         public StageMain()
         {
             InitializeComponent();
-            //this.currentPiece = piece;
             SetMode();
             InitializeForm();
         }
@@ -51,9 +51,6 @@ namespace InRealLife_2
         {
             // reset list box
             lstvwScenarioPieces.Items.Clear();
-
-            // enable create button
-            // ***** change btnCreateNew, and btnEditExisting(below) control back to true when edit piece is incorporated ***********
 
             btnDeleteSelected.IsEnabled = false;
             btnPerformSelected.IsEnabled = false;
@@ -91,12 +88,10 @@ namespace InRealLife_2
         // create new piece button click event
         private void BtnCreateNew_Click(object sender, RoutedEventArgs e)
         {
-            // hide current form
-            // this.Hide();
-
-            // load form to edit piece
-            // .show();
+            //
             CreateStage newCreateStage = new CreateStage();
+
+            //
             this.NavigationService.Navigate(new Uri("CreateStage.xaml", UriKind.Relative));
         }
 
@@ -134,12 +129,11 @@ namespace InRealLife_2
             // grab selected piece and put into variable
             IScenarioPiece selectedPiece = (IScenarioPiece)lstvwScenarioPieces.SelectedItem;
 
+            //
             Running run = new Running(selectedPiece.ID);
-            this.NavigationService.Navigate(run);
-            //run.Show();
 
-            // hide main menu form form
-            //this.Hide();
+            //
+            this.NavigationService.Navigate(run);
         }
 
         // method for form behaviors if list is empty
@@ -153,7 +147,7 @@ namespace InRealLife_2
         // method for form behaviors if list has data
         private void ScenarioListHasValues()
         {
-            // ***** change this btnEditSelected control back to true when edit piece is incorporated ***********
+            //
             btnEditSelected.IsEnabled = false;
         }
 
@@ -191,29 +185,34 @@ namespace InRealLife_2
             // grab selected piece and put into variable
             IScenarioPiece selectedPiece = (IScenarioPiece)lstvwScenarioPieces.SelectedItem;
 
+            //
             CreateStage newCreateStage = new CreateStage();
+
+            //
             this.NavigationService.Navigate(newCreateStage);
         }
 
+        //
         private void SetMode()
         {
             // pieceID is not empty which means edit a piece
             if (currentPiece.GetType().ToString().Split('.')[1] != SCENARIO_MODE)
             {
                 mode = STAGE_MODE;
-                //EnableEditModeButtons();
             }
             else
             {
                 mode = SCENARIO_MODE;
-                //EnableCreateModeButtons();
             }
         }
 
+        //
         private void BtnSwitchMode_Click(object sender, RoutedEventArgs e)
         {
-            //IScenarioPiece scenario = new Scenario();
+            //
             MainMenu newMainMenu = new MainMenu();
+
+            //
             this.NavigationService.Navigate(newMainMenu);
         }
     }

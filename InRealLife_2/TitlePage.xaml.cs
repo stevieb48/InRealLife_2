@@ -15,6 +15,16 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
+/*
+ * This GUI ...
+ *
+ * author: Group 7 (Stephen Bailey, Omar Garcia, Craig Wyse, Matthew Harris)
+ * course: SEII
+ * assignment: InRealLife (Group Project Spring 2018)
+ * date: 03/20/2018
+ * file name: TitlePage.xaml.cs
+ * version: 1.0
+ */
 namespace InRealLife_2
 {
     /// <summary>
@@ -27,13 +37,17 @@ namespace InRealLife_2
             InitializeComponent();
         }
 
+        //
         private void enterButton_Click(object sender, RoutedEventArgs e)
         {
-            //IScenarioPiece scenario = new Scenario();
+            //
             MainMenu newMainMenu = new MainMenu();
+
+            //
             this.NavigationService.Navigate(newMainMenu);
         }
 
+        //
         private void exitButton_Click(object sender, RoutedEventArgs e)
         {
             Application.Current.Shutdown();
