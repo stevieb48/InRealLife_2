@@ -93,6 +93,11 @@ namespace InRealLife_2
                 // exception thrown
                 MessageBox.Show(ex.ToString());
             }
+            catch (Exception ex)
+            {
+                // exception thrown
+                MessageBox.Show(ex.ToString());
+            }
             finally
             {
                 // cleanup
@@ -144,9 +149,14 @@ namespace InRealLife_2
                 // exception thrown
                 MessageBox.Show(ex.ToString());
             }
+            catch (Exception ex)
+            {
+                // exception thrown
+                MessageBox.Show(ex.ToString());
+            }
             finally
             {
-                // close connection
+                // cleanup
                 pieceRepository.CleanUp();
             }
 

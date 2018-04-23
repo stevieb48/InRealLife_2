@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Data.Common;
 using System.IO;
 using System.Linq;
 using System.Reflection;
@@ -36,7 +37,7 @@ namespace InRealLife_2
     public partial class Running : Page
     {
         // create new repository
-        private Repository repository = new Repository();
+        private Repository pieceRepository = new Repository();
 
         //
         private IScenarioPiece currentScenario;
@@ -70,30 +71,49 @@ namespace InRealLife_2
         //
         public void Start(int ScenarioId)
         {
-            if (!FirstRunFlag)
+            //
+            try
             {
-                //
-                currentStage = repository.GetNextStage(ScenarioId);
+                if (!FirstRunFlag)
+                {
+                    //
+                    currentStage = pieceRepository.GetNextStage(ScenarioId);
 
-                //
-                currentScenario = new Scenario(currentStage.ScenarioID);
+                    //
+                    currentScenario = new Scenario(currentStage.ScenarioID);
 
-                //
-                currentScenario = repository.GetPieceByID(currentScenario);
+                    //
+                    currentScenario = pieceRepository.GetPieceByID(currentScenario);
+                }
+                else
+                {
+                    //
+                    FirstRunFlag = false;
+
+                    //
+                    currentScenario = new Scenario(ScenarioId);
+
+                    //
+                    currentScenario = pieceRepository.GetPieceByID(currentScenario);
+
+                    //
+                    currentStage = pieceRepository.GetFirstStage(currentScenario.ID);
+                }
             }
-            else
+            catch (DbException ex)
             {
-                //
-                FirstRunFlag = false;
-
-                //
-                currentScenario = new Scenario(ScenarioId);
-
-                //
-                currentScenario = repository.GetPieceByID(currentScenario);
-
-                //
-                currentStage = repository.GetFirstStage(currentScenario.ID);
+                // exception thrown
+                MessageBox.Show(ex.ToString());
+            }
+            catch (Exception ex)
+            {
+                // exception thrown
+                MessageBox.Show(ex.ToString());
+            }
+            finally
+            {
+                // cleanup
+                pieceRepository.CleanUp();
             }
 
             //

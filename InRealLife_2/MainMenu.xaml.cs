@@ -84,6 +84,11 @@ namespace InRealLife_2
                 // exception thrown
                 MessageBox.Show(ex.ToString());
             }
+            catch (Exception ex)
+            {
+                // exception thrown
+                MessageBox.Show(ex.ToString());
+            }
             finally
             {
                 // cleanup
@@ -140,6 +145,11 @@ namespace InRealLife_2
                 }
             }
             catch (DbException ex)
+            {
+                // exception thrown
+                MessageBox.Show(ex.ToString());
+            }
+            catch (Exception ex)
             {
                 // exception thrown
                 MessageBox.Show(ex.ToString());
