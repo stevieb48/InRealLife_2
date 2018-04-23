@@ -85,8 +85,23 @@ namespace InRealLife_2
         private void saveBtn_Click(object sender, RoutedEventArgs e)
         {
             String insertString = "INSERT INTO Stage VALUE ('" + titleBox.Text + "','" + descriptionBox.Text + "'," + "ScenarioID" + "," + "'NULL'" + ",'" + imageBox.Source.ToString() + "')";
-            String insertanswer1 = "INSERT INTO Answer VALUE (Name" + "," + answer1box.Text + "," + " StageID" + ", " + "NextStageID" + ")";
-            String insertanswer2 = "INSERT INTO Answer VALUE (Name" + "," + answer2box.Text + "," + " StageID" + ", " + "NextStageID" + ")";
+            String insertanswer1 = "INSERT INTO Answer VALUE (Name" + ",'" + answer1box.Text + "'," + " StageID" + ", " + "NextStageID" + ")";
+            String insertanswer2 = "INSERT INTO Answer VALUE (Name" + ",'" + answer2box.Text + "'," + " StageID" + ", " + "NextStageID" + ")";
+
+            Answer a1 = new Answer();
+            Answer a2 = new Answer();
+
+            Stage newStage  = new Stage();
+            newStage.Name = titleBox.Text;
+            newStage.Description = descriptionBox.Text;
+            Scenario newScenario = (Scenario)scenarioSelect.SelectedValue;
+            newStage.ScenarioID = newScenario.ID;
+            newStage.AudioFilePath = "NULL";
+            newStage.ImageFilePath = imageBox.Source.ToString();
+            newStage.Answer1 = answer1box.Text;
+            newStage.Ans1NextStagID = 0;
+            newStage.Answer2 = answer2box.Text;
+            newStage.Ans2NextStagID = 0;
 
 
         }
