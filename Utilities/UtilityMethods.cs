@@ -5,6 +5,16 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
+/*
+ * This ...
+ *
+ * author: Group 7 (Stephen Bailey, Omar Garcia, Craig Wyse, Matthew Harris)
+ * course: SEII
+ * assignment: InRealLife (Group Project Spring 2018)
+ * date: 4/23/2018
+ * file name: UtilityMethods.cs
+ * version: 1.0
+ */
 namespace Utilities
 {
     public class UtilityMethods
@@ -38,7 +48,7 @@ namespace Utilities
                 }
                 else
                 {
-                    // NO GOOD
+                    // INPUT NO GOOD
                     IsItValid = false;
                 }
             }
