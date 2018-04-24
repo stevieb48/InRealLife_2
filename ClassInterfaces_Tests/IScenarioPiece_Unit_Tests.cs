@@ -45,19 +45,6 @@ namespace ClassInterfaces_Tests
         }
 
         [TestMethod]
-        public void IScenarioPieceInterface_SetToAnswerObject_DefaultConstructor_IsNotNull_Instance_Test()
-        {
-            // Arrange
-            IScenarioPiece sut;
-
-            // Act
-            sut = new Answer();
-
-            //Assert
-            Assert.IsNotNull(sut, "The IScenarioPiece Set To Answer Default Constructor is NOT null");
-        }
-
-        [TestMethod]
         public void IScenarioPiece_SetToScenario_IsItInstanceOfType_Scenario_Test()
         {
             // Arrange
@@ -81,19 +68,6 @@ namespace ClassInterfaces_Tests
 
             //Assert
             Assert.IsInstanceOfType(sut, typeof(Stage), "IScenarioPiece set to a Stage is an instance of a Stage.");
-        }
-
-        [TestMethod]
-        public void IScenarioPiece_SetToAnswer_IsItInstanceOfType_Answer_Test()
-        {
-            // Arrange
-            IScenarioPiece sut;
-
-            // Act
-            sut = new Answer();
-
-            //Assert
-            Assert.IsInstanceOfType(sut, typeof(Answer), "IScenarioPiece set to a Answer is an instance of a Answer.");
         }
 
         [TestMethod]
@@ -126,22 +100,6 @@ namespace ClassInterfaces_Tests
             Assert.AreEqual(sut.ID, stage.ID, "IScenarioPiece public ID Accessor method is working properly.");
             Assert.AreEqual(sut.Name, stage.Name, "IScenarioPiece public Name Accessor method is working properly.");
             Assert.AreEqual(sut.Description, stage.Description, "IScenarioPiece public Description Accessor method is working properly.");
-        }
-
-        [TestMethod]
-        public void IScenarioPiece_SetToAnswerObject_AccessorMethods_Test()
-        {
-            // Arrange
-            IScenarioPiece sut;
-            Answer answer = new Answer(3, "name", "description");
-
-            // Act
-            sut = answer;
-
-            //Assert
-            Assert.AreEqual(sut.ID, answer.ID, "IScenarioPiece public ID Accessor method is working properly.");
-            Assert.AreEqual(sut.Name, answer.Name, "IScenarioPiece public Name Accessor method is working properly.");
-            Assert.AreEqual(sut.Description, answer.Description, "IScenarioPiece public Description Accessor method is working properly.");
         }
     }
 }
