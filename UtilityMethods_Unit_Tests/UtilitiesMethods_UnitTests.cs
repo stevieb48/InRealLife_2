@@ -31,7 +31,7 @@ namespace UtilityMethods_Unit_Tests
             var test = "iuywgvfiugfdf";
 
             // Act
-            testBool = UtilityMethods.ValInputString(test);
+            testBool = UtilityMethods.ValInputString(test.ToString());
 
             //Assert
             Assert.AreEqual(trueTest, testBool, "This true test String converted to true");
@@ -42,14 +42,14 @@ namespace UtilityMethods_Unit_Tests
         {
             // Arrange
             bool trueTest = true;
-            bool testVar = false;
+            bool testBool = false;
             var test = "iuywg(^%#&&(*%^vfiugfdf98769";
 
             // Act
-            testVar = UtilityMethods.ValInputString(test);
+            testBool = UtilityMethods.ValInputString(test.ToString());
 
             //Assert
-            Assert.AreNotEqual(trueTest, testVar, "This false test String is false");
+            Assert.AreNotEqual(trueTest, testBool, "This false test String is false");
         }
 
         [TestMethod]
@@ -76,7 +76,7 @@ namespace UtilityMethods_Unit_Tests
             var test = "i";
 
             // Act
-            testBool = UtilityMethods.ValInputString(test);
+            testBool = UtilityMethods.ValInputString(test.ToString());
 
             //Assert
             Assert.AreEqual(trueTest, testBool, "This true test String converted to true");
@@ -87,14 +87,14 @@ namespace UtilityMethods_Unit_Tests
         {
             // Arrange
             bool trueTest = true;
-            bool testVar = false;
+            bool testBool = false;
             var test = "(";
 
             // Act
-            testVar = UtilityMethods.ValInputString(test);
+            testBool = UtilityMethods.ValInputString(test.ToString());
 
             //Assert
-            Assert.AreNotEqual(trueTest, testVar, "This false test String is false");
+            Assert.AreNotEqual(trueTest, testBool, "This false test String is false");
         }
 
         [TestMethod]
@@ -121,7 +121,7 @@ namespace UtilityMethods_Unit_Tests
             var test = "i*";
 
             // Act
-            testBool = UtilityMethods.ValInputString(test);
+            testBool = UtilityMethods.ValInputString(test.ToString());
 
             //Assert
             Assert.AreNotEqual(trueTest, testBool, "This true test String converted to true");
@@ -132,14 +132,14 @@ namespace UtilityMethods_Unit_Tests
         {
             // Arrange
             bool trueTest = true;
-            bool testVar = false;
+            bool testBool = false;
             var test = "(4";
 
             // Act
-            testVar = UtilityMethods.ValInputString(test);
+            testBool = UtilityMethods.ValInputString(test.ToString());
 
             //Assert
-            Assert.AreNotEqual(trueTest, testVar, "This false test String is false");
+            Assert.AreNotEqual(trueTest, testBool, "This false test String is false");
         }
 
         [TestMethod]
@@ -147,14 +147,14 @@ namespace UtilityMethods_Unit_Tests
         {
             // Arrange
             bool trueTest = true;
-            bool testVar = false;
+            bool testBool = false;
             var test = "{T";
 
             // Act
-            testVar = UtilityMethods.ValInputString(test);
+            testBool = UtilityMethods.ValInputString(test.ToString());
 
             //Assert
-            Assert.AreNotEqual(trueTest, testVar, "This false test String is false");
+            Assert.AreNotEqual(trueTest, testBool, "This false test String is false");
         }
 
         [TestMethod]
@@ -166,7 +166,7 @@ namespace UtilityMethods_Unit_Tests
             var test = "*i";
 
             // Act
-            testBool = UtilityMethods.ValInputString(test);
+            testBool = UtilityMethods.ValInputString(test.ToString());
 
             //Assert
             Assert.AreNotEqual(trueTest, testBool, "This true test String converted to true");
@@ -177,14 +177,14 @@ namespace UtilityMethods_Unit_Tests
         {
             // Arrange
             bool trueTest = true;
-            bool testVar = false;
+            bool testBool = false;
             var test = "4)";
 
             // Act
-            testVar = UtilityMethods.ValInputString(test);
+            testBool = UtilityMethods.ValInputString(test.ToString());
 
             //Assert
-            Assert.AreNotEqual(trueTest, testVar, "This false test String is false");
+            Assert.AreNotEqual(trueTest, testBool, "This false test String is false");
         }
 
         [TestMethod]
@@ -192,14 +192,14 @@ namespace UtilityMethods_Unit_Tests
         {
             // Arrange
             bool trueTest = true;
-            bool testVar = false;
+            bool testBool = false;
             var test = "T'";
 
             // Act
-            testVar = UtilityMethods.ValInputString(test);
+            testBool = UtilityMethods.ValInputString(test.ToString());
 
             //Assert
-            Assert.AreNotEqual(trueTest, testVar, "This false test String is false");
+            Assert.AreNotEqual(trueTest, testBool, "This false test String is false");
         }
     }
 }

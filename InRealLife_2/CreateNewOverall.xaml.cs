@@ -17,6 +17,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Utilities;
 
 /*
  * This GUI allows the user to create or edit scenarios.
@@ -66,44 +67,56 @@ namespace InRealLife_2
         // when user clicks to save. checka the mode and does the appropriate
         private void SaveBtn_Click(object sender, RoutedEventArgs e)
         {
-            try
+            if (UtilityMethods.ValInputString(txtbxScenarioTitle.Text) && UtilityMethods.ValInputString(txtbxScenarioDescription.Text))
             {
-                // if mode is edit
-                if (mode == EDIT_MODE)
+                try
                 {
-                    // set current piece to new piece with data to change
-                    this.currentPiece = new Scenario(this.currentPiece.ID, txtbxScenarioTitle.Text, txtbxScenarioDescription.Text);
+                    // if mode is edit
+                    if (mode == EDIT_MODE)
+                    {
+                        // set current piece to new piece with data to change
+                        this.currentPiece = new Scenario(this.currentPiece.ID, txtbxScenarioTitle.Text, txtbxScenarioDescription.Text);
 
-                    //Repository repo = new Repository();
-                    pieceRepository.UpdateExisingPiece(this.currentPiece);
+                        //Repository repo = new Repository();
+                        pieceRepository.UpdateExisingPiece(this.currentPiece);
+                    }
+                    else if (mode == CREATE_MODE)
+                    {
+                        // set current piece to new piece with new info
+                        this.currentPiece = new Scenario(txtbxScenarioTitle.Text, txtbxScenarioDescription.Text);
+
+                        //Repository repo = new Repository();
+                        pieceRepository.InsertNewPiece(this.currentPiece);
+
+                        // change mode
+                        mode = EDIT_MODE;
+                    }
                 }
-                else if (mode == CREATE_MODE)
+                catch (DbException ex)
                 {
-                    // set current piece to new piece with new info
-                    this.currentPiece = new Scenario(txtbxScenarioTitle.Text, txtbxScenarioDescription.Text);
-
-                    //Repository repo = new Repository();
-                    pieceRepository.InsertNewPiece(this.currentPiece);
-
-                    // change mode
-                    mode = EDIT_MODE;
+                    // exception thrown
+                    MessageBox.Show(ex.ToString());
+                }
+                catch (Exception ex)
+                {
+                    // exception thrown
+                    MessageBox.Show(ex.ToString());
+                }
+                finally
+                {
+                    // cleanup
+                    pieceRepository.CleanUp();
                 }
             }
-            catch (DbException ex)
+            else
             {
-                // exception thrown
-                MessageBox.Show(ex.ToString());
-            }
-            catch (Exception ex)
-            {
-                // exception thrown
-                MessageBox.Show(ex.ToString());
-            }
-            finally
-            {
-                // cleanup
-                pieceRepository.CleanUp();
-            }
+                //
+                MessageBox.Show("ERROR : Incorrect input ... try again");
+
+                //
+                txtbxScenarioTitle.Text = currentPiece.Name;
+                txtbxScenarioDescription.Text = currentPiece.Description;
+            }            
         }
 
         // to cancel this operation
