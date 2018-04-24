@@ -19,7 +19,47 @@ namespace Utilities
 {
     public class UtilityMethods
     {
+        //
         public static bool ValInputString(string inputString)
+        {
+            // is valid flag set to true
+            bool IsItValid = true;
+
+            // temp character
+            char tempChar;
+
+            // counter
+            int charCounter = 0;
+
+            //
+            while (IsItValid == true && charCounter < inputString.Length)
+            {
+                //
+                tempChar = inputString[charCounter];
+
+                if (char.IsDigit(tempChar))
+                {
+                    // change counter
+                    charCounter++;
+                }
+                else if (char.IsLetter(tempChar))
+                {
+                    // change counter
+                    charCounter++;
+                }
+                else
+                {
+                    // INPUT NO GOOD
+                    IsItValid = false;
+                }
+            }
+
+            //
+            return IsItValid;
+        }
+
+        //
+        public static bool ValImageOrAudioInputPath(string inputString)
         {
             // is valid flag set to true
             bool IsItValid = true;
