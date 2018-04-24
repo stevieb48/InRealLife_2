@@ -94,7 +94,7 @@ namespace UtilityMethods_Unit_Tests
         }
 
         [TestMethod]
-        public void ValInput_TestIfNotValidSingle()
+        public void ValInput_TestIfInValidSingleCharacter()
         {
             // Arrange
             bool trueTest = true;
@@ -139,7 +139,7 @@ namespace UtilityMethods_Unit_Tests
         }
 
         [TestMethod]
-        public void ValInput_TestIfNotValidSingleInvalidInFrontOfNumber()
+        public void ValInput_TestIfNotValidSingleCharacterInFrontOfNumber()
         {
             // Arrange
             bool trueTest = true;
@@ -154,7 +154,7 @@ namespace UtilityMethods_Unit_Tests
         }
 
         [TestMethod]
-        public void ValInput_TestIfNotValidSingleInvalidInFrontOfLetter()
+        public void ValInput_TestIfNotValidSingleCharacterInFrontOfLetter()
         {
             // Arrange
             bool trueTest = true;
@@ -211,6 +211,186 @@ namespace UtilityMethods_Unit_Tests
 
             //Assert
             Assert.AreNotEqual(trueTest, testBool, "This false test String is false");
+        }
+
+        [TestMethod]
+        public void ValImageInputPath_Test_ValidCharacters()
+        {
+            // Arrange
+            bool trueTest = true;
+            bool testBool = false;
+            var test = "steve.jpg";
+
+            // Act
+            testBool = UtilityMethods.ValImageInputPath(test.ToString());
+
+            //Assert
+            Assert.AreEqual(trueTest, testBool, "This test of valid character using the ValImageInputPath true test String is true");
+        }
+
+        [TestMethod]
+        public void ValAudioInputPath_Test_ValidCharacters()
+        {
+            // Arrange
+            bool trueTest = true;
+            bool testBool = false;
+            var test = "steve.wav";
+
+            // Act
+            testBool = UtilityMethods.ValAudioInputPath(test.ToString());
+
+            //Assert
+            Assert.AreEqual(trueTest, testBool, "This test of valid character using the ValAudioInputPath true test String is true");
+        }
+
+        [TestMethod]
+        public void ValAudioInputPath_Test_InValidCharactersAtTheEnd()
+        {
+            // Arrange
+            bool trueTest = true;
+            bool testBool = false;
+            var test = "steve.wave";
+
+            // Act
+            testBool = UtilityMethods.ValAudioInputPath(test.ToString());
+
+            //Assert
+            Assert.AreNotEqual(trueTest, testBool, "This test of invalid character using the ValAudioInputPath test String is true");
+        }
+
+        [TestMethod]
+        public void ValAudioInputPath_Test_InValidCharactersAtFront()
+        {
+            // Arrange
+            bool trueTest = true;
+            bool testBool = false;
+            var test = "steve..wav";
+
+            // Act
+            testBool = UtilityMethods.ValAudioInputPath(test.ToString());
+
+            //Assert
+            Assert.AreNotEqual(trueTest, testBool, "This test of invalid character using the ValAudioInputPath test String is true");
+        }
+
+        [TestMethod]
+        public void ValAudioInputPath_Test_InValidEscapeCharactersAtFront()
+        {
+            // Arrange
+            bool trueTest = true;
+            bool testBool = false;
+            var test = "steve/.wav";
+
+            // Act
+            testBool = UtilityMethods.ValAudioInputPath(test.ToString());
+
+            //Assert
+            Assert.AreNotEqual(trueTest, testBool, "This test of invalid character using the ValAudioInputPath test String is true");
+        }
+
+        [TestMethod]
+        public void ValAudioInputPath_Test_InValidEscapeCharactersAtBack()
+        {
+            // Arrange
+            bool trueTest = true;
+            bool testBool = false;
+            var test = "steve./av";
+
+            // Act
+            testBool = UtilityMethods.ValAudioInputPath(test.ToString());
+
+            //Assert
+            Assert.AreNotEqual(trueTest, testBool, "This test of invalid character using the ValAudioInputPath test String is true");
+        }
+
+        [TestMethod]
+        public void ValImageInputPath_Test_InValidCharactersAtTheEnd()
+        {
+            // Arrange
+            bool trueTest = true;
+            bool testBool = false;
+            var test = "steve.jppg";
+
+            // Act
+            testBool = UtilityMethods.ValImageInputPath(test.ToString());
+
+            //Assert
+            Assert.AreNotEqual(trueTest, testBool, "This test of invalid character using the ValImageInputPath test String is true");
+        }
+
+        [TestMethod]
+        public void ValImageInputPath_Test_InValidCharactersAtFront()
+        {
+            // Arrange
+            bool trueTest = true;
+            bool testBool = false;
+            var test = "steve..jpg";
+
+            // Act
+            testBool = UtilityMethods.ValImageInputPath(test.ToString());
+
+            //Assert
+            Assert.AreNotEqual(trueTest, testBool, "This test of invalid character using the ValImageInputPath test String is true");
+        }
+
+        [TestMethod]
+        public void ValImageInputPath_Test_InValidEscapeCharactersAtFront()
+        {
+            // Arrange
+            bool trueTest = true;
+            bool testBool = false;
+            var test = "steve/.jpg";
+
+            // Act
+            testBool = UtilityMethods.ValImageInputPath(test.ToString());
+
+            //Assert
+            Assert.AreNotEqual(trueTest, testBool, "This test of invalid character using the ValImageInputPath test String is true");
+        }
+
+        [TestMethod]
+        public void ValImageInputPath_Test_InValidEscapeCharactersAtBack()
+        {
+            // Arrange
+            bool trueTest = true;
+            bool testBool = false;
+            var test = "steve./pg";
+
+            // Act
+            testBool = UtilityMethods.ValImageInputPath(test.ToString());
+
+            //Assert
+            Assert.AreNotEqual(trueTest, testBool, "This test of invalid character using the ValImageInputPath test String is true");
+        }
+
+        [TestMethod]
+        public void ValImageInputPath_Test_TestUnderScoreIsValid()
+        {
+            // Arrange
+            bool trueTest = true;
+            bool testBool = false;
+            var test = "stev_e.jpg";
+
+            // Act
+            testBool = UtilityMethods.ValImageInputPath(test.ToString());
+
+            //Assert
+            Assert.AreEqual(trueTest, testBool, "This test of underscore character using the ValImageInputPath test String is true");
+        }
+
+        [TestMethod]
+        public void ValAudioInputPath_Test_TestUnderScoreIsValid()
+        {
+            // Arrange
+            bool trueTest = true;
+            bool testBool = false;
+            var test = "stev_e.wav";
+
+            // Act
+            testBool = UtilityMethods.ValAudioInputPath(test.ToString());
+
+            //Assert
+            Assert.AreEqual(trueTest, testBool, "This test of underscore character using the ValAudioInputPath test String is true");
         }
     }
 }
