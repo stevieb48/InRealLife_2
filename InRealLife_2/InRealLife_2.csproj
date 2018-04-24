@@ -176,6 +176,10 @@
       <Project>{6B5AB8F3-091E-462C-B044-73862B9AC48F}</Project>
       <Name>LogicLayer</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Utilities\Utilities.csproj">
+      <Project>{f72a7e5f-11cb-4e03-b01e-5946769c6d67}</Project>
+      <Name>Utilities</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Resource Include="mediaFiles\flat.tire.10.jpg">

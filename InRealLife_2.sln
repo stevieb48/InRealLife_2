@@ -29,6 +29,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataLayerInterfaces_Tests",
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LogicLayerInterfaces_Tests", "LogicLayerInterfaces_Tests\LogicLayerInterfaces_Tests.csproj", "{8C0B092D-72CF-4BA0-B672-867604ACCD8B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Utilities", "Utilities\Utilities.csproj", "{F72A7E5F-11CB-4E03-B01E-5946769C6D67}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UtilityMethods_Unit_Tests", "UtilityMethods_Unit_Tests\UtilityMethods_Unit_Tests.csproj", "{6EF7EAA9-3431-424C-80C7-4A158C484775}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -87,6 +91,14 @@ Global
 		{8C0B092D-72CF-4BA0-B672-867604ACCD8B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8C0B092D-72CF-4BA0-B672-867604ACCD8B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8C0B092D-72CF-4BA0-B672-867604ACCD8B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F72A7E5F-11CB-4E03-B01E-5946769C6D67}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F72A7E5F-11CB-4E03-B01E-5946769C6D67}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F72A7E5F-11CB-4E03-B01E-5946769C6D67}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F72A7E5F-11CB-4E03-B01E-5946769C6D67}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6EF7EAA9-3431-424C-80C7-4A158C484775}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6EF7EAA9-3431-424C-80C7-4A158C484775}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6EF7EAA9-3431-424C-80C7-4A158C484775}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6EF7EAA9-3431-424C-80C7-4A158C484775}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
