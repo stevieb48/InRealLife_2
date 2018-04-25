@@ -89,6 +89,23 @@ namespace LogicLayer
             return pieceList;
         }
 
+        public IScenarioPiece[] GetAllPiecesByType(IScenarioPiece piece, int ID)
+        {
+            // create query based on the piece type
+            string query = "SELECT * "
+                           + "FROM " + piece.GetType().ToString().Split('.')[1] + 
+                " WHERE ScenarioID = " + ID;
+
+            // new datatable and store results from call to the database
+            DataTable dataTable = this.newDBComm.Select(query);
+
+            //
+            IScenarioPiece[] pieceList = PutDataTableIntoPieceList(piece.GetType().ToString().Split('.')[1], dataTable);
+
+            // return the results
+            return pieceList;
+        }
+
         //
         private IScenarioPiece[] PutDataTableIntoPieceList(string pieceType, DataTable dataTable)
         {
@@ -220,7 +237,7 @@ namespace LogicLayer
             int rowsAffected = 0;
 
             //
-            if (stage.ID != EMPTY)
+            if (stage.ID != 0)
             {
                 // update existing
                 string query = "UPDATE Stage SET "
@@ -251,9 +268,8 @@ namespace LogicLayer
                                 + stage.Answer1 + "', "
                                 + stage.Ans1NextStagID + ", '"
                                 + stage.Answer2 + "', "
-                                + stage.Ans2NextStagID + ", "
-                                + starterFlag
-                                + " WHERE ID = " + stage.ID;
+                                + stage.Ans2NextStagID + ", '"
+                                + starterFlag + "')";
 
                 rowsAffected = newDBComm.Insert(query);
             }
