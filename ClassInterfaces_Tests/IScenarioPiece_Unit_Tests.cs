@@ -19,7 +19,7 @@ namespace ClassInterfaces_Tests
     public class IScenarioPiece_Unit_Tests
     {
         [TestMethod]
-        public void IScenarioPieceInterface_SetToScenarioObject_DefaultConstructor_IsNotNull_Instance_Test()
+        public void IScenarioPieceInterface_SetToScenarioObject_DefaultConstructor_IsNotNull()
         {
             // Arrange
             IScenarioPiece sut;
@@ -32,7 +32,7 @@ namespace ClassInterfaces_Tests
         }
 
         [TestMethod]
-        public void IScenarioPieceInterface_SetToStageObject_DefaultConstructor_IsNotNull_Instance_Test()
+        public void IScenarioPieceInterface_SetToStageObject_DefaultConstructor_IsNotNull()
         {
             // Arrange
             IScenarioPiece sut;

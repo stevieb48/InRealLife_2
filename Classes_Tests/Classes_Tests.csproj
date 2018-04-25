@@ -51,6 +51,8 @@
     <Compile Include="Scenario_Unit_Tests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Stage_Unit_Tests.cs" />
+    <Compile Include="Admin_Unit_Tests.cs" />
+    <Compile Include="Child_Unit_Test.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

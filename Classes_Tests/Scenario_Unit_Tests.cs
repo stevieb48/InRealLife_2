@@ -17,7 +17,7 @@ namespace Classes_Tests
     public class Scenario_Unit_Tests
     {
         [TestMethod]
-        public void Scenario_DefaultConstructor_IsNotNull_Instance_Test()
+        public void Scenario_DefaultConstructor_IsNotNull()
         {
             // Arrange
             Scenario sut;

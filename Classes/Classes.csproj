@@ -40,6 +40,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Admin.cs" />
+    <Compile Include="Child.cs" />
     <Compile Include="Scenario.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Stage.cs" />
