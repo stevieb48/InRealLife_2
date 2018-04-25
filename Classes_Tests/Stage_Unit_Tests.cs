@@ -17,7 +17,7 @@ namespace Classes_Tests
     public class Stage_Unit_Tests
     {
         [TestMethod]
-        public void Stage_DefaultConstructor_IsNotNull_Instance_Test()
+        public void Stage_DefaultConstructor_IsNotNull()
         {
             // Arrange
             Stage sut;

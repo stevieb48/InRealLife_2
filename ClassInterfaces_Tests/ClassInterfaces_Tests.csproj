@@ -50,6 +50,7 @@
   <ItemGroup>
     <Compile Include="IScenarioPiece_Unit_Tests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="IAccount_Unit_Tests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
