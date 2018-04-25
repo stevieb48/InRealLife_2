@@ -1,8 +1,8 @@
 ﻿using ClassInterfaces;
 
 /*
- * This class Answer implements an interface IScenarioPiece. It has 2 constructors for object creation, 
- * 3 instance variables and 5 properties for handling instance variables.
+ * This class Answer implements an interface IScenarioPiece. It has 3 constructors for object creation 
+ * and 3 properties for handling instance variables.
  *
  * author: Group 7 (Stephen Bailey, Omar Garcia, Craig Wyse, Matthew Harris)
  * course: SEII

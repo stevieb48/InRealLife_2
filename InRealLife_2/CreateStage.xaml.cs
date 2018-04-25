@@ -26,6 +26,7 @@ namespace InRealLife_2
     public partial class CreateStage : Page
     {
         string currentDirectory = Directory.GetCurrentDirectory();
+        string imagePath, audioPath;
 
         public CreateStage()
         {
@@ -62,11 +63,12 @@ namespace InRealLife_2
                 if (op.ShowDialog() == true)
                 {
                     imageBox.Source = new BitmapImage(new Uri(op.FileName));
+                    imagePath = op.FileName;
                     string justFileName = System.IO.Path.GetFileName(op.FileName);
                     string saveFilePath = System.IO.Path.Combine(currentDirectory, "mediaFiles", justFileName);
                     if (File.Exists(saveFilePath))
                     {
-                        MessageBoxResult result = MessageBox.Show(justFileName + " already exists.\n\n Would you like to use it inthis stage?", "IRL- Error Message", MessageBoxButton.YesNoCancel);
+                        MessageBoxResult result = MessageBox.Show(justFileName + " already exists.\n\n Would you like to use it in this stage?", "IRL- Error Message", MessageBoxButton.YesNoCancel);
                         switch (result)
                         {
                             case MessageBoxResult.Yes:
@@ -98,6 +100,7 @@ namespace InRealLife_2
                 if (op.ShowDialog() == true)
                 {
                     string justFileName = System.IO.Path.GetFileName(op.FileName);
+                    audioPath = op.FileName;
                     string saveFilePath = System.IO.Path.Combine(currentDirectory, "mediaFiles", justFileName);
                     if (File.Exists(saveFilePath))
                     {
@@ -126,13 +129,18 @@ namespace InRealLife_2
 
         private void previewBtn_Click(object sender, RoutedEventArgs e)
         {
-            Console.WriteLine("Stage name: " + titleBox.Text);
-            Console.WriteLine("Stage description: " + descriptionBox.Text);
-            Console.WriteLine("Answer 1: " + answer1box.Text);
-            Console.WriteLine("Answer 2: " + answer2box.Text);
-            Console.WriteLine("Image source: " + imageBox.Source.ToString());
-            Scenario newScenario = (Scenario)scenarioSelect.SelectedValue;
-            Console.WriteLine("ID = : " + newScenario.ID);
+            /* Console.WriteLine("Stage name: " + titleBox.Text);
+             Console.WriteLine("Stage description: " + descriptionBox.Text);
+             Console.WriteLine("Answer 1: " + answer1box.Text);
+             Console.WriteLine("Answer 2: " + answer2box.Text);
+             Console.WriteLine("Image source: " + imageBox.Source.ToString());
+             Scenario newScenario = (Scenario)scenarioSelect.SelectedValue;
+             Console.WriteLine("ID = : " + newScenario.ID);*/
+
+            Stage previewStage = new Stage(0, titleBox.Text, descriptionBox.Text, 0, audioPath, imagePath, answer1box.Text, 0, answer2box.Text, 0);
+            
+            PreviewWindow preview = new PreviewWindow(previewStage);
+            preview.Show();
         }
 
         private void saveBtn_Click(object sender, RoutedEventArgs e)

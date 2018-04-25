@@ -2,7 +2,7 @@
 using System.Data;
 
 /*
- * This interface ...
+ * This interface has 5 methods that are used by the Presentation Layer for CRUD operations.
  *
  * author: Group 7 (Stephen Bailey, Omar Garcia, Craig Wyse, Matthew Harris)
  * course: SEII

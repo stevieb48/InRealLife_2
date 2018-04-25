@@ -1,7 +1,7 @@
 ﻿using System.Data;
 
 /*
- * This interface ...
+ * This interface has 4 methods that are used for CRUD operations.
  *
  * author: Group 7 (Stephen Bailey, Omar Garcia, Craig Wyse, Matthew Harris)
  * course: SEII

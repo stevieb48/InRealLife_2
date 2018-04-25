@@ -1,9 +1,8 @@
-﻿using System;
-using Classes;
+﻿using Classes;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 /*
- * This test class ...
+ * This test class tests the Stage class and its methods.
  *
  * author: Group 7 (Stephen Bailey, Omar Garcia, Craig Wyse, Matthew Harris)
  * course: SEII

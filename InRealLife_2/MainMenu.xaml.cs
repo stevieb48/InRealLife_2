@@ -5,6 +5,7 @@ using LogicLayer;
 using ClassInterfaces;
 using Classes;
 using System;
+using System.Data.Common;
 
 /*
  * This GUI is the main menu for each scenario piece which allows the user to create a new piece,
@@ -54,27 +55,44 @@ namespace InRealLife_2
             lstvwScenarioPieces.Items.Clear();
 
             // enable create button
-            // ***** change btnCreateNew, and btnEditExisting(below) control back to true when edit piece is incorporated ***********
-
             btnDeleteSelected.IsEnabled = false;
             btnPerformSelected.IsEnabled = false;
 
-            // data table containing data from results table
-            IScenarioPiece[] resultingList = pieceRepository.GetAllPiecesByType(currentPiece);
-
-            // if data table has rows
-            if (resultingList.Length > 0)
+            //
+            try
             {
-                // enable proper buttons
-                ScenarioListHasValues();
+                // data table containing data from results table
+                IScenarioPiece[] resultingList = pieceRepository.GetAllPiecesByType(currentPiece);
 
-                // then add data to listbox
-                AddDataToListBox(resultingList);
+                // if data table has rows
+                if (resultingList.Length > 0)
+                {
+                    // enable proper buttons
+                    ScenarioListHasValues();
+
+                    // then add data to listbox
+                    AddDataToListBox(resultingList);
+                }
+                else
+                {
+                    // else list is empty
+                    ScenarioPieceListIsEmpty();
+                }
             }
-            else
+            catch (DbException ex)
             {
-                // else list is empty
-                ScenarioPieceListIsEmpty();
+                // exception thrown
+                MessageBox.Show(ex.ToString());
+            }
+            catch (Exception ex)
+            {
+                // exception thrown
+                MessageBox.Show(ex.ToString());
+            }
+            finally
+            {
+                // cleanup
+                pieceRepository.CleanUp();
             }
 
             // set label content to specific piece type
@@ -83,7 +101,7 @@ namespace InRealLife_2
             btnExitMenu.Content = ("Exit " + mode + " Management");
         }
 
-        // exit builder button click event
+        // exit button click event
         private void BtnExitMenu_Click(object sender, RoutedEventArgs e)
         {
             Application.Current.Shutdown();
@@ -92,8 +110,13 @@ namespace InRealLife_2
         // create new piece button click event
         private void BtnCreateNew_Click(object sender, RoutedEventArgs e)
         {
+            //
             IScenarioPiece scenario = new Scenario();
+
+            //
             CreateNewOverall newCreateNewOverall = new CreateNewOverall(scenario.ID);
+
+            //
             this.NavigationService.Navigate(newCreateNewOverall);
         }
 
@@ -103,26 +126,42 @@ namespace InRealLife_2
             // grab selected piece and put into variable
             IScenarioPiece selectedPiece = (IScenarioPiece)lstvwScenarioPieces.SelectedItem;
 
-            // run query to delete selected piece from DB
-            int rowsaffected = pieceRepository.DeleteExistingPiece(selectedPiece);
-
-            // if piece was deleted
-            if (rowsaffected > EMPTY_INT)
+            //
+            try
             {
-                // Show user which piece was deleted
-                MessageBox.Show("The piece called " + selectedPiece.Name + " was deleted");
+                // run query to delete selected piece from DB
+                int rowsaffected = pieceRepository.DeleteExistingPiece(selectedPiece);
 
-                // reset form
-                InitializeForm();
+                // if piece was deleted
+                if (rowsaffected > EMPTY_INT)
+                {
+                    // Show user which piece was deleted
+                    MessageBox.Show("The piece called " + selectedPiece.Name + " was deleted");
+                }
+                else
+                {
+                    // Show user the error if piece was not deleted
+                    MessageBox.Show("Error deleting " + selectedPiece.Name);
+                }
             }
-            else
+            catch (DbException ex)
             {
-                // Show user the error if piece was not deleted
-                MessageBox.Show("Error deleting " + selectedPiece.Name);
-
-                // reset form
-                InitializeForm();
+                // exception thrown
+                MessageBox.Show(ex.ToString());
             }
+            catch (Exception ex)
+            {
+                // exception thrown
+                MessageBox.Show(ex.ToString());
+            }
+            finally
+            {
+                // cleanup
+                pieceRepository.CleanUp();
+            }
+
+            // reset form
+            InitializeForm();
         }
 
         // perform selected piece button click event
@@ -131,12 +170,11 @@ namespace InRealLife_2
             // grab selected piece and put into variable
             IScenarioPiece selectedPiece = (IScenarioPiece)lstvwScenarioPieces.SelectedItem;
 
+            //
             Running run = new Running(selectedPiece.ID);
-            this.NavigationService.Navigate(run);
-            //run.Show();
 
-            // hide main menu form form
-            //this.Hide();
+            //
+            this.NavigationService.Navigate(run);
         }
 
         // method for form behaviors if list is empty
@@ -150,7 +188,7 @@ namespace InRealLife_2
         // method for form behaviors if list has data
         private void ScenarioListHasValues()
         {
-            // ***** change this btnEditSelected control back to true when edit piece is incorporated ***********
+            //
             btnEditSelected.IsEnabled = false;
         }
 
@@ -167,6 +205,7 @@ namespace InRealLife_2
         // has listbox selection changed
         private void LstvwScenarioPieces_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            //
             EnableButtonsWhenPieceSelected();
         }
 
@@ -178,7 +217,6 @@ namespace InRealLife_2
 
             // enable perform button
             btnPerformSelected.IsEnabled = true;
-
             btnDeleteSelected.IsEnabled = true;
             btnEditSelected.IsEnabled = true;
         }
@@ -188,31 +226,35 @@ namespace InRealLife_2
         {
             // grab selected piece and put into variable
             IScenarioPiece selectedPiece = (IScenarioPiece)lstvwScenarioPieces.SelectedItem;
+
+            //
             CreateNewOverall newCreateNewOverall = new CreateNewOverall(selectedPiece.ID);
+
+            //
             this.NavigationService.Navigate(newCreateNewOverall);
         }
 
+        //
         private void SetMode()
         {
             // pieceID is not empty which means edit a piece
             if (currentPiece.GetType().ToString().Split('.')[1] != SCENARIO_MODE)
             {
                 mode = STAGE_MODE;
-                //EnableEditModeButtons();
             }
             else
             {
                 mode = SCENARIO_MODE;
-                //EnableCreateModeButtons();
             }
         }
 
         private void BtnSwitchMode_Click(object sender, RoutedEventArgs e)
         {
-            //IScenarioPiece stage = new Stage();
+            //
             StageMain newStageMain = new StageMain();
+
+            //
             this.NavigationService.Navigate(newStageMain);
-            //this.NavigationService.Navigate(new Uri("StageMain.xaml", UriKind.Relative));
         }
     }
 }
