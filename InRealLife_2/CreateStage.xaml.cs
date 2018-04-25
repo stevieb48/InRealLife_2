@@ -45,6 +45,10 @@ namespace InRealLife_2
                 scenarioSelect.DisplayMemberPath = "Name";
                 scenarioSelect.SelectionChanged += OnSelectedIndexChanged;
             }
+            else
+            {
+                scenarioSelect.Items.Clear();
+            }
 
         }
 
@@ -67,6 +71,11 @@ namespace InRealLife_2
 
                 answer1path.DisplayMemberPath = "Name";
                 answer2path.DisplayMemberPath = "Name";
+            }
+            else
+            {
+                answer1path.Items.Clear();
+                answer2path.Items.Clear();
             }
         }
 
