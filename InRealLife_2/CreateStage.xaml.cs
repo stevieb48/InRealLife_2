@@ -129,14 +129,6 @@ namespace InRealLife_2
 
         private void previewBtn_Click(object sender, RoutedEventArgs e)
         {
-            /* Console.WriteLine("Stage name: " + titleBox.Text);
-             Console.WriteLine("Stage description: " + descriptionBox.Text);
-             Console.WriteLine("Answer 1: " + answer1box.Text);
-             Console.WriteLine("Answer 2: " + answer2box.Text);
-             Console.WriteLine("Image source: " + imageBox.Source.ToString());
-             Scenario newScenario = (Scenario)scenarioSelect.SelectedValue;
-             Console.WriteLine("ID = : " + newScenario.ID);*/
-
             Stage previewStage = new Stage(0, titleBox.Text, descriptionBox.Text, 0, audioPath, imagePath, answer1box.Text, 0, answer2box.Text, 0);
             
             PreviewWindow preview = new PreviewWindow(previewStage);
@@ -149,9 +141,6 @@ namespace InRealLife_2
             String insertanswer1 = "INSERT INTO Answer VALUE (Name" + ",'" + answer1box.Text + "'," + " StageID" + ", " + "NextStageID" + ")";
             String insertanswer2 = "INSERT INTO Answer VALUE (Name" + ",'" + answer2box.Text + "'," + " StageID" + ", " + "NextStageID" + ")";
 
-            Answer a1 = new Answer();
-            Answer a2 = new Answer();
-
             Stage newStage  = new Stage();
             newStage.Name = titleBox.Text;
             newStage.Description = descriptionBox.Text;
@@ -163,8 +152,8 @@ namespace InRealLife_2
             newStage.Ans1NextStagID = 0;
             newStage.Answer2 = answer2box.Text;
             newStage.Ans2NextStagID = 0;
-
-
+            Repository repo = new Repository();
+            repo.SaveStageData(newStage, false);
         }
 
         private void cancelBtn_Click(object sender, RoutedEventArgs e)
