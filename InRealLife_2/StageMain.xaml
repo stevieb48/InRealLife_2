@@ -79,8 +79,8 @@
         </Button>
         <Button x:Name="btnCreateNew"
                 Content="+ create"
-                Margin="149,8,96,0"
-                VerticalAlignment="Top"
+                Margin="149,0,96,79.6"
+                VerticalAlignment="Bottom"
                 Click="BtnCreateNew_Click"
                 MinWidth="75"
                 MinHeight="25"

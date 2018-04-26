@@ -109,7 +109,7 @@ namespace InRealLife_2
         private void BtnCreateNew_Click(object sender, RoutedEventArgs e)
         {
             //
-            CreateStage newCreateStage = new CreateStage();
+            CreateStage newCreateStage = new CreateStage(EMPTY_INT);
 
             //
             this.NavigationService.Navigate(new Uri("CreateStage.xaml", UriKind.Relative));
@@ -222,7 +222,7 @@ namespace InRealLife_2
             IScenarioPiece selectedPiece = (IScenarioPiece)lstvwScenarioPieces.SelectedItem;
 
             //
-            CreateStage newCreateStage = new CreateStage();
+            CreateStage newCreateStage = new CreateStage(selectedPiece.ID);
 
             //
             this.NavigationService.Navigate(newCreateStage);

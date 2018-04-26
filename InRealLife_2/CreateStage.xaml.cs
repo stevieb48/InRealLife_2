@@ -17,6 +17,7 @@ using Classes;
 using ClassInterfaces;
 using LogicLayer;
 using System.IO;
+using System.Data.Common;
 
 namespace InRealLife_2
 {
@@ -28,25 +29,59 @@ namespace InRealLife_2
         string currentDirectory = Directory.GetCurrentDirectory();
         string imagePath, audioPath;
 
-        public CreateStage()
+        // CONSTANTS
+        private const string CREATE_MODE = "Create";
+        private const string EDIT_MODE = "Edit";
+        private const int EMPTY_INT = 0;
+
+        // mode variable set to create mode
+        private string mode = CREATE_MODE;
+
+        Stage currentStage = new Stage();
+
+        Repository editStageRepository = new Repository();
+
+        public CreateStage(int ID)
         {
+            // set piece
+            this.currentStage = new Stage(ID);
+
+            //
+            SetMode();
+
+            // code for omars
+
             InitializeComponent();
-            Repository pieceRepository = new Repository();
-            IScenarioPiece currentPiece = new Scenario();
 
-            IScenarioPiece[] resultingList = pieceRepository.GetAllPiecesByType(currentPiece);
-            if (resultingList.Length > 0)
+            if (mode == CREATE_MODE)
             {
-                for (int i = 0; i < resultingList.Length; i++)
+                Repository pieceRepository = new Repository();
+                IScenarioPiece currentPiece = new Scenario();
+
+                IScenarioPiece[] resultingList = pieceRepository.GetAllPiecesByType(currentPiece);
+                if (resultingList.Length > 0)
                 {
-                    scenarioSelect.Items.Add(new Scenario { ID = resultingList[i].ID, Name = resultingList[i].Name, Description = resultingList[i].Description });
+                    for (int i = 0; i < resultingList.Length; i++)
+                    {
+                        scenarioSelect.Items.Add(new Scenario { ID = resultingList[i].ID, Name = resultingList[i].Name, Description = resultingList[i].Description });
+                    }
+
+                    scenarioSelect.DisplayMemberPath = "Name";
                 }
+                else
+                {
 
-                scenarioSelect.DisplayMemberPath = "Name";
+                }
             }
-            else
-            {
-
+            else if (mode == EDIT_MODE)
+            {                
+                descriptionBox.Text = currentStage.Description;
+                answer1box.Text = currentStage.Answer1;
+                answer2box.Text = currentStage.Answer2;
+                uploadAudioBtn.Content = currentStage.AudioFilePath;
+                string imageFilePath = System.IO.Path.Combine(currentDirectory, "mediaFiles", currentStage.ImageFilePath);
+                imageBox.Source = new BitmapImage(new Uri(imageFilePath, UriKind.RelativeOrAbsolute));
+                titleBox.Text = currentStage.Name;
             }
         }
 
@@ -145,11 +180,27 @@ namespace InRealLife_2
 
         private void saveBtn_Click(object sender, RoutedEventArgs e)
         {
-            String insertString = "INSERT INTO Stage VALUE ('" + titleBox.Text + "','" + descriptionBox.Text + "'," + "ScenarioID" + "," + "'NULL'" + ",'" + imageBox.Source.ToString() + "')";
-            String insertanswer1 = "INSERT INTO Answer VALUE (Name" + "," + answer1box.Text + "," + " StageID" + ", " + "NextStageID" + ")";
-            String insertanswer2 = "INSERT INTO Answer VALUE (Name" + "," + answer2box.Text + "," + " StageID" + ", " + "NextStageID" + ")";
+            // check mode
+            if(mode == CREATE_MODE)
+            {
+                String insertString = "INSERT INTO Stage VALUE ('" + titleBox.Text + "','" + descriptionBox.Text + "'," + "ScenarioID" + "," + "'NULL'" + ",'" + imageBox.Source.ToString() + "')";
+                String insertanswer1 = "INSERT INTO Answer VALUE (Name" + "," + answer1box.Text + "," + " StageID" + ", " + "NextStageID" + ")";
+                String insertanswer2 = "INSERT INTO Answer VALUE (Name" + "," + answer2box.Text + "," + " StageID" + ", " + "NextStageID" + ")";
+            }
+            else if (mode == EDIT_MODE)
+            {
+                bool starterflag = false;
 
-
+                if (chkbxMakeStarter.IsChecked == false)
+                {
+                    editStageRepository.SaveStageData(currentStage, starterflag);
+                }
+                else
+                {
+                    starterflag = true;
+                    editStageRepository.SaveStageData(currentStage, starterflag);
+                }                
+            }
         }
 
         private void cancelBtn_Click(object sender, RoutedEventArgs e)
@@ -166,6 +217,45 @@ namespace InRealLife_2
         {
             get => scenarioSelect;
             set => scenarioSelect = value;
+        }
+
+        // set mode to create mode or edit mode
+        private void SetMode()
+        {
+            // pieceID is not empty which means edit a piece
+            if (currentStage.ID != EMPTY_INT)
+            {
+                mode = EDIT_MODE;
+                EnableEditModeButtons();
+            }
+            else if (currentStage.ID == EMPTY_INT)
+            {
+                mode = CREATE_MODE;
+            }
+        }
+
+        // method to enable controls for edit mode
+        private void EnableEditModeButtons()
+        {
+            try
+            {
+                this.currentStage = editStageRepository.GetNextStage(currentStage.ID);
+            }
+            catch (DbException ex)
+            {
+                // exception thrown
+                MessageBox.Show(ex.ToString());
+            }
+            catch (Exception ex)
+            {
+                // exception thrown
+                MessageBox.Show(ex.ToString());
+            }
+            finally
+            {
+                // cleanup
+                editStageRepository.CleanUp();
+            }
         }
     }
 }

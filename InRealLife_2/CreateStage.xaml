@@ -197,6 +197,7 @@
                   IsEditable="True"
                   ToolTip="Select where this answer leads"
                   Grid.Row="1" />
+        <CheckBox x:Name="chkbxMakeStarter" Content="Make Starter Stage" HorizontalAlignment="Left" Margin="124,153,0,0" VerticalAlignment="Top" Grid.Column="1"/>
 
 
     </Grid>
