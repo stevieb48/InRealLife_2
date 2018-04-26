@@ -45,6 +45,7 @@ namespace InRealLife_2
             InitializeComponent();
             SetMode();
             InitializeForm();
+           
         }
 
         // initialize the form

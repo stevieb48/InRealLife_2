@@ -250,7 +250,7 @@ namespace InRealLife_2
 
         private void BtnSwitchMode_Click(object sender, RoutedEventArgs e)
         {
-            //
+           
             StageMain newStageMain = new StageMain();
 
             //
