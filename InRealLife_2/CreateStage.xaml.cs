@@ -83,7 +83,10 @@ namespace InRealLife_2
                 answer2box.Text = currentStage.Answer2;
                 uploadAudioBtn.Content = currentStage.AudioFilePath;
                 string imageFilePath = System.IO.Path.Combine(currentDirectory, "mediaFiles", currentStage.ImageFilePath);
-                imageBox.Source = new BitmapImage(new Uri(imageFilePath, UriKind.RelativeOrAbsolute));                
+                imagePath = imageFilePath;
+                audioPath = System.IO.Path.Combine(currentDirectory, "mediaFiles", currentStage.AudioFilePath);
+                imageBox.Source = new BitmapImage(new Uri(imageFilePath, UriKind.RelativeOrAbsolute));
+                titleBox.Text = currentStage.Name;
             }
         }
 

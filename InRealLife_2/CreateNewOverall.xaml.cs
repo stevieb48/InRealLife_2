@@ -79,6 +79,12 @@ namespace InRealLife_2
 
                         //Repository repo = new Repository();
                         pieceRepository.UpdateExisingPiece(this.currentPiece);
+
+                        //
+                        MainMenu newMainMenu = new MainMenu();
+
+                        //
+                        this.NavigationService.Navigate(newMainMenu);
                     }
                     else if (mode == CREATE_MODE)
                     {
@@ -90,6 +96,12 @@ namespace InRealLife_2
 
                         // change mode
                         mode = EDIT_MODE;
+
+                        //
+                        MainMenu newMainMenu = new MainMenu();
+
+                        //
+                        this.NavigationService.Navigate(newMainMenu);
                     }
                 }
                 catch (DbException ex)
