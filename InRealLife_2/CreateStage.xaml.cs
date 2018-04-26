@@ -28,6 +28,7 @@ namespace InRealLife_2
     {
         string currentDirectory = Directory.GetCurrentDirectory();
         string imagePath, audioPath;
+        
         // CONSTANTS
         private const string CREATE_MODE = "Create";
         private const string EDIT_MODE = "Edit";
@@ -42,16 +43,15 @@ namespace InRealLife_2
 
         public CreateStage(int ID)
         {
+            InitializeComponent();
+                
             // set piece
             this.currentStage = new Stage(ID);
 
-            //
+            // set mode based on information in piece
             SetMode();
 
-            // code for omars
-
-            InitializeComponent();
-
+            // when mode is create mode
             if (mode == CREATE_MODE)
             {
                 Repository pieceRepository = new Repository();
@@ -73,15 +73,17 @@ namespace InRealLife_2
                     scenarioSelect.Items.Clear();
                 }
             }
+            // when mode is edit mode
             else if (mode == EDIT_MODE)
             {
+                // set controls with data from selected piece
+                titleBox.Text = currentStage.Name;
                 descriptionBox.Text = currentStage.Description;
                 answer1box.Text = currentStage.Answer1;
                 answer2box.Text = currentStage.Answer2;
                 uploadAudioBtn.Content = currentStage.AudioFilePath;
                 string imageFilePath = System.IO.Path.Combine(currentDirectory, "mediaFiles", currentStage.ImageFilePath);
-                imageBox.Source = new BitmapImage(new Uri(imageFilePath, UriKind.RelativeOrAbsolute));
-                titleBox.Text = currentStage.Name;
+                imageBox.Source = new BitmapImage(new Uri(imageFilePath, UriKind.RelativeOrAbsolute));                
             }
         }
 
@@ -221,19 +223,25 @@ namespace InRealLife_2
                 Repository repo = new Repository();
                 repo.SaveStageData(newStage, false);
             }
+            // else if mode is edit mode
             else if (mode == EDIT_MODE)
             {
+                //
                 bool starterflag = false;
 
+                // see if check box to make stage a starter is not checked
                 if (chkbxMakeStarter.IsChecked == false)
-                {
+                {                    
+                    // save data
                     editStageRepository.SaveStageData(currentStage, starterflag);
-
-
                 }
+                // checkbox to make starter is checked
                 else
                 {
+                    // change flag to true
                     starterflag = true;
+
+                    // save data
                     editStageRepository.SaveStageData(currentStage, starterflag);
                 }
             }
@@ -258,14 +266,19 @@ namespace InRealLife_2
         // set mode to create mode or edit mode
         private void SetMode()
         {
-            // pieceID is not empty which means edit a piece
+            // pieceID is not empty which means edit a piece edit mode
             if (currentStage.ID != EMPTY_INT)
             {
+                // set mode to edit
                 mode = EDIT_MODE;
+
+                // enable editbuttons
                 EnableEditModeButtons();
             }
+            // else the piece must be empty create mode
             else if (currentStage.ID == EMPTY_INT)
             {
+                // set to create mode
                 mode = CREATE_MODE;
             }
         }

@@ -76,14 +76,14 @@
                 Grid.Column="1"
                 HorizontalAlignment="Center"
                 Height="25"
-                Margin="122,108,168,92"
+                Margin="56,144,234,55.8"
                 VerticalAlignment="Center"
                 Width="110"
                 Click="uploadAudioBtn_Click" />
         <Button x:Name="previewBtn"
                 Content="Preview"
                 HorizontalAlignment="Center"
-                Margin="252,156,73,0"
+                Margin="252,184.2,73,0"
                 Grid.Row="1"
                 VerticalAlignment="Top"
                 MinHeight="25"
@@ -92,7 +92,7 @@
         <Button x:Name="saveBtn"
                 Content="Save"
                 HorizontalAlignment="Center"
-                Margin="364,156,362,0"
+                Margin="363,184.2,362,0"
                 Grid.Row="1"
                 VerticalAlignment="Top"
                 MinHeight="25"
@@ -102,7 +102,7 @@
         <Button x:Name="cancelBtn"
                 Content="Cancel"
                 HorizontalAlignment="Center"
-                Margin="75,156,250,0"
+                Margin="75,184.2,250,0"
                 Grid.Row="1"
                 VerticalAlignment="Top"
                 MinHeight="25"
@@ -124,7 +124,7 @@
                  Grid.ColumnSpan="2"
                  HorizontalAlignment="Center"
                  Height="46"
-                 Margin="183,0,182,0"
+                 Margin="183,34.2,182,0"
                  Grid.Row="1"
                  TextWrapping="Wrap"
                  Text="Click to edit stage description"
@@ -133,7 +133,7 @@
         <TextBox x:Name="answer1box"
                  HorizontalAlignment="Center"
                  Height="41"
-                 Margin="107,56,0,0"
+                 Margin="128,86.2,45,0"
                  Grid.Row="1"
                  TextWrapping="Wrap"
                  Text="Click to edit answer number 1"
@@ -142,7 +142,7 @@
         <TextBox x:Name="answer2box"
                  HorizontalAlignment="Center"
                  Height="41"
-                 Margin="58,51,114,0"
+                 Margin="46,86.2,126,0"
                  Grid.Row="1"
                  TextWrapping="Wrap"
                  Text="Click to edit answer number 2"
@@ -153,7 +153,7 @@
         <!--Image-->
         <Image x:Name="imageBox"
                HorizontalAlignment="Center"
-               Margin="324,65,326,10"
+               Margin="324,81,326,218.6"
                VerticalAlignment="Center"
                MinHeight="150"
                MinWidth="150"
@@ -163,14 +163,14 @@
                Stretch="Fill"
                Grid.ColumnSpan="2"
                MouseLeftButtonDown="Image_MouseLeftButtonDown"
-               ToolTip="Click to Upload Image" />
+               ToolTip="Click to Upload Image" Grid.RowSpan="2" />
 
         <!--ComboBox-->
         <ComboBox x:Name="scenarioSelect"
                   Grid.Column="1"
                   HorizontalAlignment="Center"
                   Height="21"
-                  Margin="122,65,131,0"
+                  Margin="14,63,239,0"
                   VerticalAlignment="Top"
                   Width="147"
                   Text="Scenario Selection"
@@ -179,7 +179,7 @@
         <ComboBox x:Name="answer1path"
                   HorizontalAlignment="Center"
                   Height="21"
-                  Margin="107,102,0,0"
+                  Margin="168,132.2,85,0"
                   VerticalAlignment="Top"
                   Width="147"
                   Text="Next Stage"
@@ -190,14 +190,14 @@
                   Grid.Column="1"
                   HorizontalAlignment="Center"
                   Height="21"
-                  Margin="98,102,156,0"
+                  Margin="86,132.2,168,0"
                   VerticalAlignment="Top"
                   Width="146"
                   Text="Next Stage"
                   IsEditable="True"
                   ToolTip="Select where this answer leads"
                   Grid.Row="1" />
-        <CheckBox x:Name="chkbxMakeStarter" Content="Make Starter Stage" HorizontalAlignment="Left" Margin="124,153,0,0" VerticalAlignment="Top" Grid.Column="1"/>
+        <CheckBox x:Name="chkbxMakeStarter" Content="Make Starter Stage" HorizontalAlignment="Left" Margin="263,69,0,0" VerticalAlignment="Top"/>
 
 
     </Grid>
