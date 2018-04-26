@@ -28,7 +28,6 @@ namespace InRealLife_2
     {
         string currentDirectory = Directory.GetCurrentDirectory();
         string imagePath, audioPath;
-
         // CONSTANTS
         private const string CREATE_MODE = "Create";
         private const string EDIT_MODE = "Edit";
@@ -67,14 +66,15 @@ namespace InRealLife_2
                     }
 
                     scenarioSelect.DisplayMemberPath = "Name";
+                    scenarioSelect.SelectionChanged += OnSelectedIndexChanged;
                 }
                 else
                 {
-
+                    scenarioSelect.Items.Clear();
                 }
             }
             else if (mode == EDIT_MODE)
-            {                
+            {
                 descriptionBox.Text = currentStage.Description;
                 answer1box.Text = currentStage.Answer1;
                 answer2box.Text = currentStage.Answer2;
@@ -82,6 +82,32 @@ namespace InRealLife_2
                 string imageFilePath = System.IO.Path.Combine(currentDirectory, "mediaFiles", currentStage.ImageFilePath);
                 imageBox.Source = new BitmapImage(new Uri(imageFilePath, UriKind.RelativeOrAbsolute));
                 titleBox.Text = currentStage.Name;
+            }
+        }
+
+        private void OnSelectedIndexChanged(object sender, EventArgs e)
+        {
+            Console.WriteLine("Combobox changed \n");
+            Repository pieceRepository = new Repository();
+            IScenarioPiece currentPiece = new Stage();
+            Scenario newScenario = (Scenario)scenarioSelect.SelectedValue;
+
+            IScenarioPiece[] resultingList = pieceRepository.GetAllPiecesByType(currentPiece, newScenario.ID);
+            if (resultingList.Length > 0)
+            {
+                for (int i = 0; i < resultingList.Length; i++)
+                {
+                    answer1path.Items.Add(resultingList[i]);
+                    answer2path.Items.Add(resultingList[i]);
+                }
+
+                answer1path.DisplayMemberPath = "Name";
+                answer2path.DisplayMemberPath = "Name";
+            }
+            else
+            {
+                answer1path.Items.Clear();
+                answer2path.Items.Clear();
             }
         }
 
@@ -164,16 +190,8 @@ namespace InRealLife_2
 
         private void previewBtn_Click(object sender, RoutedEventArgs e)
         {
-            /* Console.WriteLine("Stage name: " + titleBox.Text);
-             Console.WriteLine("Stage description: " + descriptionBox.Text);
-             Console.WriteLine("Answer 1: " + answer1box.Text);
-             Console.WriteLine("Answer 2: " + answer2box.Text);
-             Console.WriteLine("Image source: " + imageBox.Source.ToString());
-             Scenario newScenario = (Scenario)scenarioSelect.SelectedValue;
-             Console.WriteLine("ID = : " + newScenario.ID);*/
-
             Stage previewStage = new Stage(0, titleBox.Text, descriptionBox.Text, 0, audioPath, imagePath, answer1box.Text, 0, answer2box.Text, 0);
-            
+
             PreviewWindow preview = new PreviewWindow(previewStage);
             preview.Show();
         }
@@ -181,11 +199,27 @@ namespace InRealLife_2
         private void saveBtn_Click(object sender, RoutedEventArgs e)
         {
             // check mode
-            if(mode == CREATE_MODE)
+            if (mode == CREATE_MODE)
             {
                 String insertString = "INSERT INTO Stage VALUE ('" + titleBox.Text + "','" + descriptionBox.Text + "'," + "ScenarioID" + "," + "'NULL'" + ",'" + imageBox.Source.ToString() + "')";
                 String insertanswer1 = "INSERT INTO Answer VALUE (Name" + "," + answer1box.Text + "," + " StageID" + ", " + "NextStageID" + ")";
                 String insertanswer2 = "INSERT INTO Answer VALUE (Name" + "," + answer2box.Text + "," + " StageID" + ", " + "NextStageID" + ")";
+                Stage newStage = new Stage();
+                Stage answer1 = (Stage)answer1path.SelectedValue;
+                Stage answer2 = (Stage)answer2path.SelectedValue;
+                newStage.Name = titleBox.Text;
+                newStage.Description = descriptionBox.Text;
+                Scenario newScenario = (Scenario)scenarioSelect.SelectedValue;
+
+                newStage.ScenarioID = newScenario.ID;
+                newStage.AudioFilePath = "NULL";
+                newStage.ImageFilePath = imageBox.Source.ToString();
+                newStage.Answer1 = answer1box.Text;
+                newStage.Ans1NextStagID = answer1.ID;
+                newStage.Answer2 = answer2box.Text;
+                newStage.Ans2NextStagID = answer2.ID;
+                Repository repo = new Repository();
+                repo.SaveStageData(newStage, false);
             }
             else if (mode == EDIT_MODE)
             {
@@ -194,12 +228,14 @@ namespace InRealLife_2
                 if (chkbxMakeStarter.IsChecked == false)
                 {
                     editStageRepository.SaveStageData(currentStage, starterflag);
+
+
                 }
                 else
                 {
                     starterflag = true;
                     editStageRepository.SaveStageData(currentStage, starterflag);
-                }                
+                }
             }
         }
 

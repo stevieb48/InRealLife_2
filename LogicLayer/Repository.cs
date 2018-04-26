@@ -99,7 +99,7 @@ namespace LogicLayer
         {
             // create query based on the piece type
             string query = "SELECT * "
-                           + "FROM " + piece.GetType().ToString().Split('.')[1] + 
+                           + "FROM " + piece.GetType().ToString().Split('.')[1] +
                 " WHERE ScenarioID = " + ID;
 
             // new datatable and store results from call to the database
@@ -322,7 +322,7 @@ namespace LogicLayer
                 else
                 {
                     newLogin = PutDataTableIntoAccountPiece(CHILD, dataTable);
-                }    
+                }
             }
             // login failed
             else
