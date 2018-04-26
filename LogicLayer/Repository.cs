@@ -22,7 +22,13 @@ namespace LogicLayer
         // CONSTANTS
         private const string SCENARIO = "Scenario";
         private const string STAGE = "Stage";
+        private const string ADMIN = "Admin";
+        private const string CHILD = "Child";
         private const int EMPTY = 0;
+
+        private const string INVALIDLOGIN = "INVALID LOGIN";
+        private const string NOT_FOUND = "NOT FOUND";
+
 
         // database instance
         private DataBaseCommunication newDBComm = new DataBaseCommunication();
@@ -78,6 +84,23 @@ namespace LogicLayer
             // create query based on the piece type
             string query = "SELECT * "
                         + "FROM " + piece.GetType().ToString().Split('.')[1];
+
+            // new datatable and store results from call to the database
+            DataTable dataTable = this.newDBComm.Select(query);
+
+            //
+            IScenarioPiece[] pieceList = PutDataTableIntoPieceList(piece.GetType().ToString().Split('.')[1], dataTable);
+
+            // return the results
+            return pieceList;
+        }
+
+        public IScenarioPiece[] GetAllPiecesByType(IScenarioPiece piece, int ID)
+        {
+            // create query based on the piece type
+            string query = "SELECT * "
+                           + "FROM " + piece.GetType().ToString().Split('.')[1] + 
+                " WHERE ScenarioID = " + ID;
 
             // new datatable and store results from call to the database
             DataTable dataTable = this.newDBComm.Select(query);
@@ -220,7 +243,7 @@ namespace LogicLayer
             int rowsAffected = 0;
 
             //
-            if (stage.ID != EMPTY)
+            if (stage.ID != 0)
             {
                 // update existing
                 string query = "UPDATE Stage SET "
@@ -251,9 +274,8 @@ namespace LogicLayer
                                 + stage.Answer1 + "', "
                                 + stage.Ans1NextStagID + ", '"
                                 + stage.Answer2 + "', "
-                                + stage.Ans2NextStagID + ", "
-                                + starterFlag
-                                + " WHERE ID = " + stage.ID;
+                                + stage.Ans2NextStagID + ", '"
+                                + starterFlag + "')";
 
                 rowsAffected = newDBComm.Insert(query);
             }
@@ -266,6 +288,99 @@ namespace LogicLayer
         public void CleanUp()
         {
             newDBComm.Dispose();
+        }
+
+        //
+        public IAccount LogIntoAccount(string login, string password)
+        {
+            //
+            IAccount newLogin = null;
+
+            // create query based on the account type
+            string query = "SELECT * "
+                        + "FROM " + "Accounts"
+                        + " WHERE Login = '" + login
+                        + "' AND Password = '" + password + "'";
+
+            // new datatable and store results from call to the database
+            DataTable dataTable = this.newDBComm.Select(query);
+
+            // empty set
+            if (dataTable == null)
+            {
+                newLogin = new Child(NOT_FOUND);
+            }
+            // check login
+            else if ((login == dataTable.Rows[0][2].ToString()) && (password == dataTable.Rows[0][3].ToString()))
+            {
+                // if GlobalStatus = true
+                if (Convert.ToBoolean(dataTable.Rows[0][4].ToString()) == true)
+                {
+                    newLogin = PutDataTableIntoAccountPiece(ADMIN, dataTable);
+                }
+                // global status = false
+                else
+                {
+                    newLogin = PutDataTableIntoAccountPiece(CHILD, dataTable);
+                }    
+            }
+            // login failed
+            else
+            {
+                newLogin = new Child(INVALIDLOGIN);
+            }
+
+            // return the results
+            return newLogin;
+        }
+
+        //
+        private IAccount PutDataTableIntoAccountPiece(string pieceType, DataTable dataTable)
+        {
+            //
+            if (pieceType == ADMIN)
+            {
+                // put data into admin account
+                IAccount admin = new Admin(int.Parse(dataTable.Rows[0][0].ToString()), dataTable.Rows[0][1].ToString(), dataTable.Rows[0][2].ToString(), dataTable.Rows[0][3].ToString(), Convert.ToBoolean(dataTable.Rows[0][4].ToString()), dataTable.Rows[0][5].ToString());
+
+                // return admin
+                return admin;
+            }
+            //
+            else
+            {
+                // put data into child account
+                IAccount child = new Child(int.Parse(dataTable.Rows[0][0].ToString()), dataTable.Rows[0][1].ToString(), dataTable.Rows[0][2].ToString(), dataTable.Rows[0][3].ToString(), Convert.ToBoolean(dataTable.Rows[0][4].ToString()), dataTable.Rows[0][5].ToString());
+
+                // child
+                return child;
+            }
+        }
+
+        //
+        public bool CreateNewAccount(IAccount account)
+        {
+            // is valid flag set to false
+            bool IsValid = false;
+
+            // create query based on the account type
+            string query = "SELECT * "
+                        + "FROM " + account.GetType().ToString().Split('.')[1]
+                        + " WHERE Name = " + account.Name;
+
+            // new datatable and store results from call to the database
+            DataTable dataTable = this.newDBComm.Select(query);
+
+            //
+            IAccount existingAccount = PutDataTableIntoAccountPiece(account.GetType().ToString().Split('.')[1], dataTable);
+
+            if (account.Name == existingAccount.Name && account.Password == existingAccount.Password)
+            {
+                IsValid = true;
+            }
+
+            // return the results
+            return IsValid;
         }
     }
 }
