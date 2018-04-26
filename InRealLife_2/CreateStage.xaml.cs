@@ -136,7 +136,9 @@ namespace InRealLife_2
              Console.WriteLine("Image source: " + imageBox.Source.ToString());
              Scenario newScenario = (Scenario)scenarioSelect.SelectedValue;
              Console.WriteLine("ID = : " + newScenario.ID);*/
-
+            
+            
+            //create a stage object to be used in the preview window
             Stage previewStage = new Stage(0, titleBox.Text, descriptionBox.Text, 0, audioPath, imagePath, answer1box.Text, 0, answer2box.Text, 0);
             
             PreviewWindow preview = new PreviewWindow(previewStage);
@@ -148,7 +150,6 @@ namespace InRealLife_2
             String insertString = "INSERT INTO Stage VALUE ('" + titleBox.Text + "','" + descriptionBox.Text + "'," + "ScenarioID" + "," + "'NULL'" + ",'" + imageBox.Source.ToString() + "')";
             String insertanswer1 = "INSERT INTO Answer VALUE (Name" + "," + answer1box.Text + "," + " StageID" + ", " + "NextStageID" + ")";
             String insertanswer2 = "INSERT INTO Answer VALUE (Name" + "," + answer2box.Text + "," + " StageID" + ", " + "NextStageID" + ")";
-
 
         }
 
