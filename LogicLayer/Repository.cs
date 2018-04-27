@@ -239,8 +239,15 @@ namespace LogicLayer
         //
         public int SaveStageData(Stage stage, bool starterFlag)
         {
+            char starter = '1';
+            
             //
             int rowsAffected = 0;
+
+            if(starterFlag == false)
+            {
+                starter = '0';
+            }
 
             //
             if (stage.ID != 0)
@@ -256,7 +263,7 @@ namespace LogicLayer
                                 + "Ans1NextStagID = " + stage.Ans1NextStagID + ", "
                                 + "Answer2 = '" + stage.Answer2 + "', "
                                 + "Ans2NextStagID = " + stage.Ans2NextStagID + ", "
-                                + "Start = " + starterFlag
+                                + "Start = " + starter
                                 + " WHERE ID = " + stage.ID;
 
                 rowsAffected = newDBComm.Update(query);
@@ -274,8 +281,8 @@ namespace LogicLayer
                                 + stage.Answer1 + "', "
                                 + stage.Ans1NextStagID + ", '"
                                 + stage.Answer2 + "', "
-                                + stage.Ans2NextStagID + ", '"
-                                + starterFlag + "')";
+                                + stage.Ans2NextStagID + ", "
+                                + starter + ")";
 
                 rowsAffected = newDBComm.Insert(query);
             }

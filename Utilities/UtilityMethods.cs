@@ -63,6 +63,12 @@ namespace Utilities
                     // just change counter
                     charCounter++;
                 }
+                // if char is an punctuation
+                else if (char.IsPunctuation(tempChar))
+                {
+                    // just change counter
+                    charCounter++;
+                }
                 // else char an invalid character
                 else
                 {
