@@ -41,6 +41,11 @@ namespace InRealLife_2
 
         Repository editStageRepository = new Repository();
 
+        public CreateStage()
+        {
+            InitializeComponent();
+        }
+
         public CreateStage(int ID)
         {
             InitializeComponent();
