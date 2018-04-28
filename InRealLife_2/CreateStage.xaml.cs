@@ -47,18 +47,6 @@ namespace InRealLife_2
             InitializeComponent();
 
             populateComboBox();
-
-            IScenarioPiece[] resultingList = editStageRepository.GetAllPiecesByType(currentPiece);
-            if (resultingList.Length > 0)
-            {
-                for (int i = 0; i < resultingList.Length; i++)
-                {
-                    scenarioSelect.Items.Add(new Scenario { ID = resultingList[i].ID, Name = resultingList[i].Name, Description = resultingList[i].Description });
-                }
-
-                scenarioSelect.DisplayMemberPath = "Name";
-                scenarioSelect.SelectionChanged += OnSelectedIndexChanged;
-            }
         }
 
         public CreateStage(int ID)
@@ -69,24 +57,12 @@ namespace InRealLife_2
             this.currentStage = new Stage(ID);
 
             // set mode based on information in piece
-            SetMode();
-
-            populateComboBox();
-
-            // scenario combo box
-            SetScenarioComboBox(currentPiece);
-
-            // next stage answer 1 combo box
-            SetAnswer1ComboBox(currentStage);
-
-            // next stage answer 2 combo box
-            SetAnswer2ComboBox(currentStage);
-
+            SetMode();            
 
             // when mode is create mode
             if (mode == CREATE_MODE)
             {
-
+                populateComboBox();
             }
             // when mode is edit mode
             else if (mode == EDIT_MODE)
@@ -102,6 +78,15 @@ namespace InRealLife_2
                 audioPath = System.IO.Path.Combine(currentDirectory, "mediaFiles", currentStage.AudioFilePath);
                 imageBox.Source = new BitmapImage(new Uri(imageFilePath, UriKind.RelativeOrAbsolute));
                 titleBox.Text = currentStage.Name;
+
+                // scenario combo box
+                populateComboBox();
+
+                // next stage answer 1 combo box
+                SetAnswer1ComboBox(currentStage);
+
+                // next stage answer 2 combo box
+                SetAnswer2ComboBox(currentStage);
 
                 scenarioSelect.SelectedItem = currentStage.ScenarioID;
 
