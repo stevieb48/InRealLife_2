@@ -239,14 +239,14 @@ namespace LogicLayer
         //
         public int SaveStageData(Stage stage, bool starterFlag)
         {
-            char starter = '1';
+            int starter = 1;
 
             //
             int rowsAffected = 0;
 
             if (starterFlag == false)
             {
-                starter = '0';
+                starter = 0;
             }
 
             //

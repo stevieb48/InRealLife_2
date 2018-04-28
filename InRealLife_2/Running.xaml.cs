@@ -55,17 +55,6 @@ namespace InRealLife_2
         {
             InitializeComponent();
             Start(Scenario);
-
-            //***********************imageFileName*************************** 
-            string imageFileName = currentStage.ImageFilePath;
-            string imageFilePath = System.IO.Path.Combine(currentDirectory, "mediaFiles", imageFileName);
-            ImageBlock.Source = new BitmapImage(new Uri(imageFilePath, UriKind.RelativeOrAbsolute));
-
-            //****************soundFileName************************* 
-            string soundFileName = currentStage.AudioFilePath;
-            string soundFilePath = System.IO.Path.Combine(currentDirectory, "mediaFiles", soundFileName);
-            soundFX.Open(new Uri(soundFilePath, UriKind.RelativeOrAbsolute));
-            soundFX.Play();
         }
 
         //
@@ -121,6 +110,19 @@ namespace InRealLife_2
             StageDescription.Text = currentStage.Description;
             Text1.Text = currentStage.Answer1;
             Text2.Text = currentStage.Answer2;
+
+            //***********************imageFileName*************************** 
+            string imageFileName = currentStage.ImageFilePath;
+            Console.WriteLine(imageFileName);
+            string imageFilePath = System.IO.Path.Combine("mediaFiles\\", imageFileName);
+            Console.WriteLine(imageFilePath);
+            ImageBlock.Source = new BitmapImage(new Uri(imageFilePath, UriKind.RelativeOrAbsolute));
+
+            //****************soundFileName************************* 
+            string soundFileName = currentStage.AudioFilePath;
+            string soundFilePath = System.IO.Path.Combine(currentDirectory, "mediaFiles", soundFileName);
+            soundFX.Open(new Uri(soundFilePath, UriKind.RelativeOrAbsolute));
+            soundFX.Play();
         }
 
         //
