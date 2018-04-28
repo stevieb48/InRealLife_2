@@ -27,7 +27,8 @@ namespace InRealLife_2
     public partial class CreateStage : Page
     {
         string currentDirectory = Directory.GetCurrentDirectory();
-        string imagePath, audioPath;
+        string imagePath, audioPath, image;
+
         // CONSTANTS
         private const string CREATE_MODE = "Create";
         private const string EDIT_MODE = "Edit";
@@ -37,69 +38,73 @@ namespace InRealLife_2
         private string mode = CREATE_MODE;
 
         Stage currentStage = new Stage();
+        IScenarioPiece currentPiece = new Scenario();
 
         Repository editStageRepository = new Repository();
 
         public CreateStage()
         {
             InitializeComponent();
+            populateComboBox();
         }
 
         public CreateStage(int ID)
         {
+            InitializeComponent();
+
             // set piece
             this.currentStage = new Stage(ID);
 
-            //
-            SetMode();
+            // set mode based on information in piece
+            SetMode();            
 
-            // code for omars
-
-            InitializeComponent();
-
+            // when mode is create mode
             if (mode == CREATE_MODE)
             {
-                Repository pieceRepository = new Repository();
-                IScenarioPiece currentPiece = new Scenario();
-
-                IScenarioPiece[] resultingList = pieceRepository.GetAllPiecesByType(currentPiece);
-                if (resultingList.Length > 0)
-                {
-                    for (int i = 0; i < resultingList.Length; i++)
-                    {
-                        scenarioSelect.Items.Add(new Scenario { ID = resultingList[i].ID, Name = resultingList[i].Name, Description = resultingList[i].Description });
-                    }
-
-                    scenarioSelect.DisplayMemberPath = "Name";
-                    scenarioSelect.SelectionChanged += OnSelectedIndexChanged;
-                }
-                else
-                {
-                    scenarioSelect.Items.Clear();
-                }
+                populateComboBox();
             }
+            // when mode is edit mode
             else if (mode == EDIT_MODE)
             {
+                // set controls with data from selected piece
+                titleBox.Text = currentStage.Name;
                 descriptionBox.Text = currentStage.Description;
                 answer1box.Text = currentStage.Answer1;
                 answer2box.Text = currentStage.Answer2;
                 uploadAudioBtn.Content = currentStage.AudioFilePath;
-                string imageFilePath = System.IO.Path.Combine(currentDirectory, "mediaFiles", currentStage.ImageFilePath);
+                string imageFilePath = System.IO.Path.Combine( "mediaFiles\\", currentStage.ImageFilePath);
                 imagePath = imageFilePath;
-                audioPath = System.IO.Path.Combine(currentDirectory, "mediaFiles", currentStage.AudioFilePath);
+                audioPath = System.IO.Path.Combine("mediaFiles\\", currentStage.AudioFilePath);
                 imageBox.Source = new BitmapImage(new Uri(imageFilePath, UriKind.RelativeOrAbsolute));
                 titleBox.Text = currentStage.Name;
+
+                // scenario combo box
+                populateComboBox();
+
+                // next stage answer 1 combo box
+                //SetAnswer1ComboBox(currentStage);
+
+                // next stage answer 2 combo box
+                //SetAnswer2ComboBox(currentStage);
+
+                scenarioSelect.SelectedItem = currentStage.ScenarioID;
+
+                answer1path.SelectedItem = currentStage.Ans1NextStagID;
+
+                answer2path.SelectedItem = currentStage.Ans1NextStagID;
             }
         }
 
         private void OnSelectedIndexChanged(object sender, EventArgs e)
         {
             Console.WriteLine("Combobox changed \n");
-            Repository pieceRepository = new Repository();
             IScenarioPiece currentPiece = new Stage();
             Scenario newScenario = (Scenario)scenarioSelect.SelectedValue;
 
-            IScenarioPiece[] resultingList = pieceRepository.GetAllPiecesByType(currentPiece, newScenario.ID);
+            answer1path.Items.Clear();
+            answer2path.Items.Clear();
+
+            IScenarioPiece[] resultingList = editStageRepository.GetAllPiecesByType(currentPiece, newScenario.ID);
             if (resultingList.Length > 0)
             {
                 for (int i = 0; i < resultingList.Length; i++)
@@ -133,7 +138,9 @@ namespace InRealLife_2
                     imageBox.Source = new BitmapImage(new Uri(op.FileName));
                     imagePath = op.FileName;
                     string justFileName = System.IO.Path.GetFileName(op.FileName);
-                    string saveFilePath = System.IO.Path.Combine(currentDirectory, "mediaFiles", justFileName);
+                    image = justFileName;
+                    Console.WriteLine(image);
+                    string saveFilePath = System.IO.Path.Combine(currentDirectory, "mediaFiles", justFileName);                    
                     if (File.Exists(saveFilePath))
                     {
                         MessageBoxResult result = MessageBox.Show(justFileName + " already exists.\n\n Would you like to use it in this stage?", "IRL- Error Message", MessageBoxButton.YesNoCancel);
@@ -205,42 +212,80 @@ namespace InRealLife_2
 
         private void saveBtn_Click(object sender, RoutedEventArgs e)
         {
+            Console.WriteLine(mode);
             // check mode
             if (mode == CREATE_MODE)
             {
-                String insertString = "INSERT INTO Stage VALUE ('" + titleBox.Text + "','" + descriptionBox.Text + "'," + "ScenarioID" + "," + "'NULL'" + ",'" + imageBox.Source.ToString() + "')";
-                String insertanswer1 = "INSERT INTO Answer VALUE (Name" + "," + answer1box.Text + "," + " StageID" + ", " + "NextStageID" + ")";
-                String insertanswer2 = "INSERT INTO Answer VALUE (Name" + "," + answer2box.Text + "," + " StageID" + ", " + "NextStageID" + ")";
-                Stage newStage = new Stage();
-                Stage answer1 = (Stage)answer1path.SelectedValue;
-                Stage answer2 = (Stage)answer2path.SelectedValue;
-                newStage.Name = titleBox.Text;
-                newStage.Description = descriptionBox.Text;
-                Scenario newScenario = (Scenario)scenarioSelect.SelectedValue;
+                Stage answer1 = (Stage) answer1path.SelectedValue;
+                Stage answer2 = (Stage) answer2path.SelectedValue;
+                currentStage.Name = titleBox.Text;
+                currentStage.Description = descriptionBox.Text;
+                Scenario newScenario = (Scenario) scenarioSelect.SelectedValue;
 
-                newStage.ScenarioID = newScenario.ID;
-                newStage.AudioFilePath = "NULL";
-                newStage.ImageFilePath = imageBox.Source.ToString();
-                newStage.Answer1 = answer1box.Text;
-                newStage.Ans1NextStagID = answer1.ID;
-                newStage.Answer2 = answer2box.Text;
-                newStage.Ans2NextStagID = answer2.ID;
-                Repository repo = new Repository();
-                repo.SaveStageData(newStage, false);
-            }
-            else if (mode == EDIT_MODE)
-            {
-                bool starterflag = false;
+                currentStage.ScenarioID = newScenario.ID;
+                currentStage.AudioFilePath = "NULL";
+                currentStage.ImageFilePath = image;
+                currentStage.Answer2 = answer2box.Text;
+                currentStage.Answer1 = answer1box.Text;
 
-                if (chkbxMakeStarter.IsChecked == false)
+                if (answer1 == null)
                 {
-                    editStageRepository.SaveStageData(currentStage, starterflag);
-
-
+                    currentStage.Ans1NextStagID = 1;
                 }
                 else
                 {
+                    currentStage.Ans1NextStagID = answer1.ID;
+                }
+
+                if (answer2 == null)
+                {
+                    currentStage.Ans2NextStagID = 1;
+                }
+                else
+                {
+                    currentStage.Ans2NextStagID = answer2.ID;
+                }
+
+                Console.WriteLine(currentStage.ImageFilePath);
+                bool starterflag = false;
+
+                // see if check box to make stage a starter is not checked
+                if (chkbxMakeStarter.IsChecked == false)
+                {
+                    // save data
+                    editStageRepository.SaveStageData(currentStage, starterflag);
+                }
+                // checkbox to make starter is checked
+                else
+                {
+                    // change flag to true
                     starterflag = true;
+
+                    // save data
+                    editStageRepository.SaveStageData(currentStage, starterflag);
+                }
+            }
+            // else if mode is edit mode
+            else if (mode == EDIT_MODE)
+            {
+                //
+                bool starterflag = false;
+
+                SetStage();
+
+                // see if check box to make stage a starter is not checked
+                if (chkbxMakeStarter.IsChecked == false)
+                {
+                    // save data
+                    editStageRepository.SaveStageData(currentStage, starterflag);
+                }
+                // checkbox to make starter is checked
+                else
+                {
+                    // change flag to true
+                    starterflag = true;
+
+                    // save data
                     editStageRepository.SaveStageData(currentStage, starterflag);
                 }
             }
@@ -265,14 +310,19 @@ namespace InRealLife_2
         // set mode to create mode or edit mode
         private void SetMode()
         {
-            // pieceID is not empty which means edit a piece
+            // pieceID is not empty which means edit a piece edit mode
             if (currentStage.ID != EMPTY_INT)
             {
+                // set mode to edit
                 mode = EDIT_MODE;
+
+                // enable editbuttons
                 EnableEditModeButtons();
             }
+            // else the piece must be empty create mode
             else if (currentStage.ID == EMPTY_INT)
             {
+                // set to create mode
                 mode = CREATE_MODE;
             }
         }
@@ -282,7 +332,11 @@ namespace InRealLife_2
         {
             try
             {
+                // grab information for current stage
                 this.currentStage = editStageRepository.GetNextStage(currentStage.ID);
+
+                // set checkbox starter to whether current stageID is a starter
+                chkbxMakeStarter.IsChecked = editStageRepository.IsItStarter(currentStage.ID);
             }
             catch (DbException ex)
             {
@@ -299,6 +353,44 @@ namespace InRealLife_2
                 // cleanup
                 editStageRepository.CleanUp();
             }
+        }
+
+        public void populateComboBox()
+        {
+            Repository pieceRepository = new Repository();
+            IScenarioPiece currentPiece = new Scenario();
+            IScenarioPiece[] resultingList = pieceRepository.GetAllPiecesByType(currentPiece);
+
+            if (resultingList.Length > 0)
+            {
+                for (int i = 0; i < resultingList.Length; i++)
+                {
+                    scenarioSelect.Items.Add(new Scenario { ID = resultingList[i].ID, Name = resultingList[i].Name, Description = resultingList[i].Description });
+                }
+                scenarioSelect.DisplayMemberPath = "Name";
+                scenarioSelect.SelectionChanged += OnSelectedIndexChanged;
+            }
+            else
+            {
+                scenarioSelect.Items.Clear();
+            }
+        }
+
+        private void SetStage()
+        {
+            Stage answer1 = (Stage)answer1path.SelectedValue;
+            Stage answer2 = (Stage)answer2path.SelectedValue;
+            Scenario newScenario = (Scenario)scenarioSelect.SelectedValue;
+            currentStage.ID = currentStage.ID;
+            currentStage.Name = titleBox.Text;
+            currentStage.Description = descriptionBox.Text;
+            currentStage.ScenarioID = newScenario.ID;
+            currentStage.AudioFilePath = uploadAudioBtn.Content.ToString();
+            currentStage.ImageFilePath = image;
+            currentStage.Answer1 = answer1box.Text;
+            currentStage.Ans1NextStagID = answer1.ID;
+            currentStage.Answer2 = answer2box.Text;
+            currentStage.Ans2NextStagID = answer2.ID;
         }
     }
 }

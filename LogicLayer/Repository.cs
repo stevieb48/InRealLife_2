@@ -239,8 +239,15 @@ namespace LogicLayer
         //
         public int SaveStageData(Stage stage, bool starterFlag)
         {
+            int starter = 1;
+
             //
             int rowsAffected = 0;
+
+            if (starterFlag == false)
+            {
+                starter = 0;
+            }
 
             //
             if (stage.ID != 0)
@@ -256,7 +263,7 @@ namespace LogicLayer
                                 + "Ans1NextStagID = " + stage.Ans1NextStagID + ", "
                                 + "Answer2 = '" + stage.Answer2 + "', "
                                 + "Ans2NextStagID = " + stage.Ans2NextStagID + ", "
-                                + "Start = " + starterFlag
+                                + "Start = " + starter
                                 + " WHERE ID = " + stage.ID;
 
                 rowsAffected = newDBComm.Update(query);
@@ -264,7 +271,7 @@ namespace LogicLayer
             else
             {
                 // insert new
-                string query = "INSERT INTO Stage (Name, Description, ScenarioID, AudioFilePath, ImageFilePath, Answer1ID, Ans1NextStagID, Answer2ID, Ans2NextStagID, Start)"
+                string query = "INSERT INTO Stage (Name, Description, ScenarioID, AudioFilePath, ImageFilePath, Answer1, Ans1NextStagID, Answer2, Ans2NextStagID, Start)"
                                 + " VALUES "
                                 + "('" + stage.Name + "', "
                                 + "'" + stage.Description + "', "
@@ -274,8 +281,8 @@ namespace LogicLayer
                                 + stage.Answer1 + "', "
                                 + stage.Ans1NextStagID + ", '"
                                 + stage.Answer2 + "', "
-                                + stage.Ans2NextStagID + ", '"
-                                + starterFlag + "')";
+                                + stage.Ans2NextStagID + ", "
+                                + starter + ")";
 
                 rowsAffected = newDBComm.Insert(query);
             }
@@ -381,6 +388,32 @@ namespace LogicLayer
 
             // return the results
             return IsValid;
+        }
+
+        public bool IsItStarter(int stageID)
+        {
+            bool IsItStarter = false;
+
+            // create query based on the account type
+            string query = "SELECT Start "
+                        + "FROM Stage "
+                        + "WHERE ID = " + stageID;
+
+            // new datatable and store results from call to the database
+            DataTable dataTable = this.newDBComm.Select(query);
+
+            string starterFlag = (dataTable.Rows[0][0].ToString());
+
+            if (starterFlag == "True")
+            {
+                IsItStarter = true;
+            }
+            else
+            {
+                IsItStarter = false;
+            }
+
+            return IsItStarter;
         }
     }
 }
