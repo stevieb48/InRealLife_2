@@ -45,7 +45,20 @@ namespace InRealLife_2
         public CreateStage()
         {
             InitializeComponent();
+
             populateComboBox();
+
+            IScenarioPiece[] resultingList = editStageRepository.GetAllPiecesByType(currentPiece);
+            if (resultingList.Length > 0)
+            {
+                for (int i = 0; i < resultingList.Length; i++)
+                {
+                    scenarioSelect.Items.Add(new Scenario { ID = resultingList[i].ID, Name = resultingList[i].Name, Description = resultingList[i].Description });
+                }
+
+                scenarioSelect.DisplayMemberPath = "Name";
+                scenarioSelect.SelectionChanged += OnSelectedIndexChanged;
+            }
         }
 
         public CreateStage(int ID)
@@ -59,6 +72,16 @@ namespace InRealLife_2
             SetMode();
 
             populateComboBox();
+
+            // scenario combo box
+            SetScenarioComboBox(currentPiece);
+
+            // next stage answer 1 combo box
+            SetAnswer1ComboBox(currentStage);
+
+            // next stage answer 2 combo box
+            SetAnswer2ComboBox(currentStage);
+
 
             // when mode is create mode
             if (mode == CREATE_MODE)
@@ -79,16 +102,13 @@ namespace InRealLife_2
                 audioPath = System.IO.Path.Combine(currentDirectory, "mediaFiles", currentStage.AudioFilePath);
                 imageBox.Source = new BitmapImage(new Uri(imageFilePath, UriKind.RelativeOrAbsolute));
                 titleBox.Text = currentStage.Name;
+
+                scenarioSelect.SelectedItem = currentStage.ScenarioID;
+
+                answer1path.SelectedItem = currentStage.Ans1NextStagID;
+
+                answer2path.SelectedItem = currentStage.Ans1NextStagID;
             }
-
-            // scenario combo box
-            SetScenarioComboBox(currentPiece);
-
-            // next stage answer 1 combo box
-            SetAnswer1ComboBox(currentStage);
-
-            // next stage answer 2 combo box
-            SetAnswer2ComboBox(currentStage);
         }
 
         private void OnSelectedIndexChanged(object sender, EventArgs e)
