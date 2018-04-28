@@ -271,6 +271,8 @@ namespace InRealLife_2
                 //
                 bool starterflag = false;
 
+                SetStage();
+
                 // see if check box to make stage a starter is not checked
                 if (chkbxMakeStarter.IsChecked == false)
                 {
@@ -372,6 +374,23 @@ namespace InRealLife_2
             {
                 scenarioSelect.Items.Clear();
             }
+        }
+
+        private void SetStage()
+        {
+            Stage answer1 = (Stage)answer1path.SelectedValue;
+            Stage answer2 = (Stage)answer2path.SelectedValue;
+            Scenario newScenario = (Scenario)scenarioSelect.SelectedValue;
+            currentStage.ID = currentStage.ID;
+            currentStage.Name = titleBox.Text;
+            currentStage.Description = descriptionBox.Text;
+            currentStage.ScenarioID = newScenario.ID;
+            currentStage.AudioFilePath = uploadAudioBtn.Content.ToString();
+            currentStage.ImageFilePath = image;
+            currentStage.Answer1 = answer1box.Text;
+            currentStage.Ans1NextStagID = answer1.ID;
+            currentStage.Answer2 = answer2box.Text;
+            currentStage.Ans2NextStagID = answer2.ID;
         }
     }
 }
