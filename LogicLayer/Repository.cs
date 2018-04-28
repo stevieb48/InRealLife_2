@@ -240,11 +240,11 @@ namespace LogicLayer
         public int SaveStageData(Stage stage, bool starterFlag)
         {
             char starter = '1';
-            
+
             //
             int rowsAffected = 0;
 
-            if(starterFlag == false)
+            if (starterFlag == false)
             {
                 starter = '0';
             }
@@ -388,6 +388,32 @@ namespace LogicLayer
 
             // return the results
             return IsValid;
+        }
+
+        public bool IsItStarter(int stageID)
+        {
+            bool IsItStarter = false;
+
+            // create query based on the account type
+            string query = "SELECT Start "
+                        + "FROM Stage "
+                        + "WHERE ID = " + stageID;
+
+            // new datatable and store results from call to the database
+            DataTable dataTable = this.newDBComm.Select(query);
+
+            string starterFlag = (dataTable.Rows[0][0].ToString());
+
+            if (starterFlag == "True")
+            {
+                IsItStarter = true;
+            }
+            else
+            {
+                IsItStarter = false;
+            }
+
+            return IsItStarter;
         }
     }
 }

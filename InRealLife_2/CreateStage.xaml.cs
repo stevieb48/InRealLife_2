@@ -28,7 +28,7 @@ namespace InRealLife_2
     {
         string currentDirectory = Directory.GetCurrentDirectory();
         string imagePath, audioPath;
-        
+
         // CONSTANTS
         private const string CREATE_MODE = "Create";
         private const string EDIT_MODE = "Edit";
@@ -38,6 +38,7 @@ namespace InRealLife_2
         private string mode = CREATE_MODE;
 
         Stage currentStage = new Stage();
+        IScenarioPiece currentPiece = new Scenario();
 
         Repository editStageRepository = new Repository();
 
@@ -49,7 +50,7 @@ namespace InRealLife_2
         public CreateStage(int ID)
         {
             InitializeComponent();
-                
+
             // set piece
             this.currentStage = new Stage(ID);
 
@@ -60,23 +61,8 @@ namespace InRealLife_2
             if (mode == CREATE_MODE)
             {
                 Repository pieceRepository = new Repository();
-                IScenarioPiece currentPiece = new Scenario();
 
-                IScenarioPiece[] resultingList = pieceRepository.GetAllPiecesByType(currentPiece);
-                if (resultingList.Length > 0)
-                {
-                    for (int i = 0; i < resultingList.Length; i++)
-                    {
-                        scenarioSelect.Items.Add(new Scenario { ID = resultingList[i].ID, Name = resultingList[i].Name, Description = resultingList[i].Description });
-                    }
-
-                    scenarioSelect.DisplayMemberPath = "Name";
-                    scenarioSelect.SelectionChanged += OnSelectedIndexChanged;
-                }
-                else
-                {
-                    scenarioSelect.Items.Clear();
-                }
+                SetScenarioComboBox(currentPiece);
             }
             // when mode is edit mode
             else if (mode == EDIT_MODE)
@@ -92,6 +78,15 @@ namespace InRealLife_2
                 audioPath = System.IO.Path.Combine(currentDirectory, "mediaFiles", currentStage.AudioFilePath);
                 imageBox.Source = new BitmapImage(new Uri(imageFilePath, UriKind.RelativeOrAbsolute));
                 titleBox.Text = currentStage.Name;
+
+                // scenario combo box
+                SetScenarioComboBox(currentPiece);
+
+                // next stage answer 1 combo box
+                SetAnswer1ComboBox(currentStage);
+
+                // next stage answer 2 combo box
+                SetAnswer2ComboBox(currentStage);
             }
         }
 
@@ -239,7 +234,7 @@ namespace InRealLife_2
 
                 // see if check box to make stage a starter is not checked
                 if (chkbxMakeStarter.IsChecked == false)
-                {                    
+                {
                     // save data
                     editStageRepository.SaveStageData(currentStage, starterflag);
                 }
@@ -296,7 +291,11 @@ namespace InRealLife_2
         {
             try
             {
+                // grab information for current stage
                 this.currentStage = editStageRepository.GetNextStage(currentStage.ID);
+
+                // set checkbox starter to whether current stageID is a starter
+                chkbxMakeStarter.IsChecked = editStageRepository.IsItStarter(currentStage.ID);
             }
             catch (DbException ex)
             {
@@ -312,6 +311,65 @@ namespace InRealLife_2
             {
                 // cleanup
                 editStageRepository.CleanUp();
+            }
+        }
+
+        private void SetScenarioComboBox(IScenarioPiece currentPiece)
+        {
+            IScenarioPiece[] resultingList = editStageRepository.GetAllPiecesByType(currentPiece);
+            if (resultingList.Length > 0)
+            {
+                for (int i = 0; i < resultingList.Length; i++)
+                {
+                    scenarioSelect.Items.Add(new Scenario { ID = resultingList[i].ID, Name = resultingList[i].Name, Description = resultingList[i].Description });
+                }
+
+                scenarioSelect.DisplayMemberPath = "Name";
+                scenarioSelect.SelectionChanged += OnSelectedIndexChanged;
+            }
+            else
+            {
+                scenarioSelect.Items.Clear();
+            }
+        }
+
+        private void SetAnswer1ComboBox(Stage currentPiece)
+        {
+            IScenarioPiece currentStageAnswer = currentPiece;
+            IScenarioPiece[] resultingList = editStageRepository.GetAllPiecesByType(currentStageAnswer, currentPiece.ScenarioID);
+            if (resultingList.Length > 0)
+            {
+                for (int i = 0; i < resultingList.Length; i++)
+                {
+                    answer1path.Items.Add(new Stage { ID = resultingList[i].ID, Name = resultingList[i].Name, Description = resultingList[i].Description });
+                }
+
+                answer1path.DisplayMemberPath = "Name";
+                answer1path.SelectionChanged += OnSelectedIndexChanged;
+            }
+            else
+            {
+                answer1path.Items.Clear();
+            }
+        }
+
+        private void SetAnswer2ComboBox(Stage currentPiece)
+        {
+            IScenarioPiece currentStageAnswer = currentPiece;
+            IScenarioPiece[] resultingList = editStageRepository.GetAllPiecesByType(currentStageAnswer, currentPiece.ScenarioID);
+            if (resultingList.Length > 0)
+            {
+                for (int i = 0; i < resultingList.Length; i++)
+                {
+                    answer2path.Items.Add(new Stage { ID = resultingList[i].ID, Name = resultingList[i].Name, Description = resultingList[i].Description });
+                }
+
+                answer2path.DisplayMemberPath = "Name";
+                answer2path.SelectionChanged += OnSelectedIndexChanged;
+            }
+            else
+            {
+                answer2path.Items.Clear();
             }
         }
     }
