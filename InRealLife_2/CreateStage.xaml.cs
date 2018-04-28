@@ -82,10 +82,10 @@ namespace InRealLife_2
                 populateComboBox();
 
                 // next stage answer 1 combo box
-                SetAnswer1ComboBox(currentStage);
+                //SetAnswer1ComboBox(currentStage);
 
                 // next stage answer 2 combo box
-                SetAnswer2ComboBox(currentStage);
+                //SetAnswer2ComboBox(currentStage);
 
                 scenarioSelect.SelectedItem = currentStage.ScenarioID;
 
@@ -351,65 +351,6 @@ namespace InRealLife_2
                 // cleanup
                 editStageRepository.CleanUp();
             }
-        }
-
-        private void SetScenarioComboBox(IScenarioPiece currentPiece)
-        {
-            IScenarioPiece[] resultingList = editStageRepository.GetAllPiecesByType(currentPiece);
-            if (resultingList.Length > 0)
-            {
-                for (int i = 0; i < resultingList.Length; i++)
-                {
-                    scenarioSelect.Items.Add(new Scenario { ID = resultingList[i].ID, Name = resultingList[i].Name, Description = resultingList[i].Description });
-                }
-
-                scenarioSelect.DisplayMemberPath = "Name";
-                scenarioSelect.SelectionChanged += OnSelectedIndexChanged;
-            }
-            else
-            {
-                scenarioSelect.Items.Clear();
-            }
-        }
-
-        private void SetAnswer1ComboBox(Stage currentPiece)
-        {
-            IScenarioPiece currentStageAnswer = currentPiece;
-            IScenarioPiece[] resultingList = editStageRepository.GetAllPiecesByType(currentStageAnswer, currentPiece.ScenarioID);
-            if (resultingList.Length > 0)
-            {
-                for (int i = 0; i < resultingList.Length; i++)
-                {
-                    answer1path.Items.Add(new Stage { ID = resultingList[i].ID, Name = resultingList[i].Name, Description = resultingList[i].Description });
-                }
-
-                answer1path.DisplayMemberPath = "Name";
-                answer1path.SelectionChanged += OnSelectedIndexChanged;
-            }
-            else
-            {
-                answer1path.Items.Clear();
-            }
-        }
-
-        private void SetAnswer2ComboBox(Stage currentPiece)
-        {
-            IScenarioPiece currentStageAnswer = currentPiece;
-            IScenarioPiece[] resultingList = editStageRepository.GetAllPiecesByType(currentStageAnswer, currentPiece.ScenarioID);
-            if (resultingList.Length > 0)
-            {
-                for (int i = 0; i < resultingList.Length; i++)
-                {
-                    answer2path.Items.Add(new Stage { ID = resultingList[i].ID, Name = resultingList[i].Name, Description = resultingList[i].Description });
-                }
-
-                answer2path.DisplayMemberPath = "Name";
-                answer2path.SelectionChanged += OnSelectedIndexChanged;
-            }
-            else
-            {
-                answer2path.Items.Clear();
-            }    
         }
 
         public void populateComboBox()
