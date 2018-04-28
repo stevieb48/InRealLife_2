@@ -271,7 +271,7 @@ namespace LogicLayer
             else
             {
                 // insert new
-                string query = "INSERT INTO Stage (Name, Description, ScenarioID, AudioFilePath, ImageFilePath, Answer1ID, Ans1NextStagID, Answer2ID, Ans2NextStagID, Start)"
+                string query = "INSERT INTO Stage (Name, Description, ScenarioID, AudioFilePath, ImageFilePath, Answer1, Ans1NextStagID, Answer2, Ans2NextStagID, Start)"
                                 + " VALUES "
                                 + "('" + stage.Name + "', "
                                 + "'" + stage.Description + "', "
