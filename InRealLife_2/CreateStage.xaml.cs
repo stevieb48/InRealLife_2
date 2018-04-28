@@ -45,6 +45,7 @@ namespace InRealLife_2
         public CreateStage()
         {
             InitializeComponent();
+            populateComboBox();
         }
 
         public CreateStage(int ID)
@@ -56,6 +57,8 @@ namespace InRealLife_2
 
             // set mode based on information in piece
             SetMode();
+
+            populateComboBox();
 
             // when mode is create mode
             if (mode == CREATE_MODE)
@@ -367,6 +370,27 @@ namespace InRealLife_2
             else
             {
                 answer2path.Items.Clear();
+            }    
+        }
+
+        public void populateComboBox()
+        {
+            Repository pieceRepository = new Repository();
+            IScenarioPiece currentPiece = new Scenario();
+            IScenarioPiece[] resultingList = pieceRepository.GetAllPiecesByType(currentPiece);
+
+            if (resultingList.Length > 0)
+            {
+                for (int i = 0; i < resultingList.Length; i++)
+                {
+                    scenarioSelect.Items.Add(new Scenario { ID = resultingList[i].ID, Name = resultingList[i].Name, Description = resultingList[i].Description });
+                }
+                scenarioSelect.DisplayMemberPath = "Name";
+                scenarioSelect.SelectionChanged += OnSelectedIndexChanged;
+            }
+            else
+            {
+                scenarioSelect.Items.Clear();
             }
         }
     }
