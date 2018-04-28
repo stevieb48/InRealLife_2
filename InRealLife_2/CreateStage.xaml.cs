@@ -60,9 +60,7 @@ namespace InRealLife_2
             // when mode is create mode
             if (mode == CREATE_MODE)
             {
-                Repository pieceRepository = new Repository();
 
-                SetScenarioComboBox(currentPiece);
             }
             // when mode is edit mode
             else if (mode == EDIT_MODE)
@@ -78,26 +76,25 @@ namespace InRealLife_2
                 audioPath = System.IO.Path.Combine(currentDirectory, "mediaFiles", currentStage.AudioFilePath);
                 imageBox.Source = new BitmapImage(new Uri(imageFilePath, UriKind.RelativeOrAbsolute));
                 titleBox.Text = currentStage.Name;
-
-                // scenario combo box
-                SetScenarioComboBox(currentPiece);
-
-                // next stage answer 1 combo box
-                SetAnswer1ComboBox(currentStage);
-
-                // next stage answer 2 combo box
-                SetAnswer2ComboBox(currentStage);
             }
+
+            // scenario combo box
+            SetScenarioComboBox(currentPiece);
+
+            // next stage answer 1 combo box
+            SetAnswer1ComboBox(currentStage);
+
+            // next stage answer 2 combo box
+            SetAnswer2ComboBox(currentStage);
         }
 
         private void OnSelectedIndexChanged(object sender, EventArgs e)
         {
             Console.WriteLine("Combobox changed \n");
-            Repository pieceRepository = new Repository();
             IScenarioPiece currentPiece = new Stage();
             Scenario newScenario = (Scenario)scenarioSelect.SelectedValue;
 
-            IScenarioPiece[] resultingList = pieceRepository.GetAllPiecesByType(currentPiece, newScenario.ID);
+            IScenarioPiece[] resultingList = editStageRepository.GetAllPiecesByType(currentPiece, newScenario.ID);
             if (resultingList.Length > 0)
             {
                 for (int i = 0; i < resultingList.Length; i++)
