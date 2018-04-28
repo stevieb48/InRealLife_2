@@ -250,8 +250,9 @@ namespace InRealLife_2
 
         private void BtnSwitchMode_Click(object sender, RoutedEventArgs e)
         {
-           
-            StageMain newStageMain = new StageMain();
+            // grab selected piece and put into variable
+            IScenarioPiece selectedPiece = (IScenarioPiece)lstvwScenarioPieces.SelectedItem;
+            StageMain newStageMain = new StageMain(selectedPiece);
 
             //
             this.NavigationService.Navigate(newStageMain);

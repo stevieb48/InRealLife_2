@@ -57,6 +57,24 @@ namespace LogicLayer
             return resultingPiece;
         }
 
+        //Gets and returns all stages attached to a scenario
+        public IScenarioPiece[] GetAllStagesByScenarioID(IScenarioPiece selectedScenario)
+        {
+            // create query based on selected scenario id
+            string query = "SELECT * "
+                           + "FROM Stage"  +
+                " WHERE ScenarioID = " + selectedScenario.ID;
+
+            // new datatable and store results from call to the database
+            DataTable dataTable = this.newDBComm.Select(query);
+
+            //create piece list from data table
+            IScenarioPiece[] pieceList = PutDataTableIntoPieceList("STAGE", dataTable);
+
+            // return the results
+            return pieceList;
+        }
+
         //
         private IScenarioPiece PutDataTableIntoPiece(string pieceType, DataTable dataTable)
         {
@@ -117,7 +135,7 @@ namespace LogicLayer
         {
             if (pieceType == SCENARIO)
             {
-                Scenario[] pieceList = new Scenario[dataTable.Rows.Count];
+                IScenarioPiece[] pieceList = new Scenario[dataTable.Rows.Count];
 
                 // loop to put pieces from data table put into array
                 for (int i = 0; i < dataTable.Rows.Count; i++)
@@ -128,14 +146,14 @@ namespace LogicLayer
                 }
 
                 //
-                IScenarioPiece[] tempArray = pieceList;
+                //IScenarioPiece[] tempArray = pieceList;////////////****************old code, unecessary shallow copy**************************////////////////////
 
                 //
-                return tempArray;
+                return pieceList;
             }
             else
             {
-                Stage[] pieceList = new Stage[dataTable.Rows.Count];
+                IScenarioPiece[] pieceList = new Stage[dataTable.Rows.Count];
 
                 // loop to put pieces from data table put into array
                 for (int i = 0; i < dataTable.Rows.Count; i++)
@@ -146,10 +164,10 @@ namespace LogicLayer
                 }
 
                 //
-                IScenarioPiece[] tempArray = pieceList;
+                //IScenarioPiece[] tempArray = pieceList;////////////****************old code, unecessary shallow copy**************************////////////////////
 
                 //
-                return tempArray;
+                return pieceList;
             }
         }
 

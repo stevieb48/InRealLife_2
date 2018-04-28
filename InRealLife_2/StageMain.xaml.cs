@@ -38,18 +38,20 @@ namespace InRealLife_2
 
         // new piece
         private IScenarioPiece currentPiece = new Stage();
+        private IScenarioPiece selectedScenario = new Scenario();
 
         //
-        public StageMain()
+        public StageMain(IScenarioPiece incomingScenario)
         {
+            this.selectedScenario = incomingScenario;
             InitializeComponent();
             SetMode();
-            InitializeForm();
+            InitializeForm(selectedScenario);
            
         }
 
         // initialize the form
-        private void InitializeForm()
+        private void InitializeForm(IScenarioPiece selectedScenario)
         {
             // reset list box
             lstvwScenarioPieces.Items.Clear();
@@ -61,7 +63,9 @@ namespace InRealLife_2
             try
             {
                 // data table containing data from results table
-                IScenarioPiece[] resultingList = pieceRepository.GetAllPiecesByType(currentPiece);
+                //IScenarioPiece[] resultingList = pieceRepository.GetAllPiecesByType(selectedScenario);****************old code*************
+                IScenarioPiece[] resultingList = pieceRepository.GetAllStagesByScenarioID(selectedScenario);
+
 
                 // if data table has rows
                 if (resultingList.Length > 0)
@@ -157,7 +161,7 @@ namespace InRealLife_2
             }
 
             // reset form
-            InitializeForm();
+            InitializeForm(selectedScenario);
         }
 
         // perform selected piece button click event
