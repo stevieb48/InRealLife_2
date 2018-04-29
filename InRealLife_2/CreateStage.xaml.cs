@@ -75,8 +75,47 @@ namespace InRealLife_2
                 string imageFilePath = System.IO.Path.Combine(currentDirectory, "mediaFiles", currentStage.ImageFilePath);
                 imagePath = imageFilePath;
                 audioPath = System.IO.Path.Combine(currentDirectory, "mediaFiles", currentStage.AudioFilePath);
-                imageBox.Source = new BitmapImage(new Uri(imageFilePath, UriKind.RelativeOrAbsolute));
-                
+                if(File.Exists(imageFilePath))
+                {
+                    imageBox.Source = new BitmapImage(new Uri(imageFilePath, UriKind.RelativeOrAbsolute));
+                }
+                else
+                {
+                    MessageBoxResult result = MessageBox.Show("The assigned image for this Stage does not eist on your computer. \n Would you like to use a different one?", "IRL- Error Message", MessageBoxButton.YesNo);
+
+                    switch(result)
+                    {
+                        case MessageBoxResult.Yes:
+                            uploadImage();
+                            break;
+
+                        case MessageBoxResult.No:
+                            break;
+                    }
+                                            
+                }
+
+                if (File.Exists(audioPath))
+                {
+                    MediaPlayer mp = new MediaPlayer();
+                }
+                else
+                {
+                    MessageBoxResult result = MessageBox.Show("The assigned audio file for this Stage does not eist on your computer. \n Would you like to use a different one?", "IRL- Error Message", MessageBoxButton.YesNo);
+
+                    switch (result)
+                    {
+                        case MessageBoxResult.Yes:
+                            uploadAudio();
+                            break;
+
+                        case MessageBoxResult.No:
+                            break;
+                    }
+
+                }
+
+
 
                 // scenario combo box
                 populateComboBox();
@@ -124,7 +163,7 @@ namespace InRealLife_2
             }
         }
 
-        private void Image_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        private void uploadImage()
         {
             bool done = true;
             do
@@ -166,7 +205,7 @@ namespace InRealLife_2
             } while (!done);
         }
 
-        private void uploadAudioBtn_Click(object sender, RoutedEventArgs e)
+        private void uploadAudio()
         {
             bool done = true;
             do
@@ -339,6 +378,16 @@ namespace InRealLife_2
                 // set to create mode
                 mode = CREATE_MODE;
             }
+        }
+
+        private void imageBox_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            uploadImage();
+        }
+
+        private void uploadAudioBtn_Click(object sender, RoutedEventArgs e)
+        {
+            uploadAudio();
         }
 
         // method to enable controls for edit mode

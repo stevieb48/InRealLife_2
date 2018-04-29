@@ -162,7 +162,7 @@
                Source="mediaFiles/upload.png"
                Stretch="Fill"
                Grid.ColumnSpan="2"
-               MouseLeftButtonDown="Image_MouseLeftButtonDown"
+               MouseLeftButtonDown="imageBox_MouseLeftButtonDown"
                ToolTip="Click to Upload Image" Grid.RowSpan="2" />
 
         <!--ComboBox-->
