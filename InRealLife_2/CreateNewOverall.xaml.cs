@@ -117,7 +117,7 @@ namespace InRealLife_2
                 finally
                 {
                     // cleanup
-                    pieceRepository.CleanUp();
+                    pieceRepository.Dispose();
                 }
             }
             else
@@ -183,7 +183,7 @@ namespace InRealLife_2
             finally
             {
                 // cleanup
-                pieceRepository.CleanUp();
+                pieceRepository.Dispose();
             }
 
             txtbxScenarioTitle.Text = currentPiece.Name;

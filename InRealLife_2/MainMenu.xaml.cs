@@ -43,7 +43,6 @@ namespace InRealLife_2
         public MainMenu()
         {
             InitializeComponent();
-            //this.currentPiece = piece;
             SetMode();
             InitializeForm();
         }
@@ -92,7 +91,7 @@ namespace InRealLife_2
             finally
             {
                 // cleanup
-                pieceRepository.CleanUp();
+                pieceRepository.Dispose();
             }
 
             // set label content to specific piece type
@@ -110,13 +109,13 @@ namespace InRealLife_2
         // create new piece button click event
         private void BtnCreateNew_Click(object sender, RoutedEventArgs e)
         {
-            //
+            // new scenario
             IScenarioPiece scenario = new Scenario();
 
-            //
+            // new create new oevrall form
             CreateNewOverall newCreateNewOverall = new CreateNewOverall(scenario.ID);
 
-            //
+            // switch navigation
             this.NavigationService.Navigate(newCreateNewOverall);
         }
 
@@ -157,7 +156,7 @@ namespace InRealLife_2
             finally
             {
                 // cleanup
-                pieceRepository.CleanUp();
+                pieceRepository.Dispose();
             }
 
             // reset form
@@ -170,16 +169,17 @@ namespace InRealLife_2
             // grab selected piece and put into variable
             IScenarioPiece selectedPiece = (IScenarioPiece)lstvwScenarioPieces.SelectedItem;
 
-            //
+            // new running form
             Running run = new Running(selectedPiece.ID);
 
-            //
+            // swithc navigation
             this.NavigationService.Navigate(run);
         }
 
         // method for form behaviors if list is empty
         private void ScenarioPieceListIsEmpty()
         {
+            // disable buttons when it has no values
             btnEditSelected.IsEnabled = false;
             btnDeleteSelected.IsEnabled = false;
             btnPerformSelected.IsEnabled = false;
@@ -188,7 +188,7 @@ namespace InRealLife_2
         // method for form behaviors if list has data
         private void ScenarioListHasValues()
         {
-            //
+            // when the list has values enable edit button
             btnEditSelected.IsEnabled = false;
         }
 
@@ -205,7 +205,7 @@ namespace InRealLife_2
         // has listbox selection changed
         private void LstvwScenarioPieces_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            //
+            // when user selects a list item enable appropriate buttons
             EnableButtonsWhenPieceSelected();
         }
 
@@ -227,21 +227,22 @@ namespace InRealLife_2
             // grab selected piece and put into variable
             IScenarioPiece selectedPiece = (IScenarioPiece)lstvwScenarioPieces.SelectedItem;
 
-            //
+            // new create new overall form
             CreateNewOverall newCreateNewOverall = new CreateNewOverall(selectedPiece.ID);
 
-            //
+            // switch navigation
             this.NavigationService.Navigate(newCreateNewOverall);
         }
 
         //
         private void SetMode()
         {
-            // pieceID is not empty which means edit a piece
-            if (currentPiece.GetType().ToString().Split('.')[1] != SCENARIO_MODE)
+            // piece is a stage
+            if (currentPiece.GetType().ToString().Split('.')[1] == STAGE_MODE)
             {
                 mode = STAGE_MODE;
             }
+            // piece is a scenario
             else
             {
                 mode = SCENARIO_MODE;
@@ -253,19 +254,21 @@ namespace InRealLife_2
             // grab selected piece and put into variable
             IScenarioPiece selectedPiece = (IScenarioPiece)lstvwScenarioPieces.SelectedItem;
 
-            if(selectedPiece == null)
+            // if user has not selected a piece from the list
+            if (selectedPiece == null)
             {
                 MessageBox.Show("Please Select a Scenario From the List");
+
                 return;
             }
             else
             {
+                // new stage main form
                 StageMain newStageMain = new StageMain(selectedPiece);
 
-                //
+                // switch navigation
                 this.NavigationService.Navigate(newStageMain);
             }
-            
         }
     }
 }

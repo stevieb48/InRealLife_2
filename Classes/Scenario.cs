@@ -1,7 +1,7 @@
 ﻿using ClassInterfaces;
 
 /*
- * This class Scenario implements an interface IScenarioPiece. It has 3 constructors for object creation
+ * This class Scenario implements an interface IScenarioPiece. It has 4 constructors for object creation
  *  and 3 properties for handling instance variables.
  *
  * author: Group 7 (Stephen Bailey, Omar Garcia, Craig Wyse, Matthew Harris)

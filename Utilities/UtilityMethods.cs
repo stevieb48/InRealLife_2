@@ -40,31 +40,13 @@ namespace Utilities
                 tempChar = inputString[charCounter];
 
                 // if char is a digit
-                if (char.IsDigit(tempChar))
-                {
-                    // just change counter
-                    charCounter++;
-                }
-                // if char is a letter
-                else if (char.IsLetter(tempChar))
-                {
-                    // just change counter
-                    charCounter++;
-                }
-                // if char is whitespace
-                else if (char.IsWhiteSpace(tempChar))
-                {
-                    // just change counter
-                    charCounter++;
-                }
-                // if char is an underscore
-                else if (tempChar == '_')
-                {
-                    // just change counter
-                    charCounter++;
-                }
-                // if char is an punctuation
-                else if (char.IsPunctuation(tempChar))
+                if (char.IsDigit(tempChar)
+                    || char.IsLetter(tempChar)
+                    || char.IsWhiteSpace(tempChar)
+                    || tempChar == '_'
+                    || tempChar == '.'
+                    || tempChar == '?'
+                    || tempChar == '!')
                 {
                     // just change counter
                     charCounter++;
@@ -115,7 +97,7 @@ namespace Utilities
                 {
                     // set flag to valid false
                     IsItValid = false;
-                }               
+                }
             }
             // file not in correct format
             else

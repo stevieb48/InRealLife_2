@@ -81,7 +81,7 @@ namespace InRealLife_2
                 }
                 else
                 {
-                    MessageBoxResult result = MessageBox.Show("The assigned image for this Stage does not eist on your computer. \n Would you like to use a different one?", "IRL- Error Message", MessageBoxButton.YesNo);
+                    MessageBoxResult result = MessageBox.Show("The assigned image for this Stage does not exist on your computer. \n Would you like to use a different one?", "IRL- Error Message", MessageBoxButton.YesNo);
 
                     switch(result)
                     {
@@ -414,7 +414,7 @@ namespace InRealLife_2
             finally
             {
                 // cleanup
-                editStageRepository.CleanUp();
+                editStageRepository.Dispose();
             }
         }
 

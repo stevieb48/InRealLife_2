@@ -50,6 +50,7 @@ namespace InRealLife_2
         public Login()
         {
             InitializeComponent();
+            SetMode();
         }
 
         //
@@ -57,7 +58,7 @@ namespace InRealLife_2
         {
             // blank account
             IAccount loginAccount;
-                
+
             // if textboxes are null
             if (txtbxLogin.Text != null || txtbxPassword.Text != null)
             {
@@ -87,7 +88,7 @@ namespace InRealLife_2
 
                 }
                 //
-                else if(loginAccount.Login == txtbxLogin.Text && loginAccount.Password == txtbxPassword.Text)
+                else if (loginAccount.Login == txtbxLogin.Text && loginAccount.Password == txtbxPassword.Text)
                 {
                     // set mode to global
 
@@ -125,6 +126,11 @@ namespace InRealLife_2
         private void CancelBtn_Click(object sender, RoutedEventArgs e)
         {
 
+        }
+
+        public void SetMode()
+        {
+            mode = LOGIN_MODE;
         }
     }
 }

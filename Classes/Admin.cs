@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 /*
- * This class ...
+ * This class Admin ...
  *
  * author: Group 7 (Stephen Bailey, Omar Garcia, Craig Wyse, Matthew Harris)
  * course: SEII

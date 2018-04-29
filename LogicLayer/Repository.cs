@@ -17,7 +17,7 @@ using System.Data;
  */
 namespace LogicLayer
 {
-    public class Repository : IRepository
+    public class Repository : IRepository, IDisposable
     {
         // CONSTANTS
         private const string SCENARIO = "Scenario";
@@ -62,7 +62,7 @@ namespace LogicLayer
         {
             // create query based on selected scenario id
             string query = "SELECT * "
-                           + "FROM Stage"  +
+                           + "FROM Stage" +
                 " WHERE ScenarioID = " + selectedScenario.ID;
 
             // new datatable and store results from call to the database
@@ -310,9 +310,35 @@ namespace LogicLayer
         }
 
         //
-        public void CleanUp()
+        public void Dispose()
         {
             newDBComm.Dispose();
+        }
+
+        public bool IsItStarter(int stageID)
+        {
+            bool IsItStarter = false;
+
+            // create query based on the account type
+            string query = "SELECT Start "
+                        + "FROM Stage "
+                        + "WHERE ID = " + stageID;
+
+            // new datatable and store results from call to the database
+            DataTable dataTable = this.newDBComm.Select(query);
+
+            string starterFlag = (dataTable.Rows[0][0].ToString());
+
+            if (starterFlag == "True")
+            {
+                IsItStarter = true;
+            }
+            else
+            {
+                IsItStarter = false;
+            }
+
+            return IsItStarter;
         }
 
         //
@@ -406,32 +432,6 @@ namespace LogicLayer
 
             // return the results
             return IsValid;
-        }
-
-        public bool IsItStarter(int stageID)
-        {
-            bool IsItStarter = false;
-
-            // create query based on the account type
-            string query = "SELECT Start "
-                        + "FROM Stage "
-                        + "WHERE ID = " + stageID;
-
-            // new datatable and store results from call to the database
-            DataTable dataTable = this.newDBComm.Select(query);
-
-            string starterFlag = (dataTable.Rows[0][0].ToString());
-
-            if (starterFlag == "True")
-            {
-                IsItStarter = true;
-            }
-            else
-            {
-                IsItStarter = false;
-            }
-
-            return IsItStarter;
         }
     }
 }

@@ -29,7 +29,6 @@ namespace InRealLife_2
         private const string SCENARIO_MODE = "Scenario";
         private const string STAGE_MODE = "Stage";
         private const int EMPTY_INT = 0;
-        
 
         // default mode
         private string mode = STAGE_MODE;
@@ -48,7 +47,6 @@ namespace InRealLife_2
             InitializeComponent();
             SetMode();
             InitializeForm(selectedScenario);
-           
         }
 
         // initialize the form
@@ -96,7 +94,7 @@ namespace InRealLife_2
             finally
             {
                 // cleanup
-                pieceRepository.CleanUp();
+                pieceRepository.Dispose();
             }
 
             // set label content to specific piece type
@@ -158,7 +156,7 @@ namespace InRealLife_2
             finally
             {
                 // cleanup
-                pieceRepository.CleanUp();
+                pieceRepository.Dispose();
             }
 
             // reset form
@@ -234,27 +232,29 @@ namespace InRealLife_2
             this.NavigationService.Navigate(newCreateStage);
         }
 
-        //
+        // set mode type
         private void SetMode()
         {
-            // pieceID is not empty which means edit a piece
-            if (currentPiece.GetType().ToString().Split('.')[1] != SCENARIO_MODE)
+            // pieceID is a stage
+            if (currentPiece.GetType().ToString().Split('.')[1] == STAGE_MODE)
             {
+                // set mode to stage
                 mode = STAGE_MODE;
             }
             else
             {
+                // set mode to scenario
                 mode = SCENARIO_MODE;
             }
         }
 
-        //
+        // button switch mode clikc event
         private void BtnSwitchMode_Click(object sender, RoutedEventArgs e)
         {
-            //
+            // call new main menu
             MainMenu newMainMenu = new MainMenu();
 
-            //
+            // switch navigation
             this.NavigationService.Navigate(newMainMenu);
         }
     }

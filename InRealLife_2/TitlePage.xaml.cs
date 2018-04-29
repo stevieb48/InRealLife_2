@@ -37,17 +37,17 @@ namespace InRealLife_2
             InitializeComponent();
         }
 
-        //
+        // enter button click event
         private void enterButton_Click(object sender, RoutedEventArgs e)
         {
-            //
+            // when enter clicked call new main menu
             MainMenu newMainMenu = new MainMenu();
 
-            //
+            // switch navigation
             this.NavigationService.Navigate(newMainMenu);
         }
 
-        //
+        // exit button click event
         private void exitButton_Click(object sender, RoutedEventArgs e)
         {
             Application.Current.Shutdown();

@@ -43,7 +43,7 @@ namespace InRealLife_2
         private IScenarioPiece currentScenario;
         private Stage currentStage = new Stage();
 
-        //
+        // flag to determine if this is the first run assume it is
         public static bool FirstRunFlag = true;
 
         //
@@ -102,7 +102,7 @@ namespace InRealLife_2
             finally
             {
                 // cleanup
-                pieceRepository.CleanUp();
+                pieceRepository.Dispose();
             }
 
             //
@@ -125,7 +125,7 @@ namespace InRealLife_2
             soundFX.Play();
         }
 
-        //
+        // answer A
         private void BtnChoiceA_Click(object sender, RoutedEventArgs e)
         {
             //
@@ -135,7 +135,7 @@ namespace InRealLife_2
             this.NavigationService.Navigate(run);
         }
 
-        //
+        // answer B
         private void BtnChoiceB_Click(object sender, RoutedEventArgs e)
         {
             //
@@ -145,6 +145,7 @@ namespace InRealLife_2
             this.NavigationService.Navigate(run);
         }
 
+        // exit button click event
         private void Button_Click_2(object sender, RoutedEventArgs e)
         {
             //
