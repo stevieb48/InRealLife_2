@@ -173,8 +173,8 @@
                   Margin="14,63,239,0"
                   VerticalAlignment="Top"
                   Width="147"
-                  Text="Scenario Selection"
-                  IsEditable="True"
+                 
+                  IsEditable="False"
                   ToolTip="Make this stage part of a scenario" />
         <ComboBox x:Name="answer1path"
                   HorizontalAlignment="Center"

@@ -252,10 +252,20 @@ namespace InRealLife_2
         {
             // grab selected piece and put into variable
             IScenarioPiece selectedPiece = (IScenarioPiece)lstvwScenarioPieces.SelectedItem;
-            StageMain newStageMain = new StageMain(selectedPiece);
 
-            //
-            this.NavigationService.Navigate(newStageMain);
+            if(selectedPiece == null)
+            {
+                MessageBox.Show("Please Select a Scenario From the List");
+                return;
+            }
+            else
+            {
+                StageMain newStageMain = new StageMain(selectedPiece);
+
+                //
+                this.NavigationService.Navigate(newStageMain);
+            }
+            
         }
     }
 }

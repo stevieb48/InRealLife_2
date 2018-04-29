@@ -27,7 +27,7 @@ namespace InRealLife_2
     public partial class CreateStage : Page
     {
         string currentDirectory = Directory.GetCurrentDirectory();
-        string imagePath, audioPath, image;
+        string imagePath, audioPath, image, justFileName;
 
         // CONSTANTS
         private const string CREATE_MODE = "Create";
@@ -48,12 +48,12 @@ namespace InRealLife_2
             populateComboBox();
         }
 
-        public CreateStage(int ID)
+        public CreateStage(IScenarioPiece currentPiece, IScenarioPiece currentScenario)
         {
             InitializeComponent();
 
             // set piece
-            this.currentStage = new Stage(ID);
+            this.currentStage = new Stage(currentPiece.ID);
 
             // set mode based on information in piece
             SetMode();            
@@ -76,7 +76,7 @@ namespace InRealLife_2
                 imagePath = imageFilePath;
                 audioPath = System.IO.Path.Combine(currentDirectory, "mediaFiles", currentStage.AudioFilePath);
                 imageBox.Source = new BitmapImage(new Uri(imageFilePath, UriKind.RelativeOrAbsolute));
-                titleBox.Text = currentStage.Name;
+                
 
                 // scenario combo box
                 populateComboBox();
@@ -87,7 +87,8 @@ namespace InRealLife_2
                 // next stage answer 2 combo box
                 //SetAnswer2ComboBox(currentStage);
 
-                scenarioSelect.SelectedItem = currentStage.ScenarioID;
+                scenarioSelect.Text = currentScenario.Name;
+               
 
                 answer1path.SelectedItem = currentStage.Ans1NextStagID;
 
@@ -137,7 +138,7 @@ namespace InRealLife_2
                 {
                     imageBox.Source = new BitmapImage(new Uri(op.FileName));
                     imagePath = op.FileName;
-                    string justFileName = System.IO.Path.GetFileName(op.FileName);
+                    justFileName = System.IO.Path.GetFileName(op.FileName);
                     image = justFileName;
                     Console.WriteLine(image);
                     string saveFilePath = System.IO.Path.Combine(currentDirectory, "mediaFiles", justFileName);                    
@@ -174,7 +175,7 @@ namespace InRealLife_2
                 op.Filter = "MP3 files (*.mp3; *.wav)|*.mp3; *.wav|All files (*.*)|*.*";
                 if (op.ShowDialog() == true)
                 {
-                    string justFileName = System.IO.Path.GetFileName(op.FileName);
+                    justFileName = System.IO.Path.GetFileName(op.FileName);
                     audioPath = op.FileName;
                     string saveFilePath = System.IO.Path.Combine(currentDirectory, "mediaFiles", justFileName);
                     if (File.Exists(saveFilePath))
@@ -220,14 +221,25 @@ namespace InRealLife_2
                 Stage answer2 = (Stage) answer2path.SelectedValue;
                 currentStage.Name = titleBox.Text;
                 currentStage.Description = descriptionBox.Text;
-                Scenario newScenario = (Scenario) scenarioSelect.SelectedValue;
 
-                currentStage.ScenarioID = newScenario.ID;
-                currentStage.AudioFilePath = "NULL";
+                //checks if a scenario has been selected, doesn't allow save if not
+                if(scenarioSelect.SelectedValue == null)
+                {
+                    MessageBox.Show("You must select a Scenario to attach the Stage to.");
+                    return;
+                }
+                else
+                {
+                    Scenario newScenario = (Scenario)scenarioSelect.SelectedValue;
+                    currentStage.ScenarioID = newScenario.ID;
+                   
+                }
+                                
+                currentStage.AudioFilePath = justFileName;
                 currentStage.ImageFilePath = image;
                 currentStage.Answer2 = answer2box.Text;
                 currentStage.Answer1 = answer1box.Text;
-
+                //sets answer next stage id to default value if null
                 if (answer1 == null)
                 {
                     currentStage.Ans1NextStagID = 1;
@@ -289,6 +301,7 @@ namespace InRealLife_2
                     editStageRepository.SaveStageData(currentStage, starterflag);
                 }
             }
+            this.NavigationService.Navigate(new StageMain((IScenarioPiece)scenarioSelect.SelectedValue));
         }
 
         private void cancelBtn_Click(object sender, RoutedEventArgs e)
@@ -305,6 +318,7 @@ namespace InRealLife_2
         {
             get => scenarioSelect;
             set => scenarioSelect = value;
+            
         }
 
         // set mode to create mode or edit mode
@@ -380,17 +394,41 @@ namespace InRealLife_2
         {
             Stage answer1 = (Stage)answer1path.SelectedValue;
             Stage answer2 = (Stage)answer2path.SelectedValue;
-            Scenario newScenario = (Scenario)scenarioSelect.SelectedValue;
+
+            //checks if a scenario has been selected, doesn't allow save if not
+            if (scenarioSelect.SelectedValue == null)
+            {
+                MessageBox.Show("You must select a Scenario to attach the Stage to.");
+                return;
+            }
+            else
+            {
+                Scenario newScenario = (Scenario)scenarioSelect.SelectedValue;
+                currentStage.ScenarioID = newScenario.ID;
+            }
             currentStage.ID = currentStage.ID;
             currentStage.Name = titleBox.Text;
             currentStage.Description = descriptionBox.Text;
-            currentStage.ScenarioID = newScenario.ID;
-            currentStage.AudioFilePath = uploadAudioBtn.Content.ToString();
+            currentStage.AudioFilePath = justFileName;
             currentStage.ImageFilePath = image;
             currentStage.Answer1 = answer1box.Text;
-            currentStage.Ans1NextStagID = answer1.ID;
+            if (answer1 == null)
+            {
+                currentStage.Ans1NextStagID = 1;
+            }
+            else
+            {
+                currentStage.Ans1NextStagID = answer1.ID;
+            }
             currentStage.Answer2 = answer2box.Text;
-            currentStage.Ans2NextStagID = answer2.ID;
+            if (answer2 == null)
+            {
+                currentStage.Ans2NextStagID = 1;
+            }
+            else
+            {
+                currentStage.Ans2NextStagID = answer2.ID;
+            }
         }
     }
 }
