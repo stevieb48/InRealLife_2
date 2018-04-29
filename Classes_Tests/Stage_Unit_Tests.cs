@@ -43,7 +43,7 @@ namespace Classes_Tests
         }
 
         [TestMethod]
-        public void Stage_ParameterConstructor_IsNotNull_Instance_Test()
+        public void Stage_ParameterConstructor_IsNotNull()
         {
             // Arrange
             int iD = 0;

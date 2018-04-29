@@ -45,7 +45,7 @@ namespace ClassInterfaces_Tests
         }
 
         [TestMethod]
-        public void IScenarioPiece_SetToScenario_IsItInstanceOfType_Scenario_Test()
+        public void IScenarioPieceInterface_SetToScenario_IsItInstanceOfType_Scenario_Test()
         {
             // Arrange
             IScenarioPiece sut;
@@ -58,7 +58,7 @@ namespace ClassInterfaces_Tests
         }
 
         [TestMethod]
-        public void IScenarioPiece_SetToStage_IsItInstanceOfType_Stage_Test()
+        public void IScenarioPieceInterface_SetToStage_IsItInstanceOfType_Stage_Test()
         {
             // Arrange
             IScenarioPiece sut;
@@ -71,7 +71,7 @@ namespace ClassInterfaces_Tests
         }
 
         [TestMethod]
-        public void IScenarioPiece_SetToScenarioObject_AccessorMethods_Test()
+        public void IScenarioPieceInterface_SetToScenarioObject_AccessorMethods_Test()
         {
             // Arrange
             IScenarioPiece sut;
@@ -87,7 +87,7 @@ namespace ClassInterfaces_Tests
         }
 
         [TestMethod]
-        public void IScenarioPiece_SetToStageObject_AccessorMethods_Test()
+        public void IScenarioPieceInterface_SetToStageObject_AccessorMethods_Test()
         {
             // Arrange
             IScenarioPiece sut;

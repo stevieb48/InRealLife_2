@@ -35,7 +35,7 @@ namespace ClassInterfaces_Tests
         }
 
         [TestMethod]
-        public void IAccount_SetToAdmin_IsItInstanceOfType_Admin_Test()
+        public void IAccountInterface_SetToAdmin_IsItInstanceOfType_Admin_Test()
         {
             // Arrange
             IAccount sut;
@@ -48,7 +48,7 @@ namespace ClassInterfaces_Tests
         }
 
         [TestMethod]
-        public void IAccount_SetToChild_IsItInstanceOfType_Child_Test()
+        public void IAccountInterface_SetToChild_IsItInstanceOfType_Child_Test()
         {
             // Arrange
             IAccount sut;
@@ -61,7 +61,7 @@ namespace ClassInterfaces_Tests
         }
 
         [TestMethod]
-        public void IAccount_SetToAdminObject_AccessorMethods_Test()
+        public void IAccountInterface_SetToAdminObject_AccessorMethods_Test()
         {
             // Arrange
             IAccount sut;
@@ -80,7 +80,7 @@ namespace ClassInterfaces_Tests
         }
 
         [TestMethod]
-        public void IAccount_SetToChildObject_AccessorMethods_Test()
+        public void IAccountInterface_SetToChildObject_AccessorMethods_Test()
         {
             // Arrange
             IAccount sut;
