@@ -41,7 +41,7 @@ namespace InRealLife_2
         private const string NOT_FOUND = "NOT FOUND";
 
         // mode variable
-        string mode = LOGIN_MODE;
+        //string mode = LOGIN_MODE;
 
         // create new repository
         private Repository accountsRepository = new Repository();
@@ -130,7 +130,7 @@ namespace InRealLife_2
 
         public void SetMode()
         {
-            mode = LOGIN_MODE;
+            //mode = LOGIN_MODE;
         }
     }
 }
